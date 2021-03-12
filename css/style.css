@@ -1,0 +1,73 @@
+html, body {
+    height: 100%;
+    font-family: Montserrat, "Roboto Condensed", Helvetica, Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.section {
+    flex: 1;
+}
+
+a {
+    color: #3273dc;
+}
+
+/* header */
+.navbar {
+    background-color: #1c4d91;
+}
+
+.navbar-item img {
+    max-height: 3.75rem;
+}
+
+.navbar-link, a.navbar-item {
+    cursor: pointer;
+    color: white;
+}
+
+/* list posts */
+.card {
+    min-height: 580px;
+}
+
+/* content post  */
+figure.cover img {
+    width: auto;
+    max-height: 450px;
+}
+
+/* override post content style from asciidoc, poor semantic html generation */
+.content img {
+    margin: 1em 0;
+}
+
+.content .paragraph {
+    margin: 1em 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.job {
+    margin-top: -.666em;
+}
+
+/* Post image caption */
+.imageblock {
+    text-align: center;
+}
+
+.imageblock .title {
+    margin-top: -32px;
+    color: #363636;
+    font-size: .9rem;
+    font-weight: 300;
+    line-height: 1;
+}
