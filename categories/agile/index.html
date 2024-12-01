@@ -1,0 +1,1178 @@
+<!doctype html><html lang=fr-fr>
+<head><title> agile | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Découvrez les expertises et savoire-faire de Talan Labs">
+<meta property="og:title" content="agile">
+<meta property="og:description" content="Découvrez les expertises et savoire-faire de Talan Labs">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://blog.talanlabs.com/categories/agile/"><meta property="og:image" content="https://blog.talanlabs.com/img/logo_talanlabs_hd_w600.png"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/img/logo_talanlabs_hd_w600.png">
+<meta name=twitter:title content="agile">
+<meta name=twitter:description content="Découvrez les expertises et savoire-faire de Talan Labs">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/categories/agile/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto mt-4 md:mt-8 p-4">
+<h1 class="title mb-10">Les articles #Agile</h1>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/data-thinking/>
+<img class="border object-cover w-full m-0 max-w-md" src=/data-thinking/cover_hu751597a13ea3b1a8a4edf2bb97a79ee5_59566_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/data>data</a>
+</div>
+<a href=/data-thinking/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Le Data Thinking au cœur de l'innovation</h2></a>
+<div class=my-1>
+<span>Pierre Duval</span>,
+<time datetime=2023-02-22T11:53:27+01:00>
+22 février 2023
+</time>
+</div>
+<p class="my-1 text-slate-500">Le Data Thinking est un levier à l’innovation. Les entreprises l’utilisent de plus en plus afin de proposer …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/startup-studio/>
+<img class="border object-cover w-full m-0 max-w-md" src=/startup-studio/cover_hud9f21859e01f138c1248067bb5230b1f_132579_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/startup-studio/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Les startups studios</h2></a>
+<div class=my-1>
+<span>Nour Louhaichi</span>,
+<time datetime=2022-07-21T13:33:19+02:00>
+21 juillet 2022
+</time>
+</div>
+<p class="my-1 text-slate-500">Parce que créer une startup viable sur le long terme, ce n’est pas si simple.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/mandat-de-coaching-part2/>
+<img class="border object-cover w-full m-0 max-w-md" src=/mandat-de-coaching-part2/cover_hu3adccc8923b664a9c70c845c1bf89d86_7088_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/mandat-de-coaching-part2/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Contrat de coaching : Production (partie 2)</h2></a>
+<div class=my-1>
+<span>Martin SCHER</span>,
+<time datetime=2021-05-10T14:59:17+02:00>
+10 mai 2021
+</time>
+</div>
+<p class="my-1 text-slate-500">Cet article est le second d’une suite de trois articles, que vous pourrez retrouver ici quand ils seront …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/sprint-planning-facile/>
+<img class="border object-cover w-full m-0 max-w-md" src=/sprint-planning-facile/cover_huf822e1360484b266cf8aaba8f203bc1c_401238_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/sprint-planning-facile/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Animez un Sprint Planning Sans Coach Agile</h2></a>
+<div class=my-1>
+<span>Martin SCHER</span>,
+<time datetime=2021-04-19T15:38:53+02:00>
+19 avril 2021
+</time>
+</div>
+<p class="my-1 text-slate-500">Animez un sprint planning facilement Il y a parfois des contextes où le Coach de l’équipe n’est pas présent…​</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/commencons-par-le-roti/>
+<img class="border object-cover w-full m-0 max-w-md" src=/commencons-par-le-roti/cover_hu93c8fa294ce483cc3a05169c3701e7a7_137748_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/commencons-par-le-roti/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Commençons par le ROTI</h2></a>
+<div class=my-1>
+<span>Gilles LAVEAU</span>,
+<time datetime=2021-03-19T00:00:00Z>
+19 mars 2021
+</time>
+</div>
+<p class="my-1 text-slate-500">Des individus et leurs interactions : le ROTI 🍖 ! Quoi de mieux qu’un repas convivial pour converser et …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/mandat-de-coaching-part1/>
+<img class="border object-cover w-full m-0 max-w-md" src=/mandat-de-coaching-part1/cover_hu3adccc8923b664a9c70c845c1bf89d86_7088_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/mandat-de-coaching-part1/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Contrat de coaching : agir POUR son client?</h2></a>
+<div class=my-1>
+<span>Martin SCHER</span>,
+<time datetime=2021-03-12T15:01:21+01:00>
+12 mars 2021
+</time>
+</div>
+<p class="my-1 text-slate-500">Cet article est le premier d’une suite de trois articles, que vous pourrez retrouver ici quand ils seront …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/crise-agilite-distance/>
+<img class="border object-cover w-full m-0 max-w-md" src=/crise-agilite-distance/cover_hu20bd7f6f4613cd0d1c2a0bc7331f3c1e_3682995_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/crise-agilite-distance/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">En temps de crise, l’agilité à distance montre …</h2></a>
+<div class=my-1>
+<span>Matthieu RIBOULET</span>,
+<time datetime=2021-01-07T11:20:26+01:00>
+7 janvier 2021
+</time>
+</div>
+<p class="my-1 text-slate-500">La crise sanitaire impose aux entreprises de passer à l’agilité en mode « remote » en transposant un certain …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/scrum-guide-2020-quelles-implications-pratiques-dev-designers-po-scrummaster/>
+<img class="border object-cover w-full m-0 max-w-md" src=/scrum-guide-2020-quelles-implications-pratiques-dev-designers-po-scrummaster/cover_hu672388d7993a7aa0ebe9eabb6815faec_27857_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/scrum-guide-2020-quelles-implications-pratiques-dev-designers-po-scrummaster/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Scrum Guide 2020 : Quelles implications pratiques …</h2></a>
+<div class=my-1>
+<span>Constantin GUAY</span>,
+<time datetime=2021-01-06T00:00:00Z>
+6 janvier 2021
+</time>
+</div>
+<p class="my-1 text-slate-500">Une nouvelle version du Scrum Guide a été dévoilée en novembre 2020.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/reconversion-en-scrummaster-temoignage/>
+<img class="border object-cover w-full m-0 max-w-md" src=/reconversion-en-scrummaster-temoignage/cover_hue3e70d95447a8b0bd36ba937c7aa2b26_377584_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/reconversion-en-scrummaster-temoignage/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Scrum Master après une reconversion : le …</h2></a>
+<div class=my-1>
+<span>Constantin GUAY</span>,
+<time datetime=2021-01-04T00:00:00Z>
+4 janvier 2021
+</time>
+</div>
+<p class="my-1 text-slate-500">Martin Scher a rejoint Talan Labs en reconversion. En effet, dans sa vie précédente, il était cuisinier !</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/minecraft4scrum/>
+<img class="border object-cover w-full m-0 max-w-md" src=/minecraft4scrum/cover_hu4b67ae701846d1562fe98b8ee3addb98_163545_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/minecraft4scrum/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Pourquoi ne jamais reporter la fin d'un sprint ?</h2></a>
+<div class=my-1>
+<span>Martin SCHER</span>,
+<time datetime=2020-10-05T10:47:14+02:00>
+5 octobre 2020
+</time>
+</div>
+<p class="my-1 text-slate-500">Quel coach agile n’a pas entendu cette question : "Euh…​ on arrive à la fin du sprint, et on n’a rien à …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/afin-de-quoi/>
+<img class="border object-cover w-full m-0 max-w-md" src=/afin-de-quoi/cover_hu4c8d4ef7267d6495c4bb73a53d9b1861_7611_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/afin-de-quoi/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Afin De Quoi</h2></a>
+<div class=my-1>
+<span>Guillaume PERSINETTE</span>,
+<time datetime=2020-02-20T11:01:38+01:00>
+20 février 2020
+</time>
+</div>
+<p class="my-1 text-slate-500">L’écriture des US est souvent au coeur des discussions dans une équipe et dans la réflexion Agile en général.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/retrospective-tour-de-france/>
+<img class="border object-cover w-full m-0 max-w-md" src=/retrospective-tour-de-france/cover_hu0785bf762504c0c0d31323cc838f76a2_260298_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/retrospective-tour-de-france/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Retrospective Tour De France</h2></a>
+<div class=my-1>
+<span>Martin SCHER</span>,
+<time datetime=2019-07-30T14:20:06+01:00>
+30 juillet 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Vous cherchez un moyen de vous améliorer en équipe avec la rétrospective agile ?</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/comment-bien-mieux-faire-son-daily/>
+<img class="border object-cover w-full m-0 max-w-md" src=/comment-bien-mieux-faire-son-daily/cover_hu23cc45333078c40fd28e901ade8d8834_55531_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/comment-bien-mieux-faire-son-daily/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Comment bien (mieux) faire son daily</h2></a>
+<div class=my-1>
+<span>Constantin GUAY</span>,
+<time datetime=2019-04-16T07:47:03Z>
+16 avril 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Si vous avez un peu de mal à tirer le meilleur de vos daily, que vous soyez développeuse, développeur, ou …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/lego4devops/>
+<img class="border object-cover w-full m-0 max-w-md" src=/lego4devops/cover_hu1a2a0d8aad8bc5acd0682841c2b122c5_136019_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+</div>
+<a href=/lego4devops/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Lego4DevOps</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2019-03-27T19:55:37Z>
+27 mars 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Parce qu’il n’y a pas que les coachs agiles qui ont le droit de vous faire jouer au Lego — François - Coach …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/etre-productif-une-question-de-principes/>
+<img class="border object-cover w-full m-0 max-w-md" src=/etre-productif-une-question-de-principes/cover_hua3d1f2594fc748526cd11037aa2ad316_9268_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/etre-productif-une-question-de-principes/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Être productif, une question de principes</h2></a>
+<div class=my-1>
+<span>Maud GUYON</span>,
+<time datetime=2019-03-05T11:20:52Z>
+5 mars 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">La vélocité indique la quantité de fonctionnalités que l’équipe Agile a terminée lors de la dernière …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/scrum-scale-cest-quoi/>
+<img class="border object-cover w-full m-0 max-w-md" src=/scrum-scale-cest-quoi/cover_hu3fc3d133f4ae582bca4f29a5fa2ada0f_71683_350x180_resize_q75_box.jpeg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/scrum-scale-cest-quoi/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Scrum@Scale®️, c'est quoi ?</h2></a>
+<div class=my-1>
+<span>Maud GUYON</span>,
+<time datetime=2019-02-05T09:01:02Z>
+5 février 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Le petit dernier Il y a un an, Jeff Sutherland, co-fondateur de Scrum, a officialisé la naissance de son …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/threads-race-a-funny-team-building-game-30min/>
+<img class="border object-cover w-full m-0 max-w-md" src=/threads-race-a-funny-team-building-game-30min/cover_hu41af9d6d8f5251257dd3f49af858ec10_1423626_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/threads-race-a-funny-team-building-game-30min/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">« Threads race » a funny team building game …</h2></a>
+<div class=my-1>
+<span>Jérôme SANCHEZ</span>,
+<time datetime=2019-01-31T10:59:35Z>
+31 janvier 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">I’ve recently started working on a new project with a new team.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/retrospective-les-quatre-questions-de-norman-keth/>
+<img class="border object-cover w-full m-0 max-w-md" src=/retrospective-les-quatre-questions-de-norman-keth/cover_hu3594e9e9c899556de7274ec2ae408f74_88226_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/retrospective-les-quatre-questions-de-norman-keth/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Rétrospective : les quatre questions de Norman …</h2></a>
+<div class=my-1>
+<span>Maud GUYON</span>,
+<time datetime=2019-01-21T16:16:08Z>
+21 janvier 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Les quatre questions de Norman Keth
+Une rétrospective de projet J’ai eu à organiser et animer une …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/less-cest-quoi/>
+<img class="border object-cover w-full m-0 max-w-md" src=/less-cest-quoi/cover_hubb7671d5b9239f962a6c0e1809a0ea07_126587_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/less-cest-quoi/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">LeSS, c’est quoi ?</h2></a>
+<div class=my-1>
+<span>Maud GUYON</span>,
+<time datetime=2019-01-14T09:02:51Z>
+14 janvier 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Carte d’identité Nom : Large-Scale Scrum aka LeSS
+Catégorie : mise à l’échelle de Scrum</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/nexus-cest-quoi/>
+<img class="border object-cover w-full m-0 max-w-md" src=/nexus-cest-quoi/cover_hu43f0d284e427a9ea9aa63a5bed3186f4_76939_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/nexus-cest-quoi/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Nexus, c'est quoi ?</h2></a>
+<div class=my-1>
+<span>Maud GUYON</span>,
+<time datetime=2019-01-09T10:28:00Z>
+9 janvier 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Carte d’identité Nom : Nexus Créateur : Ken Schwaber Documentation de référence : https://www.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/the-penny-game/>
+<img class="border object-cover w-full m-0 max-w-md" src=/the-penny-game/cover_hu831650ce2a7f755f21f8bbf2a210eb9f_495604_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/the-penny-game/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">The penny game (30min workshop)</h2></a>
+<div class=my-1>
+<span>Jérôme SANCHEZ</span>,
+<time datetime=2018-12-14T10:39:02Z>
+14 décembre 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">I’ve given (with a great pleasure) this Monday and Tuesday my 2 days Scrum Master training, for the first time …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/gamifier-votre-quotidien-quand-travailler-peut-devenir-un-jeu/>
+<img class="border object-cover w-full m-0 max-w-md" src=/gamifier-votre-quotidien-quand-travailler-peut-devenir-un-jeu/cover_hude347aca407a27a80245412fa134e03b_52143_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/gamifier-votre-quotidien-quand-travailler-peut-devenir-un-jeu/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Gamifier votre quotidien - Quand travailler peut …</h2></a>
+<div class=my-1>
+<span>Guillaume PERSINETTE</span>,
+<time datetime=2018-12-14T09:05:05Z>
+14 décembre 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">CONTEXTE Scrum Master depuis maintenant 5 ans, la gamification est au centre des mes réflexions et aujourd’hui …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/get-lost-in-the-desert-and-work-on-product-vision/>
+<img class="border object-cover w-full m-0 max-w-md" src=/get-lost-in-the-desert-and-work-on-product-vision/cover_hu0bd55cf2754c7e39522533f93ac4f880_1535950_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/get-lost-in-the-desert-and-work-on-product-vision/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Get lost in the desert and work on product vision</h2></a>
+<div class=my-1>
+<span>Jérôme SANCHEZ</span>,
+<time datetime=2018-11-20T11:29:35Z>
+20 novembre 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">I recently played game named “Lost in the desert” to train on the backlog prioritization.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/ne-laissez-pas-votre-product-owner-seul/>
+<img class="border object-cover w-full m-0 max-w-md" src=/ne-laissez-pas-votre-product-owner-seul/cover_hu4aab202567802596475803d30b4f489e_102729_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/ne-laissez-pas-votre-product-owner-seul/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Ne laissez pas votre Product Owner seul !</h2></a>
+<div class=my-1>
+<span>Jérôme SANCHEZ</span>,
+<time datetime=2018-11-13T09:00:31Z>
+13 novembre 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Lourde charge est la mission du Product Owner dans Scrum. Elle est compliquée en termes de responsabilités sur …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/remplir-son-sprint-ou-garder-de-la-capa-pour-la-prod/>
+<img class="border object-cover w-full m-0 max-w-md" src=/remplir-son-sprint-ou-garder-de-la-capa-pour-la-prod/cover_huf41914c6bb851540e7c0f4a5138b8d69_39518_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/remplir-son-sprint-ou-garder-de-la-capa-pour-la-prod/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Remplir son sprint ou garder de la capa pour la …</h2></a>
+<div class=my-1>
+<span>Constantin GUAY</span>,
+<time datetime=2018-10-12T06:42:10Z>
+12 octobre 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Bien que l’ajout de tâches pendant le sprint n’est absolument pas conseillé, dans les faits les équipes y sont …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/le-role-convoite-de-scrum-master-chronometre/>
+<img class="border object-cover w-full m-0 max-w-md" src=/le-role-convoite-de-scrum-master-chronometre/cover_hu03f61d20cc88111591c7a66eb856a0a9_10645_350x180_resize_q75_box.jpeg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/le-role-convoite-de-scrum-master-chronometre/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Le rôle convoité de Scrum-Master-Chronomètre</h2></a>
+<div class=my-1>
+<span>Constantin GUAY</span>,
+<time datetime=2018-10-02T08:14:21Z>
+2 octobre 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Il existe plusieurs façons d’être un bon Scrum Master, et plusieurs façons d’être un … moins bon Scrum Master.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/atelier-squad-health-check-motivators-combo-de-la-mort/>
+<img class="border object-cover w-full m-0 max-w-md" src=/atelier-squad-health-check-motivators-combo-de-la-mort/cover_hu3fcfdccf547e1a3c62caf462cc999ae4_1391680_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/atelier-squad-health-check-motivators-combo-de-la-mort/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Atelier : Squad Health Check Motivators …</h2></a>
+<div class=my-1>
+<span>Constantin GUAY</span>,
+<time datetime=2018-09-26T09:52:21Z>
+26 septembre 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Je vous propose ici une piste pour améliorer un peu l’atelier du Squad Health Check, pour aider l’équipe à se …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/estimons-lestimation-part-1-la-liste-de-course/>
+<img class="border object-cover w-full m-0 max-w-md" src=/estimons-lestimation-part-1-la-liste-de-course/cover_hub8e6a3aa5eb2f4a6c421e0d156b23302_378326_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/estimons-lestimation-part-1-la-liste-de-course/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Estimons l’estimation part 1 : la liste de course</h2></a>
+<div class=my-1>
+<span>Constantin GUAY</span>,
+<time datetime=2018-09-10T15:26:32Z>
+10 septembre 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Il y a un vrai débat au sein de la communauté agile sur la pertinence des estimations et principalement de ce …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/la-gamification-au-travail/>
+<img class="border object-cover w-full m-0 max-w-md" src=/la-gamification-au-travail/cover_hu06cb847b8b84fa03c5118464f60c86ac_56958_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/la-gamification-au-travail/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">La gamification au travail</h2></a>
+<div class=my-1>
+<span>Guillaume PERSINETTE</span>,
+<time datetime=2018-09-05T09:03:24Z>
+5 septembre 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Avez-vous déjà pensé à utiliser la gamification ou les jeux de société au travail ?</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/notions-derriere-la-qualite-logicielle/>
+<img class="border object-cover w-full m-0 max-w-md" src=/notions-derriere-la-qualite-logicielle/cover_hu5f07ca3f8a6ab725069c624e71f8bad8_590327_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+</div>
+<a href=/notions-derriere-la-qualite-logicielle/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Les notions derrière la qualité logicielle, ce …</h2></a>
+<div class=my-1>
+<span>Nicolas POSTE</span>,
+<time datetime=2018-08-23T14:02:51Z>
+23 août 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">J’imagine que pour la plupart d’entre vous, le terme “qualité logicielle” est flou, mais saviez-vous qu’il …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/safe-cest-quoi/>
+<img class="border object-cover w-full m-0 max-w-md" src=/safe-cest-quoi/cover_hua8c0f56447cb40c413855de03c719606_124258_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/safe-cest-quoi/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">SAFE, c'est quoi?</h2></a>
+<div class=my-1>
+<span>Matthieu RIBOULET</span>,
+<time datetime=2018-07-31T12:42:35Z>
+31 juillet 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Safe Map (source : https://www.scaledagileframework.com)
+SAFe a été créé par Dean Leffingwell en 2011 afin …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/le-chaos-engineering/>
+<img class="border object-cover w-full m-0 max-w-md" src=/le-chaos-engineering/cover_hu2744e542b4118503d2e9eff24addf290_28082_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/cloud>cloud</a>
+</div>
+<a href=/le-chaos-engineering/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Le chaos engineering</h2></a>
+<div class=my-1>
+<span>Daniel DOMINGUE</span>,
+<time datetime=2018-06-22T06:00:02Z>
+22 juin 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Cet article s’insère dans notre série « Chaos Engineering ».</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/quand-le-po-technique-dit-comment-faire/>
+<img class="border object-cover w-full m-0 max-w-md" src=/quand-le-po-technique-dit-comment-faire/cover_huab8f8851aa23588623e739e209401663_1777148_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/quand-le-po-technique-dit-comment-faire/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Quand le PO-technique dit comment faire</h2></a>
+<div class=my-1>
+<span>Constantin GUAY</span>,
+<time datetime=2018-06-21T13:36:01Z>
+21 juin 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Cover by Daniel Cheung on Unsplash
+Le Product Owner technique, est généralement un ancien développeur ou chef …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/owasp-2017-pour-nos-pipelines/>
+<img class="border object-cover w-full m-0 max-w-md" src=/owasp-2017-pour-nos-pipelines/cover_hu96b3cc7629bd06ffaa0f63edb3338d17_94504_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+</div>
+<a href=/owasp-2017-pour-nos-pipelines/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Le Guide de survie de OWASP 2017 (pour nos …</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2018-06-11T06:42:07Z>
+11 juin 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Le choix des méthodes agiles est désormais dans les moeurs de la plupart de nos clients.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/devops-night-3-le-meta-meetup-devops/>
+<img class="border object-cover w-full m-0 max-w-md" src=/devops-night-3-le-meta-meetup-devops/cover_hu8db00fc0bfed23335087d30ef02d84d2_110156_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/devops-night-3-le-meta-meetup-devops/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">DEVOPS NIGHT #3 : le meta-meetup DevOps</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2018-06-04T11:51:48Z>
+4 juin 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Cet article s’insère dans notre série « Chaos Engineering ».</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/travailler-efficacement-en-equipe/>
+<img class="border object-cover w-full m-0 max-w-md" src=/travailler-efficacement-en-equipe/cover_hu018d22bf2db22cbc5888e8e252322987_1473122_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+</div>
+<a href=/travailler-efficacement-en-equipe/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Travailler efficacement en équipe avec la revue de …</h2></a>
+<div class=my-1>
+<span>Nicolas POSTE</span>,
+<time datetime=2018-05-07T08:24:59Z>
+7 mai 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Vous êtes développeur ou CTO et travaillez sur une application legacy, souffrant de nombreux défauts et bugs ?</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/de-la-qualite-en-restant-productif/>
+<img class="border object-cover w-full m-0 max-w-md" src=/de-la-qualite-en-restant-productif/cover_huf4a91d2d1ee87a0dd73e809ae7cdb424_141026_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+</div>
+<a href=/de-la-qualite-en-restant-productif/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Livrer de la qualité tout en restant productif</h2></a>
+<div class=my-1>
+<span>Nicolas POSTE</span>,
+<time datetime=2018-04-25T14:39:01Z>
+25 avril 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Vous êtes CTO ou développeur et soucieux de livrer de la qualité tout en restant productif ?</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/sprint-une-semaine/>
+<img class="border object-cover w-full m-0 max-w-md" src=/sprint-une-semaine/cover_hu1afcbfe2ab4dab2e4eb6246bc14e4abb_57447_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/sprint-une-semaine/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Devez-vous passer au Sprint d’une semaine ?</h2></a>
+<div class=my-1>
+<span>Constantin GUAY</span>,
+<time datetime=2018-04-20T14:04:20Z>
+20 avril 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Habitué comme beaucoup aux sprints de deux semaines, j’ai pu me rendre compte de l’impact qu’un sprint d’une …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/pas-mesurer-pas-ameliorer/>
+<img class="border object-cover w-full m-0 max-w-md" src=/pas-mesurer-pas-ameliorer/cover_huf4a91d2d1ee87a0dd73e809ae7cdb424_47385_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/pas-mesurer-pas-ameliorer/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Ce qui n’est pas mesuré ne peut être amélioré</h2></a>
+<div class=my-1>
+<span>Constantin GUAY</span>,
+<time datetime=2018-04-05T08:00:13Z>
+5 avril 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Comment les principes agiles peuvent-ils aider à cadrer et à mesurer le succès ou l’échec, tout en en tirant …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/guide-de-shadow-velocity-scrum-masters/>
+<img class="border object-cover w-full m-0 max-w-md" src=/guide-de-shadow-velocity-scrum-masters/cover_hub8e6a3aa5eb2f4a6c421e0d156b23302_378326_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/guide-de-shadow-velocity-scrum-masters/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Le guide de la Shadow-Velocity pour les Scrum …</h2></a>
+<div class=my-1>
+<span>Constantin GUAY</span>,
+<time datetime=2018-03-09T09:00:57Z>
+9 mars 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Il existe un mauvais comportement, qui est souvent présent dans les équipes qui s’engagent dans un sprint avec …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/visualiser-dette-technique/>
+<img class="border object-cover w-full m-0 max-w-md" src=/visualiser-dette-technique/cover_hu6093b161a95b7d1ba5b6c3ec2bec0ea7_176571_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/visualiser-dette-technique/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Comment et pourquoi visualiser la dette technique</h2></a>
+<div class=my-1>
+<span>Constantin GUAY</span>,
+<time datetime=2018-02-27T09:00:06Z>
+27 février 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">C’est une question qui revient très souvent dans les équipes : doit-on estimer et compter la dette technique …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/scrum-tips-differences-entre-epiques-histoires-themes-fonctionnalites/>
+<img class="border object-cover w-full m-0 max-w-md" src=/scrum-tips-differences-entre-epiques-histoires-themes-fonctionnalites/cover_hueff1ee6913e53ad874c67a4c1e0f079c_143463_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/scrum-tips-differences-entre-epiques-histoires-themes-fonctionnalites/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Scrum tips: Différences entre épiques, histoires, …</h2></a>
+<div class=my-1>
+<span>Constantin GUAY</span>,
+<time datetime=2018-02-20T15:31:46Z>
+20 février 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Une histoire compliquée … N’avez-vous jamais été troublé par l’utilisation faite des termes comme « épiques » …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/jeux-brise-glace-talanlabs-2018/>
+<img class="border object-cover w-full m-0 max-w-md" src=/jeux-brise-glace-talanlabs-2018/cover_hu1fb64d331891f2f1047fdd25084113ce_109684_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/design>design</a>
+</div>
+<a href=/jeux-brise-glace-talanlabs-2018/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Top 3 des jeux brise-glace pour démarrer une …</h2></a>
+<div class=my-1>
+<span>Sharmeen AQEEL</span>,
+<time datetime=2018-01-18T08:09:42Z>
+18 janvier 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">En 2017, l’UX (User eXperience) et l’UI (User Interface) ont pris de plus en plus d’importance au sein des …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/commencer-sprint-scrum/>
+<img class="border object-cover w-full m-0 max-w-md" src=/commencer-sprint-scrum/cover_hu867e42d6bb5a40e0e39d41695c211272_1279934_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/commencer-sprint-scrum/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Scrum : quel est le bon jour pour commencer un …</h2></a>
+<div class=my-1>
+<span>Constantin GUAY</span>,
+<time datetime=2017-12-14T09:07:08Z>
+14 décembre 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Quel est le bon jour pour commencer son sprint ? Quelle est la bonne heure pour le daily scrum ?</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/humantalks-talan/>
+<img class="border object-cover w-full m-0 max-w-md" src=/humantalks-talan/cover_hu125d7c42cdc3db9f6df052bf1ec5cd44_457553_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/front>front</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/back>back</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/design>design</a>
+</div>
+<a href=/humantalks-talan/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Les HumanTalks chez Talan</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2017-10-24T09:21:37Z>
+24 octobre 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Mardi 10 octobre 2017, Talan accueillait un « meetup » des « HumanTalks », que nous vous avions présenté dans …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/bnp-leasing-solutions-digitalisation/>
+<img class="border object-cover w-full m-0 max-w-md" src=/bnp-leasing-solutions-digitalisation/cover_hub8e6a3aa5eb2f4a6c421e0d156b23302_378326_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/bnp-leasing-solutions-digitalisation/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">BNP Leasing Solutions digitalise ses outils d’aide …</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2017-10-23T07:33:21Z>
+23 octobre 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Pour moderniser les traditionnels supports d’aide à la vente de sa force commerciale interne et celle de ses …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/conference-devopsrex-2017/>
+<img class="border object-cover w-full m-0 max-w-md" src=/conference-devopsrex-2017/cover_hu6d43b9a949ebdc3832f833c3716e9dce_181285_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/conference-devopsrex-2017/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Retour sur la conférence DevOpsRex 2017</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2017-10-06T10:03:31Z>
+6 octobre 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Le 2 Octobre 2017 s’est tenu la seconde édition du DevOpsRex à Paris dans la mythique salle du Grand Rex.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/ux-methode-agile-methodologie/>
+<img class="border object-cover w-full m-0 max-w-md" src=/ux-methode-agile-methodologie/cover_hu3e2ebf8c8d8c34691a394a9afdf1954e_742176_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/design>design</a>
+</div>
+<a href=/ux-methode-agile-methodologie/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">L’UX et l’agile : une histoire de collaboration</h2></a>
+<div class=my-1>
+<span>Pierre CONTESTIN</span>,
+<time datetime=2017-09-14T15:01:05Z>
+14 septembre 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Quand l’UX se focalise sur la conception centrée utilisateur, le SCRUM offre une méthodologie pour la bonne …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/jenkins-community-day-paris-2017/>
+<img class="border object-cover w-full m-0 max-w-md" src=/jenkins-community-day-paris-2017/cover_hu5438825b9b6d1014226d20d231e650c2_197678_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+</div>
+<a href=/jenkins-community-day-paris-2017/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Jenkins Community Day Paris 2017</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2017-07-18T07:34:31Z>
+18 juillet 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Les grenouilles de JFrog Artifactory ont organisé le 11 Juillet 2017 le Jenkins Community Day à Paris.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/3-questions-nicolas-thomas-agilite-ntic-partie-2/>
+<img class="border object-cover w-full m-0 max-w-md" src=/3-questions-nicolas-thomas-agilite-ntic-partie-2/cover_hu6db3096862167f92ecfc6f0c781c2ad8_52952_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/3-questions-nicolas-thomas-agilite-ntic-partie-2/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">3 questions à Nicolas Thomas - Partie 2</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2017-05-02T07:13:08Z>
+2 mai 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Vers toujours plus d’agilité dans le déploiement des nouvelles technologies Dans l’interview précédente, nous …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/3-questions-nicolas-thomas-esprit-start-up-partie-1/>
+<img class="border object-cover w-full m-0 max-w-md" src=/3-questions-nicolas-thomas-esprit-start-up-partie-1/cover_hubdaadbaa3dc09071cbf21cc0ff8ff941_63534_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/3-questions-nicolas-thomas-esprit-start-up-partie-1/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">3 questions à Nicolas Thomas - Partie 1</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2017-04-25T06:56:48Z>
+25 avril 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Un esprit de start-up au service de nos clients Talan Labs a 18 mois !</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/methode-talanlabs/>
+<img class="border object-cover w-full m-0 max-w-md" src=/methode-talanlabs/cover_hub8e6a3aa5eb2f4a6c421e0d156b23302_378326_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+</div>
+<a href=/methode-talanlabs/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Mathieu et Vivien parlent de la « méthode Talan …</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2017-03-30T08:12:49Z>
+30 mars 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Mathieu Mélé, chef de projet technique chez Talan Labs et Vivien Auguy, ingénieur également chez Talan Labs, …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/mvp-ux/>
+<img class="border object-cover w-full m-0 max-w-md" src=/mvp-ux/cover_hub53fcd2eb6e539653bf3b6b10ff391f5_41038_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/design>design</a>
+</div>
+<a href=/mvp-ux/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Quand le MVP se mêle à l’UX</h2></a>
+<div class=my-1>
+<span>Pierre CONTESTIN</span>,
+<time datetime=2017-03-09T13:11:49Z>
+9 mars 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Avec la user experience (UX), on place l’utilisateur au centre de la conception.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/lean-kanban-un-management-innovant-pour-un-developpement-agile/>
+<img class="border object-cover w-full m-0 max-w-md" src=/lean-kanban-un-management-innovant-pour-un-developpement-agile/cover_hub8e6a3aa5eb2f4a6c421e0d156b23302_378326_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<a href=/lean-kanban-un-management-innovant-pour-un-developpement-agile/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Lean-Kanban : un management innovant pour un …</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2016-10-12T12:47:28Z>
+12 octobre 2016
+</time>
+</div>
+<p class="my-1 text-slate-500">Les fonctionnalités ne sont pas spécifiées, les testeurs n’ont rien à tester, les développeurs sont débordés.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/toast-tk-lautomatisation-de-tests-facile-collaborative-et-gratuite/>
+<img class="border object-cover w-full m-0 max-w-md" src=/toast-tk-lautomatisation-de-tests-facile-collaborative-et-gratuite/cover_hub8e6a3aa5eb2f4a6c421e0d156b23302_378326_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+</div>
+<a href=/toast-tk-lautomatisation-de-tests-facile-collaborative-et-gratuite/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Toast TK, des tests automatisés faciles, …</h2></a>
+<div class=my-1>
+<span>Sallah KOKAINA</span>,
+<time datetime=2016-03-02T19:15:43Z>
+2 mars 2016
+</time>
+</div>
+<p class="my-1 text-slate-500">Simple. Collaboratif. Open Source. Trois piliers qui font aujourd’hui de Toast TK un outil d’automatisation …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/javascript-service-de-lentreprise/>
+<img class="border object-cover w-full m-0 max-w-md" src=/javascript-service-de-lentreprise/cover_hu2401854b0bbe873ae995f6b6195da66d_91175_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/front>front</a>
+</div>
+<a href=/javascript-service-de-lentreprise/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">JavaScript au service de l’entreprise</h2></a>
+<div class=my-1>
+<span>Sallah KOKAINA</span>,
+<time datetime=2015-06-05T09:57:30Z>
+5 juin 2015
+</time>
+</div>
+<p class="my-1 text-slate-500">Introduction JavaScript fut, depuis sa création par Brendan Eich en 1995 jusqu’à l’arrivée du moteur …</p>
+</div>
+</div>
+</div>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

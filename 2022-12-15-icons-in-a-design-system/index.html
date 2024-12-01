@@ -1,0 +1,292 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Générer l'iconographie de son Design System | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Comme vous l&rsquo;avez peut-être constaté, il existe plusieurs façons de manipuler des icônes dans une application WEB.">
+<meta property="og:title" content="Générer l'iconographie de son Design System">
+<meta property="og:description" content="Comme vous l&rsquo;avez peut-être constaté, il existe plusieurs façons de manipuler des icônes dans une application WEB.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/2022-12-15-icons-in-a-design-system/"><meta property="og:image" content="https://blog.talanlabs.com/2022-12-15-icons-in-a-design-system/cover.png"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2023-02-23T10:00:00+00:00">
+<meta property="article:modified_time" content="2023-02-23T10:00:00+00:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/2022-12-15-icons-in-a-design-system/cover.png">
+<meta name=twitter:title content="Générer l'iconographie de son Design System">
+<meta name=twitter:description content="Comme vous l&rsquo;avez peut-être constaté, il existe plusieurs façons de manipuler des icônes dans une application WEB.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/2022-12-15-icons-in-a-design-system/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Générer l'iconographie de son Design System</h1>
+<figure class="cover image">
+<img src=/2022-12-15-icons-in-a-design-system/cover.png width=496 height=496 alt="illustration de l'article">
+</figure>
+<p>Comme vous l&rsquo;avez peut-être constaté, il existe plusieurs façons de manipuler des icônes dans une application WEB. Chaque façon de procéder ayant son lot d&rsquo;avantages et d&rsquo;inconvénients.
+Le but de cet article est de parler d&rsquo;une partie d&rsquo;entre elles, et ce par rapport à la mise en place d&rsquo;un Design System et les besoins qui en découlent.</p>
+<p><strong>Quels sont alors les enjeux de mettre à disposition des icônes dans un Design System ?</strong></p>
+<p>Tout d&rsquo;abord, cela va permettre d&rsquo;avoir un lot commun d&rsquo;icônes pouvant être utilisées par toutes les applications utilisant ce Design System, renforçant ainsi son objectif d&rsquo;homogénéité des outils développés.
+De plus, le travail des développeurs en sera facilité par cette centralisation des icônes.
+Enfin, la solution retenue pour leur utilisation doit prendre en compte plusieurs critères dont notamment le fait de pouvoir leur appliquer des couleurs spécifiques.</p>
+<p>Voyons maintenant différentes manières de manipuler des icônes.</p>
+<h2 id=utiliser-des-inline-svg>Utiliser des &ldquo;inline&rdquo; SVG</h2>
+<p>&ldquo;SVG (pour Scalable Vector Graphics en anglais, soit « graphiques vectoriels adaptables ») est un langage construit à partir de XML et qui permet de décrire des graphiques vectoriels en deux dimensions.&rdquo; <a href=https://developer.mozilla.org/fr/docs/Web/SVG>Documentation MDN sur les SVG</a>.</p>
+<p>Les &ldquo;inline&rdquo; SVG vont permettre d&rsquo;accéder au code des icônes sous forme de balises que l&rsquo;on pourra insérer directement dans du HTML. Voici un exemple de code présent dans un SVG :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>&lt;<span style=color:#f92672>svg</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;svg-icon&#34;</span> <span style=color:#a6e22e>viewBox</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;0 0 20 20&#34;</span>&gt;
+  &lt;<span style=color:#f92672>path</span> <span style=color:#a6e22e>d</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;M17.684,7.925l-5.131-0.67L10.329,...&#34;</span>&gt;&lt;/<span style=color:#f92672>path</span>&gt;
+&lt;/<span style=color:#f92672>svg</span>&gt;
+</code></pre></div><p>Ce qui donnerait :</p>
+<p><img src=base-svg.png alt="Star image"></p>
+<p>Ayant accès à ce code, nous pouvons modifier de manière très simple la couleur de l&rsquo;icône. Par exemple en ajoutant un attribut <strong>fill</strong> sur la balise <code>&lt;path>&lt;/path></code> :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>&lt;<span style=color:#f92672>svg</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;svg-icon&#34;</span> <span style=color:#a6e22e>viewBox</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;0 0 20 20&#34;</span>&gt;
+  &lt;<span style=color:#f92672>path</span> <span style=color:#a6e22e>fill</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;red&#34;</span> <span style=color:#a6e22e>d</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;M17.684,7.925l-5.131-0.67L10.329,...&#34;</span>&gt;&lt;/<span style=color:#f92672>path</span>&gt;
+&lt;/<span style=color:#f92672>svg</span>&gt;
+</code></pre></div><p>Voici le résultat de cette modification :</p>
+<p><img src=red-svg.png alt="Red Star image"></p>
+<p>Quant à la question de la qualité de l&rsquo;icône suivant son agrandissement, les SVG étant créés de façon vectorielle, aucune perte de qualité n&rsquo;aura lieu.</p>
+<p>Dernier point important concernant les SVG &ldquo;inline&rdquo; : étant attachés au DOM en tant qu&rsquo;éléments HTML, leur mise en cache dans le navigateur n&rsquo;est pas possible. En tout cas ni nativement, ni facilement. Donc lorsque les icônes sont mises à disposition via un CDN (Content Delivery Network, autrement dit disponibles en ligne), elles doivent être téléchargées pour être utilisées. Ce téléchargement aura lieu pour chaque icône à chaque fois qu&rsquo;elle sera affichée dans la page. Ce qui peut être problématique en terme de performance.</p>
+<h2 id=utiliser-des-balises-img->Utiliser des balises <code>&lt;img /></code></h2>
+<p>L&rsquo;un des moyens les plus communs d&rsquo;afficher une icône dans une application est d&rsquo;utiliser la balise <code>&lt;img /></code>, autrement dit de la considérer comme une image.</p>
+<p>Cette façon de faire a l&rsquo;avantage de pouvoir mettre l&rsquo;icône en cache dans le navigateur, car elle sera considérée comme une ressource externe téléchargée via une URL.</p>
+<p>Cependant, une limite se dévoile assez rapidement : l&rsquo;impossibilité d&rsquo;interagir avec l&rsquo;icône afin de modifier, entre autres, sa couleur. Dans le cadre d&rsquo;un Design System, cette limite devient une contrainte trop forte et nous oblige à trouver une autre solution.</p>
+<h2 id=créer-une-font-dicônes>Créer une font d&rsquo;icônes</h2>
+<p>Une font d&rsquo;icônes, ou police d&rsquo;icônes, va nous permettre d&rsquo;utiliser des icônes comme du texte dans du HTML. Cela implique que nous pouvons interagir avec l&rsquo;icône, que ce soit pour lui appliquer une couleur, à l&rsquo;aide de la propriété CSS <strong>color</strong>, ou pour lui modifier sa taille, à l&rsquo;aide de la propriété CSS <strong>font-size</strong> (qui d&rsquo;ailleurs n&rsquo;inclura pas de perte de qualité comme dans le cas d&rsquo;un simple texte).</p>
+<p>De plus, tout comme les navigateurs le font pour télécharger des polices d&rsquo;écriture (Open Sans par exemple), la font d&rsquo;icônes sera mise en cache dans le navigateur, et ainsi n&rsquo;importe quelle icône pourra être utilisée dans l&rsquo;application, sans avoir à retélécharger quoi que ce soit.</p>
+<p><strong>Mais comment créer une font d&rsquo;icônes ?</strong></p>
+<p>Plusieurs librairies existent. Prenons le cas des librairies <a href=https://www.npmjs.com/package/svgo>svgo</a> et <a href=https://www.npmjs.com/package/fantasticon>fantasticon</a>.</p>
+<p><strong>svgo</strong> est une librairie permettant d&rsquo;optimiser les fichiers SVG en supprimant le contenu superflu qu&rsquo;ils peuvent contenir.</p>
+<p><strong>fantasticon</strong> quant à elle est une librairie permettant de générer une font d&rsquo;icônes à partir de fichiers SVG. On pourra trouver en sortie de ce traitement divers fichiers, notamment un <code>index.css</code> qui contiendra la déclaration de la nouvelle font à l&rsquo;aide d&rsquo;une <strong>font-face</strong>, ainsi que l&rsquo;ensemble des classes CSS à appliquer sur une balise spécifique (communément la balise <code>&lt;i>&lt;/i></code>) pour afficher telle ou telle icône. Voici un exemple de ce que l&rsquo;on obtient dans ce fichier CSS :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css>@<span style=color:#66d9ef>font-face</span> {
+  <span style=color:#f92672>font-family</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;icons&#34;</span><span style=color:#f92672>;</span>
+  <span style=color:#f92672>src</span><span style=color:#f92672>:</span> <span style=color:#f92672>url</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;path/icons.ttf?56trf6...&#34;</span><span style=color:#f92672>)</span> <span style=color:#f92672>format</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;truetype&#34;</span><span style=color:#f92672>),</span> <span style=color:#f92672>url</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;path/icons.woff?56trf6...&#34;</span><span style=color:#f92672>)</span>
+      <span style=color:#f92672>format</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;woff&#34;</span><span style=color:#f92672>),</span> <span style=color:#f92672>url</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;path/icons.woff2?56trf6...&#34;</span><span style=color:#f92672>)</span> <span style=color:#f92672>format</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;woff2&#34;</span><span style=color:#f92672>);</span>
+}
+
+<span style=color:#f92672>i</span><span style=color:#f92672>[</span><span style=color:#f92672>class</span><span style=color:#f92672>^=</span><span style=color:#e6db74>&#34;icon-&#34;</span><span style=color:#f92672>]</span>:<span style=color:#a6e22e>before</span><span style=color:#f92672>,</span>
+<span style=color:#f92672>i</span><span style=color:#f92672>[</span><span style=color:#f92672>class</span><span style=color:#f92672>*=</span><span style=color:#e6db74>&#34; icon-&#34;</span><span style=color:#f92672>]</span>:<span style=color:#a6e22e>before</span> {
+  <span style=color:#66d9ef>font-family</span>: icons <span style=color:#75715e>!important</span>;
+  <span style=color:#66d9ef>font-style</span>: <span style=color:#66d9ef>normal</span>;
+  <span style=color:#66d9ef>font-weight</span>: <span style=color:#66d9ef>normal</span> <span style=color:#75715e>!important</span>;
+  <span style=color:#66d9ef>font-variant</span>: <span style=color:#66d9ef>normal</span>;
+  <span style=color:#66d9ef>text-transform</span>: <span style=color:#66d9ef>none</span>;
+  <span style=color:#66d9ef>line-height</span>: <span style=color:#ae81ff>1</span>;
+  <span style=color:#66d9ef>-webkit-</span>font-smoothing: antialiased;
+  <span style=color:#66d9ef>-moz-</span>osx-font-smoothing: grayscale;
+}
+
+.<span style=color:#a6e22e>icon-ic_my-great-icon</span>:<span style=color:#a6e22e>before</span> {
+  <span style=color:#66d9ef>content</span>: <span style=color:#e6db74>&#34;\f101&#34;</span>;
+}
+
+.<span style=color:#a6e22e>icon-ic_another-icon</span>:<span style=color:#a6e22e>before</span> {
+  <span style=color:#66d9ef>content</span>: <span style=color:#e6db74>&#34;\f102&#34;</span>;
+}
+</code></pre></div><p>Nous avons donc en premier lieu la définition de la <strong>font-face</strong> contenant la nouvelle <strong>font-family</strong> &ldquo;icons&rdquo; ainsi que les URL vers les fichiers de font associés (.ttf, .woff, &mldr;).</p>
+<p>Vient ensuite la déclaration des classes CSS <code>i[class^="icon-"]:before</code> et <code>i[class*=" icon-"]:before</code> afin d&rsquo;appliquer des styles globaux sur les balises <code>&lt;i>&lt;/i></code> ayant une classe CSS préfixée par <strong>icon-</strong>, notamment en appliquant la <strong>font-family</strong> &ldquo;icons&rdquo;.</p>
+<p>Enfin vient la déclaration de la classe CSS correspondant à chaque icône. On peut voir que la propriété CSS <a href=https://developer.mozilla.org/fr/docs/Web/CSS/content>content</a> est utilisée dans ces classes et qu&rsquo;elle pointe vers un <strong>id</strong> correspondant en réalité à telle ou telle icône. Cette propriété permet donc de remplacer un élément HTML par un contenu spécifique, ici une icône. Elle est appliquée dans notre cas sur le pseudo élément <a href=https://developer.mozilla.org/en-US/docs/Web/CSS/::before>::before</a> de la balise <code>&lt;i>&lt;/i></code>.</p>
+<p>Voici le code HTML pour afficher l&rsquo;icône <strong>ic_my-great-icon</strong> dans notre application :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>&lt;<span style=color:#f92672>i</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;icon icon-ic_my-great-icon&#34;</span>&gt;&lt;/<span style=color:#f92672>i</span>&gt;
+</code></pre></div><h2 id=conclusion>Conclusion</h2>
+<p>Utiliser des SVG inline est une bonne solution pour afficher des icônes dans une application. Cependant, lorsque les icônes sont mises à disposition via un CDN, elles doivent être téléchargées. L&rsquo;impossibilité de mettre ces icônes en cache dans le navigateur peut devenir un réel problème, pouvant causer des soucis de performance notamment.</p>
+<p>La font d&rsquo;icônes, comme les SVG inline, nous laisse la possibilité d&rsquo;interagir avec ces icônes, que ce soit avec leur couleur ou leur taille principalement. Comme on le ferait simplement pour du texte dans notre HTML. De plus, cette solution répond à la problématique de la mise en cache dans le navigateur, du fait que la font sera téléchargée une fois par le navigateur et sera ensuite mise en cache, comme n&rsquo;importe quelle autre font.</p>
+<p>Pour ce qui est de l&rsquo;accessibilité, utiliser des attributs ARIA (tels que <strong>aria-label</strong>) sur nos icônes nous permet de les rendre accessibles à tous, comme le ferait un attribut <strong>alt</strong> sur une balise <code>&lt;img/></code>.</p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2023-02-23T10:00:00Z>
+23 février 2023
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/guillaume-collet/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Guillaume COLLET" src=https://blog.talanlabs.com/authors/guillaume-collet.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/guillaume-collet/>Guillaume COLLET</a></h1>
+<p class="mt-0 mb-2">Développeur Web</p>
+</div>
+<div class=mb-6>
+<a href=https://www.linkedin.com/in/guillaume-collet-75a128146 target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/front>front</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/design>design</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/design-system>#design system</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/icons>#icons</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/library>#library</a>
+</div>
+</div>
+</div>
+</div>
+<aside>
+<h4 class="subtitle mt-10 mb-8"><i class="fas fa-forward"></i> Vous aimerez peut-être...</h4>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/2022-06-24-version-a-library/>
+<img class="border object-cover w-full m-0 max-w-md" src=/2022-06-24-version-a-library/cover_huac5335c59a4088438985d1e5c27dd1b1_11755_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/front>front</a>
+</div>
+<a href=/2022-06-24-version-a-library/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Versionner une librairie - Design System</h2></a>
+<div class=my-1>
+<span>Guillaume COLLET</span>,
+<time datetime=2022-06-24T13:33:19+02:00>
+24 juin 2022
+</time>
+</div>
+<p class="my-1 text-slate-500">Développer une librairie plutôt qu’une application web plus classique amène de nouvelles problématiques.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/tailwind-design-system/>
+<img class="border object-cover w-full m-0 max-w-md" src=/tailwind-design-system/cover_hu3356174f3829aba4f933df1149b3dc51_5255_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/front>front</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/design>design</a>
+</div>
+<a href=/tailwind-design-system/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Tailwind - Design System</h2></a>
+<div class=my-1>
+<span>Guillaume COLLET</span>,
+<time datetime=2021-10-15T15:53:03+02:00>
+15 octobre 2021
+</time>
+</div>
+<p class="my-1 text-slate-500">Qu’est-ce que Tailwind ? Tailwind est un framework CSS utilisant l’approche Utility first.</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

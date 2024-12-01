@@ -1,0 +1,981 @@
+<!doctype html><html lang=fr-fr>
+<head><title> event | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Découvrez les expertises et savoire-faire de Talan Labs">
+<meta property="og:title" content="event">
+<meta property="og:description" content="Découvrez les expertises et savoire-faire de Talan Labs">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://blog.talanlabs.com/categories/event/"><meta property="og:image" content="https://blog.talanlabs.com/img/logo_talanlabs_hd_w600.png"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/img/logo_talanlabs_hd_w600.png">
+<meta name=twitter:title content="event">
+<meta name=twitter:description content="Découvrez les expertises et savoire-faire de Talan Labs">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/categories/event/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto mt-4 md:mt-8 p-4">
+<h1 class="title mb-10">Les articles #Event</h1>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/recapitulatif-ruche-37/>
+<img class="border object-cover w-full m-0 max-w-md" src=/recapitulatif-ruche-37/cover_hu27107aabd4daddc58aa51437e4522683_58913_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/recapitulatif-ruche-37/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Résumé de la journée Ruche #37</h2></a>
+<div class=my-1>
+<span>Equipe Ruche</span>,
+<time datetime=2022-09-28T09:30:20+01:00>
+28 septembre 2022
+</time>
+</div>
+<p class="my-1 text-slate-500">Startup Network, Event Storming,IA explicable, Architecture Front, Atelier Rust… voici un résumé de la 37ème …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/recapitulatif-ruche-36/>
+<img class="border object-cover w-full m-0 max-w-md" src=/recapitulatif-ruche-36/cover_hu66632ff3d582c99eb29fd9719fef83d3_31430_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/recapitulatif-ruche-36/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Résumé de la journée Ruche #36</h2></a>
+<div class=my-1>
+<span>Equipe Ruche</span>,
+<time datetime=2022-07-26T09:30:20+01:00>
+26 juillet 2022
+</time>
+</div>
+<p class="my-1 text-slate-500">Coaching Agile, analyse de réseau, trouver des tests pertinents et s’approprier les notions de IaC… voici un …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/viva-tech-2022/>
+<img class="border object-cover w-full m-0 max-w-md" src=/viva-tech-2022/cover_hu50c079afa5db9db9ab2964d2044e17fc_93628_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/viva-tech-2022/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Retour sur l'évènement VivaTech 2022</h2></a>
+<div class=my-1>
+<span>Nour Louhaichi</span>,
+<time datetime=2022-07-20T13:33:19+02:00>
+20 juillet 2022
+</time>
+</div>
+<p class="my-1 text-slate-500">Le 15,16,17 et 18 juin 2022, nos équipes du SUN se sont rendues à VivaTech: le rendez-vous mondial des …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/recapitulatif-ruche-35/>
+<img class="border object-cover w-full m-0 max-w-md" src=/recapitulatif-ruche-35/cover_huab67175d6c6bfe17550ba5d0f2c36b08_1615067_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/recapitulatif-ruche-35/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Résumé de la journée Ruche #35</h2></a>
+<div class=my-1>
+<span>Equipe Ruche</span>,
+<time datetime=2022-07-05T09:30:20+01:00>
+5 juillet 2022
+</time>
+</div>
+<p class="my-1 text-slate-500">L’accessibilité Web, l’IA Explicable, le REX de la Perfect Team Agile, un mob programming pour un outil …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/recapitulatif-ruche-34/>
+<img class="border object-cover w-full m-0 max-w-md" src=/recapitulatif-ruche-34/cover_hufd3ddc3daba02c8dbb90c9b0bdac610e_40561_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/recapitulatif-ruche-34/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Résumé de la journée Ruche #34</h2></a>
+<div class=my-1>
+<span>Equipe Ruche</span>,
+<time datetime=2022-05-30T09:30:20+01:00>
+30 mai 2022
+</time>
+</div>
+<p class="my-1 text-slate-500">Le Neuromonitor Aiitense, la création d’un CLI avec Node, le Tatouage des algorithmes d’IA, un atelier de …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/recapitulatif-ruche-33/>
+<img class="border object-cover w-full m-0 max-w-md" src=/recapitulatif-ruche-33/cover_hufd3ddc3daba02c8dbb90c9b0bdac610e_40561_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/recapitulatif-ruche-33/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Résumé de la journée Ruche #33</h2></a>
+<div class=my-1>
+<span>Equipe Ruche</span>,
+<time datetime=2022-05-05T09:30:20+01:00>
+5 mai 2022
+</time>
+</div>
+<p class="my-1 text-slate-500">Posture au travail, supervision azure, Rust pour les CLI, Event Storming…résumé de la journée 33ème journée</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/devoxx-2022/>
+<img class="border object-cover w-full m-0 max-w-md" src=/devoxx-2022/cover_hu2357f83258169e433529661c8afa5ce9_48492_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/devoxx-2022/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Devoxx 2022 - Le Labs y était !</h2></a>
+<div class=my-1>
+<span>Nicolas SAVOIS</span>,
+<time datetime=2022-04-29T00:00:00+02:00>
+29 avril 2022
+</time>
+</div>
+<p class="my-1 text-slate-500">Comme tous les ans TalanLabs était au Devoxx, on vous raconte notre Devoxx 2022
+</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/recapitulatif-ruche-32/>
+<img class="border object-cover w-full m-0 max-w-md" src=/recapitulatif-ruche-32/cover_hu3e22e7ab1ee4249a37a18ab0e1d8af25_66935_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/recapitulatif-ruche-32/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Résumé de la journée Ruche #32</h2></a>
+<div class=my-1>
+<span>Equipe Ruche</span>,
+<time datetime=2022-03-30T09:30:20+01:00>
+30 mars 2022
+</time>
+</div>
+<p class="my-1 text-slate-500">Aiintense, Linux custom et typescript … résumé de la journée 32ème journée</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/recapitulatif-ruche-31/>
+<img class="border object-cover w-full m-0 max-w-md" src=/recapitulatif-ruche-31/cover_hu06631ea711acfdbb6e66dc4b3863892d_71440_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/recapitulatif-ruche-31/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Résumé de la journée Ruche #31</h2></a>
+<div class=my-1>
+<span>Equipe Ruche</span>,
+<time datetime=2022-03-07T09:30:20+01:00>
+7 mars 2022
+</time>
+</div>
+<p class="my-1 text-slate-500">Présentation de Souffl, packages NPM, IPFS, veille et NLP … résumé de la journée 31ème journée</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/recapitulatif-ruche-30/>
+<img class="border object-cover w-full m-0 max-w-md" src=/recapitulatif-ruche-30/cover_hu27107aabd4daddc58aa51437e4522683_58913_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/recapitulatif-ruche-30/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Résumé de la journée Ruche #30</h2></a>
+<div class=my-1>
+<span>Equipe Ruche</span>,
+<time datetime=2022-01-31T15:41:20+01:00>
+31 janvier 2022
+</time>
+</div>
+<p class="my-1 text-slate-500">Projet étudiant Iot, Rex sur le rôle de Product Owner et Scrum Master, écrire un compilateur en go… résumé de …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/recapitulatif-ruches-2021/>
+<img class="border object-cover w-full m-0 max-w-md" src=/recapitulatif-ruches-2021/cover_hu5d8a18b62beede04f12097520936e5de_31550_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/recapitulatif-ruches-2021/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Récapitulatif des journées Ruche en 2021</h2></a>
+<div class=my-1>
+<span>Equipe Ruche</span>,
+<time datetime=2022-01-24T15:41:20+01:00>
+24 janvier 2022
+</time>
+</div>
+<p class="my-1 text-slate-500">Une journée Ruche ? Tous les troisièmes jeudi du mois, les Labiens se retrouvent pour partager et échanger …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/r3-corda-presentation/>
+<img class="border object-cover w-full m-0 max-w-md" src=/r3-corda-presentation/cover_huca5e9b86b5919fd02a1f2f95305a2620_519112_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/r3-corda-presentation/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">R3 Corda : Presentation</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2019-03-11T14:51:37+01:00>
+11 mars 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Les technologies Blockchain & DLT (Distributed Ledger Technology) sont nombreuses. Nous allons ici nous …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/asseth-meetup-fevrier/>
+<img class="border object-cover w-full m-0 max-w-md" src=/asseth-meetup-fevrier/cover_huebca299aaae48fbfa558b39ddb1c5b72_932950_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/asseth-meetup-fevrier/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Meetup Asseth : CryptoBooks & DAI</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2019-03-01T10:00:59+01:00>
+1 mars 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Une nouvelle fois Talan Labs a accueilli l’Asseth pour son meetup du jeudi 28 février.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/experience-share2gether/>
+<img class="border object-cover w-full m-0 max-w-md" src=/experience-share2gether/cover_hu6185707ac421f7d865e76254855e6e18_1346608_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/experience-share2gether/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Share2gether : collaboration avec l'EPF</h2></a>
+<div class=my-1>
+<span>Sarah MAURET</span>,
+<time datetime=2019-02-15T12:05:59+01:00>
+15 février 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Le contexte Une des grandes problématiques lorsque l’on constitue une équipe autour des technologies …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/asseth-meetup-janvier/>
+<img class="border object-cover w-full m-0 max-w-md" src=/asseth-meetup-janvier/cover_hucf967c33f389130ab619766a81118218_50002_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/asseth-meetup-janvier/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Meetup Asseth : table ronde</h2></a>
+<div class=my-1>
+<span>Sarah MAURET</span>,
+<time datetime=2019-02-04T12:05:59+01:00>
+4 février 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Le mercredi 30 janvier 2019, Talan Labs a accueilli l’Asseth, l’association française dédiée à l’éducation et …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/meetup-lasseth-recoit-tribute/>
+<img class="border object-cover w-full m-0 max-w-md" src=/meetup-lasseth-recoit-tribute/cover_hue4715d69ef50c5facde5f11d60b2ef71_1393313_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/meetup-lasseth-recoit-tribute/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Meetup - L'Asseth reçoit Tribute</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2018-11-09T18:08:18+01:00>
+9 novembre 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Le mercredi 17 octobre 2018, Talan Labs accueillait un meetup de l’Asseth dans les locaux de Talan.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/meetup-ethereum-2/>
+<img class="border object-cover w-full m-0 max-w-md" src=/meetup-ethereum-2/cover_hu05438883a8dcc49d20be30c8fd561956_83626_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/meetup-ethereum-2/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Meetup ConsenSys : présentation d'Ethereum 2.0</h2></a>
+<div class=my-1>
+<span>Sarah MAURET</span>,
+<time datetime=2018-10-26T12:05:59+01:00>
+26 octobre 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Le mardi 9 octobre 2018, l’équipe Pegasys de ConsenSys tenait un meetup sur Ethereum 2.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/juin-mois-futur-du-cloud/>
+<img class="border object-cover w-full m-0 max-w-md" src=/juin-mois-futur-du-cloud/cover_hu9731124c279ebe2097e4c1d032ec2f09_59858_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/cloud>cloud</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/juin-mois-futur-du-cloud/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Juin, le mois pour construire le futur du Cloud</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2018-08-20T11:48:45Z>
+20 août 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Vous vous êtes peut-être rendu compte que les Géants “Cloud Providers” se sont posés au mois de Juin 2018 à …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/pariscontainerday2018/>
+<img class="border object-cover w-full m-0 max-w-md" src=/pariscontainerday2018/cover_hu8a23eb63ed99f6d8e22f35beaa9f4d69_13105_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/cloud>cloud</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/pariscontainerday2018/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Paris Container Day 2018</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2018-08-08T09:55:32Z>
+8 août 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Ce mardi 26 Juin se tenait à Paris, au pied de la Tour Eiffel, la troisième édition du Paris Container Day …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/crip-club-responsables-infra-prod/>
+<img class="border object-cover w-full m-0 max-w-md" src=/crip-club-responsables-infra-prod/cover_hu244bc9679a9672253a55e025e5c6bd54_90191_350x180_resize_q75_box.jpeg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/cloud>cloud</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/crip-club-responsables-infra-prod/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">CRiP : Club des Responsables de l’Infrastructure …</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2018-07-02T19:52:51Z>
+2 juillet 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">J’ai eu l’occasion de connaitre le CRiP par l’intermédiaire de l’un de mes clients où j’opère en mission en ce …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/devops-night-3-le-meta-meetup-devops/>
+<img class="border object-cover w-full m-0 max-w-md" src=/devops-night-3-le-meta-meetup-devops/cover_hu8db00fc0bfed23335087d30ef02d84d2_110156_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/devops-night-3-le-meta-meetup-devops/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">DEVOPS NIGHT #3 : le meta-meetup DevOps</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2018-06-04T11:51:48Z>
+4 juin 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Cet article s’insère dans notre série « Chaos Engineering ».</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/talanvivatech/>
+<img class="border object-cover w-full m-0 max-w-md" src=/talanvivatech/cover_hub8e6a3aa5eb2f4a6c421e0d156b23302_378326_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/mobile>mobile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/talanvivatech/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Talan@Vivatech : Hackathon</h2></a>
+<div class=my-1>
+<span>Nicolas SAVOIS</span>,
+<time datetime=2018-05-22T12:30:06Z>
+22 mai 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Cette année Vivatech organise 4 hackathons TechCrunch! Un vainqueur sera désigné pour chacun des 4 hackathons, …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/hackathon-casino/>
+<img class="border object-cover w-full m-0 max-w-md" src=/hackathon-casino/cover_huf23e337d4510304868ee805c6cd896c7_279651_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/hackathon-casino/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Retour sur le hackathon Blockchain and Shop …</h2></a>
+<div class=my-1>
+<span>Jérôme BERNARD</span>,
+<time datetime=2018-02-24T12:17:01+01:00>
+24 février 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Hackathon Blockchain & Shop Casino organisait un hackathon du 16 au 18 Février autour de la blockchain, avec …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/meetup-asseth-janvier/>
+<img class="border object-cover w-full m-0 max-w-md" src=/meetup-asseth-janvier/cover_hu5c1e9907c0c96e9a71ff1abfca53576f_12856_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/meetup-asseth-janvier/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Meetup Asseth chez Talan : présentation de Colony</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2018-02-13T12:05:59+01:00>
+13 février 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Vendredi 19 janvier 2018 avait lieu le meetup de l’Asseth (Association Ethereum française), sponsorisé et …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/meetup-asseth-devcon3-talan-ethereum/>
+<img class="border object-cover w-full m-0 max-w-md" src=/meetup-asseth-devcon3-talan-ethereum/cover_hu1a83641b92ebcf10e1e303188c94abaa_108233_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/meetup-asseth-devcon3-talan-ethereum/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Meetup Asseth chez Talan : retour sur Devcon3</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2017-11-16T16:10:55Z>
+16 novembre 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Lundi 13 novembre 2017 avait lieu le meetup de l’Asseth (Association Ethereum française).</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/meetup-asseth-talan-debrief-devcon3/>
+<img class="border object-cover w-full m-0 max-w-md" src=/meetup-asseth-talan-debrief-devcon3/cover_hu1a83641b92ebcf10e1e303188c94abaa_108233_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/meetup-asseth-talan-debrief-devcon3/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Meetup Asseth chez Talan : débrief du Devcon3</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2017-11-09T09:54:55Z>
+9 novembre 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Le lundi 13 novembre à partir de 18h30 dans les locaux de Talan aura lieu le débrief du Devcon3, la conférence …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/bootcamp-design-thinking-talan/>
+<img class="border object-cover w-full m-0 max-w-md" src=/bootcamp-design-thinking-talan/cover_hu65d2bae8b2d3e70c33d7ca0b81b1099b_758947_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/design>design</a>
+</div>
+<a href=/bootcamp-design-thinking-talan/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Un bootcamp design thinking chez Talan</h2></a>
+<div class=my-1>
+<span>Pierre CONTESTIN</span>,
+<time datetime=2017-10-26T07:34:23Z>
+26 octobre 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">À l’occasion d’une** formation UX** interne le 11 octobre dernier, un bootcamp (formation) design thinking a …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/humantalks-talan/>
+<img class="border object-cover w-full m-0 max-w-md" src=/humantalks-talan/cover_hu125d7c42cdc3db9f6df052bf1ec5cd44_457553_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/front>front</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/back>back</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/design>design</a>
+</div>
+<a href=/humantalks-talan/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Les HumanTalks chez Talan</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2017-10-24T09:21:37Z>
+24 octobre 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Mardi 10 octobre 2017, Talan accueillait un « meetup » des « HumanTalks », que nous vous avions présenté dans …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/conference-devopsrex-2017/>
+<img class="border object-cover w-full m-0 max-w-md" src=/conference-devopsrex-2017/cover_hu6d43b9a949ebdc3832f833c3716e9dce_181285_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/conference-devopsrex-2017/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Retour sur la conférence DevOpsRex 2017</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2017-10-06T10:03:31Z>
+6 octobre 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Le 2 Octobre 2017 s’est tenu la seconde édition du DevOpsRex à Paris dans la mythique salle du Grand Rex.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/nantes-digital-week-2017/>
+<img class="border object-cover w-full m-0 max-w-md" src=/nantes-digital-week-2017/cover_hu6b1806ead0e25b01223e4ead0d9083ab_34960_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/design>design</a>
+</div>
+<a href=/nantes-digital-week-2017/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Talan Labs acteur de la 4ème édition de la Nantes …</h2></a>
+<div class=my-1>
+<span>Sharmeen AQEEL</span>,
+<time datetime=2017-09-07T12:40:10Z>
+7 septembre 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">TalanLabs participe à la Nantes Digital Week 2017. En partenariat avec l’entreprise VIF, notre équipe vous …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/ux-design-orangina/>
+<img class="border object-cover w-full m-0 max-w-md" src=/ux-design-orangina/cover_hu82c269c084c9585eb50d62bc91314509_118684_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/design>design</a>
+</div>
+<a href=/ux-design-orangina/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">L’UX en application : l’exemple d’Orangina</h2></a>
+<div class=my-1>
+<span>Pierre CONTESTIN</span>,
+<time datetime=2017-08-01T13:00:31Z>
+1 août 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Cet article fait référence au meetup UX Talan Labs qui s’est déroulé le 11 juillet 2017.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/conference-microservices-devoxx/>
+<img class="border object-cover w-full m-0 max-w-md" src=/conference-microservices-devoxx/cover_hu5b852934cbb1341eb1b802452f4d3d4e_100858_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/cloud>cloud</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/conference-microservices-devoxx/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Revivez la conférence microservices de Talan Labs …</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2017-05-04T07:05:09Z>
+4 mai 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">La vidéo de la conférence microservices TalanLabs réalisée pendant Devoxx 2017 est en ligne !</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/3-questions-nicolas-thomas-agilite-ntic-partie-2/>
+<img class="border object-cover w-full m-0 max-w-md" src=/3-questions-nicolas-thomas-agilite-ntic-partie-2/cover_hu6db3096862167f92ecfc6f0c781c2ad8_52952_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/3-questions-nicolas-thomas-agilite-ntic-partie-2/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">3 questions à Nicolas Thomas - Partie 2</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2017-05-02T07:13:08Z>
+2 mai 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Vers toujours plus d’agilité dans le déploiement des nouvelles technologies Dans l’interview précédente, nous …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/3-questions-nicolas-thomas-esprit-start-up-partie-1/>
+<img class="border object-cover w-full m-0 max-w-md" src=/3-questions-nicolas-thomas-esprit-start-up-partie-1/cover_hubdaadbaa3dc09071cbf21cc0ff8ff941_63534_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/3-questions-nicolas-thomas-esprit-start-up-partie-1/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">3 questions à Nicolas Thomas - Partie 1</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2017-04-25T06:56:48Z>
+25 avril 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Un esprit de start-up au service de nos clients Talan Labs a 18 mois !</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/talanlabs-bilan-devoxx-2017-chiffres-images/>
+<img class="border object-cover w-full m-0 max-w-md" src=/talanlabs-bilan-devoxx-2017-chiffres-images/cover_hub2b45d07afecddcd42dce6144f3c2d26_375105_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/talanlabs-bilan-devoxx-2017-chiffres-images/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Talan Labs fait le bilan de Devoxx 2017 en …</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2017-04-13T09:03:48Z>
+13 avril 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Devoxx, l’événement des développeurs logiciels, s’est terminé le 7 avril dernier.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/talanlabs-sponsor-platinium-devoxx-2017/>
+<img class="border object-cover w-full m-0 max-w-md" src=/talanlabs-sponsor-platinium-devoxx-2017/cover_huc8e1a2c9b49801342f7f8cdb802a7324_62434_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/cloud>cloud</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/talanlabs-sponsor-platinium-devoxx-2017/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Talan Labs sponsor platinium de Devoxx 2017</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2017-03-31T08:57:15Z>
+31 mars 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Talan Labs est pour la seconde année consécutive sponsor platinium de l’événement des développeurs de …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/inside-talan-marouan-developpeur-talanlabs/>
+<img class="border object-cover w-full m-0 max-w-md" src=/inside-talan-marouan-developpeur-talanlabs/cover_hub8e6a3aa5eb2f4a6c421e0d156b23302_378326_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/inside-talan-marouan-developpeur-talanlabs/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Inside Talan – Marouan, Développeur chez TalanLabs</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2017-02-22T13:05:33Z>
+22 février 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Découvrez le portrait de Marouan, développeur chez Talan Labs, passionné de voyages et de retouches photos.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/job-teaser-recrutement-consultants-talan/>
+<img class="border object-cover w-full m-0 max-w-md" src=/job-teaser-recrutement-consultants-talan/cover_hudc6f35f3ba7865f2e55767002abceaa2_59493_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/job-teaser-recrutement-consultants-talan/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Nos consultants parlent aux internautes du …</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2017-02-14T10:12:53Z>
+14 février 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Le 3 février dernier, Talan organisait une session vidéo en direct avec des consultants du groupe sur la …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/presentation-meetup-human-talks/>
+<img class="border object-cover w-full m-0 max-w-md" src=/presentation-meetup-human-talks/cover_hu8c3397480f3d9681dc21e484641a9652_8834_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/presentation-meetup-human-talks/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Présentation d''un meetup : les Human Talks</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2017-02-01T13:34:27Z>
+1 février 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Parce que la vie d’un développeur ce n’est pas qu’un quotidien routinier face à un écran rempli de code, il …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/les-7-lecons-du-/flupa-ux-day-2016/>
+<img class="border object-cover w-full m-0 max-w-md" src=/les-7-lecons-du-/flupa-ux-day-2016/cover_hu0ee3cf4d3d936b050720780f85a2b67f_351405_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/design>design</a>
+</div>
+<a href=/les-7-lecons-du-/flupa-ux-day-2016/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Les 7 leçons du FLUPA UX Day 2016</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2016-06-29T09:39:21Z>
+29 juin 2016
+</time>
+</div>
+<p class="my-1 text-slate-500">Talan Labs était présent à la 5ème édition des FLUPA UX Days, le rendez-vous annuel des professionnels de …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/retour-sur-devoxx-2016/>
+<img class="border object-cover w-full m-0 max-w-md" src=/retour-sur-devoxx-2016/cover_hu88da58a551da89d943881bab2547575d_468845_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/retour-sur-devoxx-2016/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Retour sur Devoxx 2016</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2016-04-27T08:09:38Z>
+27 avril 2016
+</time>
+</div>
+<p class="my-1 text-slate-500">Sponsor Platinum de la 5ème édition de Devoxx France, Talan Labs vous propose un retour sur les chiffres qui …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/jeu/>
+<img class="border object-cover w-full m-0 max-w-md" src=/jeu/cover_huf9e84cbb27b6f368ee7c5d84d21d56ef_331712_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/jeu/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Jeu concours Devoxx 2016</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2016-04-06T07:27:43Z>
+6 avril 2016
+</time>
+</div>
+<p class="my-1 text-slate-500">Talan Labs, société du Groupe Talan, sera présente à Devoxx 2016, l’événement de référence des développeurs de …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/premiere-pour-talanlabs-a-devoxx-2016/>
+<img class="border object-cover w-full m-0 max-w-md" src=/premiere-pour-talanlabs-a-devoxx-2016/cover_hub8e6a3aa5eb2f4a6c421e0d156b23302_378326_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/premiere-pour-talanlabs-a-devoxx-2016/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Première pour Talan Labs à Devoxx 2016</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2016-04-01T08:49:41Z>
+1 avril 2016
+</time>
+</div>
+<p class="my-1 text-slate-500">Talan Labs, société du Groupe Talan, sera présente pour la première fois à Devoxx 2016 - l’événement de …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/best-of-devoxx-2015/>
+<img class="border object-cover w-full m-0 max-w-md" src=/best-of-devoxx-2015/cover_hub8e6a3aa5eb2f4a6c421e0d156b23302_378326_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/best-of-devoxx-2015/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Best of Devoxx 2015</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2016-03-25T09:59:27Z>
+25 mars 2016
+</time>
+</div>
+<p class="my-1 text-slate-500">Depuis 15 ans, Devoxx (précédemment JavaPolis) est le rendez-vous des développeurs passionnés.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/talanlabs-sponsor-platinium-devoxx-2016/>
+<img class="border object-cover w-full m-0 max-w-md" src=/talanlabs-sponsor-platinium-devoxx-2016/cover_hub8e6a3aa5eb2f4a6c421e0d156b23302_378326_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/talanlabs-sponsor-platinium-devoxx-2016/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Talan Labs sponsor Platinium de Devoxx 2016</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2016-02-05T17:55:26Z>
+5 février 2016
+</time>
+</div>
+<p class="my-1 text-slate-500">Talan Labs est sponsor Platinium de la 5ème édition de Devoxx France, qui se déroulera du 20 au 22 avril 2016 …</p>
+</div>
+</div>
+</div>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang='fr-FR'>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><title> Construire une API Rest de qualité avec Golang |  Talan Labs | Blog 
+</title>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport" />
+<meta name="description" content="Golang est un langage créé par Google dont l’objectif est la simplicité, la puissance et la capacité à répondre rapidement à un besoin technique. La gestion simplifiée de la concurrence permet d’envisager l’écriture facile d&rsquo;outils puissants et réactifs.">
+<meta property="og:url" content="http://localhost:1313/formations/construire-une-api-de-qualite-avec-golang/">
+  <meta property="og:site_name" content="Talan Labs | Blog">
+  <meta property="og:title" content="Construire une API Rest de qualité avec Golang">
+  <meta property="og:description" content="Golang est un langage créé par Google dont l’objectif est la simplicité, la puissance et la capacité à répondre rapidement à un besoin technique. La gestion simplifiée de la concurrence permet d’envisager l’écriture facile d’outils puissants et réactifs.">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="formations">
+    <meta property="article:published_time" content="2022-06-01T13:00:00+00:00">
+    <meta property="article:modified_time" content="2022-06-01T13:00:00+00:00">
+    <meta property="og:image" content="http://localhost:1313/formations/construire-une-api-de-qualite-avec-golang/cover.png">
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/formations/construire-une-api-de-qualite-avec-golang/cover.png">
+  <meta name="twitter:title" content="Construire une API Rest de qualité avec Golang">
+  <meta name="twitter:description" content="Golang est un langage créé par Google dont l’objectif est la simplicité, la puissance et la capacité à répondre rapidement à un besoin technique. La gestion simplifiée de la concurrence permet d’envisager l’écriture facile d’outils puissants et réactifs.">
+
+
+
+<script type="text/javascript" src=/js/mermaid.min.js></script>
+
+<script type="text/javascript" src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+
+<link rel="icon" type="image/png" sizes="96x96" href='/img/favicon.png'>
+
+<link rel="canonical" href="http://localhost:1313/formations/construire-une-api-de-qualite-avec-golang/">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css" type="text/css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js"></script>
+<script>hljs.highlightAll()</script>
+
+
+
+
+<link href="/css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+</head>
+
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
+<script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+    <div class="max-w-8xl mx-auto">
+        <div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+            <div class="relative flex items-center justify-between">
+                <a class="level-item has-text-centered" href='/'>
+                    <img class="dark:hidden h-14 inline" height="30" src='/img/logo_talanlabs_hd_h55.png' alt="Logo Talan Labs" />
+                    <img class="h-14 inline" height="30" src='/img/logo_talanlabs_white_small.png' alt="Logo Talan Labs" />
+                </a>
+                <div class="relative hidden md:flex items-center ml-auto">
+                    <ul class="flex space-x-8">
+                        <ul class="flex space-x-8">
+    
+    <li>
+    
+    
+    
+    <a class=" hover:text-blue-500 dark:text-white" href="/post"  target="_parent">Publications</a>
+
+    </li>
+    
+    <li>
+    
+    
+    
+    <a class=" hover:text-blue-500 dark:text-white" href="/events/"  target="_parent">Evènements </a>
+
+    </li>
+    
+    <li>
+    
+    
+    
+    <a class=" hover:text-blue-500 dark:text-white" href="/startup-network"  target="_parent">Sun</a>
+
+    </li>
+    
+    <li>
+    
+    
+    
+    <a class=" hover:text-blue-500 dark:text-white" href="/authors/"  target="_parent">Auteurs</a>
+
+    </li>
+    
+    <li>
+    
+    
+    
+    <a class=" hover:text-blue-500 dark:text-white" href="/contact-us"  target="_parent">Contact</a>
+
+    </li>
+    
+</ul>
+
+                    </ul>
+
+                    <div class="flex items-center border-l border-slate-200 ml-6 pl-6 ">
+                        <label class="sr-only" id="headlessui-listbox-label-3">Theme</label>
+                        <button type="button" id="theme-toggle" aria-haspopup="true"
+                            aria-expanded="false"
+                            aria-labelledby="theme-toggle">
+                            <span class="hidden" id="theme-toggle-light-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="w-6 h-6">
+                                    <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                                        class="stroke-slate-400 dark:stroke-slate-500"></path>
+                                    <path
+                                        d="M12 4v1M17.66 6.344l-.828.828M20.005 12.004h-1M17.66 17.664l-.828-.828M12 20.01V19M6.34 17.664l.835-.836M3.995 12.004h1.01M6 6l.835.836"
+                                        class="stroke-slate-400 dark:stroke-slate-500"></path>
+                                </svg></span>
+                            <span class="" id="theme-toggle-dark-icon"><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M17.715 15.15A6.5 6.5 0 0 1 9 6.035C6.106 6.922 4 9.645 4 12.867c0 3.94 3.153 7.136 7.042 7.136 3.101 0 5.734-2.032 6.673-4.853Z"
+                                        class="fill-transparent"></path>
+                                    <path
+                                        d="m17.715 15.15.95.316a1 1 0 0 0-1.445-1.185l.495.869ZM9 6.035l.846.534a1 1 0 0 0-1.14-1.49L9 6.035Zm8.221 8.246a5.47 5.47 0 0 1-2.72.718v2a7.47 7.47 0 0 0 3.71-.98l-.99-1.738Zm-2.72.718A5.5 5.5 0 0 1 9 9.5H7a7.5 7.5 0 0 0 7.5 7.5v-2ZM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47 0 0 0 7 9.5h2Zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2Zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2Zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552 0 6.553-2.327 7.622-5.537l-1.897-.632Z"
+                                        class="fill-slate-400 dark:fill-slate-500"></path>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M17 3a1 1 0 0 1 1 1 2 2 0 0 0 2 2 1 1 0 1 1 0 2 2 2 0 0 0-2 2 1 1 0 1 1-2 0 2 2 0 0 0-2-2 1 1 0 1 1 0-2 2 2 0 0 0 2-2 1 1 0 0 1 1-1Z"
+                                        class="fill-slate-400 dark:fill-slate-500"></path>
+                                </svg>
+                            </span>
+                    </div>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="outline-none mobile-menu-button">
+                        <svg class=" w-6 h-6 text-gray-500 hover:text-blue-500 " x-show="!showMenu" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hidden mobile-menu md:hidden">
+        <ul>
+    
+    <li>
+    
+    
+    
+
+    <a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href="/post"  target="_parent">Publications</a>
+
+    </li>
+    
+    <li>
+    
+    
+    
+
+    <a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href="/events/"  target="_parent">Evènements </a>
+
+    </li>
+    
+    <li>
+    
+    
+    
+
+    <a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href="/startup-network"  target="_parent">Sun</a>
+
+    </li>
+    
+    <li>
+    
+    
+    
+
+    <a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href="/authors/"  target="_parent">Auteurs</a>
+
+    </li>
+    
+    <li>
+    
+    
+    
+
+    <a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href="/contact-us"  target="_parent">Contact</a>
+
+    </li>
+    
+</ul>
+
+    </div>
+    <script>
+        const btn = document.querySelector("button.mobile-menu-button");
+        const menu = document.querySelector(".mobile-menu");
+
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+        });
+    </script>
+</div>
+
+
+<div class="container mx-auto px-6 mt-14">
+    
+    <figure class="cover image my-6">
+        <img src='/formations/construire-une-api-de-qualite-avec-golang/cover.png' width="1200" height="675" alt="illustration de la formation">
+    </figure>
+    
+    <div class="md:flex ">
+        <div class="content post md:mr-8">
+            <h1 class="title">Construire une API Rest de qualité avec Golang</h1><p>Golang est un langage créé par Google dont l’objectif est la simplicité, la puissance et la capacité à répondre rapidement à un besoin technique. La gestion simplifiée de la concurrence permet d’envisager l’écriture facile d&rsquo;outils puissants et réactifs.</p>
+<p>Cette formation vous permettra de découvrir le langage, ses spécificités et vous laissera autonome afin de créer un nouveau projet avec du code de qualité. Vous développerez pas à pas des fonctionnalités testées afin de construire un outil de conversion de photos.</p>
+<h2 id="objectifs-de-la-formation">Objectifs de la formation</h2>
+<ul>
+<li>Comprendre et maitriser les bases du langage Go</li>
+<li>Architecturer et construire une API</li>
+<li>Comprendre et appliquer la programmation concurrente</li>
+<li>Mettre en place des tests automatisés</li>
+<li>Gestion des logs et des erreurs</li>
+</ul>
+<h2 id="profil-des-bénéficiaires">Profil des bénéficiaires</h2>
+<h3 id="pour-qui">Pour qui</h3>
+<ul>
+<li>Personne pratiquant le développement</li>
+</ul>
+<h3 id="pré-requis">Pré-requis</h3>
+<ul>
+<li>Notions de base de programmation</li>
+<li>Avoir un ordinateur avec un IDE permettant de développer en Go (VSC ou IntelliJ)</li>
+<li>Avoir installé la dernière version de Go</li>
+</ul>
+<h2 id="contenu-de-la-formation">Contenu de la formation</h2>
+<p>Le langage et ses spécificités</p>
+<ul>
+<li>Historique</li>
+<li>Plateformes compatibles</li>
+<li>Gestion de la concurrence</li>
+<li>Typage dynamique</li>
+</ul>
+<p>Configurer un environnement de travail</p>
+<ul>
+<li>IDE : IntelliJ, VSCode</li>
+<li>GOROOT, GOPATH, go mod</li>
+<li>Exécuter et builder</li>
+<li>Déploiement</li>
+</ul>
+<p>Base du langage</p>
+<ul>
+<li>Types de données</li>
+<li>Visibilité</li>
+<li>Structure de données et modélisation</li>
+<li>Interface implicite</li>
+<li>Opérateurs et fonctions</li>
+<li>Gestion des génériques</li>
+</ul>
+<p>Utiliser des librairies externes</p>
+<ul>
+<li>Gestion des dépendances avec Go mod</li>
+<li>Gestion des versions</li>
+<li>Import et utilisation des librairies</li>
+</ul>
+<p>Les tests</p>
+<ul>
+<li>Tests unitaires</li>
+<li>Framework de test et mock</li>
+</ul>
+<p>Créer une API Rest</p>
+<ul>
+<li>Librairie standard</li>
+<li>Utilisation de la librairie Gin</li>
+<li>Servir des fichiers statiques</li>
+<li>Documenter son API</li>
+</ul>
+<p>Gestion de la concurrence</p>
+<ul>
+<li>Goroutines et channel</li>
+<li>Gestion des timeout</li>
+<li>Lock et Mutex</li>
+</ul>
+<p>Gestion des erreurs et logs</p>
+<ul>
+<li>Fonctionnement des erreurs</li>
+<li>defer et recover</li>
+<li>Bonnes pratiques de gestion</li>
+</ul>
+<h2 id="suivi-de-lexécution-et-évaluation-des-résultats">Suivi de l&rsquo;exécution et évaluation des résultats</h2>
+<ul>
+<li>Feuilles de présence.</li>
+<li>Questions orales ou écrites (QCM).</li>
+<li>Mises en situation.</li>
+<li>Formulaires d&rsquo;évaluation de la formation.</li>
+<li>Certificat de réalisation de l’action de formation.</li>
+</ul>
+<h2 id="ressources-techniques-et-pédagogiques">Ressources techniques et pédagogiques</h2>
+<ul>
+<li>Accueil des apprenants dans une salle dédiée à la formation.</li>
+<li>Documents supports de formation projetés.</li>
+<li>Exposés théoriques</li>
+<li>Etude de cas concrets</li>
+<li>Quiz en salle</li>
+<li>Mise à disposition en ligne de documents supports à la suite de la formation.</li>
+</ul>
+</div>
+        <div class="content md:flex-col md:w-96 ">
+            <h4 class="text-2xl font-semibold text-left mt-8 mb-5">Informations pratiques </h4>
+            <p class="mt-4 mb-2">1400 HT / Pers</p>
+            <p class="mt-4 mb-2">2 jours / 14 heures</p>
+            <p class="mt-4 mb-6">présentiel (à distance : nous contacter)</p>
+
+            <a target="_blank" href="https://forms.office.com/Pages/ResponsePage.aspx?id=m_cHb7ED4USyIX-hABsirLSALWSAAV5LkklU_ezC46JUNjdLOE9BTTI5NU1BNFgyNlpORkhINjZTVyQlQCN0PWcu" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded my-10 whitespace-nowrap">Je m'inscris</a>
+
+            <h4 class="text-xl font-semibold text-left mt-8 mb-5">Capacité d'accueil</h4>
+
+            <p>6 à 8 pers</p>
+
+            <h4 class="text-xl font-semibold text-left mt-8 mb-5">Délai d'accès</h4>
+
+            <p>72h</p>
+
+            <h4 class="text-xl font-semibold text-left mt-8 mb-5">Accessibilité</h4>
+
+            <p>Vous êtes en situation de handicap, intéressé.e par le programme ?</p> <p>Contactez notre Référent Handicap pour préciser votre besoin.</p>
+            <p>Référent Handicap :</br>
+                <a href="mailto:referent-handicap.OF@talan.com" >Marie-Aude FIRMIN</a>
+            </p>
+
+
+
+
+            
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+    <div class="container mx-auto flex flex-row flex-wrap justify-center gap-8">
+        <div class="w-48">
+            <h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+            <nav role="navigation" aria-label="footer navigation">
+                <ul>
+                    <li><a class="dark:text-white" href="https://talan.com/metiers/labs/" target="_blank" rel="noopener"><i
+                                class="fas fa-link"></i> Site web</a></li>
+                    <li><a class="dark:text-white" href="https://twitter.com/TalanLabs" target="_blank" rel="noopener"><i
+                                class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a class="dark:text-white" href="https://www.linkedin.com/company/talanlabs/" target="_blank" rel="noopener"><i
+                                class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    <li><a class="dark:text-white" href="https://github.com/TalanLabs" target="_blank" rel="noopener"><i
+                                class="fab fa-github"></i> GitHub</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="w-48">
+            <h3 class="subtitle mt-6 mb-4 ml-0  dark:text-white">Le groupe Talan</h3>
+            <nav role="navigation" aria-label="footer navigation">
+                <ul>
+                    <li><a class="dark:text-white" href="https://talan.com/" target="_blank" rel="noopener"><i class="fas fa-link"></i> Site
+                            web</a></li>
+                    <li><a class="dark:text-white" href="https://twitter.com/talan_fr" target="_blank" rel="noopener"><i
+                                class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a class="dark:text-white" href="https://www.linkedin.com/company/talan/" target="_blank" rel="noopener"><i
+                                class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    <li><a class="dark:text-white" href="https://www.facebook.com/talan/" target="_blank" rel="noopener"><i
+                                class="fab fa-facebook"></i> Facebook</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+    </div>
+    <div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href="https://gohugo.io/" target="_blank"
+            rel="noopener">Hugo</a> et <a href="hhttps://tailwindcss.com" target="_blank" rel="noopener">Tailwindcss</a></div>
+</footer>
+
+<script>
+    var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        themeToggleLightIcon.classList.remove('hidden');
+        themeToggleDarkIcon.classList.add('hidden'); 
+        document.documentElement.classList.add('dark'); 
+    } else {
+        themeToggleLightIcon.classList.add('hidden');
+        themeToggleDarkIcon.classList.remove('hidden');
+        document.documentElement.classList.remove('dark');
+    }
+
+    var themeToggleBtn = document.getElementById('theme-toggle');
+
+    themeToggleBtn.addEventListener('click', function() {
+
+        
+        themeToggleDarkIcon.classList.toggle('hidden');
+        themeToggleLightIcon.classList.toggle('hidden');
+
+        
+        if (localStorage.getItem('color-theme')) {
+            if (localStorage.getItem('color-theme') === 'light') {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            }
+
+            
+        } else {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        }
+
+    });
+</script><script type="text/javascript">
+    tarteaucitron.init({
+        "privacyUrl"    : "",                
+        "hashtag"       : "#tarteaucitron",  
+        "cookieName"    : "tarteaucitron",   
+        "orientation"   : "bottom",          
+        "groupServices" : true,              
+        "showAlertSmall": false,             
+        "cookieslist"   : false,             
+        "closePopup"    : false,             
+        "showIcon"      : true,              
+        "iconSrc"       : "http:\/\/localhost:1313\/cookie.png",                
+        "iconPosition"  : "BottomRight",     
+        "adblocker"     : false,             
+        "DenyAllCta"    : true,              
+        "AcceptAllCta"  : true,              
+        "highPrivacy"   : true,              
+        "handleBrowserDNTRequest": false,    
+        "removeCredit"  : true,              
+        "moreInfoLink"  : true,              
+        "useExternalCss": false,             
+        "useExternalJs" : false,             
+        
+        "readmoreLink"  : "",                
+        "mandatory"     : false,             
+    });
+</script>
+<script type="text/javascript">
+    var tarteaucitronForceLanguage = 'fr';
+</script>
+
+
+
+<script type="text/javascript">
+    tarteaucitron.user.multiplegtagUa = ['UA-40718882-5', 'G-MED3GXXYSF'];
+    (tarteaucitron.job = tarteaucitron.job || []).push('multiplegtag');
+</script>
+
+
+<script type="text/javascript">
+    
+    
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

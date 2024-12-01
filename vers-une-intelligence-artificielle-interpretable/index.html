@@ -1,0 +1,351 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Vers une intelligence artificielle explicable | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Comprendre le principe de fonctionnement des modèles d&rsquo;intelligence artificielle (IA) complexes grâce à l&rsquo;IA explicable (XAI).">
+<meta property="og:title" content="Vers une intelligence artificielle explicable">
+<meta property="og:description" content="Comprendre le principe de fonctionnement des modèles d&rsquo;intelligence artificielle (IA) complexes grâce à l&rsquo;IA explicable (XAI).">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/vers-une-intelligence-artificielle-interpretable/"><meta property="og:image" content="https://blog.talanlabs.com/vers-une-intelligence-artificielle-interpretable/cover.jpg"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2022-09-22T00:00:00+02:00">
+<meta property="article:modified_time" content="2022-09-22T00:00:00+02:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/vers-une-intelligence-artificielle-interpretable/cover.jpg">
+<meta name=twitter:title content="Vers une intelligence artificielle explicable">
+<meta name=twitter:description content="Comprendre le principe de fonctionnement des modèles d&rsquo;intelligence artificielle (IA) complexes grâce à l&rsquo;IA explicable (XAI).">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/vers-une-intelligence-artificielle-interpretable/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Vers une intelligence artificielle explicable</h1>
+<figure class="cover image">
+<img src=/vers-une-intelligence-artificielle-interpretable/cover.jpg width=900 height=600 alt="illustration de l'article">
+</figure>
+<p>Dans son article «Artificial Intelligence as a Positive and Negative Factor in Global Risk» [1], Eliezer Yudkowsky a présenté les avantages et les inconvénients des outils basés sur l’intelligence artificielle (IA). Dans ce contexte, il a mentionné l’exemple de l’armée américaine qui a développé un réseau de neurones pour détecter les chars ennemis camouflés. Le modèle a montré des bonnes performances dans la phase de développement. Cependant, il n&rsquo;a pas fait mieux que le hasard lors de la phase de test. Il s&rsquo;est avéré que dans la base de données d’entraînement, les photos de chars camouflés avaient été prises par temps nuageux, tandis que les photos de forêts ordinaires avaient été prises par temps ensoleillé. Ainsi, ce modèle avait appris à distinguer les jours nuageux des jours ensoleillés, au lieu de distinguer les chars camouflés des forêts vierges.</p>
+<p>Heureusement, ce problème a été détecté rapidement, mais vous pouvez imaginer combien d&rsquo;autres n&rsquo;ont pas été détectés ! De ce fait, un réel besoin a émergé pour ouvrir la boîte noire des modèles d&rsquo;IA et analyser son principe de fonctionnement. D&rsquo;où la naissance du domaine de l&rsquo;intelligence artificielle explicable (XAI). Avant d&rsquo;avancer dans ce concept, il semble important de comprendre le besoin d&rsquo;explication et quand celle-ci est nécessaire.</p>
+<h2 id=besoins-dexplication>Besoins d&rsquo;explication</h2>
+<p>Pour comprendre les besoins d’explication, il est plus pratique de comprendre dans quels cas l&rsquo;explication n&rsquo;est pas nécessaire. En effet, l&rsquo;explication n&rsquo;est pas nécessaire lorsque :</p>
+<ul>
+<li>il n&rsquo;y a pas de conséquences importantes en cas de résultats insuffisants ;</li>
+<li>le problème est suffisamment bien étudié et validé dans des applications réelles pour avoir confiance dans le système de décision (même s&rsquo;il n&rsquo;est pas parfait).</li>
+</ul>
+<p>Ainsi, le besoin d&rsquo;explication ne concerne que les problèmes à fort enjeu et à formalisation incomplète, créant un obstacle fondamental à l&rsquo;optimisation et à l&rsquo;évaluation. Ainsi, de nombreuses techniques ont été récemment proposées pour expliquer les systèmes de décision basés sur l&rsquo;IA de type boîte noire.</p>
+<h2 id=types-dexplications>Types d&rsquo;explications</h2>
+<p>Les techniques d&rsquo;IA explicable peuvent être divisées en deux groupes principaux :</p>
+<ul>
+<li>
+<p><strong>Modèles d&rsquo;IA transparents :</strong> modèles dont le comportement est explicable (Decision Tree, modèles linéaire, etc.). Ces techniques seront détaillées plus loin dans cet article ;</p>
+</li>
+<li>
+<p><strong>Techniques post-hoc :</strong> une sorte d&rsquo;interprète appliqué à des modèles complexes pour expliquer leur comportement. Comme le montre la figure ci-dessous, ces techniques peuvent être divisées en 4 classes principales :</p>
+</li>
+</ul>
+<p><img src=./type_xai.png alt="Types des techniques d&rsquo;IA explicaple."></p>
+<ul>
+<li><strong>Global :</strong> donner une explication pour toutes les observations de l&rsquo;ensemble de données ;</li>
+<li><strong>Local :</strong> donner une explication pour juste un groupe d&rsquo;observations ;</li>
+<li><strong>Spécifique au modèle :</strong> s&rsquo;appuier sur la structure du modèle d&rsquo;analyse ;</li>
+<li><strong>Modèle-agnostique :</strong> fonctionner pour tout type de modèles d&rsquo;IA.</li>
+</ul>
+<p>Dans ce contexte, les modèles d&rsquo;IA transparents peuvent être considérés comme des techniques d&rsquo;explication globale post-hoc. Cependant, il est important de noter que ces techniques manquent de précision comme tout modèle d&rsquo;explication global. Ainsi, des modèles d&rsquo;explication locaux sont introduits afin de produire des explications fiables même dans un contexte local. Dans cet article, nous nous concentrerons sur cette dualité (local-global). Ainsi, des exemples de techniques d&rsquo;explication locale et globale sont détaillés ci-dessous.</p>
+<h2 id=modèles-dexplication>Modèles d&rsquo;explication</h2>
+<p>L&rsquo;explication des systèmes de décision basés sur l&rsquo;IA de type boîte noire attire de plus en plus l&rsquo;attention. Ainsi, plusieurs techniques d’explication sont développées.</p>
+<h3 id=modèles-dexplication-globale-basés-sur-des-techniques-dia-transparentes>Modèles d&rsquo;explication globale (basés sur des techniques d&rsquo;IA transparentes)</h3>
+<p>Comme mentionné ci-dessus, ces techniques consistent à des modèles d&rsquo;IA dont le comportement est explicable. Les techniques les plus utilisées dans ce contexte sont les modèles linéaires et les arbres de décision (Decision Trees). En effet, des arbres de décision (Decision Trees) ont été appliqués pour générer une explication globale du fonctionnement du réseau de neurones. D&rsquo;autres techniques d&rsquo;IA explicables, comme la régression linéaire, sont utilisées de la même manière pour expliquer le principe de fonctionnement de modèles d&rsquo;IA complexes.</p>
+<p><img src=./DT_LM.png alt="Illustration du principe de fonctionnement des modèles linéaire (a) et Decision Tree (b)."></p>
+<ul>
+<li>
+<p><strong>Les modèles linéaires</strong> sont extrêmement transparents et interprétables. Les coefficients de régression nous indiquent directement comment les données affectent la prédiction des modèles (voir la figure ci-dessus (a)), et des tests de signification simples peuvent nous indiquer les variables importantes pour le modèle [<a href=https://scikit-learn.org/stable/modules/linear_model.html>2</a>].</p>
+</li>
+<li>
+<p><strong>Decision Trees (DT)</strong> est une méthode d&rsquo;apprentissage supervisé non-paramétrique utilisée pour la classification et la régression. L&rsquo;objectif est de créer un modèle qui prédit la valeur d&rsquo;une variable cible en apprenant des règles de décision simples déduites des caractéristiques des données [<a href=https://scikit-learn.org/stable/modules/tree.html>2</a>]. La méthode DT est basée sur un ensemble de règles de décision de type &ldquo;si-alors&rdquo; pour approximer les fonctions (voir la figure ci-dessus (b)). Plus l&rsquo;arbre est profond, plus les règles de décision sont complexes et plus le modèle est adapté.</p>
+</li>
+</ul>
+<p>Toutefois, les explications globales ne sont pas toujours exactes, surtout lorsque le modèle d&rsquo;IA est complexe. Ainsi, des techniques d&rsquo;explication locale sont proposées pour fournir une explication locale du comportement du modèle d&rsquo;IA pour une observation de données.</p>
+<h3 id=modèles-dexplication-locale>Modèles d&rsquo;explication locale</h3>
+<p>Ces modèles fournissent une explication de la décision prise pour une seule observation de données. Cette explication consiste à générer des points de données proches de l&rsquo;observation à expliquer. Ensuite, le modèle d&rsquo;IA est appliqué pour prédire la sortie des points de données générés et identifier les variables responsables de la décision prise. Comme mentionné ci-dessus, il existe deux types d&rsquo;approches : les approches spécifiques au modèle et les approches agnostiques. Plusieurs modèles d&rsquo;explication locale sont proposés tels que LIME (Local Interpretable Model-agnostic Explanations) [3]. LIME est la technique la plus connue dans ce domaine et est à l&rsquo;origine de plusieurs autres méthodes comme SHAP [4] et X-PHM [5]. Toutefois, LIME reste la plus utilisée en raison de sa précision et de sa compatibilité avec plusieurs types de données (texte, images et tableaux). Dans ce qui suit, cette méthode est détaillée ainsi que son implémentation sur Python.</p>
+<h3 id=détails-et-implémentation-de-la-technique-lime>Détails et implémentation de la technique LIME</h3>
+<p>Comme le montre la figure suivante, l&rsquo;intuition derrière LIME consiste à identifier les facteurs qui influencent les résultats d&rsquo;un modèle d&rsquo;IA autour d&rsquo;une observation de données à expliquer (croix noire). Dans cet exemple, il s&rsquo;agit d&rsquo;un problème de classification binaire (deux classes : bleue et rouge). Pour comprendre le comportement local du modèle d&rsquo;IA autour du point d&rsquo;intérêt, un ensemble de données artificielles est généré et leurs classes sont prédites à l&rsquo;aide du modèle d&rsquo;IA. Ensuite, un modèle linéaire simple (indiqué par la ligne pointillée) est utilisé pour construire une approximation locale qui est un &ldquo;explicateur local&rdquo; pour le modèle d’IA.</p>
+<p><img src=./LIME.png alt="Illustration du principe de fonctionnement de la technique LIME."></p>
+<p>Comme mentionné ci-dessus, LIME est applicable à différents types de données (texte, images et tableaux). Dans ce qui suit, nous présentons l&rsquo;implémentation de cette technique, en Python, pour les données tabulaires (Le principe de fonctionnement de LIME et son implémentation pour les autres types de données sont presque les mêmes.).</p>
+<p>Le package LIME est sur PyPI et pour l’installer, il suffit d&rsquo;exécuter :</p>
+<pre tabindex=0><code>pip install lime
+</code></pre><p>Dans ce qui suit, un exemple d&rsquo;application de la technique LIME est illustré. À cette fin, la base de données Titanic [6] est utilisée. Cette application consiste à prédire la survie (ou non) des passagers du navire Titanic en fonction de plusieurs variables. Pour simplifier cette application, seules trois variables (âge, sexe et membre de la famille sur le navire) ont été conservées. Le choix de cette application se justifie par le fait que l&rsquo;objectif est de vérifier la capacité de la méthode LIME à expliquer les prédictions d&rsquo;un modèle d&rsquo;IA de type boîte noire. En effet, le résultat, pour cette application, est assez intuitif puisque les passagers sauvés en priorité sont des femmes et des enfants. Ainsi, le fait d&rsquo;être une femme ou un enfant augmente considérablement les chances de survie d&rsquo;un passager. Les détails de la mise en œuvre de la méthode LIME sont illustrés ci-dessous :</p>
+<ol>
+<li><em>Import des librairies nécessaires</em></li>
+</ol>
+<pre tabindex=0><code>import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+</code></pre><ol start=2>
+<li><em>Chargement de la base de données Titanic avec sklearn et prétraitement des variables</em></li>
+</ol>
+<pre tabindex=0><code>from sklearn.datasets import fetch_openml
+np.random.seed(42)
+X, y = fetch_openml(&quot;titanic&quot;, version=1, as_frame=True, return_X_y=True)
+X.drop(['pclass', 'name', 'parch', 'ticket', 'fare', 'cabin', 'embarked', 'boat', 'body', 'home.dest'], axis=1, inplace=True)
+X.sex.replace(['female', 'male'], [0, 1], inplace=True)
+X.age.fillna(X.age.mean(), inplace = True)
+</code></pre><ol start=3>
+<li><em>Séparation des données en ensembles d&rsquo;entraînnement et de test</em></li>
+</ol>
+<pre tabindex=0><code>from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, stratify=y, test_size=0.2)
+</code></pre><ol start=4>
+<li><em>Instanciation du modèle de prédiction : un classificateur à perceptron multicouche (MLP)</em></li>
+</ol>
+<pre tabindex=0><code>from sklearn.neural_network import MLPClassifier
+clf = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(7, 2), random_state=1)
+clf.fit(X_train, y_train)
+
+</code></pre><ol start=5>
+<li><em>Vérification des performances du modèle sur l&rsquo;ensemble de test</em></li>
+</ol>
+<pre tabindex=0><code>print('R2 score for the model on test set =', clf.score(X_test, y_test))
+</code></pre><ol start=6>
+<li><em>Instanciation du module d&rsquo;explication</em></li>
+</ol>
+<pre tabindex=0><code>import lime.lime_tabular
+explainer_lime = lime.lime_tabular.LimeTabularExplainer(X_train.values, feature_names=X.columns, verbose=True, mode='classification')
+</code></pre><ol start=7>
+<li><em>Explication locale des résultats de prédiction</em></li>
+</ol>
+<pre tabindex=0><code>i = 1 # Indice de l'instance de données à expliquer
+k = 3 # - Nombre des principales variables
+exp_lime = explainer_lime.explain_instance(X_test.iloc[i], clf.predict_proba, num_features=k)
+</code></pre><ol start=8>
+<li><em>Visualisation des explications</em></li>
+</ol>
+<pre tabindex=0><code>exp_lime.as_pyplot_figure()
+</code></pre><p><img src=./explication.png alt="Exemple d&rsquo;explication pour trois catégories de passagers. La couleur verte indique une augmentation des chances de survie contrairement à la couleur rouge."></p>
+<p>La figure ci-dessus montre un exemple d&rsquo;explication locale des résultats de la prédiction pour un enfant, une femme adulte et un homme adulte (de gauche à droite). D&rsquo;après ces résultats, il est clair que la variable &ldquo;sexe&rdquo; est la plus importante dans le processus de décision. Prenons l&rsquo;exemple de la femme, le fait qu&rsquo;elle soit une femme augmente significativement ses chances de survie, malgré le fait qu&rsquo;elle soit adulte et qu&rsquo;elle ait des membres de sa famille sur le bateau. Deuxièmement, la variable &ldquo;âge&rdquo; est très importante dans le cas d&rsquo;un passager de sexe masculin. Cette explication est parfaitement cohérente avec la réalité (les femmes et les enfants sont secourus en priorité), ce qui prouve le grand potentiel de la technique LIME.</p>
+<h2 id=so-what->So what ?!</h2>
+<p>L&rsquo;explication des modèles d&rsquo;IA de type boîte noire semble, à première vue, une représentation simplifiée d&rsquo;un modèle complexe. Malgré la réalité de cette affirmation, elle reste une évocation superficielle du sujet. En effet, le pouvoir d&rsquo;explication d&rsquo;un modèle d&rsquo;IA peut révolutionner la façon dont nous résolvons les problèmes. Nous savons tous que Thomas Edison a effectué près de 1 000 tests avant de trouver le bon filament de bambou carbonisé pour sa lampe. Imaginez qu&rsquo;au lieu de faire cela, il ait développé un modèle d&rsquo;IA pour prédire la fiabilité d&rsquo;un matériau comme filament et qu&rsquo;il ait expliqué ce modèle pour identifier les caractéristiques typiques d&rsquo;un bon filament. Ainsi, le nombre d&rsquo;expériences nécessaires pour résoudre le problème peut être diminué, ce qui a évidemment un impact sur le temps et les ressources nécessaires. Et comme l&rsquo;application des techniques d&rsquo;IA concerne de plus en plus de domaines tels que l&rsquo;industrie, la recherche et la médecine, l&rsquo;IA explicable peut avoir un impact sur de nombreux aspects de notre vie sans perdre le contrôle de ces technologies !</p>
+<p>Q : ok, l&rsquo;IA explicable présente de nombreuses opportunités, donc nous allons l&rsquo;utiliser dans toutes nos applications ?</p>
+<p>R : la réponse est un peu plus complexe, car les techniques d&rsquo;explication existantes ne fournissent qu&rsquo;une représentation simplifiée du modèle original. Ces explications ne représentent donc qu&rsquo;une partie de la réalité, ce qui a un impact sur la qualité des décisions.</p>
+<p>Q : Hmmm, il y a donc une différence de précision entre les méthodes d&rsquo;explication. Alors, quelle technique d&rsquo;explication est la plus précise ? Mais attendez, comment pouvons-nous mesurer la précision de ces techniques ?</p>
+<p>R : les réponses à toutes ces questions seront détaillées dans un autre article &mldr;</p>
+<h2 id=références>Références</h2>
+<ol>
+<li>Yudkowsky, E. (2008). Artificial intelligence as a positive and negative factor in global risk. Global catastrophic risks, 1(303), 184.</li>
+<li><a href=https://scikit-learn.org/stable/modules/tree.html>scikit-learn.org</a></li>
+<li>Ribeiro, M. T., Singh, S., & Guestrin, C. (2016, August). " Why should i trust you?" Explaining the predictions of any classifier. In Proceedings of the 22nd ACM SIGKDD international conference on knowledge discovery and data mining (pp. 1135-1144).</li>
+<li>Lundberg, S. M., & Lee, S. I. (2017). A unified approach to interpreting model predictions. Advances in neural information processing systems, 30.</li>
+<li>Omri, N., Al Masry, Z., Mairot, N., Giampiccolo, S., & Zerhouni, N. (2021). X-PHM: Prognostics and health management knowledge-based framework for SME. Procedia CIRP, 104, 1595-1600.</li>
+<li>Eaton, J. P., & Haas, C. A. (1995). Titanic, triumph and tragedy. WW Norton & Company.</li>
+</ol>
+<p><em>Cover Photo by <a href="https://unsplash.com/@kelli_mcclintock?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Kelli McClintock</a> on <a href="https://unsplash.com/s/photos/open-box?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></em></p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2022-09-22T00:00:00+02:00>
+22 septembre 2022
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/nabil-omri/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Nabil OMRI" src=https://blog.talanlabs.com/authors/nabil_omri.jpeg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/nabil-omri/>Nabil OMRI</a></h1>
+<p class="mt-0 mb-2">Data scientist</p>
+</div>
+<div class=mb-6>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/ia>ia</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/ia>#IA</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/xai>#XAI</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/explication>#explication</a>
+</div>
+</div>
+</div>
+</div>
+<aside>
+<h4 class="subtitle mt-10 mb-8"><i class="fas fa-forward"></i> Vous aimerez peut-être...</h4>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/tatouage-des-algorithmes-d-intelligence-artificielle/>
+<img class="border object-cover w-full m-0 max-w-md" src=/tatouage-des-algorithmes-d-intelligence-artificielle/cover_hu6ac70ef89127dd43e5a757809f1deaff_164934_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/ia>IA</a>
+</div>
+<a href=/tatouage-des-algorithmes-d-intelligence-artificielle/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Tatouage des algorithmes d'intelligence …</h2></a>
+<div class=my-1>
+<span>IHEB KOTORSI</span>,
+<time datetime=2022-05-16T15:58:10+01:00>
+16 mai 2022
+</time>
+</div>
+<p class="my-1 text-slate-500">Le tatouage numérique est une technique qui consiste à insérer un message appelé marque dans un document …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/smart-building-coeur-enjeux/>
+<img class="border object-cover w-full m-0 max-w-md" src=/smart-building-coeur-enjeux/cover_hubc5e2fae6a634ae9d4fae2414b856379_4019608_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/iot>iot</a>
+</div>
+<a href=/smart-building-coeur-enjeux/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Le smart building, au cœur de tous les enjeux</h2></a>
+<div class=my-1>
+<span>Sami KHALFAOUI</span>,
+<time datetime=2020-12-03T11:47:26+01:00>
+3 décembre 2020
+</time>
+</div>
+<p class="my-1 text-slate-500">A la croisée des défis de notre temps, le bâtiment intelligent permet de gagner en efficience énergétique tout …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/de-linformatique-classique-vers-linformatique-cognitive/>
+<img class="border object-cover w-full m-0 max-w-md" src=/de-linformatique-classique-vers-linformatique-cognitive/cover_hu18b6f578048876a20fb664f31c750916_60131_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/ia>IA</a>
+</div>
+<a href=/de-linformatique-classique-vers-linformatique-cognitive/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">De l’informatique classique vers l’informatique …</h2></a>
+<div class=my-1>
+<span>Antoine GRIESZMANN</span>,
+<time datetime=2016-10-19T10:30:08Z>
+19 octobre 2016
+</time>
+</div>
+<p class="my-1 text-slate-500">LES PREMIERES LEÇONS DE L’IA DANS LES CONTEXTES INDUSTRIELS Une machine pensante comme l’homme.</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

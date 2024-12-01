@@ -1,0 +1,508 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Devoxx 2022 - Le Labs y était ! | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="
+Comme tous les ans TalanLabs était au Devoxx, on vous raconte notre Devoxx 2022
+
+">
+<meta property="og:title" content="Devoxx 2022 - Le Labs y était !">
+<meta property="og:description" content="
+Comme tous les ans TalanLabs était au Devoxx, on vous raconte notre Devoxx 2022
+
+">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/devoxx-2022/"><meta property="og:image" content="https://blog.talanlabs.com/devoxx-2022/cover.jpg"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2022-04-29T00:00:00+02:00">
+<meta property="article:modified_time" content="2022-04-29T00:00:00+02:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/devoxx-2022/cover.jpg">
+<meta name=twitter:title content="Devoxx 2022 - Le Labs y était !">
+<meta name=twitter:description content="
+Comme tous les ans TalanLabs était au Devoxx, on vous raconte notre Devoxx 2022
+
+">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/devoxx-2022/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Devoxx 2022 - Le Labs y était !</h1>
+<figure class="cover image">
+<img src=/devoxx-2022/cover.jpg width=700 height=400 alt="illustration de l'article">
+</figure>
+<hr>
+<div class=paragraph>
+<p>Et voila l’édition 2022 du Devoxx est terminée.<br>
+Passé le #DevoxxBlues on a eu envie de vous faire un recap de <em>notre</em> Devoxx 2022</p>
+</div>
+<div class=sect1>
+<h2 id=_devoxx_2022_day_1>Devoxx 2022 Day 1</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Qui dit Day 1 dit session de 3h et tools-in-action !!!<br>
+Université ou Lab, c’est là qu’on descend en profondeur dans les sujets.<br>
+Et les Tools-In-Action c’est donc pour…​ voire les…​ tools…​ en…​ action…​ #MerciCaptainObvious<br>
+C’est aussi ce jour là qu’on sort avec mal au crane !<br>
+Mais comme c’est pour ca qu’on est venu on en sort quand meme avec le sourire !</p>
+</div>
+<div class=sect2>
+<h3 id=_la_révolution_wasm_est_incroyable_parce_que_vraie>La révolution (wasm) est incroyable parce que vraie</h3>
+<div class=paragraph>
+<p>Philippe CHARRIÈRE et Laurent DOGUIN</p>
+</div>
+<div class=quoteblock>
+<blockquote>
+Laurent et Philippe nous ont parlé de WASM, du tooling, de l’intégration dans les browsers, des utilisations hors browser et tout et tout.<br>
+Et tout ça a chaque fois avec des démos associées dans plein de langages différents<br>
+Donc si vous voulez vous faire démystifier le Web Assembly, allez voir la video quand elle sera dispo !
+</blockquote>
+<div class=attribution>
+— Nicolas SAVOIS<br>
+<cite>Old Dev Loving Devoxx</cite>
+</div>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_kafka_carte_des_pièges_à_lusage_des_développeurs_et_des_ops>Kafka: carte des pièges à l’usage des développeurs et des ops</h3>
+<div class=paragraph>
+<p>Emmanuel BERNARD et Clement ESCOFFIER</p>
+</div>
+<div class=quoteblock>
+<blockquote>
+Super Université qui montre bien les problématiques pour maintenir en conditions opérationnelles, un kafka dans un kubernetes.<br>
+L’université a été construite avec une alternance entre la vision Dev et Ops,<br>
+Ce qui rend le talk vivant et plein d’informations !
+</blockquote>
+<div class=attribution>
+— Nicolas SAVOIS<br>
+<cite>Old Dev Loving Devoxx</cite>
+</div>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_loom_nous_protègera_t_il_du_braquage_temporel>Loom nous Protègera-t-il du Braquage Temporel ?</h3>
+<div class=paragraph>
+<p>José PAUMARD et Remi FORAX</p>
+</div>
+<div class=quoteblock>
+<blockquote>
+Bonne université qui présente le projet Loom pour Java qui a pour but d’introduire les threads virtuels, plus légères et performantes que les threads historiques.<br>
+Avec des explications claires et des démonstrations de code basées sur une version preview du Java SDK, c’est une très bonne introduction pour ce projet prometteur censé arriver en version preview dans Java 20 en septembre 2022.
+</blockquote>
+<div class=attribution>
+— Aubin GUILHEM<br>
+<cite>Dev Discovering Devoxx</cite>
+</div>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_sécuriser_son_cluster_kubernetes_on_premise_from_scratch>Sécuriser son cluster Kubernetes on-premise from scratch</h3>
+<div class=paragraph>
+<p>Ludovic TOISON, Emilien Lancelot et Marion NICOLÉ</p>
+</div>
+<div class=quoteblock>
+<blockquote>
+Conférence intéressante qui tacle les problèmes liés à la sécurité d’un cluster Kubernetes. Ce talk abordait d’abord comment gérer la sécurité à l’intérieur de son cluster grâce aux outils fournis par Kubernetes (SecurityContext, RBAC, AdmissionPolicy, etc…​) avant de continuer avec l’utilisation d’outils externes comme popeye, kube-hunter ou Falco.
+</blockquote>
+<div class=attribution>
+— Alice Di Nunno<br>
+<cite>Dev Discovering Devoxx</cite>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_devoxx_2022_day_2>Devoxx 2022 Day 2</h2>
+<div class=sectionbody>
+<div class=sect2>
+<h3 id=_comment_jai_aidé_ma_fille_à_lire_avec_le_machine_learning>Comment j’ai aidé ma fille à lire avec le machine learning</h3>
+<div class=paragraph>
+<p>Vincent OGLOBLINSKY</p>
+</div>
+<div class=quoteblock>
+<blockquote>
+Le speaker présente sans prétention la manière dont il a développé un outil reposant sur le machine learning pour aider sa fille à apprendre à lire.<br>
+L’outil en question est très intuitif : il affiche une syllabe à l’écran et se base sur du speach-to-text pour identifier si la prononciation de l’enfant correspond à la syllabe affichée. Le texte s’affiche ensuite en rouge ou en vert pour indiquer à l’enfant si sa prononciation est correcte.<br>
+Ce talk a pour objectif de présenter l’outil développé, mais surtout les recherches et difficultés qui ont mené à sa conception.
+</blockquote>
+<div class=attribution>
+— Pauline Maitre<br>
+<cite>Dev Discovering Devoxx</cite>
+</div>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_en_quête_du_clean_code_avec_sonar_20_000_lieues_sous_un_océan_de_code>En quête du Clean Code avec Sonar, 20 000 lieues sous un océan de code!</h3>
+<div class=paragraph>
+<p>Nicolas PERU et Claire VILLARD</p>
+</div>
+<div class=quoteblock>
+<blockquote>
+Présentation sur l’intégration de Sonar à un projet existant, par l’exemple de l’implémentation dans le projet Sonar lui-même.
+Ce talk explique pourquoi et comment faire du clean code grâce à Sonar. Très dynamique et inspirant !
+</blockquote>
+<div class=attribution>
+— Pauline Maitre<br>
+<cite>Dev Discovering Devoxx</cite>
+</div>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_dans_les_coulisses_du_cloud>Dans les coulisses du "Cloud"</h3>
+<div class=paragraph>
+<p>Cécile MORANGE</p>
+</div>
+<div class=quoteblock>
+<blockquote>
+Dans cette présentation, Cécile nous fait découvrir son métier au sein d’un Data Center et nous montre l’envers du décor d’un "outil" qui fait désormais partie de notre quotidien.<br>
+Très intéressant en tant que développeur de découvrir cet aspect plus infra, de sa mise en place aux différents moyens mis en place pour assurer fiabilité et résilience au système et à ses données.
+</blockquote>
+<div class=attribution>
+— Aubin GUILHEM<br>
+<cite>Dev Discovering Devoxx</cite>
+</div>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_apprendre_la_musique_developer_edition>Apprendre la musique - developer edition</h3>
+<div class=paragraph>
+<p>Florent BIVILLE, Sylvain COUDERT et Jean-Baptiste LIEVREMONT</p>
+</div>
+<div class=quoteblock>
+<blockquote>
+Une conférence au ton léger, parfait pour une deuxième partie d’après-midi, qui nous emmène à la découverte du son et comment il est retranscrit par nos machines.<br>
+Et surtout à la découverte de Sonic Pi (<a href=https://sonic-pi.net/ class=bare>https://sonic-pi.net/</a>), un outil de création de musique avec une approche code, via la création de mélodies simples.<br>
+Même pour un étranger à la création musicale comme moi, cela donne envie de se lancer dans les nombreux tutos de l’outil.<br>
+</blockquote>
+<div class=attribution>
+— Aubin GUILHEM<br>
+<cite>Dev Discovering Devoxx</cite>
+</div>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_oauth_2_1_expliqué_simplement_même_si_tu_nes_pas_dev>OAUTH 2.1 expliqué simplement (même si tu n’es pas dev) !</h3>
+<div class=paragraph>
+<p>Julien TOPÇU</p>
+</div>
+<div class=quoteblock>
+<blockquote>
+Conférence très intéressante pour comprendre le fonctionnement d’un protocole de délégation d’authentification.<br>
+Le talk est construit de manière très ludique en faisant des parallèles avec le film The Grand Budapest Hotel, où<br>
+M. Gustave tente de protéger au mieux l’accès aux pâtisseries de chez MendI’s contre des personnes non autorisées.<br>
+Il explique ainsi le mécanisme de va-et-vient de token et d’authorization code et les évolutions qui ont mené à OAuth 2.1.
+</blockquote>
+<div class=attribution>
+— Pauline Maitre<br>
+<cite>Dev Discovering Devoxx</cite>
+</div>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_developper_des_applications_observables_pour_la_production>Developper des applications observables pour la production</h3>
+<div class=paragraph>
+<p>Pierre Zemb</p>
+</div>
+<div class=quoteblock>
+<blockquote>
+Dans cette présentation, Pierre nous a mené à travers les différentes manières d’analyser les performances d’une application ainsi que des moyens de la débugger pour éviter des plantages inattendus. Il nous détaille comment utiliser au mieux les logs et les metrics via la télémetrie mais aussi comment visualiser ces informations de manière efficace afin de pouvoir faire des déploiements plus stables en production.
+</blockquote>
+<div class=attribution>
+— Alice Di Nunno<br>
+<cite>Dev Discovering Devoxx</cite>
+</div>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_éliminez_la_compléxité_de_kubernetes_avec_lens>Éliminez la compléxité de Kubernetes avec Lens</h3>
+<div class=paragraph>
+<p>Daniel VIRASSAMY, Lee NAMBA et Stéphane MONTRI</p>
+</div>
+<div class=quoteblock>
+<blockquote>
+Présentation et démonstration de l’application Lens développée par Mirantis. Cette application permet de superviser et de controler son cluster Kubernetes à travers une interface visuelle accessible. Il permet gérer son cluster sans passer par la ligne de commande et permet d’aider les débutants à apprendre à utiliser Kubernetes tout en restant très complet pour les plus experimentés.
+</blockquote>
+<div class=attribution>
+— Alice Di Nunno<br>
+<cite>Dev Discovering Devoxx</cite>
+</div>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_de_oui_à_sncf_connect_10_ans_de_mobile_natif_à_flutter>De OUI à SNCF Connect, 10 ans de mobile natif à Flutter</h3>
+<div class=paragraph>
+<p>Gwenn GUIHAL et Adrien BODY</p>
+</div>
+<div class=quoteblock>
+<blockquote>
+Lors de cette conférence l’équipe de développement de l’application SNCF Connect nous a expliqué pourquoi avoir choisi Flutter en migrant depuis une application native. Flutter répondait à leurs besoins notamment grâce à la présence d’une unique codebase qui leur permettait tout de même d’avoir une UI spécifique à iOS et Android. Mais aussi par la présence de nombreux acteurs tels qu’Ali Express ou Ebay qui ont utilisé cette solution, ce qui permet à Flutter d’avoir une importante communauté. Ils ont aussi communiqué sur pourquoi Flutter et non React Native par exemple.
+</blockquote>
+<div class=attribution>
+— Alice Di Nunno<br>
+<cite>Dev Discovering Devoxx</cite>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_devoxx_2022_day_3>Devoxx 2022 Day 3</h2>
+<div class=sectionbody>
+<div class=sect2>
+<h3 id=_réception_dimage_satellite_️_avec_un_raspberry>Réception d’image satellite 🛰️ avec un Raspberry</h3>
+<div class=paragraph>
+<p>Guillaume Membré</p>
+</div>
+<div class=quoteblock>
+<blockquote>
+C’est impressionnant tout ce que l’on peut faire de chez soi avec un petit Raspberry pi.<br>
+Guillaume explique comment il a récupéré des informations qui survolent nos têtes grâce aux ondes radios provenant de plusieurs satellites qui photographient et envoient en clair leurs images sur le plancher des vaches.<br>
+C’est un beau projet réalisé pour son plaisir personnel et qui ouvre sur le vaste monde de la radio.<br>
+De la conception de l’antenne à la visualisation de l’image, Guillaume à bien expliqué comment il en est parvenu à avoir de belles images météorologiques de la France.
+</blockquote>
+<div class=attribution>
+— Grégoire Joncour<br>
+<cite>Dev Discovering Devoxx</cite>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_merci_à_tous>Merci à tous !</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Encore un très bon moment partagé avec les équipes de TalanLabs !</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=devoxx_labs.jpg alt="Les équipes du Labs !">
+</div>
+</div>
+<div class=paragraph>
+<p>A l’année prochaine pour une nouvelle édition !</p>
+</div>
+</div>
+</div>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2022-04-29T00:00:00+02:00>
+29 avril 2022
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/nicolas-savois/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Nicolas SAVOIS" src=https://blog.talanlabs.com/authors/nicolas_savois.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/nicolas-savois/>Nicolas SAVOIS</a></h1>
+<p class="mt-0 mb-2">CTO Talan Labs</p>
+</div>
+<div class=mb-6>
+<a href=https://twitter.com/NicoSavois target=_blank class="icon is-medium"><i class="fab fa-lg fa-twitter text-[#1DA1F2]"></i></a>
+<a href=https://www.linkedin.com/in/savoisn target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+<a href=https://github.com/savoisn target=_blank class="icon is-medium"><i class="fab fa-lg fa-github"></i></a>
+<a href=https://savoisn.github.io/ target=_blank class="icon is-medium"><i class="fas fa-lg fa-link"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/devoxx>#Devoxx</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/devoxx2022>#Devoxx2022</a>
+</div>
+</div>
+</div>
+</div>
+<aside>
+<h4 class="subtitle mt-10 mb-8"><i class="fas fa-forward"></i> Vous aimerez peut-être...</h4>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/conference-microservices-devoxx/>
+<img class="border object-cover w-full m-0 max-w-md" src=/conference-microservices-devoxx/cover_hu5b852934cbb1341eb1b802452f4d3d4e_100858_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/cloud>cloud</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/conference-microservices-devoxx/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Revivez la conférence microservices de Talan Labs …</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2017-05-04T07:05:09Z>
+4 mai 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">La vidéo de la conférence microservices TalanLabs réalisée pendant Devoxx 2017 est en ligne !</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/talanlabs-bilan-devoxx-2017-chiffres-images/>
+<img class="border object-cover w-full m-0 max-w-md" src=/talanlabs-bilan-devoxx-2017-chiffres-images/cover_hub2b45d07afecddcd42dce6144f3c2d26_375105_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/talanlabs-bilan-devoxx-2017-chiffres-images/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Talan Labs fait le bilan de Devoxx 2017 en …</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2017-04-13T09:03:48Z>
+13 avril 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Devoxx, l’événement des développeurs logiciels, s’est terminé le 7 avril dernier.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/talanlabs-sponsor-platinium-devoxx-2017/>
+<img class="border object-cover w-full m-0 max-w-md" src=/talanlabs-sponsor-platinium-devoxx-2017/cover_huc8e1a2c9b49801342f7f8cdb802a7324_62434_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/cloud>cloud</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/talanlabs-sponsor-platinium-devoxx-2017/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Talan Labs sponsor platinium de Devoxx 2017</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2017-03-31T08:57:15Z>
+31 mars 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Talan Labs est pour la seconde année consécutive sponsor platinium de l’événement des développeurs de …</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

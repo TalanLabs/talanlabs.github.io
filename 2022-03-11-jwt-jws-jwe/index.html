@@ -1,0 +1,521 @@
+<!doctype html><html lang=fr-fr>
+<head><title> JWT, What else ? | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="JWT tout le monde (ou presque) connais. Mais savez-vous qu&rsquo;il en existe d&rsquo;autres ?">
+<meta property="og:title" content="JWT, What else ?">
+<meta property="og:description" content="JWT tout le monde (ou presque) connais. Mais savez-vous qu&rsquo;il en existe d&rsquo;autres ?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/2022-03-11-jwt-jws-jwe/"><meta property="og:image" content="https://blog.talanlabs.com/2022-03-11-jwt-jws-jwe/cover.jpg"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2022-03-11T11:53:27+01:00">
+<meta property="article:modified_time" content="2022-03-11T11:53:27+01:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/2022-03-11-jwt-jws-jwe/cover.jpg">
+<meta name=twitter:title content="JWT, What else ?">
+<meta name=twitter:description content="JWT tout le monde (ou presque) connais. Mais savez-vous qu&rsquo;il en existe d&rsquo;autres ?">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/2022-03-11-jwt-jws-jwe/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>JWT, What else ?</h1>
+<figure class="cover image">
+<img src=/2022-03-11-jwt-jws-jwe/cover.jpg width=900 height=600 alt="illustration de l'article">
+</figure>
+<h2 id=qui-connait-les-rfc-7515-rfc-7516-rfc-7517--et-rfc-7519->Qui connait les RFC 7515, RFC 7516, RFC 7517, et RFC 7519 ?</h2>
+<p>Bon la question manque un peu de contexte. En fait elles sont plus connues sous les noms de <a href=https://datatracker.ietf.org/doc/html/rfc7515>JWS (Json Web Signature)</a>, <a href=https://datatracker.ietf.org/doc/html/rfc7516>JWE (Json Web Encryption)</a>, <a href=https://datatracker.ietf.org/doc/html/rfc7517>JWK (Json Web Key)</a> mais la plus connue reste certainement <a href=https://datatracker.ietf.org/doc/html/rfc7519>JWT (Json Web Token)</a>.</p>
+<p>Elles existent depuis 2010 et permettent principalement de normer les échanges de données entre 2 parties (En général un client et un serveur)
+Il existe bien des façons d&rsquo;adresser ce point. Je pense notamment aux cookies, token SWT ou SAML. L&rsquo;expérience a montré les limites à l&rsquo;utilisation de ces solutions et nous ne les aborderons pas ici.</p>
+<p>Un des pains-point connus pour un backend consiste à s&rsquo;assurer de l&rsquo;identité du client avec lequel il communique et c&rsquo;est là que JWT intervient. En effet, il permet d&rsquo;identifier et de vérifier l&rsquo;identité d&rsquo;un client. Son format correspondant à du JSON il est &ldquo;facile&rdquo; d&rsquo;en lire le contenu pour en déduire les operations adéquates pour le backend.</p>
+<h2 id=le-format--à-quoi-ça-peut-bien-ressembler-cette-affaire->Le format : À quoi ça peut bien ressembler cette affaire ?</h2>
+<p>Elles se décomposent en 3 parties séparées par des <code>'.'</code> :</p>
+<pre>
+<span style=color:red>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9</span>.
+<span style=color:blue>eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlRBTEFOIExhYnMiLCJpYXQiOjE2NDQ4NTU0MDR9</span>.
+<span style=color:green>LFPlnuy_RGaBcFRCsR130lAu0ilOxsMff0OqvUlgtmU</span>
+</pre>
+<p><b>Note : </b><i>Il est possible de le décoder en utilisant <a href=https://jwt.io/>jwt.io</a> </i></p>
+<h3 id=bon-cest-coloré-tout-ça-mais-ça-veut-dire-quoi-ce-charabia->Bon c&rsquo;est coloré tout ça, mais ça veut dire quoi ce charabia ?</h3>
+<p>En décrypté on obtient 3 parties : le header, la payload et la signature</p>
+<h4 style=color:red>Header</h4>
+<p>C&rsquo;est le json d&rsquo;en-tête du token. Il est composé au minimum de la claim <code>alg</code> correspondant au JWA utilisé et de la claim <code>typ</code> indiquant le type du token. L&rsquo;en-tête est amené à changer selon que l&rsquo;on fasse du JWS ou JWE pour présenter d&rsquo;autres informations obligatoires ou non.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
+  <span style=color:#f92672>&#34;alg&#34;</span>: <span style=color:#e6db74>&#34;HS256&#34;</span>,
+  <span style=color:#f92672>&#34;typ&#34;</span>: <span style=color:#e6db74>&#34;JWT&#34;</span>
+}
+</code></pre></div><h4 style=color:blue>Payload</h4>
+<p>Concrètement, il s&rsquo;agit là des données à envoyer dans le token. La payload contient un ensemble de <code>claims</code>, c&rsquo;est-à-dire un ensemble de paire &lt;clé, valeur> indiqué en JSON.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
+  <span style=color:#f92672>&#34;sub&#34;</span>: <span style=color:#e6db74>&#34;1234567890&#34;</span>,
+  <span style=color:#f92672>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;Talan Labs&#34;</span>,
+  <span style=color:#f92672>&#34;iat&#34;</span>: <span style=color:#ae81ff>1644855404</span>
+}
+</code></pre></div><h4 style=color:green>Signature</h4>
+<p>Comme son nom l&rsquo;indique, elle permet de signer le token afin de vérifier l&rsquo;intégrité du token ainsi que l&rsquo;identité de l&rsquo;expéditeur du token.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>HMACSHA256<span style=color:#f92672>(</span>
+  base64UrlEncode<span style=color:#f92672>(</span>header<span style=color:#f92672>)</span> + <span style=color:#e6db74>&#34;.&#34;</span> +
+  base64UrlEncode<span style=color:#f92672>(</span>payload<span style=color:#f92672>)</span>,
+  secret
+<span style=color:#f92672>)</span>
+</code></pre></div><h2 id=cest-bien-de-le-savoir-mais-existe-t-il-une-différence-entre-tout-ça->C&rsquo;est bien de le savoir, mais existe-t-il une différence entre tout ça ?</h2>
+<p>A priori oui sinon il n&rsquo;y aurait pas autant de RFC 😄</p>
+<p>En réalité on emploie souvent JWT par abus de langage, mais dans la pratique on utilise plus facilement du JWS. En réalité JWT peut aussi bien correspondre à un objet JWE ou JWS selon le cas</p>
+<p>Il faut donc voir JWT comme une abstraction a JWS et JWE. Il permet d&rsquo;encoder des données à échanger, JWS permet de signer les données à échanger, JWE quant à lui, il permet d&rsquo;encrypter les données à échanger. Notez qu&rsquo;il y a une différence entre encrypter et encoder (<a href="https://www.packetlabs.net/posts/encryption-encoding-and-hashing/#:~:text=Encryption%20is%20the%20process%20of,data%20to%20reveal%20the%20original.&text=Encoding%20data%20is%20used%20only,that%20is%20not%20securely%20encoded">en savoir plus</a>)</p>
+<p><strong>On a un JWT, du coup, à la fin, il n&rsquo;y a pas vraiment de différence ?</strong></p>
+<p>Sur le format non, sinon ce ne serait pas du JWT.</p>
+<p>En revanche le contenu oui. Ça ne devrait pas sauter aux yeux du premier coup d&rsquo;œil, mais essayons de voir à quoi cela peut-il bien ressembler.</p>
+<h3 id=jwa>JWA</h3>
+<blockquote>
+<p>This specification registers cryptographic algorithms and identifiers
+to be used with the JSON Web Signature (JWS) [JWS], JSON Web
+Encryption (JWE) [JWE], and JSON Web Key (JWK) [JWK] specifications.
+It defines several IANA registries for these identifiers. All these
+specifications utilize JSON-based [RFC7159] data structures. This
+specification also describes the semantics and operations that are
+specific to these algorithms and key types.</p>
+<p>Registering the algorithms and identifiers here, rather than in the
+JWS, JWE, and JWK specifications, is intended to allow them to remain
+unchanged in the face of changes in the set of Required, Recommended,
+Optional, and Deprecated algorithms over time. This also allows
+changes to the JWS, JWE, and JWK specifications without changing this
+document.</p>
+</blockquote>
+<p>Tout est dans le nom. JWA regroupe l&rsquo;ensemble des algorithmes utilisables dans le cadre des spécifications JWK, JWS, et JWE.</p>
+<p>Il correspond donc à l&rsquo;indication placée dans la propriété <code>alg</code> du header. On y retrouve HS256 (exemple par defaut sur <a href=https://jwit.io>jwit.io</a> ). Ceux qui sont désomais deprecated sont retirés de la RFC 7518 et c&rsquo;est la raison pour laquelle est recommandé d&rsquo;utiliser ES256 à date.</p>
+<p><em>source : <a href=https://datatracker.ietf.org/doc/html/rfc7518#section-3.1>RFC 7518</a></em></p>
+<table>
+<thead>
+<tr>
+<th>Paramètre <code>alg</code></th>
+<th>Description</th>
+<th>Requirements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HS256</td>
+<td>HMAC using SHA-256</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>HS384</td>
+<td>HMAC using SHA-384</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>HS512</td>
+<td>HMAC using SHA-512</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><strong>RS256</strong></td>
+<td>RSASSA-PKCS1-v1_5 using SHA-256</td>
+<td><strong>Recommended</strong></td>
+</tr>
+<tr>
+<td>RS384</td>
+<td>RSASSA-PKCS1-v1_5 using SHA-384</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>RS512</td>
+<td>RSASSA-PKCS1-v1_5 using SHA-512</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td><strong>ES256</strong></td>
+<td>ECDSA using P-256 and SHA-256</td>
+<td><strong>Recommended+</strong></td>
+</tr>
+<tr>
+<td>ES384</td>
+<td>ECDSA using P-384 and SHA-384</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>ES512</td>
+<td>ECDSA using P-521 and SHA-512</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>PS256</td>
+<td>RSASSA-PSS using SHA-256 and MGF1 with SHA-256</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>PS384</td>
+<td>RSASSA-PSS using SHA-384 and MGF1 with SHA-384</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>PS512</td>
+<td>RSASSA-PSS using SHA-512 and MGF1 with SHA-512</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>none</td>
+<td>No digital signature or MAC performed</td>
+<td>Optional</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id=jwk>JWK</h3>
+<blockquote>
+<p>A JSON Web Key (JWK) is a JavaScript Object Notation (JSON) data
+structure that represents a cryptographic key. This specification
+also defines a JWK Set JSON data structure that represents a set of
+JWKs. Cryptographic algorithms and identifiers for use with this
+specification are described in the separate JSON Web Algorithms (JWA)
+specification and IANA registries established by that specification.</p>
+</blockquote>
+<p>Contrairement aux autres RFC, JWK ne correspond pas directement à un token JWT. C&rsquo;est plutôt un objet JSON décrivant un lien entre une clé publique et un token JWT. Cet objet est stocké dans une map et est utilisé dans le cadre des RFC JWS et JWE. À noter d&rsquo;ailleurs que le token JWT stocké est issu d&rsquo;un serveur d&rsquo;authentification et signé avec l&rsquo;algorithme JWA</p>
+<p>Il est possible de le générer en utilisant la librairie nimbus (<em>source: <a href=https://medium.com/@goynikhil/what-is-jwt-jws-jwe-and-jwk-when-we-should-use-which-token-in-our-business-applications-74ae91f7c96b>medium</a></em>)</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> java.util.*<span style=color:#f92672>;</span>
+
+<span style=color:#f92672>import</span> com.nimbusds.jose.jwk.*<span style=color:#f92672>;</span>
+<span style=color:#f92672>import</span> com.nimbusds.jose.jwk.gen.*<span style=color:#f92672>;</span>
+
+<span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ExempleBlog</span> <span style=color:#f92672>{</span>
+  <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span><span style=color:#f92672>(</span>String<span style=color:#f92672>[]</span> args<span style=color:#f92672>)</span> <span style=color:#f92672>{</span>
+    <span style=color:#75715e>// Generate 2048-bit RSA key pair in JWK format, attach some metadata
+</span><span style=color:#75715e></span>    RSAKey jwk <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> RSAKeyGenerator<span style=color:#f92672>(</span>2048<span style=color:#f92672>)</span>
+            <span style=color:#f92672>.</span><span style=color:#a6e22e>keyUse</span><span style=color:#f92672>(</span>KeyUse<span style=color:#f92672>.</span><span style=color:#a6e22e>SIGNATURE</span><span style=color:#f92672>)</span> <span style=color:#75715e>// indicate the intended use of the key        
+</span><span style=color:#75715e></span>            <span style=color:#f92672>.</span><span style=color:#a6e22e>keyID</span><span style=color:#f92672>(</span>UUID<span style=color:#f92672>.</span><span style=color:#a6e22e>randomUUID</span><span style=color:#f92672>().</span><span style=color:#a6e22e>toString</span><span style=color:#f92672>())</span> <span style=color:#75715e>// give the key a unique ID
+</span><span style=color:#75715e></span>            <span style=color:#f92672>.</span><span style=color:#a6e22e>generate</span><span style=color:#f92672>();</span>
+    <span style=color:#75715e>// Output the private and public RSA JWK parameters
+</span><span style=color:#75715e></span>    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>jwk<span style=color:#f92672>);</span>
+    <span style=color:#75715e>// Output the public RSA JWK parameters only
+</span><span style=color:#75715e></span>    System<span style=color:#f92672>.</span><span style=color:#a6e22e>out</span><span style=color:#f92672>.</span><span style=color:#a6e22e>println</span><span style=color:#f92672>(</span>jwk<span style=color:#f92672>.</span><span style=color:#a6e22e>toPublicJWK</span><span style=color:#f92672>());</span>
+  <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p><strong>Exemple de JWK</strong></p>
+<p>Chacun des champs présents à un rôle spécifique que nous ne détaillerons pas ici. (<a href=https://datatracker.ietf.org/doc/html/rfc7517#section-4>en savoir plus</a>)</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json> {
+    <span style=color:#f92672>&#34;kty&#34;</span>:<span style=color:#e6db74>&#34;EC&#34;</span>,
+    <span style=color:#f92672>&#34;crv&#34;</span>:<span style=color:#e6db74>&#34;P-256&#34;</span>,
+    <span style=color:#f92672>&#34;x&#34;</span>:<span style=color:#e6db74>&#34;f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU&#34;</span>,
+    <span style=color:#f92672>&#34;y&#34;</span>:<span style=color:#e6db74>&#34;x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0&#34;</span>,
+    <span style=color:#f92672>&#34;kid&#34;</span>:<span style=color:#e6db74>&#34;&lt;Public key used&gt;&#34;</span>
+}
+</code></pre></div><h3 id=jws>JWS</h3>
+<p>Les payloads du JWS sont signées avec une signature (clé publique) qui peut être vérifiée uniquement par le serveur avec une clé de signature secrète (clé privée). Cela garantit que les payloads n&rsquo;ont pas été falsifiées lorsqu&rsquo;elles sont transmises entre le client et le serveur.</p>
+<p>Le contenu du token JWS est encodé en Base64 mais non chiffré. En conséquence JWS est à utiliser uniquement lorsque vous souhaitez échanger des données non sensibles dans la payload du token.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ExempleBlog</span> <span style=color:#f92672>{</span>
+    <span style=color:#f92672>...</span>
+    <span style=color:#75715e>/**
+</span><span style=color:#75715e>     *
+</span><span style=color:#75715e>     * @param DATA_TO_ENCRYPT The JWE content
+</span><span style=color:#75715e>     * @param keyId Key ID that help the recipient determine the valid certificate to use to decrypt the JWE
+</span><span style=color:#75715e>     * @param rsaPublicKey Public Key of the certificate to use
+</span><span style=color:#75715e>     * @return Serialized JWS
+</span><span style=color:#75715e>     * @throws JOSEException
+</span><span style=color:#75715e>     */</span>
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> String <span style=color:#a6e22e>encryptJWS</span><span style=color:#f92672>(</span>
+            String DATA_TO_ENCRYPT<span style=color:#f92672>,</span>
+            String keyId<span style=color:#f92672>,</span>
+            RSAKey rsaPublicKey
+    <span style=color:#f92672>)</span> <span style=color:#66d9ef>throws</span> JOSEException <span style=color:#f92672>{</span>
+
+        <span style=color:#75715e>// RSA signatures require a public and private RSA key pair,
+</span><span style=color:#75715e></span>        <span style=color:#75715e>// the public key must be made known to the JWS recipient to
+</span><span style=color:#75715e></span>        <span style=color:#75715e>// allow the signatures to be verified
+</span><span style=color:#75715e></span>        RSAKey rsaJWK <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> RSAKeyGenerator<span style=color:#f92672>(</span>2048<span style=color:#f92672>)</span>
+                <span style=color:#f92672>.</span><span style=color:#a6e22e>keyID</span><span style=color:#f92672>(</span>keyId<span style=color:#f92672>)</span>
+                <span style=color:#f92672>.</span><span style=color:#a6e22e>generate</span><span style=color:#f92672>();</span>
+        RSAKey rsaPublicJWK <span style=color:#f92672>=</span> rsaJWK<span style=color:#f92672>.</span><span style=color:#a6e22e>toPublicJWK</span><span style=color:#f92672>();</span>
+
+        Payload payload <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> Payload<span style=color:#f92672>(</span>DATA_TO_ENCRYPT<span style=color:#f92672>);</span>
+
+        JWSHeader header <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> JWSHeader<span style=color:#f92672>.</span><span style=color:#a6e22e>Builder</span><span style=color:#f92672>(</span>JWSAlgorithm<span style=color:#f92672>.</span><span style=color:#a6e22e>RS256</span><span style=color:#f92672>).</span><span style=color:#a6e22e>build</span><span style=color:#f92672>();</span>
+        JWSObject jws <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> JWSObject<span style=color:#f92672>(</span>header<span style=color:#f92672>,</span> payload<span style=color:#f92672>);</span>
+        JWSSigner signature <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> RSASSASigner<span style=color:#f92672>(</span>rsaPublicJWK<span style=color:#f92672>);</span>
+        jws<span style=color:#f92672>.</span><span style=color:#a6e22e>sign</span><span style=color:#f92672>(</span>signature<span style=color:#f92672>);</span>
+        <span style=color:#66d9ef>return</span> jws<span style=color:#f92672>.</span><span style=color:#a6e22e>serialize</span><span style=color:#f92672>();</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p><strong>Exemple de JWS</strong></p>
+<pre>
+<span style=color:red>eyJpYXQiOjE2NDY0MTU4NDksImFsZyI6IlJTMjU2Iiwia2lkIjoiYWI3Njk1ZjAtODk0Yi00MGZjLTlmNTctNjNkZTFiMTQ4ZWFiIn0</span>.
+<span style=color:blue>eyJzdWIiOiJKV0UtRXhhbXBsZS1CbG9nIiwicm9sZSI6IkF1dGhvciIsIm5iZiI6MTY0NjQxNTg0OSwiaXNzIjoibmljb2xhcy5ldGllbm5lIiwidXNlcklkIjoiZjlmNDNlOTI
+tOTdkNy00ZTE3LWIwZmQtZmY5ZTcwYzI0ZTk5IiwiZW1haWwiOiJuaWNvbGFzLmV0aWVubmVAdGFsYW5iYXMuZnIiLCJqdGkiOiIwOTI4NmZmMy0zOGVlLTRhZTQtYTQwYy1hOGEwNTY0MDMyM2IifQ</span>.
+<span style=color:green>iQxW7J4BHS5hbj9SZzb0_HfO7VvdScfutlvadO2VBV0EHNPHllyB_K5XS3dyEMkKHMFIrcBl4J3oOqTcKBU6GOtCslVo6kb1t_MERwCFDx7uzVQs027AUJRDCrDhFdyLF_
+bbGoZ2jVvWIwEAWm5Bc6KNkFpJBoOZPqluBSs2DAUUAW24vL1E8ar5saCl4tYNLejJz1mLesXip5Fve4QElAw0VhAYqh9JUGamNjpqei36kI6JQj1Fe8FnyP00eFYAZYJMSmrg0SI2jC2IK3-mcRhKj-8-inz3O_gke51UKB-LZ4anDSH3_MguNgrv-II9-Wi44VNLYOnQoubGopv91g</span>
+</pre>
+<h4 id=mais-alors-comment-distingue-t-on-la-différence-entre-jws-et-jwt->Mais alors comment distingue-t-on la différence entre JWS et JWT ?</h4>
+<blockquote>
+<p>Indice: Comparez le header et la signature et vous aurez la réponse.</p>
+</blockquote>
+<h3 id=jwe>JWE</h3>
+<p>Le schéma JWE crypte le contenu au lieu de le signer. Le contenu chiffré ici correspond à la payload du token JWT. JWE, apporte ainsi la confidentialité, mais peut également être signé. Ainsi, on obtient à la fois le cryptage et la signature assurant la confidentialité, l&rsquo;intégrité et l&rsquo;authentification.</p>
+<p><strong>Ça à l&rsquo;air bien ton truc, mais comment fait-on en pratique ?</strong></p>
+<p>Pas de problème, voila un exemple de génération de JWE avec la librairie nimbus</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#f92672>import</span> com.nimbusds.jose.*<span style=color:#f92672>;</span>
+<span style=color:#f92672>...</span>
+
+<span style=color:#66d9ef>public</span> <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ExempleBlog</span> <span style=color:#f92672>{</span>
+    <span style=color:#f92672>...</span>
+    <span style=color:#75715e>/**
+</span><span style=color:#75715e>     * 
+</span><span style=color:#75715e>     * @param DATA_TO_ENCRYPT The JWE content
+</span><span style=color:#75715e>     * @param keyId Key ID that help the recipient determine the valid certificate to use to decrypt the JWE
+</span><span style=color:#75715e>     * @param rsaPublicKey Public Key of the certificate to use
+</span><span style=color:#75715e>     * @return Serialized JWE
+</span><span style=color:#75715e>     * @throws NoSuchAlgorithmException
+</span><span style=color:#75715e>     * @throws JOSEException
+</span><span style=color:#75715e>     */</span>
+    <span style=color:#66d9ef>public</span> <span style=color:#66d9ef>static</span> String <span style=color:#a6e22e>encryptJWE</span><span style=color:#f92672>(</span>
+            String DATA_TO_ENCRYPT<span style=color:#f92672>,</span>
+            String keyId<span style=color:#f92672>,</span>
+            RSAPublicKey rsaPublicKey
+    <span style=color:#f92672>)</span> <span style=color:#66d9ef>throws</span> NoSuchAlgorithmException<span style=color:#f92672>,</span> JOSEException <span style=color:#f92672>{</span>
+
+        <span style=color:#75715e>// Create the JWE header and specify:
+</span><span style=color:#75715e></span>        <span style=color:#75715e>// {&#34;enc&#34;:&#34;A128CBC-HS256&#34;,&#34;iat&#34;:1489420432,&#34;alg&#34;:&#34;RSA-OAEP-256&#34;,&#34;kid&#34;:&#34;54831214775126&#34;}
+</span><span style=color:#75715e></span>        JWEHeader header <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> JWEHeader<span style=color:#f92672>.</span><span style=color:#a6e22e>Builder</span><span style=color:#f92672>(</span>JWEAlgorithm<span style=color:#f92672>.</span><span style=color:#a6e22e>RSA_OAEP_256</span><span style=color:#f92672>,</span> EncryptionMethod<span style=color:#f92672>.</span><span style=color:#a6e22e>A128CBC_HS256</span><span style=color:#f92672>)</span>
+                <span style=color:#f92672>.</span><span style=color:#a6e22e>keyID</span><span style=color:#f92672>(</span>keyId<span style=color:#f92672>)</span>
+                <span style=color:#f92672>.</span><span style=color:#a6e22e>customParam</span><span style=color:#f92672>(</span>JWTClaimNames<span style=color:#f92672>.</span><span style=color:#a6e22e>ISSUED_AT</span><span style=color:#f92672>,</span> Instant<span style=color:#f92672>.</span><span style=color:#a6e22e>now</span><span style=color:#f92672>().</span><span style=color:#a6e22e>getEpochSecond</span><span style=color:#f92672>())</span>
+                <span style=color:#f92672>.</span><span style=color:#a6e22e>build</span><span style=color:#f92672>();</span>
+
+        <span style=color:#75715e>// Initialized the EncryptedJWT object
+</span><span style=color:#75715e></span>        JWEObject jweEncrypted <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> JWEObject<span style=color:#f92672>(</span>header<span style=color:#f92672>,</span> <span style=color:#66d9ef>new</span> Payload<span style=color:#f92672>(</span>DATA_TO_ENCRYPT<span style=color:#f92672>));</span>
+
+        <span style=color:#75715e>// Generate the Content Encryption Key (CEK)
+</span><span style=color:#75715e></span>        KeyGenerator keyGenerator <span style=color:#f92672>=</span> KeyGenerator<span style=color:#f92672>.</span><span style=color:#a6e22e>getInstance</span><span style=color:#f92672>(</span><span style=color:#e6db74>&#34;AES&#34;</span><span style=color:#f92672>);</span>
+        keyGenerator<span style=color:#f92672>.</span><span style=color:#a6e22e>init</span><span style=color:#f92672>(</span>EncryptionMethod<span style=color:#f92672>.</span><span style=color:#a6e22e>A128CBC_HS256</span><span style=color:#f92672>.</span><span style=color:#a6e22e>cekBitLength</span><span style=color:#f92672>());</span>
+
+        <span style=color:#75715e>// Create an RSA encrypted with the specified public RSA key
+</span><span style=color:#75715e></span>        RSAEncrypter encrypter <span style=color:#f92672>=</span> <span style=color:#66d9ef>new</span> RSAEncrypter<span style=color:#f92672>(</span>rsaPublicKey<span style=color:#f92672>);</span>
+
+        <span style=color:#75715e>// Doing the actual encryption
+</span><span style=color:#75715e></span>        jweEncrypted<span style=color:#f92672>.</span><span style=color:#a6e22e>encrypt</span><span style=color:#f92672>(</span>encrypter<span style=color:#f92672>);</span>
+
+        <span style=color:#66d9ef>return</span> jweEncrypted<span style=color:#f92672>.</span><span style=color:#a6e22e>serialize</span><span style=color:#f92672>();</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p><strong>Exemple de JWE</strong></p>
+<pre>
+<span style=color:red>eyJlbmMiOiJBMTI4Q0JDLUhTMjU2IiwiaWF0IjoxNjQ2NDE1MDc1LCJhbGciOiJSU0EtT0FFUC0yNTYiLCJraWQiOiI1ZTBlZDQ3Ny0xMmU2LTQzMjEtODliNS0wNWMwMWU1ZTQyNDAifQ</span>.
+<span style=color:blue>AB_5L82Qg-RKRRl1CfaNmUV_rHcriOL5Ab09VJT2oKRm9SnZoPlL_sI2fgyrjgjX01ZtgsChgzG2T-F9w6TsFssGFpCXQqHIpdW-jz6oT31hEb3KizWzyWf4SFkzUJGfSn2rqdV4XUqjcwqXjo_
+-lzY1qnrB_zCUamULlHE4YFjMydmWU5k5IHSZDvwN8wU1OTQllM_clw1WHaueEePtrbr6_b5it4RRQo-jPfTVbPEzgy0zxu7o2Tx1FsKYPJ2zjR2oUGex-q8H3g5S_0hiVjgeTy6RPY8EImV-Rs302RKQM6RXpAcCKC2ERBRoC-bYUHNVebThIgOom6h-a5O74A.WhAVg-7l4OdQYDUizKTMag</span>.
+<span style=color:green>tr4Wif4GKes2U-jjzfiFYMdRaHiQIWmy0VMiH5i1QaRWkbUvVC6mK_Lpj0ICSKU7Mq8sLIPkHlCB0KDDxfXlG2u3YCyTlJFJDJ71y9T0xYEr2Sm_HOgZEcso849rVbNxp-CB_1JK-e5JQ6vPdGVV4R3D6aSrNK9cvGbuDrvY8pSR3j36kKCBCnagGL3loTRLl4Xpro3J8w4lJWRDg7g-TV10fvEFT4GT8bwbEskVeIMXf94SrQQhPAic7enmaw_Y_p-8Anby0CG7dfVQt9KbTzxkINxVXn-SBzF57h0wHPA.qkEI79YgMrjOvp0z8ivUsg</span>
+</pre>
+<h2 id=euh-cest-quasiment-le-même-code-et-le-même-rendu-tu-nessaierais-pas-de-menfumer-par-hasard->Euh, c&rsquo;est quasiment le même code et le même rendu. Tu n&rsquo;essaierais pas de m&rsquo;enfumer par hasard !?</h2>
+<p>La différence notable se situe au niveau du header et de la signature. Comme indiqué précédemment on remarquera que seul le JWE <strong>garantie la sécurité et confidentialité des données</strong> (claims) contenu dans le token.</p>
+<table>
+<thead>
+<tr>
+<th>JWS Décrypté</th>
+<th>JWE Décrypté</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src=./jws_example_blog.PNG alt="image jwt.io"></td>
+<td><img src=./jwe_example_blog.PNG alt="image jwt.io"></td>
+</tr>
+</tbody>
+</table>
+<h2 id=mais-comment-faire-pour-lire-le-contenu-de-mon-token-depuis-mon-client->Mais comment faire pour lire le contenu de mon token depuis mon client ?</h2>
+<p>À partir du moment où on veut lire le contenu d&rsquo;un token JWT ou JWS côté client, cela pose des problèmes de sécurité.
+Dans le cas d&rsquo;un JWE il s&rsquo;agit de stocker la clé publique (ou le secret partagé) sur le client. En revanche, pour JWS, et JWT &ldquo;pas de problème&rdquo; car rappelez-vous que <strong>le token est simplement encodé et non encrypté</strong> 😉 (<a href="https://www.packetlabs.net/posts/encryption-encoding-and-hashing/#:~:text=Encryption%20is%20the%20process%20of,data%20to%20reveal%20the%20original.&text=Encoding%20data%20is%20used%20only,that%20is%20not%20securely%20encoded">en savoir plus</a>)</p>
+<p>En conséquence, on comprendra aisément une des contraintes de l&rsquo;utilisation du JWE à savoir, l&rsquo;utilisation d&rsquo;une clé pour le décodage. L&rsquo;utilisation de ce type de token sera donc plutôt réservée dans le cadre d&rsquo;échange <strong>serveur → serveur</strong>.</p>
+<p>Un cas d&rsquo;utilisation intéressant pourrait être l&rsquo;échange de données entre de 2 serveurs qui ne se connaissent pas. Un token JWE emit par un serveur peut alors transiter par client puis vers le second serveur sans que le client(ou tout autre intermédiaire) soit en capacité de lire le contenu de ce token.</p>
+<h2 id=ohh-attend-1-minute-dans-ce-cas-jwt-cest-sécure-ou-pas->Ohh attend 1 minute, dans ce cas JWT c&rsquo;est sécure ou pas !!!?</h2>
+<p>Si on ne fait pas attention aux <code>claims</code> contenues dans le token les conséquences en cas d&rsquo;interception peuvent être grave. Il est préconisé de ne jamais y faire figurer de donnée sensible aussi bien dans un jwt qu&rsquo;un jws. En revanche, si ce point pose problème il faut alors utiliser un token JWE.</p>
+<p><strong>Nota</strong></p>
+<p>Le header d&rsquo;un token JWT contient plusieurs informations dont une intitulée <code>alg</code>. Celle-ci indique le JWA utilisé pour la payload.
+Donc, dans le cas du JWT non sécurisé, cette propriété est simplement laissée à la valeur &lsquo;none&rsquo;. En d&rsquo;autres mots les JWT non sécurisés, correspondent à un JWS sans signature (étrange de faire cela, mais bon, c&rsquo;est possible)</p>
+<h2 id=des-alternatives--pff-jconnais-jwt-cest-pas-terrible-il-y-a-mieux>Des alternatives : Pff j&rsquo;connais JWT c&rsquo;est pas terrible, il y a mieux</h2>
+<p>Il est possible de comparer JWT à d&rsquo;autres solutions telles que les cookies, SWT (simple Web Token), SAML (Security Assertion Markup Language Tokens) mais nous ne rentrerons pas dans le détail de chaque.</p>
+<p>Ce qu&rsquo;il faut savoir :</p>
+<p><strong>Cookies</strong></p>
+<p>Le plus souvent un cookie est une chaîne de caractère random stockée coté serveur et coté client. Bien qu&rsquo;elle ne contienne aucune donnée client, elle permet d&rsquo;identifier une session utilisateur auprès du serveur.
+Elle ne permet pas de vérifier l&rsquo;expéditeur de la requête du client vers le serveur, ni l&rsquo;intégrité des données contenues dans ladite requête. Par ailleurs, son utilisation nécessite des actions coté serveur afin de stocker/invalider les sessions utilisateurs au fil du temps.</p>
+<p>Ce type d&rsquo;approche convient à une utilisation stateful d&rsquo;une application. En revanche, pour une approche stateless, passez votre chemin.</p>
+<p><strong>SWT (Simple Web Token)</strong></p>
+<p>En fait, ce qui se trouve à l&rsquo;intérieur d&rsquo;un SWT est visible de tous. C&rsquo;est un simple token, après tout contenant un ensemble de paire clé-valeur encodées.</p>
+<p>Cet encodage, repose sur une clé partagée entre le client et le serveur. Elle permet de générer un hash des <code>claims</code> transmises dans le token assurant ainsi son intégrité lors des échanges.</p>
+<p><strong>SAML (Security Assertion Markup Language)</strong></p>
+<p>Si sur le papier, le principe de JWT et de SAML est de concourir à l&rsquo;identification d&rsquo;un utilisateur, SAML va plus loin dans ce principe avec la mise en place d&rsquo;un IdP (Identity Provider) et d&rsquo;un Service Provider. En très simple, on ne joue pas dans la même cour ! (<a href=https://www.oracle.com/fr/security/qu-est-ce-que-saml.html>En savoir plus</a>)</p>
+<h2 id=en-résumé--bilan-des-courses>En résumé / Bilan des courses</h2>
+<ul>
+<li>JWA : c&rsquo;est juste, l&rsquo;ensemble des algorithmes à utiliser pour générer un token</li>
+<li>JWK : Ensemble de clés permettant de lier un token JWT à une clé publique</li>
+<li>JWT : La base à condition de ne pas transmettre d&rsquo;info sensible hein !</li>
+<li>JWS : Juste pour l&rsquo;intégrité du token</li>
+<li>JWE : <strong>top du top</strong> d&rsquo;un point de vue sécurité pour les tokens JSON. Il garantit l&rsquo;intégrité, la sécurité et confidentialité des données contenues dans le token. À utiliser pour les échanges <strong>serveur → serveur</strong>.</li>
+</ul>
+<hr>
+<h4 id=sources>Sources</h4>
+<ul>
+<li><a href=https://auth0.com/learn/json-web-tokens>https://auth0.com/learn/json-web-tokens</a></li>
+<li><a href=https://auth0.com/blog/how-saml-authentication-works/>https://auth0.com/blog/how-saml-authentication-works</a></li>
+<li><a href=https://openid.net/developers/jwt/>https://openid.net/developers/jwt</a></li>
+<li><a href=https://datatracker.ietf.org/doc/html/rfc7515>https://datatracker.ietf.org/doc/html/rfc7515</a></li>
+<li><a href=https://datatracker.ietf.org/doc/html/rfc7516>https://datatracker.ietf.org/doc/html/rfc7516</a></li>
+<li><a href=https://datatracker.ietf.org/doc/html/rfc7517>https://datatracker.ietf.org/doc/html/rfc7517</a></li>
+<li><a href=https://datatracker.ietf.org/doc/html/rfc7518>https://datatracker.ietf.org/doc/html/rfc7518</a></li>
+<li><a href=https://datatracker.ietf.org/doc/html/rfc7519>https://datatracker.ietf.org/doc/html/rfc7519</a></li>
+</ul>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2022-03-11T11:53:27+01:00>
+11 mars 2022
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/nicolas-etienne/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Nicolas ETIENNE" src=https://blog.talanlabs.com/authors/nicolas_etienne.png></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/nicolas-etienne/>Nicolas ETIENNE</a></h1>
+<p class="mt-0 mb-2">Lead Developer</p>
+</div>
+<div class=mb-6>
+<a href=https://twitter.com/nicolas15026193 target=_blank class="icon is-medium"><i class="fab fa-lg fa-twitter text-[#1DA1F2]"></i></a>
+<a href=https://www.linkedin.com/in/nicolas-etienne-921621162 target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+<a href=https://github.com/nicolasetienne-pro target=_blank class="icon is-medium"><i class="fab fa-lg fa-github"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/back>back</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/jwt>#JWT</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/jwe>#JWE</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/jws>#JWS</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/jwa>#JWA</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/jwk>#JWK</a>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

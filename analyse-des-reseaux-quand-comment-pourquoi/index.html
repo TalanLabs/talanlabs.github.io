@@ -1,0 +1,292 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Analyse des réseaux: quand, comment, pourquoi ? | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Depuis la dernière décennie tout le monde parle de réseaux sociaux. Mais, en fait, qu&rsquo;est-ce qu&rsquo;un réseau ? Pourquoi les utilisons-nous ? Dans cet article, nous allons essayer de comprendre la théorie des réseaux et de montrer leur importance et leur utilité dans le monde actuel.">
+<meta property="og:title" content="Analyse des réseaux: quand, comment, pourquoi ?">
+<meta property="og:description" content="Depuis la dernière décennie tout le monde parle de réseaux sociaux. Mais, en fait, qu&rsquo;est-ce qu&rsquo;un réseau ? Pourquoi les utilisons-nous ? Dans cet article, nous allons essayer de comprendre la théorie des réseaux et de montrer leur importance et leur utilité dans le monde actuel.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/analyse-des-reseaux-quand-comment-pourquoi/"><meta property="og:image" content="https://blog.talanlabs.com/analyse-des-reseaux-quand-comment-pourquoi/cover.jpg"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2022-08-22T13:58:10+01:00">
+<meta property="article:modified_time" content="2022-08-22T13:58:10+01:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/analyse-des-reseaux-quand-comment-pourquoi/cover.jpg">
+<meta name=twitter:title content="Analyse des réseaux: quand, comment, pourquoi ?">
+<meta name=twitter:description content="Depuis la dernière décennie tout le monde parle de réseaux sociaux. Mais, en fait, qu&rsquo;est-ce qu&rsquo;un réseau ? Pourquoi les utilisons-nous ? Dans cet article, nous allons essayer de comprendre la théorie des réseaux et de montrer leur importance et leur utilité dans le monde actuel.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/analyse-des-reseaux-quand-comment-pourquoi/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Analyse des réseaux: quand, comment, pourquoi ?</h1>
+<figure class="cover image">
+<img src=/analyse-des-reseaux-quand-comment-pourquoi/cover.jpg width=900 height=600 alt="illustration de l'article">
+</figure>
+<p>Depuis la dernière décennie et avec l&rsquo;apparition de services tels que Facebook, Twitter ou TikTok, tout le monde parle de réseaux sociaux. Mais, en fait, qu&rsquo;est-ce qu&rsquo;un réseau ? Pourquoi les utilisons-nous ? Dans cet article, nous allons essayer de comprendre la théorie des réseaux et de montrer leur importance et leur utilité dans le monde actuel.</p>
+<h2 id=la-base>La base</h2>
+<p>Un réseau peut être défini comme « un ensemble de points reliés par paires par des lignes » [3].</p>
+<p>Bien que cette définition soit très générale, elle montre également à quel point l&rsquo;utilisation des réseaux est vaste - les villes reliées par des routes, les familles de langues, l&rsquo;internet - tous peuvent être considérés comme des types de réseaux. D&rsquo;une manière générale, l&rsquo;analyse de réseau consiste à modéliser des systèmes du monde réel. Maintenant, si je vous demandais de dessiner votre réseau d&rsquo;amis, que dessineriez-vous ? Je soupçonne que, dans la grande majorité des cas, vous dessineriez quelque chose comme ceci :</p>
+<div align=center>
+<p><img src=./friends.png alt="Exemple d&rsquo;un réseau d&rsquo;amis"></p>
+</div>
+<p>Rien qu&rsquo;avec ce simple exemple de réseau, nous pouvons déjà observer les types d&rsquo;informations qui peuvent être extraites du réseau : des informations sur les interactions entre les différentes parties du réseau. Ces modèles d&rsquo;interaction (Dans notre exemple : entre les personnes, mais nous pouvons également imaginer des interactions entre les ordinateurs, les entités de transport ou les protéines.) peuvent avoir une influence différente sur le comportement de l&rsquo;ensemble du réseau. Par conséquent, en modélisant le réseau et les interactions, nous pouvons ensuite déterminer leur structure et leurs propriétés. Aussi, nous pouvons faire des prédictions sur les processus dans le réseau, leur dynamique (par exemple, le mode de diffusion des informations, les parties fragiles du réseau, etc.).</p>
+<p>Le réseau d&rsquo;amis que nous venons de voir peut également être appelé un graphe. Quelle est la différence entre les deux ? Afin de dissiper toute confusion, je vais citer Albert-László Barabási, l&rsquo;un des plus célèbres spécialistes des réseaux [1] :</p>
+<div style=background-color:#e2e8f0>
+In the scientific literature the terms network and graph are used interchangeably:
+<div align=center>
+<table>
+<thead>
+<tr>
+<th style=text-align:center>Network Science</th>
+<th style=text-align:center>Graph Theory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:center>Network</td>
+<td style=text-align:center>Graph</td>
+</tr>
+<tr>
+<td style=text-align:center>Node</td>
+<td style=text-align:center>Vertex</td>
+</tr>
+<tr>
+<td style=text-align:center>Link</td>
+<td style=text-align:center>Edge</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Yet, there is a subtle distinction between the two terminologies : the {network, node, link} combination often refers to real systems: The WWW is a network of web documents linked by URLs; society is a network of individuals linked by family, friendship or professional ties; the metabolic network is the sum of all chemical reactions that take place in a cell. In contrast, we use the terms {graph, vertex, edge} when we discuss the mathematical representation of these networks: We talk about the web graph, the social graph (a term made popular by Facebook), or the metabolic graph. Yet, this distinction is rarely made, so these two terminologies are often synonyms of each other.</p>
+</div>
+<p>Par conséquent, chaque réseau (graphe) est créé à partir d&rsquo;un ou plusieurs nœuds (sommets) qui sont reliés par des liens (bords). Lorsque deux nœuds ont un lien entre eux, on les appelle connectés ou adjacents. Le voisinage d&rsquo;un nœud est constitué de tous les nœuds qui lui sont connectés. Nous verrons plus en détail la terminologie des réseaux dans un instant. Mais d&rsquo;abord, nous allons détailler les différents types de réseaux qui existent.</p>
+<h2 id=les-types-des-réseaux>Les types des réseaux</h2>
+<p>Auparavant, nous avons déjà énuméré certains des réseaux possibles (amis, villes avec les routes, etc.). Mais la structure du réseau est utilisée dans de nombreuses autres disciplines. En général, nous pouvons distinguer 5 classes de réseaux différentes :</p>
+<ul>
+<li><strong>Réseaux technologiques</strong> - ce sont les infrastructures physiques qui sont connectées à toutes sortes de systèmes technologiques. Exemples : les réseaux électriques, l&rsquo;internet, les réseaux téléphoniques, les réseaux de transport.</li>
+<li><strong>Réseaux biologiques/écologiques</strong> - tout type de réseau qui représente l&rsquo;interaction entre des éléments biologiques : réseaux métaboliques, réseaux d&rsquo;interaction entre protéines, réseaux de neurones, réseaux alimentaires, réseaux épidémiques.</li>
+<li><strong>Réseaux économiques</strong> - ce sont toutes les réseaux liés au monde financier, par exemple : réseaux de commerce international, transactions financières.</li>
+<li><strong>Réseaux sociaux</strong> - tout type de réseau où les nœuds sont des personnes et les liens des interactions entre elles : réseau de travail, arbre généalogique, réseau d&rsquo;amis, réseaux d&rsquo;échange de messages.</li>
+<li><strong>Réseaux culturels</strong> - qui traitent des groupes culturels et de leurs interactions, par exemple les familles de langues, les réseaux historiques (par exemple l&rsquo;afflux de personnes entre différents continents), les réseaux sémantiques.</li>
+</ul>
+<p>Avec toutes ces exemples et catégories, on peut voir qu&rsquo;on est capable de modéliser des entités qui peuvent être abstraites ou réelles, ou les deux en même temps.</p>
+<h2 id=la-terminologie>La terminologie</h2>
+<p>Dans la section précédente, nous avons déjà vu quelques notions utilisées pour représenter les graphes. Maintenant, nous allons plonger plus profondément dans la terminologie des graphes.</p>
+<h3 id=caractéristiques-des-bords>Caractéristiques des bords</h3>
+<p>Les bords peuvent être orientés ou non orientés : les bords orientés (visualisés par des flèches) peuvent être utiles lorsqu&rsquo;un lien entre les nœuds existe dans une direction mais pas dans l&rsquo;autre - par exemple, dans les routes à sens unique ou le réseau de citation. Dans le cas de nœuds non dirigés, on suppose que le lien est réciproque, par exemple, dans un réseau d&rsquo;amis. En outre, un poids peut être attribué à un bord, ce qui signifie une sorte de coût d&rsquo;utilisation, comme le coût d&rsquo;utilisation d&rsquo;une autoroute. Ce poids peut être représenté par des chiffres au-dessus des bords, mais aussi par l&rsquo;épaisseur de la flèche elle-même (plus elle est épaisse, plus elle a de poids). Dans le cas des graphes simples, entre chaque paire de nœuds, on peut avoir soit un bord non dirigé, soit deux bords dirigés. Il existe également des graphes multiples, dans lesquels nous pouvons avoir plusieurs bords (dirigés ou non dirigés) entre des paires de nœuds, et des auto-boucles - où un bord connecte un nœud à lui-même [4].</p>
+<div align=center>
+<p><img src=./simple-multip.png alt="Exemple du graphe simple et du multigraphe"></p>
+</div>
+<h3 id=caractéristiques-des-nœuds>Caractéristiques des nœuds</h3>
+<p>Les nœuds peuvent être caractérisés par le nombre de bords qu&rsquo;ils possèdent. Dans le cas d&rsquo;un réseau dirigé, nous pouvons distinguer deux caractéristiques d&rsquo;un nœud :</p>
+<ul>
+<li><strong>Indegree</strong> - le nombre de bords qui quittent le nœud ;</li>
+<li><strong>Outdegree</strong> - le nombre de bords qui y entrent. Pour un réseau non dirigé, nous parlons simplement du degré du nœud.
+Souvent, la taille du nœud représente l&rsquo;une de ses mesures de degré.</li>
+</ul>
+<div align=center>
+<p><img src=./inout_degree.png alt="Difference entre degré sortant et entrant pour pour le même réseau"></p>
+</div>
+<p>D’ailleurs, les nœuds peuvent également être différenciés par leur classe, qui peut être représentée visuellement par des couleurs ou des formes différentes des nœuds. Les classes (ou les communautés) peuvent représenter des divisions d&rsquo;entités du monde réel, comme les ordinateurs et les routeurs dans le cas d&rsquo;un réseau informatique, ou peuvent être calculées (en utilisant des algorithmes de détection de communautés).</p>
+<div align=center>
+<p><img src=./communaute.png alt="Exemple d&rsquo;un réseau ou il existe deux types du nœuds"></p>
+</div>
+<h3 id=caractéristiques-au-niveau-du-réseau>Caractéristiques au niveau du réseau</h3>
+<p><strong>Centralité</strong></p>
+<p>Grâce à la notion de centralité, nous pouvons effectuer le classement pour comparer les nœuds, en fonction de notre mesure de centralité. Récemment, cette notion a gagné en popularité grâce aux réseaux sociaux qui utilisent parfois la métrique de centralité pour mesurer l'&ldquo;influence&rdquo;. Il existe maintenant plusieurs façons de calculer la métrique qui sera utilisée pour comparer les nœuds. Nous présenterons ici les mesures les plus simples mais toujours populaires [2].</p>
+<ul>
+<li>Centralité de degré (Degree centrality)​ - Le degré du nœud dont nous avons parlé dans le paragraphe précédent, peut aussi parfois être appelé une métrique de la centralité de degré du nœud (la notion peut aussi être étendue à un graphe).</li>
+<li>Centralité de proximité (Closeness centrality) – Il s&rsquo;agit d&rsquo;une distance moyenne du chemin le plus court entre le nœud et tous les autres nœuds du réseau, c&rsquo;est-à-dire que plus la centralité du nœud est élevée, plus il est proche de tous les autres nœuds.</li>
+<li>Centralité d&rsquo;intermédiarité (Betweenness centrality) – Définie pour le nœud, c&rsquo;est une mesure qui indique dans quelle mesure le nœud a été le pont du chemin le plus court entre deux autres nœuds.</li>
+</ul>
+<p>Comme nous pouvons le constater, chacune des centralités donne des résultats différents et présente donc des perspectives différentes sur le même graphique. Le choix de l&rsquo;une ou l&rsquo;autre dépend strictement du type de réseau et d&rsquo;analyse que l&rsquo;on fait.</p>
+<div align=center>
+<p><img src=./betweenness.png alt="Exemple du même réseau où les nœuds sont dimensionnés par degré (gauche) ou valeur de centralité"></p>
+</div>
+<p>Indépendamment du type concret de centralité que nous prenons, nous pouvons également observer le niveau de centralité du réseau : haute centralité pour les réseaux plutôt centralisés et basse centralité pour les réseaux dans lesquels tous les nœuds sont connectés les uns aux autres.</p>
+<div align=center>
+<p><img src=./centralization-forte-fiable.png alt="Deux réseaux avec différents niveaux de centralité"></p>
+</div>
+<p><strong>Modularité</strong></p>
+<p>Il s&rsquo;agit d&rsquo;une autre mesure de la structure du réseau. La modularité évalue le niveau de division du réseau en différents modules (groupes, communautés). Une haute modularité signifie peu de connexions entre les différents groupes et beaucoup de connexions au sein de chaque groupe. A l&rsquo;inverse, le réseau à basse modularité a en général plus de connexions transversales [5].</p>
+<div align=center>
+<p><img src=./modularite.png alt="Deux réseaux avec différents niveaux de modularité"></p>
+</div>
+<h2 id=lutilisation>L’utilisation</h2>
+<p>Les termes présentés ci-dessus constituent la base de la terminologie utilisée en analyse de réseau.</p>
+<p>L&rsquo;analyse de réseau utilise et combine de nombreux autres termes issus de la théorie des graphes, de la théorie de l&rsquo;information et de l&rsquo;exploration de données. Étant donné que le réseau est simple mais générique, il peut facilement être utilisé pour modéliser et structurer les données. Cet aspect, combiné à diverses méthodes d&rsquo;analyse de réseau, est la raison de la grande utilité et de la popularité de l&rsquo;analyse de réseau, qui apporte souvent une réponse à de nombreux problèmes du monde réel. Nous pouvons les regrouper en termes de questions de recherche [6]:</p>
+<p><strong>Quels groupes pouvons-nous former ?</strong></p>
+<p>L&rsquo;idée est de trouver des divisions &ldquo;naturelles&rdquo; d&rsquo;un réseau en différentes communautés. Nous utilisons des guillemets ici, car parfois la division pour nous, humains, est assez évidente, par exemple les groupes de directeurs et de managers dans un réseau social professionnel. Mais parfois, la définition d&rsquo;une fonction permettant de diviser le réseau en communautés n&rsquo;est pas du tout évidente. Par conséquent, afin de les détecter, différents algorithmes de détection de communautés sont utilisés. Les communautés peuvent être utilisées dans différents domaines, comme la détection d&rsquo;anomalies et de fraudes, la réduction de grands réseaux en sous-réseaux, la recherche de modèles et de dynamiques cachés dans le réseau, etc.</p>
+<p><strong>Quel est le trajet optimal?</strong></p>
+<p>La traversée d&rsquo;un graphe est une question importante et très difficile. Les problèmes de recherche d&rsquo;un chemin entre deux nœuds, de détermination du chemin optimal ou de comparaison des coûts de différents chemins sont au cœur de la théorie des graphes. Différents algorithmes de recherche de chemin peuvent donc être utilisés pour planifier le routage des ordinateurs, le meilleur itinéraire de transport, etc.</p>
+<p><strong>Qui est le plus … (puissant, important) ?</strong></p>
+<p>Trouver les nœuds importants peut être crucial pour manipuler les réseaux de la manière la plus efficace. Qu&rsquo;il s&rsquo;agisse de déterminer l&rsquo;influence de l&rsquo;utilisateur, de trouver l&rsquo;attaquant qui diffuse des logiciels malveillants ou de découvrir le meilleur film, tout peut être mesuré par l&rsquo;utilisation de méthodes de l’analyse des réseaux telles que les centralités, le PageRank ou le HITS.</p>
+<p><strong>Qu&rsquo;y a-t-il d&rsquo;inhabituel ?</strong></p>
+<p>Étant donné que l&rsquo;analyse de réseau paramètre le réseau et définit sa dynamique, on est en mesure de définir l&rsquo;état &ldquo;normal&rdquo; (par défaut) du réseau. Par conséquent, si quelque chose d&rsquo;inhabituel se produit, cela sera visible dans la structure, les caractéristiques et/ou la dynamique du réseau. L&rsquo;identification des objets anormaux (nœuds, bords) ou la détermination de l&rsquo;exactitude d&rsquo;une structure (sous-graphe, interactions entre nœuds) est une partie importante des techniques de détection des fraudes et des anomalies.</p>
+<h2 id=conclusion>Conclusion</h2>
+<p>Dans cet article, nous avons abordé ce qu&rsquo;est un réseau et pourquoi il est utilisé. Nous avons détaillé la terminologie de base et l&rsquo;utilisation de l&rsquo;analyse de réseau. Nous avons également présenté quelques problèmes que l&rsquo;analyse de réseau peut aider à résoudre.</p>
+<p>En bref, comme nous pouvons le constater, l&rsquo;analyse de réseau est un outil puissant. Il est déjà incroyablement utile dans de multiples disciplines et dans divers contextes, tels que le commerce (moteurs de recommandation, centres clients), la logistique (chaînes d&rsquo;approvisionnement, routage), les ressources humaines (ciblage des candidats) ou les banques (détection des fraudes), pour n&rsquo;en citer que quelques-uns. Avec l&rsquo;avancée de la technologie, le nombre croissant de dispositifs IoT et l&rsquo;augmentation des volumes de données, l&rsquo;analyse de réseau en proposant des techniques de structuration et de compréhension de l&rsquo;information deviendra encore plus indispensable.</p>
+<p>Cover Photo by <a href="https://unsplash.com/@alinnnaaaa?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alina Grubnyak</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+<h2 id=références>Références</h2>
+<p>[1] Barabási, Albert-László. &ldquo;Network science.&rdquo; Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences 371.1987 (2013): 20120375. accessed via: <a href=http://networksciencebook.com/chapter/2#networks-graphs>http://networksciencebook.com/chapter/2#networks-graphs</a> on 2022-05-23</p>
+<p>[2] Menczer, Filippo, Santo Fortunato, and Clayton A. Davis. A first course in network science. Cambridge University Press, 2020.</p>
+<p>[3] Newman, Mark. Networks. Oxford university press, 2018.</p>
+<p>[4] Zinoviev, Dmitry. Complex network analysis in Python: Recognize-construct-visualize-analyze-interpret. Pragmatic Bookshelf, 2018.</p>
+<p>[5] <a href=https://cphss.wustl.edu/methodsandstrategies/social-network-analysis/network-analysis-101/>https://cphss.wustl.edu/methodsandstrategies/social-network-analysis/network-analysis-101/</a></p>
+<p>[6] &ldquo;5 Graph Data Science Basics Everyone should know&rdquo;, <a href=https://go.neo4j.com/rs/710-RRC-335/images/5-Graph-Data-Science-Basics-Everyone-Should-Know.pdf>https://go.neo4j.com/rs/710-RRC-335/images/5-Graph-Data-Science-Basics-Everyone-Should-Know.pdf</a>, accessed 31/05/2022,</p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2022-08-22T13:58:10+01:00>
+22 août 2022
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/monika-rakoczy/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Monika RAKOCZY" src=https://blog.talanlabs.com/authors/monika_rakoczy.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/monika-rakoczy/>Monika RAKOCZY</a></h1>
+<p class="mt-0 mb-2">Data Scientist</p>
+</div>
+<div class=mb-6>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/data>data</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/ia>IA</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/analyse-reseaux>#analyse-reseaux</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/network>#network</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/graphes>#graphes</a>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

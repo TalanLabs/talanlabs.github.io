@@ -1,0 +1,305 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Tailwind - Design System | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Qu&rsquo;est-ce que Tailwind ? Tailwind est un framework CSS utilisant l&rsquo;approche Utility first.">
+<meta property="og:title" content="Tailwind - Design System">
+<meta property="og:description" content="Qu&rsquo;est-ce que Tailwind ? Tailwind est un framework CSS utilisant l&rsquo;approche Utility first.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/tailwind-design-system/"><meta property="og:image" content="https://blog.talanlabs.com/tailwind-design-system/cover.png"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2021-10-15T15:53:03+02:00">
+<meta property="article:modified_time" content="2021-10-15T15:53:03+02:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/tailwind-design-system/cover.png">
+<meta name=twitter:title content="Tailwind - Design System">
+<meta name=twitter:description content="Qu&rsquo;est-ce que Tailwind ? Tailwind est un framework CSS utilisant l&rsquo;approche Utility first.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/tailwind-design-system/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Tailwind - Design System</h1>
+<figure class="cover image">
+<img src=/tailwind-design-system/cover.png width=435 height=224 alt="illustration de l'article">
+</figure>
+<h2 id=quest-ce-que-tailwind->Qu&rsquo;est-ce que Tailwind ?</h2>
+<p><a href=https://tailwindcss.com/>Tailwind</a> est un framework CSS utilisant l&rsquo;approche <strong>Utility first</strong>. C&rsquo;est-à-dire l&rsquo;isolement de chaque propriété css avec sa valeur dans une classe unique.</p>
+<p>Par exemple on aura la classe <code>m-0</code> qui correspondra à la classe appliquant une <code>marge</code> de <code>0</code> :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-css data-lang=css>.<span style=color:#a6e22e>m-0</span> {
+  <span style=color:#66d9ef>margin</span>: <span style=color:#ae81ff>0</span>;
+}
+</code></pre></div><p>Voici un exemple de comment utiliser tailwind pour créer un composant :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>&lt;<span style=color:#f92672>div</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;grid grid-cols-10 h-40 w-96 text-gray-700 shadow-md rounded-3xl&#34;</span>&gt;
+  &lt;<span style=color:#f92672>div</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;col-span-3 bg-blue-100 rounded-l-3xl&#34;</span>&gt;&lt;/<span style=color:#f92672>div</span>&gt;
+  &lt;<span style=color:#f92672>div</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;col-span-7 flex flex-col justify-between p-2&#34;</span>&gt;
+    &lt;<span style=color:#f92672>span</span>
+      &gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tempor
+      elit nisl. Vestibulum iaculis sit amet leo vitae pretium.&lt;/<span style=color:#f92672>span</span>
+    &gt;
+    &lt;<span style=color:#f92672>span</span> <span style=color:#a6e22e>class</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;text-gray-900 font-bold&#34;</span>&gt;John Doe&lt;/<span style=color:#f92672>span</span>&gt;
+  &lt;/<span style=color:#f92672>div</span>&gt;
+&lt;/<span style=color:#f92672>div</span>&gt;
+</code></pre></div><p>Et voici le résultat que l&rsquo;on obtient :</p>
+<p><img src=tailwind-exemple.png alt="Tailwind exemple"></p>
+<p>Nous allons voir dans cet article en quoi Tailwind est intéressant, notamment dans la mise en place d&rsquo;un Design System.</p>
+<h2 id=en-quoi-est-ce-intéressant->En quoi est-ce intéressant ?</h2>
+<p>L&rsquo;objectif de cette approche &ldquo;Utilisty First&rdquo; est de rendre chaque classe <strong>réutilisable</strong>. Cela a beaucoup d&rsquo;avantages, par exemple :</p>
+<ul>
+<li><strong>Alléger le code CSS produit</strong> : finie la re-déclaration des mêmes propriétés css partout dans les composants. Ici elle ne sera déclarée qu&rsquo;une seule fois ! Par exemple la classe <code>m-0</code> est déclarée une seule fois dans le css produit par Tailwind, et utilisable n&rsquo;importe où.</li>
+<li><strong>Arrêter les allers et retours entre code HTML et feuilles de style CSS</strong> : ici le style est appliqué en faisant appel à des classes CSS dans le code HTML, ce qui représente un certain gain de temps dans le développement de sites web.</li>
+<li><strong>Apporter de la cohérence dans le code</strong> : cette approche facilite par exemple l&rsquo;utilisation des bonnes couleurs et bonnes propriétés de fonts, sans sortir complètement des règles de design (utiliser une certaine palette de couleurs, utiliser des multiples de 8 pour tout ce qui est espacement, etc.).</li>
+<li><strong>Maintenir plus facilement le design de l&rsquo;application</strong> : changer une propriété CSS telle qu&rsquo;une couleur ou une taille de police d&rsquo;écriture devient facile et s&rsquo;effectue à un seul et même endroit.</li>
+</ul>
+<p>Pour parler plus spécifiquement de Tailwind, l&rsquo;un de ses avantages est d&rsquo;être hautement <strong>personnalisable</strong>. Que ce soit pour les couleurs, les tailles d&rsquo;écran, les polices d&rsquo;écriture, les espacements&mldr; L&rsquo;objectif est de pouvoir configurer un design cohérent et propre à l&rsquo;application ou au service que l&rsquo;on souhaite développer.</p>
+<p>De plus, un autre avantage est qu&rsquo;il permet la <strong>purge</strong> du css produit. Cela signifie que toutes les classes css générées par tailwind qui ne sont utilisées nulle part dans le code seront purgées (dans l&rsquo;idéal, la purge est conseillée dans les envrionnements de production). Ce qui réduit considérablement la taille du fichier css produit. Il est également possible de manipuler la manière dont la purge est effectuée : des <strong>regex</strong> peuvent être appliquées lors de la purge pour créer une &ldquo;safelist&rdquo; de classes css à ne pas supprimer.</p>
+<p>Tailwind permet aussi de <strong>préfixer</strong> ses classes css produites de sorte à ne pas causer de conflits avec d&rsquo;autres librairies css ou tout simplement d&rsquo;autres classes css. Ce sera très utile si l&rsquo;on décide d&rsquo;utiliser Tailwind en parallèle d&rsquo;autres frameworks, librairies CSS, où les noms de classes css pourraient être les mêmes que celles générées par Tailwind.</p>
+<p>Toutes ces règles sont définies dans le fichier de configuration de tailwind (tailwind.config.js) écrit en javascript, donc facilement manipulable. Cela donnera un fichier comme ci-dessous :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>// tailwind.config.js
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>colors</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#34;./tailwind/colors&#34;</span>); <span style=color:#75715e>// JSON de couleurs
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>purgeSafelist</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#34;./tailwind/purge&#34;</span>); <span style=color:#75715e>// Tableau de regex
+</span><span style=color:#75715e></span>
+<span style=color:#a6e22e>module</span>.<span style=color:#a6e22e>exports</span> <span style=color:#f92672>=</span> {
+  <span style=color:#a6e22e>purge</span><span style=color:#f92672>:</span> {
+    <span style=color:#a6e22e>content</span><span style=color:#f92672>:</span> [<span style=color:#e6db74>&#34;./src/**/*.vue&#34;</span>],
+    <span style=color:#a6e22e>options</span><span style=color:#f92672>:</span> {
+      <span style=color:#a6e22e>safelist</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>purgeSafelist</span>,
+    },
+  },
+  <span style=color:#a6e22e>darkMode</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>false</span>, <span style=color:#75715e>// or &#39;media&#39; or &#39;class&#39;
+</span><span style=color:#75715e></span>  <span style=color:#a6e22e>prefix</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;myApp-&#34;</span>,
+  <span style=color:#a6e22e>theme</span><span style=color:#f92672>:</span> {
+    <span style=color:#a6e22e>colors</span>,
+    <span style=color:#a6e22e>extend</span><span style=color:#f92672>:</span> {
+      <span style=color:#a6e22e>spacing</span><span style=color:#f92672>:</span> {},
+      <span style=color:#a6e22e>borderRadius</span><span style=color:#f92672>:</span> {},
+      <span style=color:#a6e22e>boxShadow</span><span style=color:#f92672>:</span> {},
+    },
+  },
+  <span style=color:#a6e22e>variants</span><span style=color:#f92672>:</span> {
+    <span style=color:#a6e22e>extend</span><span style=color:#f92672>:</span> {
+      <span style=color:#a6e22e>backgroundColor</span><span style=color:#f92672>:</span> [<span style=color:#e6db74>&#34;active&#34;</span>],
+    },
+  },
+  <span style=color:#a6e22e>plugins</span><span style=color:#f92672>:</span> [],
+};
+</code></pre></div><p>On peut observer l&rsquo;utilisation des champs <code>extend</code>, qui vont permettre d&rsquo;ajouter des configurations aux configurations existantes. Par exemple, si l&rsquo;on veut ajouter des possibilités de <code>box-shadow</code> (avec des valeurs et des couleurs différentes) tout en gardant les valeurs proposées initialement par Tailwind, ce sera dans le champ <code>extend</code> de <code>theme</code> qu&rsquo;il faudra les ajouter.
+Si par contre on ne souhaite pas garder les valeurs par défaut de Tailwind, il faudra ajouter les nouvelles valeurs de <code>box-shadow</code> directement à la racine de <code>theme</code>.</p>
+<p>Pour ce qui est des <strong>variants</strong>, il s&rsquo;agit des circonstances durant lesquelles des propriétés et classes css vont être activées. Ces circonstances peuvent être des <code>hover</code>, <code>active</code>, <code>focus</code>, etc. Dans l&rsquo;exemple ci-dessus, on peut voir qu&rsquo;on étend le variant <code>backgroundColor</code> à l&rsquo;état <code>active</code>. Cela va permettre de pouvoir appliquer des classes Tailwind sur le changement de couleur du background lors de l&rsquo;état <code>active</code> (lorsque que le clic gauche de la souris est appuyé sur un bouton par exemple).</p>
+<h2 id=pourquoi-lutiliser-pour-construire-un-design-system->Pourquoi l&rsquo;utiliser pour construire un Design System ?</h2>
+<p>→ Comme évoqué précédemment, Tailwind est un framework hautement personnalisable. Ce qui permet d&rsquo;établir les règles du design system très facilement, qu&rsquo;il s&rsquo;agisse des règles d&rsquo;espacement, des fonts à utiliser, des couleurs, etc.</p>
+<p>→ La configuration de Tailwind se faisant dans un fichier javascript, il est très simple de le manipuler. On peut donc le configurer depuis des données externes. Prenons l&rsquo;exemple des &ldquo;design tokens&rdquo; : certains outils de design, comme <a href=https://zeroheight.com/>Zeroheight</a> (application permettant de documenter un design system), permettent de générer et d&rsquo;exposer des fichiers JSON via des URL. Ces fichiers peuvent être générés depuis des extraits de données venant d&rsquo;autres outils de Design tels que <a href=https://www.figma.com>Figma</a> (outil de maquettage d&rsquo;écrans d&rsquo;applications en collaboratif), où les designers peuvent spécifier leurs règles de design, telles que les couleurs, les box-shadows, les fonts, etc. Voyons cela à l&rsquo;aide d&rsquo;un schéma, qui sera plus parlant.
+<img src=Zeroheight-Figma-Tailwind-Schema.png alt="Schéma Design Tokens"></p>
+<p>→ La cohérence qu&rsquo;il permet d&rsquo;apporter au design de l&rsquo;application en fait une très bonne solution pour mettre en place un design system, en appliquant facilement les mêmes codes dans chacun des composants.</p>
+<p>→ Aucun thème par défaut n&rsquo;est appliqué contrairement à d&rsquo;autres librairies css. Il faudra donc définir soi-même tous les styles à appliquer.</p>
+<p>→ Tailwind fournit des outils pour traiter un grand nombre de problématiques, dont le <a href=https://tailwindcss.com/docs/dark-mode>dark mode</a>. Il suffira alors de préfixer les classes de couleurs par <code>dark:</code>, et d&rsquo;en définir les couleurs dans le design system.</p>
+<p>→ Enfin, il permet d&rsquo;appliquer des règles pour rendre une application responsive, en donnant la possibilité de définir les comportements des composants développés selon les tailles d&rsquo;écrans.</p>
+<h2 id=quelles-sont-les-différences-de-ce-framework-par-rapport-à-dautres-comme-bootstrap->Quelles sont les différences de ce framework par rapport à d&rsquo;autres comme Bootstrap ?</h2>
+<p>La première est que Tailwind, contrairement à Bootstrap, n&rsquo;est pas un &ldquo;UI kit&rdquo; : il n&rsquo;embarque ni de thème par défaut, ni de composants. Cela ne signifie pas que Tailwind ne propose rien pour autant. Des valeurs par défaut pour les palettes de couleurs ou les espacements sont à la disposition des développeurs, mais sont également très simples à écraser ou compléter. L&rsquo;idée derrière cette logique est de ne pas imposer de règles de design.</p>
+<p>Bootstrap va également apporter beaucoup sur le plan du responsive, tandis que Tailwind va plus s&rsquo;axer autour d&rsquo;une grande personnalisation.</p>
+<p>En termes de chiffres, voici la comparaison des deux frameworks réalisée sur <a href=https://www.npmtrends.com/tailwindcss-vs-bootstrap>npm trends</a> :
+<img src=Tailwind-VS-Bootstrap.png alt="Tailwind VS Bootstrap"></p>
+<p>Et pour ce qui est de l&rsquo;utilisation des deux frameworks, Bootstrap est utilisé entre autres par <strong>Spotify</strong>, <strong>Twitter</strong>, et <strong>Lyft</strong>, tandis que Tailwind est utilisé par <strong>BlaBlaCar</strong>, <strong>überdosis</strong> et <strong>Superchat</strong>.</p>
+<h2 id=à-retenir>À retenir</h2>
+<p>Un grand nombre de solutions existent pour faciliter la mise en place d&rsquo;un design dans une application, et Tailwind en fait partie. Il rendra le développement UI plus rapide et plus cohérent et permettra de configurer ses propres règles de design en toute simplicité.</p>
+<p>Ainsi, son utilisation est tout à fait adaptée dans la mise en place d&rsquo;un design system.</p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2021-10-15T15:53:03+02:00>
+15 octobre 2021
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/guillaume-collet/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Guillaume COLLET" src=https://blog.talanlabs.com/authors/guillaume-collet.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/guillaume-collet/>Guillaume COLLET</a></h1>
+<p class="mt-0 mb-2">Développeur Web</p>
+</div>
+<div class=mb-6>
+<a href=https://www.linkedin.com/in/guillaume-collet-75a128146 target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/front>front</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/design>design</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/design-system>#design system</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/css>#css</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/framework>#framework</a>
+</div>
+</div>
+</div>
+</div>
+<aside>
+<h4 class="subtitle mt-10 mb-8"><i class="fas fa-forward"></i> Vous aimerez peut-être...</h4>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/microservices-partie-5-spring-cloud/>
+<img class="border object-cover w-full m-0 max-w-md" src=/microservices-partie-5-spring-cloud/cover_hu2c1382d831d54a22d61210909b0f0b5b_16873_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/back>back</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/cloud>cloud</a>
+</div>
+<a href=/microservices-partie-5-spring-cloud/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Les microservices pour une architecture orientée …</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2017-03-23T08:48:12Z>
+23 mars 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Spring Cloud, le couteau suisse des microservices Cet article s’insère dans la série « microservices » écrite …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/microservices-partie-4-spring-boot/>
+<img class="border object-cover w-full m-0 max-w-md" src=/microservices-partie-4-spring-boot/cover_hu0e084678f742c04a704b22a2c885b5c3_5897_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/back>back</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/cloud>cloud</a>
+</div>
+<a href=/microservices-partie-4-spring-boot/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Les microservices pour une architecture orientée …</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2017-03-14T08:21:08Z>
+14 mars 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Simple comme Spring Boot Cet article s’insère dans la série « microservices » écrite par François Berthault …</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

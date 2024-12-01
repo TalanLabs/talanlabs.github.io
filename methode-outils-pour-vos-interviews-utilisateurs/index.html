@@ -1,0 +1,339 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Méthode & Outils pour vos interviews utilisateurs | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Salut ! Avant de rentrer dans le vif du sujet, je tiens à préciser que cet article ne va pas traiter le pourquoi faire des interviews utilisateur, mais plutôt sur le coté pratique de l’exercice.">
+<meta property="og:title" content="Méthode & Outils pour vos interviews utilisateurs">
+<meta property="og:description" content="Salut ! Avant de rentrer dans le vif du sujet, je tiens à préciser que cet article ne va pas traiter le pourquoi faire des interviews utilisateur, mais plutôt sur le coté pratique de l’exercice.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/methode-outils-pour-vos-interviews-utilisateurs/"><meta property="og:image" content="https://blog.talanlabs.com/methode-outils-pour-vos-interviews-utilisateurs/cover.jpeg"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2018-09-27T13:19:09+00:00">
+<meta property="article:modified_time" content="2018-09-27T13:19:09+00:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/methode-outils-pour-vos-interviews-utilisateurs/cover.jpeg">
+<meta name=twitter:title content="Méthode & Outils pour vos interviews utilisateurs">
+<meta name=twitter:description content="Salut ! Avant de rentrer dans le vif du sujet, je tiens à préciser que cet article ne va pas traiter le pourquoi faire des interviews utilisateur, mais plutôt sur le coté pratique de l’exercice.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/methode-outils-pour-vos-interviews-utilisateurs/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Méthode & Outils pour vos interviews utilisateurs</h1>
+<figure class="cover image">
+<img src=/methode-outils-pour-vos-interviews-utilisateurs/cover.jpeg width=800 height=600 alt="illustration de l'article">
+</figure>
+<p>Salut ! Avant de rentrer dans le vif du sujet, je tiens à préciser que cet article ne va pas traiter le pourquoi faire des interviews utilisateur, mais plutôt sur le coté pratique de l’exercice.</p>
+<p>Le : Comment enregistrer, Transcrire et Utiliser les données récoltées.</p>
+<p>Nous nous plaçons dans le contexte d’une interview d’un utilisateur dans le but de récolter des informations/feedbacks/besoins – sur l’utilisation d’un produit/service déjà existant ou à venir– venant d’un utilisateur final de ce dit produit/service.</p>
+<p>Ce que je vous propose est ma manière de faire, prenez ce qui vous intéresse et créez votre propre méthode, faite ce qui marche pour vous :)</p>
+<p>Ceci étant dit, Go !</p>
+<h2 id=la-préparation->La Préparation 🗒</h2>
+<p>Cela peut paraître bateau mais préparez vos interviews !</p>
+<p>Je vous assure qu’une interview mal préparée est une perte de temps pour vous et pour l’interviewé. Cela se traduit par un échange bâclé, des informations qui vous sont inutiles, des questions hors sujets et j’en passe.</p>
+<p>C’est très frustrant de se rendre compte pendant ou après une interview que tout ce qui s’est dit sera inutilisable pour le produit/service que vous designez.</p>
+<p>La préparation passe par :</p>
+<ul>
+<li>L’organisation de la rencontre – l’heure du rendez-vous, le lieu, l’accès au bâtiment, faut-il une pièce d’identité pour entrer dans le bâtiment ?, etc – ça vous évitera du stress inutile.
+<ul>
+<li>La recherche préalable sur la personne que vous rencontrez. Je ne parle pas de stalking hein… Juste savoir son prénom, son métier. Apportez du contexte à votre interview.</li>
+<li>L’écriture d’un guide d’interview. Cela peut-être le sujet d’un seul article, mais pour résumer : décrivez l’objectif de l’interview, listez les questions démographiques, les questions sur le produit, et votre dernière question pour clore l’échange. Ce guide sera votre meilleur ami pour relancer votre interlocuteur lors d’un coup de mou.</li>
+</ul>
+</li>
+</ul>
+<p>Une fois prêt : Fast-forward ⏩ …</p>
+<h2 id=le-jour-j->Le jour J 🎙</h2>
+<p>Vous êtes avec l’interviewé, vous avez commencé à papoter pour briser la glace et des informations clés commencent à montrer leur bout du nez.</p>
+<p>C’est le moment de lancer votre enregistrement audio. Personnellement, j’utilise simplement mon téléphone avec l’application <a href=https://www.igen.fr/ios/2018/07/ios-12-les-nouveautes-de-lapp-dictaphone-104577>Dictaphone</a>. Et avec l’arrivée d’iOS 12, l’app évolue, et c’est cool !</p>
+<p>_En passant : N’oubliez pas de demander l’autorisation d’enregistrer _😉</p>
+<p>Certes, les rush ne seront pas dignes d’un enregistrement radio mais, ce n’est pas ce qui nous intéresse.</p>
+<p>Cependant pour gagner en qualité vous pouvez également utiliser un micro dédié, mais cela vous demandera un peu plus de préparation et le micro aura moins tendance à se faire oublier. Ce point n’est pas négligeable, votre interlocuteur peut facilement passer en position défensive fasse à vos questions. L’entretien va devenir compliqué à mener&mldr;</p>
+<p>Aujourd’hui, les gens sont habitués à voir un téléphone posé sur une table. Lors des premières minutes, l’interviewé lancera des regards interrogatifs vers votre téléphone, mais croyez-moi, votre smartphone deviendra invisible.</p>
+<p>Ha et du coup : préparez le coup – ayez de la batterie. Ça serait bête de perdre 1h de rush audio avec des informations capitales 🙃</p>
+<p><em>N’OUBLIEZ PAS DE FAIRE UNE BACKUP DU RUSH ! Un simple mail à vous-même avec le fichier audio peut vous sauver !</em></p>
+<p>Fast-forward ⏩ …</p>
+<h2 id=le-derush--transcription->Le derush & transcription ⌨</h2>
+<p>L’interview s’est déroulée sans encombre, vous avez un fichier audio rempli d’infos : excellent ! 👍</p>
+<p>Maintenant, le travail de petite main commence.</p>
+<p>L’outil que j’utilise pour la transcription est <a href=http://otranscribe.com/>oTranscribe</a>.</p>
+<p>Il propose tous les raccourcis clavier dont vous avez besoin lors de l’écoute : Le play/pause, l’avance/retour rapide, la sélection de la vitesse, etc. Ça a accéléré drastiquement mes transcriptions !</p>
+<p>Insérer simplement votre rush audio, et c’est parti :</p>
+<h3 id=1-première-écoutevitesse-x3>1) Première écoute — Vitesse x3</h3>
+<p>L’écoute en x3 peut être un peu déstabilisante au départ, mais vos oreilles & cerveau vont vite s’habituer. Vous aurez le même niveau d’information attendu qu’une écoute en vitesse réelle, mais en trois fois moins de temps 👌</p>
+<ul>
+<li>Objectifs : Vous remémorez l’interview et son déroulé.
+<ul>
+<li>À Extraire : Le plan de l’interview avec les time-codes, les passages qui vous “saute aux oreilles”</li>
+</ul>
+</li>
+</ul>
+<h3 id=2-2ème-roundvitesse-x2>2) 2ème Round — Vitesse x2</h3>
+<p>La deuxième écoute est la plus intéressante. C’est comme quand vous regardez un film pour la deuxième fois. Vous savez ce qu’il va se passer, mais il y a toujours un petit détail, un truc qui vous a échappé.</p>
+<ul>
+<li>Objectifs : Vérifier le plan, détecter les passages que vous avez “raté”.
+<ul>
+<li>À Extraire : Des notes avec vos mots sur ce qu’il vient de se dire en faisant pause aux moments clés de l’interview. Comme si vous preniez des notes pendant l’interview, mais avec le temps pour les écrire.</li>
+</ul>
+</li>
+</ul>
+<h3 id=3-lécoute-détailléevitesse-x02>3) L’écoute détaillée — Vitesse x0,2</h3>
+<p>Çaaaaa vaaaa êtreeee asseeeeeeeeeez leeeeeeeeent. Mais très utile ! N’écoutez pas toute l’interview en x0,2 hein. Allez directement aux times code que vous avez identifié aux deux premières écoutes.</p>
+<ul>
+<li>Objectif : Avoir les informations clé avec les mots de l’utilisateur.
+<ul>
+<li>À Extraire : Les citations exactes de l’interviewé. Le verbatim.</li>
+</ul>
+</li>
+</ul>
+<p>Une fois votre transcription terminée nous pouvons passer au tri et à l’utilisation des données !</p>
+<p><em>Point d’attention : La transcription brute n’est pas un livrable en tant que tel. Elle peut contenir des informations qui, mal utilisées, peuvent mettre en porte à faux l’interviewé. C’est génial de recueillir des “punchlines”, mais gardez secret le nom de l’auteur.</em></p>
+<h2 id=le-tri-des-données->Le tri des données 📚</h2>
+<p>Je trie systématiquement mes retranscriptions dans cinq familles :</p>
+<h3 id=les-points-dappréciations>Les Points d’appréciations</h3>
+<p>Tous les points positifs de l’actuel et du futur produit/service que vous allez designer.</p>
+<p>Les “C’est bien que/quand …”.</p>
+<p>Parce que oui, il n’y a pas que du mauvais, même sur un produit/service avec zero design. 😊</p>
+<h3 id=les-points-à-améliorer--gênants>Les points à améliorer & gênants</h3>
+<p>Les : ”C’est embêtant …”, “Ce n’est pas pratique …”</p>
+<p>En gros tous les points de frictions de l’utilisateur : les fameux Pain Points.</p>
+<h3 id=les-attentes--recommandations>Les Attentes & Recommandations</h3>
+<p>Les : “Ça serait vraiment bien d’avoir … , pour faire … ”</p>
+<p>Notez-les, mais surtout étudiez (a posteriori) le “<em>pourquoi”</em> qui est caché derrière.</p>
+<p>Par exemple : Si un utilisateur vous remonte le besoin d’avoir un bouton d’export de données, au lieu d’ajouter ce bouton, demandez lui pourquoi et réfléchissez aux motivations derrière son souhait.</p>
+<h3 id=les-faits-marquants>Les Faits Marquants</h3>
+<p>Notez les petites histoires ou anecdotes de votre interlocuteur. Elles sont très révélatrices du terrain et de la vie de tous les jours des utilisateurs.</p>
+<p>Ces infos sont facilement utilisables pour des empathies map ou encore vos personae.</p>
+<p>Et pour finir, j’extrais :</p>
+<h3 id=les-citations-marquantes>Les Citations Marquantes</h3>
+<p>Toutes les citations verbatim (punchlines 👊) qui vous ont fait tiquer lors de l’interview.</p>
+<p>Pour m’aider à retranscrire toutes les infos, j’utilise <a href=https://www.milanote.com/>Milanote</a>. Je vous laisse y jeter un coup d’oeil, ça vaut le détour ! 🤩</p>
+<h2 id=lutilisation-des-données->L’utilisation des données 🔍</h2>
+<p>Déjà, toutes les informations que vous avez tirées de votre interview peuvent constituer un livrable, et ça, c’est cool.</p>
+<p>Ensuite, je vous propose deux manières de traduire les data :</p>
+<h3 id=hmw>HMW</h3>
+<p>Les “How Might We” sont des questions, qui permettent de cadrer un problème tout en ayant une tournure de phrase qui permet de se concentrer sur la création de solution adaptée au problème. Plus d’info : <a href=https://designsprintkit.withgoogle.com/methods/understand/hmw-directions/>https://designsprintkit.withgoogle.com/methods/understand/hmw-directions/</a></p>
+<p>À partir des quatre familles, des faits marquants et des citations, j’écris un maximum d’HMW qui me permettent de bien faire ressortir le besoin utilisateur et les problématiques auxquelles il fait face.</p>
+<p>Chacune de ces questions peut faire l’objet d’un Design Sprint 🤓</p>
+<h3 id=top-3-des-features-attendues>Top 3 des Features attendues</h3>
+<p>Pendant les interviews, j’essaye également de découvrir le Top 3 des features que l’utilisateur attend. Deux Techniques : soit vous posez directement la question, soit vous notez sur un carnet ce que vous pensez et vérifiez avec votre interlocuteur à la fin de l’interview.</p>
+<p>Pour finir : Que ce soit à l’oral ou à l’écrit, partagez toutes les infos que vous avez reçues ! Au(x) PO, à l’équipe de design, aux développeurs et à toutes les personnes qui travaillent sur le produit/service 🙂</p>
+<p>N’hésitez pas également à revenir régulièrement à vos notes pour des petites piqûres de rappel lors de vos rush de créa.</p>
+<p><em>J’espère que ça vous aidera à designer de supers produits.</em></p>
+<p><em>N’hésitez pas à donner votre avis et à faire des remarques dans les commentaires :)</em></p>
+<p><em>Portez-vous bien, Designez bien, et Éclatez vous !</em></p>
+<p>_Tchou _👋</p>
+<p>_Crédit image : Daniel Mitev, _<a href=https://dribbble.com/shots/3710372-Job-Interview><em>https://dribbble.com/shots/3710372-Job-Interview</em></a></p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2018-09-27T13:19:09Z>
+27 septembre 2018
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/benjamin-noel/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Benjamin NOËL" src=https://blog.talanlabs.com/authors/benjamin_noel.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/benjamin-noel/>Benjamin NOËL</a></h1>
+<p class="mt-0 mb-2">UI/UX Designer</p>
+</div>
+<div class=mb-6>
+<a href=https://www.linkedin.com/in/benjamin_noel target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/design>design</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/design>#design</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/interviews>#interviews</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/ux>#ux</a>
+</div>
+</div>
+</div>
+</div>
+<aside>
+<h4 class="subtitle mt-10 mb-8"><i class="fas fa-forward"></i> Vous aimerez peut-être...</h4>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/ux-quest-cest/>
+<img class="border object-cover w-full m-0 max-w-md" src=/ux-quest-cest/cover_hu4640bc94eacc0ffab7fb8df9277f6e38_19159_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/design>design</a>
+</div>
+<a href=/ux-quest-cest/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">UX - Qu'est-ce-que c'est ?</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2015-06-26T08:25:11Z>
+26 juin 2015
+</time>
+</div>
+<p class="my-1 text-slate-500">UX signifie eXpérience Utilisateur, et elle va au-delà du besoin utilisateur.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/jai-teste-le-sketchnote/>
+<img class="border object-cover w-full m-0 max-w-md" src=/jai-teste-le-sketchnote/cover_hu295805beb3286cf2540b52263e07e087_1458516_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/design>design</a>
+</div>
+<a href=/jai-teste-le-sketchnote/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">J'ai testé le sketchnote !</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2018-08-27T08:41:18Z>
+27 août 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Durant la période d’été, l’activité est souvent moindre, on peut alors passer du temps sur les sujets disons …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/jeux-brise-glace-talanlabs-2018/>
+<img class="border object-cover w-full m-0 max-w-md" src=/jeux-brise-glace-talanlabs-2018/cover_hu1fb64d331891f2f1047fdd25084113ce_109684_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/design>design</a>
+</div>
+<a href=/jeux-brise-glace-talanlabs-2018/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Top 3 des jeux brise-glace pour démarrer une …</h2></a>
+<div class=my-1>
+<span>Sharmeen AQEEL</span>,
+<time datetime=2018-01-18T08:09:42Z>
+18 janvier 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">En 2017, l’UX (User eXperience) et l’UI (User Interface) ont pris de plus en plus d’importance au sein des …</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

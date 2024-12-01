@@ -1,0 +1,672 @@
+<!doctype html><html lang=fr-fr>
+<head><title> AWS Machine Learning Speciality: Le parcours d'apprentissage | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="1.	Introduction Récemment, les différentes partie prenantes de l’écosystème IT ont commencé à voir les avantages du MLOps, définit comme étant un processus systémique pour la collaboration des équipes de développement et d’opération pour les solutions Machine Learning, dans l’exécution d’un pipeline de production efficace.">
+<meta property="og:title" content="AWS Machine Learning Speciality: Le parcours d'apprentissage">
+<meta property="og:description" content="1.	Introduction Récemment, les différentes partie prenantes de l’écosystème IT ont commencé à voir les avantages du MLOps, définit comme étant un processus systémique pour la collaboration des équipes de développement et d’opération pour les solutions Machine Learning, dans l’exécution d’un pipeline de production efficace.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/2023-01-09-aws-ml-speciality/"><meta property="og:image" content="https://blog.talanlabs.com/2023-01-09-aws-ml-speciality/feature.jpg"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2023-02-08T17:59:29+01:00">
+<meta property="article:modified_time" content="2023-02-08T17:59:29+01:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/2023-01-09-aws-ml-speciality/feature.jpg">
+<meta name=twitter:title content="AWS Machine Learning Speciality: Le parcours d'apprentissage">
+<meta name=twitter:description content="1.	Introduction Récemment, les différentes partie prenantes de l’écosystème IT ont commencé à voir les avantages du MLOps, définit comme étant un processus systémique pour la collaboration des équipes de développement et d’opération pour les solutions Machine Learning, dans l’exécution d’un pipeline de production efficace.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/2023-01-09-aws-ml-speciality/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>AWS Machine Learning Speciality: Le parcours d'apprentissage</h1>
+<figure class="cover image">
+<img src=/2023-01-09-aws-ml-speciality/cover.png width=896 height=472 alt="illustration de l'article">
+</figure>
+<h2 id=1introduction>1. Introduction</h2>
+<p>Récemment, les différentes partie prenantes de l’écosystème IT ont commencé à voir les avantages du MLOps, définit comme étant un processus systémique pour la collaboration des équipes de développement et d’opération pour les solutions Machine Learning, dans l’exécution d’un pipeline de production efficace.<br>
+Pour cet effet, Talan, à travers son partenariat avec Amazon, s’engage à former ses data scientists et ML engineers sur les technologies AWS pour la conception, le développement et le déploiement des solutions Machine Learning.<br>
+Ainsi, je viens d’obtenir la certification AWS Machine Learning Speciality (MLS-C01) pour s’aligner avec les enjeux de l’écosystème et proposer des solutions de qualité à nos clients.
+Dans cet article de blog, je présente ma stratégie pour préparer cet examen ainsi que les concepts et les services à maitriser avant de payer les 300 dollars de l’examen.</p>
+<figure>
+<img src=certif.PNG width=70% height=50% style="display:block;margin:0 auto" alt="Mon certficat AWS Machine Learning Speciality">
+<figcaption><center>Mon certficat AWS Machine Learning Speciality</center></figcaption>
+</figure>
+<h2 id=2prérequis-indispensables>2. Prérequis indispensables</h2>
+<p>Avant de commencer la préparation de la certification, il est important d’avoir une expérience de 2 à 5 ans dans la conception et le développement des solutions Machine Learning.
+Cette expérience devrait inclure la préparation des données, la compréhension des cas d’usage, le choix du modèle ML, l’apprentissage des modèles, l’optimisation des hyperparamètres, l’évaluation des performances et le déploiement des solutions.<br>
+Elle sera surement bénéfique afin de comprendre les enjeux et les problèmes résolus par les services AWS.<br>
+Aussi, il est fondamental de commencer par maitriser les notions de base de la technologie cloud et les services proposés par AWS.<br>
+Pour cela, la certification AWS Cloud Practitioner Essentials est fortement recommandé avant MLS-C01 afin de maitriser le fonctionnement des services AWS comme S3, IAM, EC2, Glue, Kinesis et SageMaker ainsi que de comprendre des concepts de base comme la sécurité, la scalabilité, l’élasticité et la tolérance des pannes du cloud.<br>
+C&rsquo;est pourquoi, pour cette certification, il faut être à la fois un bon data engineer, un bon data scientist et un bon MLOps engineer.</p>
+<figure>
+<img src=aws_all.PNG width=70% height=50% style="display:block;margin:0 auto" alt="Les certifications AWS">
+<figcaption><center>Les certifications AWS</center></figcaption>
+</figure>
+<h2 id=3objectifs-de-la-certification>3. Objectifs de la certification</h2>
+<p>A la fin de cette expérience, vous serez (normalement) capable de :</p>
+<ul>
+<li>Comprendre les cas d’usage qui nécessitent une solution Machine Learning et ses enjeux</li>
+<li>Sélectionner et justifier l’approche Machine Learning appropriée pour un cas d’usage donné</li>
+<li>Identifier les services AWS appropriés pour l’implémentation d’une solution Machine Learning</li>
+<li>Concevoir et développer des solutions Machine Learning scalables, optimisées en terme de coûts, fiables et sécurisées</li>
+</ul>
+<h2 id=4détails-de-lexamen-mls-c01>4. Détails de l’examen MLS-C01</h2>
+<p>L’examen de la certification de spécialité AWS Machine Learning (MLS-C01) est composé de 65 questions à choix multiples et questions à réponses multiples. Vous avez 180 minutes pour répondre à toutes les questions. Les détails de l’examens sont présentés dans le tableau suivant :</p>
+<table>
+<thead>
+<tr>
+<th><em><strong>Code de l’examen</strong></em></th>
+<th>MLS-C01</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em><strong>Type de l’examen</strong></em></td>
+<td>Speciality</td>
+</tr>
+<tr>
+<td><em><strong>Durée</strong></em></td>
+<td>180 minutes</td>
+</tr>
+<tr>
+<td><em><strong>Cout de l’examen</strong></em></td>
+<td>300 $</td>
+</tr>
+<tr>
+<td><em><strong>Format</strong></em></td>
+<td>Questions à choix multiple et questions à réponses multiple</td>
+</tr>
+<tr>
+<td><em><strong>Notation de l’examen</strong></em></td>
+<td>Note graduée de 100 à 1000</td>
+</tr>
+<tr>
+<td><em><strong>Score de réussite</strong></em></td>
+<td>>750</td>
+</tr>
+<tr>
+<td><em><strong>Langues</strong></em></td>
+<td>Anglais, japonais, coréen et chinois simplifié</td>
+</tr>
+</tbody>
+</table>
+<h2 id=5contenu-technique>5. Contenu technique</h2>
+<p>Le certificat de spécialité AWS Machine Learning porte sur 4 domaines :</p>
+<ul>
+<li>Ingénierie des données</li>
+<li>Analyse exploratoire de données</li>
+<li>Modélisation</li>
+<li>Mise en œuvre et implémentation du Machine Learning</li>
+</ul>
+<p>Dans cette section, nous revenons sur les points les plus important dans chaque domaine. Il s’agit de ma cheat sheet que j’ai révisé avant l’examen.</p>
+<figure>
+<img src=Domaines.png width=60% height=30% style="display:block;margin:0 auto" alt="Domaines couverts par la certification AWS Machine Learning Speciality">
+<figcaption><center>Domaines couverts par la certification AWS Machine Learning Speciality</center></figcaption>
+</figure>
+<p>Avant de commencer avec les notes techniques, voici les services AWS les plus utilisés dans la préparation de l’examen.</p>
+<figure>
+<img src=services_fr.PNG width=70% height=50% style="display:block;margin:0 auto" alt="Les services AWS les plus couverts par la certification">
+<figcaption><center>Les services AWS les plus couverts par la certification</center></figcaption>
+</figure>
+<h3 id=51ingénierie-des-données>5.1. Ingénierie des données</h3>
+<h4 id=511création-des-répertoires-et-entrepôts-de-données-pour-les-projet-machine-learning>5.1.1. Création des répertoires et entrepôts de données pour les projet Machine Learning</h4>
+<ul>
+<li>Le choix du système de fichiers utilisé devrait dépendre de plusieurs facteurs comme le temps de chargement des données</li>
+<li>Généralement, Amazon S3 est le système de stockage le plus utilisés dans les projets ML pour plusieurs raison. En effet, S3 est utilisé pour tous les types et les tailles de données et il est infiniment scalable. De plus, il est très abordable en terme de budget. <a href=https://docs.aws.amazon.com/machine-learning/latest/dg/using-amazon-s3-with-amazon-ml.html>S3</a></li>
+<li>Identification des sources de données: <a href=https://docs.aws.amazon.com/quicksight/latest/user/supported-data-sources.html>supported-data-sources</a></li>
+<li>Les systèmes de stockage les plus utilisés dans les projets ML à part Amazon S3 sont Redshift, RDS Database, Elastic File System (EFS) et Elastic Block Store (EBS): <a href=https://docs.aws.amazon.com/machine-learning/latest/dg/create-datasource-from-redshift-procedure.html>Redshift</a> | <a href=https://docs.aws.amazon.com/machine-learning/latest/dg/using-amazon-rds-with-amazon-ml.html>RDS</a> | <a href=https://docs.aws.amazon.com/sagemaker/latest/dg/host-instance-storage.html>Host-instance-storage-volumes</a> | <a href=https://aws.amazon.com/fr/blogs/apn/amazon-machine-learning-and-amazon-elastic-file-system-amazon-efs-a-perspective-for-apn-partners/>Amazon Elastic File System</a></li>
+<li>S3 : La taille d’un fichier est entre 0 bytes et 5Tb. Par contre, la capacité de stockage de données est illimitée. Le nom d’un bucket devrait être unique</li>
+<li>Amazon Relational Database Service (RDS) : BD relationnelles (MySQL, SQL Server, Oracle, Postgres, Aurora, MariaDB)</li>
+<li>DynamoDB : est un service de base de données propriétaire NoSQL entièrement géré qui prend en charge les structures de données de type clé-valeur et document</li>
+<li>RedShift : c’est une BI datawarehouse. Elle permet d’utiliser Quicksight pour la visualisation des données</li>
+<li>TimeStream : Amazon Timestream est un service de base de données de séries temporelles rapide, évolutif et sans serveur, qui facilite le stockage et l&rsquo;analyse de milliards d&rsquo;événements</li>
+<li>DocumentDB : Amazon DocumentDB est un service compatible avec MongoDB. C’est une base de données document JSON native entièrement gérée qui facilite et réduit le coût de l&rsquo;exploitation de charges de travail de documents critiques à pratiquement n&rsquo;importe quelle échelle, sans gérer l&rsquo;infrastructure.</li>
+<li>Les outils AWS pour la migration de données sont :
+<ul>
+<li>Data Pipeline</li>
+<li>Database Migration Service (DMS)</li>
+<li>Glue</li>
+</ul>
+</li>
+<li>DMS est utilisé pour la migration de la data qui est stocké sur:
+<ul>
+<li>Des serveurs locaux</li>
+<li>Une instance Amazon RDS DB</li>
+<li>Une instance Amazon EC2</li>
+</ul>
+</li>
+<li>DMS est utilisé aussi pour la migration des données d’une DB vers S3</li>
+<li>Une seule transformation possible en utilisant DMS : le changement des noms des colonnes</li>
+<li>Glue est un ETL qui permet de simplifier la catégorisation, le nettoyage, l’enrichissement et le transfert des données d’une manière fiable entre plusieurs Data stores</li>
+<li>AWS Lake Formation est un service qui permet de mettre en place facilement un lac de données sécurisé en quelques jours.</li>
+</ul>
+<h4 id=512maitriser-les-méthodes-dingestion-de-données>5.1.2. Maitriser les méthodes d’ingestion de données</h4>
+<ul>
+<li>Il y a deux types d’ingestion de données : traitement par lots (Batch processing) et traitement en continu ou en temps réel (Stream processing)</li>
+<li>Maitriser les pipelines d’ingestion de données en se concentrant sur le service Kinesis</li>
+<li>Kinesis Data Firehose peut écrire les données dans votre data lake S3.</li>
+<li>Kinesis Data Analytics doit être alimenté en données en continu par Kinesis Data Streams ou Kinesis Data Firehose</li>
+<li>Kinesis Data Analytics ne peut pas ingérer les données directement.</li>
+<li>Apache Flink peut écrire vos données sur S3 à l&rsquo;aide du puits de fichiers en continu, mais il écrit dans les formats AVRO et Parquet, et non GZIP</li>
+<li>Kinesis Data Streams ne peut pas écrire directement sur S3. Il a besoin d&rsquo;une application Kinesis Consumer Library pour recevoir les données et les écrire ensuite sur S3</li>
+<li>L’interaction avec Kinesis Data Streams est possible via :
+<ul>
+<li>Kinesis Producer Library (KPL) pour écrire. Ceci se fait à travers des Java wrappers automatiques et configurables</li>
+<li>Kinesis API (SDK)</li>
+<li>Kinesis Client Library (KCL) pour interagir avec KPL afin de traiter les données</li>
+</ul>
+</li>
+<li>Amazon Elastic MapReduce (EMR): <a href=https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-launch-emr-jobflow.html>Link</a></li>
+<li>AWS Glue est très utilisé dans ce contexte. Il est un service d’intégration de données sans serveur qui rend la préparation de données plus simple, plus rapide et surtout moins chère <a href="https://aws.amazon.com/fr/glue/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc">AWS Glue</a></li>
+<li>Format de fichier avec Athena : Le format de fichier Parquet est un format basé sur des colonnes, et il supporte le partitionnement. L&rsquo;autre format de fichier basé sur des colonnes supporté par Athena est ORC. Ces formats de fichiers basés sur des colonnes sont plus performants que les formats tabulaires tels que CSV et TSV lorsqu&rsquo;Athena travaille avec de très grands ensembles de données.</li>
+<li>XML n&rsquo;est pas un format de données pris en charge pour la formation dans SageMaker.</li>
+<li>La source de données la plus couramment utilisée pour SageMaker est un bucket S3. Cependant, vous pouvez également utiliser Athena, EMR et Redshift comme sources de données pour SageMaker.</li>
+<li>Pour afficher des tableaux de bord en utilisant un outil BI, le pipeline est assuré par les services suivants : Kinesis Data Firehose -> S3-> Lake Formation -> QuickSight</li>
+<li>Apache Flink permet d’écrire sur S3 en utilisant streaming file sink dans un format AVRO ou Parquet.</li>
+<li>Parfois, c’est plus efficace d’écrire son code de transformation de données en utilisant la fonction lambda et puis transférer les données dans S3 avec le même service</li>
+<li>Apache Kafka est utilisé comme une source de données en continu (streaming) où les features sont directement alimentés dans le Feature Store en ligne</li>
+<li>Kinesis Data Analytics avec la fonction Lambda pourrait être utilisé comme une source de données en continu (streaming) où les features sont directement alimentés dans le Feature Store en ligne</li>
+<li>Amazon QuickSight prend en charge une variété de sources de données que vous pouvez utiliser pour fournir des données pour les analyses. Certaines sources de données comme DynamoDB ne sont pris en charge. La liste des sources de données est présentée dans ce guide : <a href=https://docs.aws.amazon.com/quicksight/latest/user/supported-data-sources.html>Supported data sources</a> . Parmi ces sources, on trouve Snowflake, Presto, Teradata et S3.</li>
+<li>AWS Glue ne peut pas charger les données directement vers le notebook SageMaker pour lancer l’apprentissage d’un modèle ML. Pour résoudre ce problème, Glue devrait placer les données dans un bucket S3 qui sera charger par la suite par le notebook SageMaker</li>
+<li>AWS Lake Formation permet de collecter et cataloguer les données à partir de plusieurs sources de données, transformer les données et les charger en un S3 data lake</li>
+<li>IoT Core est utilisé pour collecter de l’information à partir des capteurs IoT</li>
+<li>IoT Greengrass est utilisé pour déployer le modèle et tester l’inférence sur les capteurs connectés</li>
+</ul>
+<h4 id=513maitriser-les-méthodes-de-transformation-de-données>5.1.3. Maitriser les méthodes de transformation de données</h4>
+<ul>
+<li>AWS Glue est le service ETL le plus utilisé pour extraire, transformer et charger les données <a href=https://aws.amazon.com/fr/blogs/database/how-to-extract-transform-and-load-data-for-analytic-processing-using-aws-glue-part-2/>how-to-extract-transform-and-load-data-for-analytic-processing-using-aws-glue?</a></li>
+<li>Glue ETL est utilisé dans le traitement par lots (batch processing) et ne peut pas être utilisé dans le traitement en temps réel</li>
+<li>Apache Spark Streaming est un moteur analytique utilisé pour traiter les données volumineuses en exécutant des jobs de traitement distribués</li>
+<li>Kinesis Data Analytics ne possède pas les capacités de Apache Spark pour traiter les données volumineuses</li>
+<li>AWS Glue Data Catalog est un référentiel central permettant de stocker les metadata structurelles et opérationnelles de tous les actifs de données</li>
+<li>AWS Glue crawlers se connecte à un data store, passe par une liste hiérarchisée de classificateurs pour extraire le schéma des données et d&rsquo;autres statistiques, puis alimente le Glue Data Catalog avec ces metadata</li>
+<li>Traiter les données spécifiques au ML à l&rsquo;aide de map reduce (Hadoop, Spark, Hive) <a href=https://aws.amazon.com/fr/blogs/big-data/large-scale-machine-learning-with-spark-on-amazon-emr/>large-scale-machine-learning-with-spark-on-amazon-emr</a> | <a href=https://docs.aws.amazon.com/sagemaker/latest/dg/apache-spark.html>apache-spark</a> | <a href=https://aws.amazon.com/fr/blogs/machine-learning/part-1-create-and-manage-amazon-emr-clusters-from-sagemaker-studio-to-run-interactive-spark-and-ml-workloads/>create-and-manage-amazon-emr-clusters-from-sagemaker-studio-to-run-interactive-spark-and-ml-workloads</a></li>
+<li>EMR est utilisé pour la transformation des big data à travers plusieurs EC2 via différents frameworks comme Spark, Tensorflow et Hive</li>
+<li>Athena est un service sans serveur qui permet de lancer des requêtes SQL sur S3</li>
+</ul>
+<h3 id=52analyse-exploratoire-de-données>5.2. Analyse exploratoire de données</h3>
+<h4 id=521préparation-de-la-donnée-pour-le-modèle-ml>5.2.1. Préparation de la donnée pour le modèle ML</h4>
+<ul>
+<li>L’identification et le traitement des données manquantes est un concept important pour améliorer les performances des modèles de prédiction. <a href=https://aws.amazon.com/fr/blogs/machine-learning/managing-missing-values-in-your-target-and-related-datasets-with-automated-imputation-support-in-amazon-forecast/>managing-missing-values</a></li>
+<li>La normalisation et la standardisation des données sont deux techniques de traitement de données</li>
+<li>La normalisation redimensionne les données afin que toutes les valeurs soient comprises entre 0 et 1</li>
+<li>La standardisation centres les valeurs des features autour de la valeur moyenne</li>
+<li>La standardisation est plus efficace que la normalisation sur la gestion des outliers</li>
+<li>AWS propose des services d’annotation de données comme Amazon SageMaker Ground Truth and Mechanical Turk</li>
+</ul>
+<h4 id=522feature-engineering>5.2.2. Feature engineering</h4>
+<ul>
+<li>L’extraction des features à partir des datasets: <a href=https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/feature-engineering.html>Feature Extraction</a></li>
+<li>Binning : est une technique permettant de réduire la cardinalité des données continues et discrètes. Le binning regroupe des valeurs dans des bacs afin de réduire le nombre de valeurs distinctes.</li>
+<li>Tokenization : est utilisée dans le traitement du langage naturel (NLP) pour diviser les paragraphes et les phrases en unités plus petites auxquelles on peut plus facilement attribuer une signification.</li>
+<li>Outliers : Comment traiter les valeurs aberrantes dans un modèle de classification d&rsquo;images ? Une des techniques utilisées pour résoudre ce problème est d’agir sur l&rsquo;hyperparamètre learning_rate qui régit la vitesse à laquelle le modèle s&rsquo;adapte à des données nouvelles ou changeantes. Les valeurs valides vont de 0,0 à 1,0. En définissant cet hyperparamètre à une valeur faible, telle que 0,1, le modèle apprendra plus lentement et sera moins sensible aux valeurs aberrantes.</li>
+<li>Réduction de la dimensionnalité</li>
+<li>One hot encoding : est la conversion d&rsquo;informations catégorielles dans un format qui peut être introduit dans des algorithmes d&rsquo;apprentissage automatique pour améliorer la précision des prédictions. C’est une méthode courante pour traiter les données catégorielles dans l&rsquo;apprentissage automatique</li>
+<li>Les features synthétiques</li>
+<li>TF-IDF : permet de déterminer l’importance des mots dans différents documents</li>
+<li>Parmi les techniques utilisées pour la sélection et l’engineering des features :
+<ul>
+<li>Supprimer les features qui ne sont pas liés à l’apprentissage</li>
+<li>supprimer les features qui ont les mêmes valeurs, une très faible corrélation, une très faible variance ou beaucoup de valeurs manquantes.</li>
+<li>Appliquer le Principal Component Analysis (PCA) pour réduire la dimensionnalité, c-à-d la réduction du nombre des features</li>
+<li>Appliquer des techniques comme One-hot encoding and label encoding pour convertir les strings en des features numériques afin de simplifier l’apprentissage</li>
+<li>Appliquer la normalisation pour gérer les données avec une large variance</li>
+</ul>
+</li>
+<li>Parmi les techniques de traitement des données manquantes :
+<ul>
+<li>Supprimer les features avec beaucoup de données manquantes</li>
+<li>Imputation à l&rsquo;aide de valeurs moyennes/médianes - valable uniquement pour les valeurs numériques et non pour les features catégorielles ; ne tient pas compte de la corrélation entre les caractéristiques</li>
+<li>Imputation à l&rsquo;aide de k-NN, Imputation multivariée par équation chaînée (MICE), Deep Learning, factorise la corrélation entre les caractéristiques</li>
+</ul>
+</li>
+<li>Parmi les techniques pour gérer les données non équilibrées :
+<ul>
+<li>Demander plus de données</li>
+<li>Sur-échantillonnage de la classe minoritaire et sous-échantillonnage de la classe majoritaire</li>
+<li>Augmentation des données à l&rsquo;aide de techniques telles que SMOTE</li>
+</ul>
+</li>
+<li>Smoothing est une technique qui permet de supprimer le bruit du dataset d’apprentissage</li>
+<li>Les deux métriques utilisées par SageMaker Data Wrangler pour visualizer les rapports des fuites cibles sont R2 et AOC-ROC</li>
+<li>Multivariate imputation est une technique d’imputation qui permet d’utiliser d’autres variables de la data pour prévoir les données manquantes</li>
+<li>Mean imputation est une technique d’imputation qui permet d’utiliser la valeur moyenne de la colonne pour remplir les données manquantes</li>
+<li>Le nettoyage des données et la préparation des features pourrait se faire en créant un SageMaker Processing job avec SageMaker Python SDK et le package scikit-learn SKLearnProcessor ou Spark PySparkProcessor qui permettent de préparer les données et les diviser en train et test datasets</li>
+</ul>
+<h4 id=523analyse-et-visualisation-de-données>5.2.3. Analyse et visualisation de données</h4>
+<ul>
+<li>Les différents types de graphe les plus utilisés par les data scientists : Scatter, histogram, box plot</li>
+<li>Elbow plot pour les modèles de clustering</li>
+<li>Catplot est utilisé pour visualiser la relation entre une valeur numérique et une ou plusieurs valeurs catégoriques en utilisant des visualisations comme boxenplot</li>
+<li>Swarm plot et utilisé pour visualiser la distribution des valeurs de chaque feature</li>
+<li>Pair plot est utilisé pour visualiser la relation entre les pairs de features et la distribution d’une variable par rapport à l’autre</li>
+<li>La matrice de covariance permet de montrer le degré de corrélation entre deux features</li>
+</ul>
+<h3 id=53modélisation>5.3. Modélisation</h3>
+<h4 id=531cas-dusage-du-machine-learning>5.3.1. Cas d’usage du Machine Learning</h4>
+<ul>
+<li>L&rsquo;approche heuristique est utilisée lorsqu&rsquo;une approche d&rsquo;apprentissage automatique n&rsquo;est pas nécessaire. Un exemple est le taux d&rsquo;accélération d&rsquo;une particule dans l&rsquo;espace. Il existe des formules bien connues pour la vitesse, l&rsquo;inertie et la friction qui permettent de résoudre un tel problème</li>
+<li>Apprentissage supervisé Vs Apprentissage non supervisé</li>
+<li>Il important de bien lire l’énoncé de la question pour orienter le sens de la réflexion : algorithme de classification, de régression, etc.</li>
+</ul>
+<h4 id=532sélection-du-modèle-ml-pour-un-problème-donnée>5.3.2. Sélection du modèle ML pour un problème donnée</h4>
+<ul>
+<li>Voici un overview sur les modèles les plus utilisés pour résoudre un problème en ML: <a href=https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html>Algorithmes ML</a>:</li>
+</ul>
+<figure>
+<img src=ml_algos_aws.PNG width=70% height=50% style="display:block;margin:0 auto" alt="Cheat Sheet des algorithmes de Machine Learning en AWS">
+<figcaption><center>Cheat Sheet des algorithmes de Machine Learning en AWS</center></figcaption>
+</figure>
+<ul>
+<li>Expliquer l’intuition derrière chaque modèle : Xgboost, logistic regression, K-means, linear regression, decision trees, random forests, RNN, CNN, Ensemble, Transfer learning</li>
+<li>La liste des algorithmes pré-entrainés : <a href=https://docs.aws.amazon.com/fr_fr/sagemaker/latest/dg/algos.html>les algorithmes intégrés d&rsquo;Amazon SageMaker ou les modèles pré-entraînés</a></li>
+<li>Time serie data est un point important: <a href=https://aws.amazon.com/fr/blogs/machine-learning/forecasting-time-series-with-dynamic-deep-learning-on-aws/>Forecasting financial time series with dynamic deep learning on AWS</a></li>
+<li>Le célèbre moteur de recommandation d&rsquo;Amazon.com est construit à l&rsquo;aide d&rsquo;une méthode de filtrage collaboratif neuronal. Cette méthode est optimisée pour trouver des similitudes dans des environnements où l&rsquo;on dispose de grandes quantités d&rsquo;actions d&rsquo;utilisateurs à analyser.</li>
+<li>Random Cut Forest (RCF) est utilisé pour la détection des anomalies.</li>
+<li>L&rsquo;allocation latente de Dirichlet LDA est un algorithme d&rsquo;apprentissage non supervisé. Le scénario décrit un ensemble d&rsquo;apprentissage supervisé et noté. En outre, LDA est un modèle de &ldquo;sac de mots&rdquo;, ce qui signifie que l&rsquo;ordre des mots n&rsquo;a pas d&rsquo;importance. Ce modèle n&rsquo;est pas idéal pour l&rsquo;analyse des sentiments</li>
+<li>Amazon Forecast CNN-QR est un le seul algorithme qui accepte les données des séries temporelles connexes sans valeurs futures</li>
+<li>Les modèles types fournies par Amazon Fraud Detector :
+<ul>
+<li>Online fraud insights</li>
+<li>Transaction fraud insights</li>
+<li>Account takeover insights</li>
+</ul>
+</li>
+<li>AWS Transcribe http/2 streaming client est utilisé dans le cas où on a des problèmes de connexion ou on passe en offline</li>
+<li>Long Short-Term Memory (LSTM) est utilisé pour le traitement des séries temporelles ou les données séquentielles</li>
+<li>Multinominal Naive Bayes est un algorithme qui est très utilisé pour la classification des documents en se basant sur le nombre d’occurrence d’un mot dans le document en question</li>
+<li>Bernouilli Naive Bayes est un algorithme qui est utilisé pour la classification des documents en se basant sur le fait de chercher l’apparence d’un mot dans le document en question</li>
+<li>QuickSight intègre un algorithme Random Cut Forest ce qui rend plus efficace de l’utiliser directement comme étant un outil BI pour la détection et l’affichage des outliers. Cet outil est utilisé avec Kinesis Data Firehose et S3 pour la détection des anomalies en temps réel</li>
+</ul>
+<h4 id=533apprentissage-des-modèles-ml>5.3.3. Apprentissage des modèles ML</h4>
+<ul>
+<li>Etudier les techniques de Cross validation comme train_test_split, K-Fold, Stratified K-Fold, hold-out pour les séries temporelles, etc.</li>
+<li>K-Fold cross validation permet de diviser le dataset en K parties et lancer l’apprentissage du modèle K fois. A chaque fois, une partie est utilisée comme étant un test dataset et le reste, K-1 parties, est utilisé pour le train. A la fin, tous les résultats sont combinés pour avoir le résultat final</li>
+<li>Optimizer, gradient descent, loss functions, local minima, convergence, batches, probability, etc.</li>
+<li>Le choix des ressources (GPU, CPU) dépend de l’algorithme en AWS</li>
+<li>XGBOOST : SageMaker XGBoost ne prend actuellement en charge qu&rsquo;une instance CPU ou une instance GPU à une seule instance pour l&rsquo;apprentissage.</li>
+<li>Ajoutez Horovod à votre code et utilisez son cadre de formation d&rsquo;apprentissage profond distribué pour TensorFlow.</li>
+<li>Parmi les techniques efficaces de la configuration des hyperparamètres du modèles en termes de performances : choisir un petit learning rate, un large nombre d’estimateurs et un early stoping</li>
+<li>Quand on possède un large datasets, on a généralement tendance à utiliser un réseau de neurones avec un grand nombre de couches cachées</li>
+<li>Amazon CodeGuru est utilisé pour automatiser la révision de code et détecter les failles de sécurité</li>
+</ul>
+<h4 id=534optimisation-des-hyperparamètres>5.3.4. Optimisation des hyperparamètres</h4>
+<ul>
+<li>La définition des hyperparamètres de l’algorithme SageMaker XGBoost dépend de l’application et certains hyperparamètres sont obligatoire avant de lancer l’apprentissage comme Num_round et Num_class pour une application de classification multi-class</li>
+<li>Les hyperparamètres du Amazon SageMaker XGBoost : <a href=https://docs.aws.amazon.com/sagemaker/latest/dg/xgboost_hyperparameters.html>xgboost_hyperparameters</a></li>
+<li>Les techniques de régularisation : L1/L2, Dropout, etc.</li>
+<li>Initialisation des modèles</li>
+<li>Architectures des réseaux de neurones</li>
+<li>Learning rate</li>
+<li>Les fonctions d’activation</li>
+<li>Les méthodes de tunning sont :
+<ul>
+<li>Grid search</li>
+<li>Random search : utilisé quand on lance les training jobs en parallèle</li>
+<li>Bayesian search : nécessite moins de jobs d’apprentissage pour générer les hyperparamètres optimaux</li>
+</ul>
+</li>
+<li>Généralement, avec les réseaux de neurones qui ont un problème d’overfitting on :
+<ul>
+<li>Augmente le dropout</li>
+<li>Augmente la régularisation</li>
+<li>Diminue les combinations des features</li>
+</ul>
+</li>
+<li>Ridge regression et Lasso regression sont utilisées pour réduire la complexité du modèle.</li>
+<li>Lasso regression élémine quelques features ce qui réduit effectivement la complexité</li>
+</ul>
+<h4 id=535evaluation-des-modèles-ml>5.3.5. Evaluation des modèles ML</h4>
+<ul>
+<li>L’overfitting est parmi les points clés les plus évoqués dans les questions. Alors, il faut maitriser les techniques utilisées pour l’empêcher avec les différents modèles</li>
+<li>L’overfitting se produit lorsque le modèle ne peut pas généraliser et s&rsquo;adapte trop étroitement à l&rsquo;ensemble de données d&rsquo;apprentissage. <a href=https://aws.amazon.com/fr/what-is/overfitting/>Overfitting</a></li>
+<li>Dropout est une technique couramment utilisée pour pénaliser les poids et empêcher l’overfitting. Mais, il s&rsquo;agit d&rsquo;une technique utilisée avec les réseaux neuronaux, et non avec les arbres de décision. Certaines questions propose de d’éviter l’overfitting en utilisant dropout avec des modèles supervisés, ce qui complétement faux</li>
+<li>Random Forest est utilisée pour éviter l’overfitting avec les arbres de décision</li>
+<li>Eviter l’underfitting: <a href=https://docs.aws.amazon.com/machine-learning/latest/dg/model-fit-underfitting-vs-overfitting.html>Underfitting-vs-Overfitting</a></li>
+<li>Les métriques d’évaluation sont : AUC-ROC, accuracy, precision, recall pour les modèles de classification, RMSE, MSE pour les modèles de régression et F1 Score pour les datasets non équilibrés</li>
+<li>La matrice de confusion pour les modèles de classification :
+<ul>
+<li>Un vrai positif est un résultat où le modèle prédit correctement la classe positive. De même, un vrai négatif est un résultat où le modèle prédit correctement la classe négative</li>
+<li>Un faux positif est un résultat où le modèle prédit incorrectement la classe positive. Et un faux négatif est un résultat où le modèle prédit de manière incorrecte la classe négative</li>
+</ul>
+</li>
+<li>L&rsquo;aire sous la courbe ROC (Receiver Operating Characteristic) est la mesure la plus couramment utilisée pour comparer les modèles de classification</li>
+<li>K-means utilise msd (Mean Squared Distances) pour la validation du modèle. Cependant, vous voudrez minimiser cette métrique.</li>
+<li>K-means utilise ssd (Sum of the Squared Distances) pour la validation du modèle. Cependant, vous voudrez minimiser cette métrique.</li>
+<li>Dans cette référence, vous trouverez un ensemble de techniques couramment utilisées pour améliorer les performances des modèles de Deep Learning : <a href=https://machinelearningmastery.com/improve-deep-learning-performance/>How To Improve Deep Learning Performance</a></li>
+<li>La matrice de confusion qui permet de calculer les métriques comme la précision, le recall et l’accuracy :</li>
+</ul>
+<figure>
+<img src=confusion_matrix.png width=40% height=20% style="display:block;margin:0 auto" alt="La matrice de confusion">
+<figcaption><center>La matrice de confusion</center></figcaption>
+</figure>
+<ul>
+<li>Précision :
+TP/(TP+FP)</li>
+<li>Recall :
+TP/(TP+FN)</li>
+<li>Accuracy :
+(TP+TN)/(TP+FN+TN+FP)</li>
+<li>F1 Score est une métrique qui combine la précision et le recall :
+F1-Score=2 (Precision .Recall)/(Precision+Recall)</li>
+<li>La métrique Mean Absolute Error (MAE) a la capacité de gérer les outliers</li>
+</ul>
+<h3 id=54mise-en-œuvre-et-implémentation-du-machine-learning>5.4. Mise en œuvre et implémentation du Machine Learning</h3>
+<h4 id=541construire-des-solutions-ml-pour-la-performance-la-disponibilité-lévolutivité-la-résilience-et-la-tolérance-aux-pannes>5.4.1. Construire des solutions ML pour la performance, la disponibilité, l&rsquo;évolutivité, la résilience et la tolérance aux pannes</h4>
+<ul>
+<li>Journalisation et surveillance en utilisant CloudWatch and CloudTrail <a href=https://docs.aws.amazon.com/fr_fr/sagemaker/latest/dg/sagemaker-incident-response.html>Journalisation et surveillance</a></li>
+<li>Créez un tableau de bord CloudWatch pour afficher une vue des paramètres de latence, d&rsquo;utilisation de la mémoire et d&rsquo;utilisation du processeur de la variante du modèle SageMaker</li>
+<li>Deep Learning AMI: <a href=https://docs.aws.amazon.com/fr_fr/dlami/latest/devguide/what-is-dlami.html>Link</a></li>
+<li>Docker est couramment utilisé dans le déploiement des modèles ML: <a href=https://docs.aws.amazon.com/fr_fr/sagemaker/latest/dg/docker-containers.html>Docker</a></li>
+<li>Mise à l&rsquo;échelle automatique des modèles Amazon SageMaker: <a href=https://docs.aws.amazon.com/fr_fr/sagemaker/latest/dg/endpoint-auto-scaling.html>Scalabilité automatique des modèles Amazon SageMaker</a></li>
+<li>AWS Auto Scaling surveille vos applications et ajuste automatiquement la capacité pour maintenir des performances constantes et prévisibles au coût le plus bas possible</li>
+<li>En utilisant Auto Scaling, il faut définir une politique de scaling: <a href=https://tutorialsdojo.com/step-scaling-vs-simple-scaling-policies-in-amazon-ec2/>Policies in EC2</a>
+<ul>
+<li>Simple Scaling</li>
+<li>Target tracking Scaling</li>
+<li>Step Scaling</li>
+</ul>
+</li>
+<li>Meilleures pratiques du ML dans les services financiers: <a href=https://aws.amazon.com/fr/blogs/machine-learning/machine-learning-best-practices-in-financial-services/>Best practices</a></li>
+</ul>
+<h4 id=542services-aws-pour-le-machine-learning>5.4.2. Services AWS pour le Machine Learning</h4>
+<ul>
+<li>Comprehend : un service pour les applications NLP qui permet de trouver des features et des relations dans le texte</li>
+<li>Polly : générer la voix à partir d’un texte</li>
+<li>Lex : fournit des interfaces conversationnelles utilisant la voix et le texte, utiles pour créer des chatbots vocaux et textuels.</li>
+<li>Transcibe : fournit une capacité de conversion de la parole en texte</li>
+<li>Translate : fournit une traduction linguistique naturelle et fluide</li>
+<li>Rekognition : permet d’analyser des images et des vidéos</li>
+<li>Les limites des services AWS: <a href=https://docs.aws.amazon.com/fr_fr/general/latest/gr/sagemaker.html>SageMaker Points de terminaison et quotas Amazon</a></li>
+<li>Le format des données d’entrée dépend de l’algorithme pré-entrainé utilisé: <a href=https://docs.aws.amazon.com/fr_fr/sagemaker/latest/dg/algos.html>algorithmes intégrés d&rsquo;Amazon SageMaker ou les modèles pré-entraînés</a></li>
+<li>Apache Spark pourrait être utilisé avec les services AWS pour la gestion des données volumineuses</li>
+<li>Apache Spark Streaming supporte le traitement en temps réel des données</li>
+<li>Apache Spark MLlib est une bibliothèque Machine Learning qui permet d’exécuter des algorithmes conçus pour être mis à l&rsquo;échelle des clusters pour la classification, la régression, le clustering et le collaborative filtering</li>
+<li>SageMaker lifecycle est utilisé pour installer les packages ou les notebooks dans ses proposes instances notebook , configurer le réseau et la sécurité des instances notebook et utiliser les script shell pour personnaliser les instances notebook</li>
+<li>SageMaker Hosting Services permet d’envoyer des requêtes vers un HTTPS endpoint pour tester des inférences</li>
+<li>SageMaker Batch Transform est utilisé pour tester des inférences sur un dataset en entier sans avoir besoin d’un endpoint persistent</li>
+<li>Le reste des services est présenté dans cette documentation: <a href=https://docs.aws.amazon.com/whitepapers/latest/aws-overview/machine-learning.html>Les services ML d&rsquo;Amazon</a></li>
+</ul>
+<h4 id=543sécurité-des-solutions-ml>5.4.3. Sécurité des solutions ML</h4>
+<ul>
+<li>La sécurité est traitée d’une manière très légère mais vous aurez quelques questions sur les services de sécurité de AWS comme IAM.</li>
+<li>SageMaker permet de lire des données stockées en S3 et cryptées en utilisant AWS Key Management Service (KMS). Il est important de s’assurer que les politiques de clé KMS incluent le rôle attaché à SageMaker utilisé</li>
+<li>IAM : garantit que les bonnes personnes et les bons rôles dans votre organisation (identités) peuvent accéder aux outils dont ils ont besoin pour faire leur travail</li>
+<li>S3 bucket policies: <a href=https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html>Exemples</a></li>
+<li>Security groups: agissent comme un pare-feu virtuel, en contrôlant le trafic qui est autorisé à atteindre et à quitter les ressources auxquelles il est associé. Par exemple, après avoir associé un groupe de sécurité à une instance EC2, il contrôle le trafic entrant et sortant de l&rsquo;instance: <a href=https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html>Groupes de sécurité</a></li>
+<li>Amazon Virtual Private Cloud (VPC): permet de lancer des ressources AWS dans un réseau virtuel défini. Ce réseau virtuel ressemble beaucoup à un réseau traditionnel exploité dans le data center d&rsquo;origine, avec les avantages de l&rsquo;utilisation de l&rsquo;infrastructure évolutive d&rsquo;AWS. Il est logiquement isolé des autres réseaux virtuels dans le cloud AWS. Vous pouvez spécifier une plage d&rsquo;adresses IP pour le VPC, ajouter des sous-réseaux, ajouter des passerelles et associer des groupes de sécurité. Un sous-réseau est une plage d&rsquo;adresses IP dans votre VPC: <a href=https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html>Amazon VPC</a></li>
+<li>Encryption: AES-256 est la technologie que nous utilisons pour chiffrer les données dans AWS, y compris le chiffrement côté serveur d&rsquo;Amazon Simple Storage Service (S3): <a href=https://aws.amazon.com/fr/blogs/security/importance-of-encryption-and-how-aws-can-help/>L&rsquo;imporatance du chiffrement</a></li>
+</ul>
+<h4 id=544déploiement-des-solutions-ml>5.4.4. Déploiement des solutions ML</h4>
+<ul>
+<li>Exposer les endpoints et intéragir avec eux: <a href=https://aws.amazon.com/fr/blogs/machine-learning/call-an-amazon-sagemaker-model-endpoint-using-amazon-api-gateway-and-aws-lambda/>amazon-api-gateway-and-aws-lambda</a></li>
+<li>Versionnement des modèles ML: <a href=https://docs.aws.amazon.com/fr_fr/rekognition/latest/dg/face-detection-model.html>Versionnement de modèle</a></li>
+<li>A/B testing: <a href=https://aws.amazon.com/fr/blogs/machine-learning/a-b-testing-ml-models-in-production-using-amazon-sagemaker/>A/B testing</a></li>
+<li>Réapprentissage des modèles: <a href=https://aws.amazon.com/fr/blogs/machine-learning/automating-model-retraining-and-deployment-using-the-aws-step-functions-data-science-sdk-for-amazon-sagemaker/>Automating model retraining</a></li>
+<li>Quand on applique des changements sur le SageMaker endpoint, on modifie le SageMaker HTTPS endpoint sans mettre en arrêt le modèle déjà déployé. On change le type de l’instance du modèle existant et on ajouter un nouveau model variant. La création de la nouvelle configuration de l’endpoint et son déploiement se fait en utilisant l’action UpdateEndpoint</li>
+<li>Deep Learning AMI est une image machine Amazon fournie par AWS pour une utilisation sur Amazon EC2. Elle est conçue pour fournir un environnement d&rsquo;exécution stable, sécurisé et performant pour les applications de Deep Learning exécutées sur Amazon EC2.</li>
+<li>Deep Learning AMI n’est pas utilisé pour charger un large dataset d’apprentissage à partir de S3</li>
+</ul>
+<h2 id=6préparation-ressources-et-planification>6. Préparation, ressources et planification</h2>
+<p>La stratégie et le temps de préparation de l’examen dépendent systématiquement du niveau d’expertise du candidat. Initialement, j’ai commencé par le cours d’AWS et ses fournisseurs externes. Après, j’ai implémenté quelques solutions ML en utilisant les services AWS et principalement SageMaker et SageMaker Studio. Par la suite, j’ai consulté les documentations AWS des services déjà présentés dans la section précédente. Finalement, j’ai passé plusieurs test pratiques disponibles gratuitement sur plusieurs sites d’apprentissage.</p>
+<p>A la fin, je vous donne quelques ressources très utiles pour préparer l’examen :</p>
+<ul>
+<li>Vidéos:
+<ul>
+<li><a href="https://www.youtube.com/watch?v=uQc8Itd4UTs&list=PLhr1KZpdzukcOr_6j_zmSrvYnLUtgqsZz">Fully-Managed Notebook Instances with Amazon SageMaker - a Deep Dive</a></li>
+<li><a href=https://statquest.org/video-index/>Liste de vidéos</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PLRKtJ4IpxJpDxl0NTvNYQWKCYzHNuy2xG">Making Friends with Machine Learning - Google Cloud</a></li>
+<li><a href=https://github.com/dair-ai/ML-YouTube-Courses>ML-YouTube-Courses</a></li>
+</ul>
+</li>
+<li>Github:
+<ul>
+<li><a href=https://github.com/aws/amazon-sagemaker-examples/tree/728db4ccd753674f5ac4b5912db35bcbf3eea3ed/introduction_to_amazon_algorithms#amazon-sagemaker-examples>Amazon SageMaker Examples</a></li>
+</ul>
+</li>
+<li>Documentation AWS:
+<ul>
+<li><a href=https://docs.aws.amazon.com/>AWS Documentation</a></li>
+<li><a href=https://docs.aws.amazon.com/sagemaker/latest/dg/common-info-all-im-models.html>Common Information About Built-in Algorithms</a></li>
+<li><a href=https://aws.amazon.com/fr/serverless/>Services sans serveur sur AWS</a></li>
+</ul>
+</li>
+<li>Examen de la certification AWS Machine Learning Speciality (MLS-C01):
+<ul>
+<li><a href=https://www.aws.training/Certification>Lien de l&rsquo;examen</a></li>
+</ul>
+</li>
+</ul>
+<h2 id=7derniers-conseils>7. Derniers conseils</h2>
+<ul>
+<li>Commencer la préparation de l’examen en suivant le cours officiel sur la plateforme AWS training and certification: <a href=https://explore.skillbuilder.aws/learn/course/27/play/54/exam-readiness-aws-certified-machine-learning-specialty>AWS Skill Builder</a></li>
+<li>Pendant la préparation de l’examen, il faut avoir de l’expérience pratique avec le service AWS SageMaker afin de maitriser ce service ainsi que d’autres services comme S3 et IAM. Practice makes perfect 😊</li>
+<li>Pensez à s’entrainer avec des tests pratiques pour la certification AWS Machine Learning Speciality: <a href=https://explore.skillbuilder.aws/learn/course/12469/play/50086/aws-certified-machine-learning-specialty-official-practice-question-set-mls-c01-english>Test pratique</a></li>
+<li>Il faut maitriser l’anglais ! Certaines questions pourraient être délicates et un seul mot pourrait changer son sens</li>
+<li>Utiliser l’option « flag the question » pour pouvoir réviser les questions difficiles. Dans ce cas, vous pouvez commencer par les domaines que vous maitrisez en laissant les points compliqués pour la fin.</li>
+<li>Pendant l’examen, vous serez devant votre écran pendant 180 minutes sans avoir le droit à une pause donc n’oubliez pas de manger un petit snack, d’aller aux toilettes et de charger votre ordinateur avant de commencer la session.</li>
+</ul>
+<h2 id=8conclusion>8. Conclusion</h2>
+<p>L’expérience avec la certification AWS et son parcours d’apprentissage très intense m’a permis de bien comprendre la façon de résoudre les challenges du Machine Learning à l’aide des services AWS. Cependant, ce n’est qu’un « Hello World » pas vers la maitrise de toutes les architectures et tous les paramètres des services développés par AWS. Aujourd’hui, Talan, à travers ses collaborateurs, est prête à aider ses clients et partenaires à relever les challenges autour de l’IA, Data Science et Cloud Computing en mettant à leur disposition ces compétences techniques.</p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2023-02-08T17:59:29+01:00>
+8 février 2023
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/wael-saideni/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Wael SAIDENI" src=https://blog.talanlabs.com/authors/wael_saideni.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/wael-saideni/>Wael SAIDENI</a></h1>
+<p class="mt-0 mb-2">Data Scientist & Docteur en IA</p>
+</div>
+<div class=mb-6>
+<a href=https://www.linkedin.com/in/wael-saideni-753678152 target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/ia>IA</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/data>Data</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/mlops>MLOps</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/machine-learning>#Machine Learning</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/aws>#AWS</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/cloud>#Cloud</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/data-science>#Data Science</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/data-engineering>#Data Engineering</a>
+</div>
+</div>
+</div>
+</div>
+<aside>
+<h4 class="subtitle mt-10 mb-8"><i class="fas fa-forward"></i> Vous aimerez peut-être...</h4>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/juin-mois-futur-du-cloud/>
+<img class="border object-cover w-full m-0 max-w-md" src=/juin-mois-futur-du-cloud/cover_hu9731124c279ebe2097e4c1d032ec2f09_59858_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/cloud>cloud</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/juin-mois-futur-du-cloud/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Juin, le mois pour construire le futur du Cloud</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2018-08-20T11:48:45Z>
+20 août 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Vous vous êtes peut-être rendu compte que les Géants “Cloud Providers” se sont posés au mois de Juin 2018 à …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/jenkins-community-day-paris-2017/>
+<img class="border object-cover w-full m-0 max-w-md" src=/jenkins-community-day-paris-2017/cover_hu5438825b9b6d1014226d20d231e650c2_197678_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+</div>
+<a href=/jenkins-community-day-paris-2017/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Jenkins Community Day Paris 2017</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2017-07-18T07:34:31Z>
+18 juillet 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Les grenouilles de JFrog Artifactory ont organisé le 11 Juillet 2017 le Jenkins Community Day à Paris.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/microservices-partie-5-spring-cloud/>
+<img class="border object-cover w-full m-0 max-w-md" src=/microservices-partie-5-spring-cloud/cover_hu2c1382d831d54a22d61210909b0f0b5b_16873_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/back>back</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/cloud>cloud</a>
+</div>
+<a href=/microservices-partie-5-spring-cloud/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Les microservices pour une architecture orientée …</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2017-03-23T08:48:12Z>
+23 mars 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Spring Cloud, le couteau suisse des microservices Cet article s’insère dans la série « microservices » écrite …</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

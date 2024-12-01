@@ -1,0 +1,445 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Mettez (facilement) votre site en conformité avec RGPD ! | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="
+Vous aussi vous adorez les bandeaux de consentement que l’on trouve désormais sur (presque) tous les sites et vous rêvez d’en avoir un sur le vôtre ? C’est normal, ça fait tellement plus sérieux…​
+
+">
+<meta property="og:title" content="Mettez (facilement) votre site en conformité avec RGPD !">
+<meta property="og:description" content="
+Vous aussi vous adorez les bandeaux de consentement que l’on trouve désormais sur (presque) tous les sites et vous rêvez d’en avoir un sur le vôtre ? C’est normal, ça fait tellement plus sérieux…​
+
+">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/mettez-facilement-site-conformite-rgpd/"><meta property="og:image" content="https://blog.talanlabs.com/mettez-facilement-site-conformite-rgpd/cover.jpg"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2021-10-27T07:02:05+01:00">
+<meta property="article:modified_time" content="2021-10-27T07:02:05+01:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/mettez-facilement-site-conformite-rgpd/cover.jpg">
+<meta name=twitter:title content="Mettez (facilement) votre site en conformité avec RGPD !">
+<meta name=twitter:description content="
+Vous aussi vous adorez les bandeaux de consentement que l’on trouve désormais sur (presque) tous les sites et vous rêvez d’en avoir un sur le vôtre ? C’est normal, ça fait tellement plus sérieux…​
+
+">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://alainnicolas.fr/blog/mettez-facilement-site-conformite-rgpd/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Mettez (facilement) votre site en conformité avec RGPD !</h1>
+<figure class="cover image">
+<img src=/mettez-facilement-site-conformite-rgpd/cover.jpg width=4749 height=3264 alt="illustration de l'article">
+</figure>
+<div class=paragraph>
+<p>Vous aussi vous adorez les bandeaux de consentement que l’on trouve désormais sur (presque) tous les sites et vous rêvez d’en avoir un sur le vôtre ?
+C’est normal, ça fait tellement plus sérieux…​ Et puis, c’est aussi ça respecter les règles !</p>
+</div>
+<div class=sect1>
+<h2 id=_rgpd_le_vrai_cookie_monster>RGPD, le vrai Cookie Monster</h2>
+<div class=sectionbody>
+<div class=sect2>
+<h3 id=_quest_ce_quun_cookie>Qu’est-ce qu’un cookie ?</h3>
+<div class=paragraph>
+<p>C’est un petit fichier assez simple déposé dans notre navigateur lorsque nous visitons certains sites.
+Notamment pour nous identifier lors de la prochaine visite.<br>
+Ce qui peut parfois se révéler assez pratique : le site peut ainsi connaître à l’avance nos préférences d’affichage par exemple.</p>
+</div>
+<div class=paragraph>
+<p>Mais lorsqu’une régie publicitaire commune à plusieurs sites se permet de tracer nos habitudes d’un site à l’autre, par exemple pour nous proposer des publicités sur Amazon en rapport avec nos pages Facebook suivies …​ l’aspect pratique s’efface derrière l’aspect effrayant.<br>
+Nos données personnelles ne sont plus personnelles, alors même que l’on ne nous a pas demandé notre avis.</p>
+</div>
+<div class=paragraph>
+<p>C’est pour combattre cette dérive que le RGPD demande de recueillir le consentement des utilisateurs avant d’exploiter leurs données personnelles.</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=./cookies.jpg alt=Cookies>
+</div>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_rgpd_rappel_rapide>RGPD : rappel rapide</h3>
+<div class=paragraph>
+<p>Le règlement général sur la protection des données est un texte du Parlement européen qui a pour but d’améliorer la protection des données des personnes, notamment en responsabilisant les acteurs du traitement de ces données.</p>
+</div>
+<div class=paragraph>
+<p>Il donne par ailleurs plus de pouvoirs aux autorités comme la CNIL, en charge de faire respecter les directives européennes transposées en droit français.</p>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_la_conséquence>La conséquence</h3>
+<div class=paragraph>
+<p>Il en résulte une conséquence directe assez visible lorsque l’on navigue sur Internet : notre consentement autour des cookies est demandé à tout bout de champ.</p>
+</div>
+<div class=paragraph>
+<p>Et bien souvent la question est difficile à ignorer…​<br>
+Bandeau envahissant, popup au premier plan, tous les moyens sont bons pour détourner notre attention de l’information que l’on veut consulter.
+En améliorant la confidentialité de nos données, le RGPD a aussi considérablement détérioré notre expérience du web.</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=./cookie-monster.gif alt="Cookie Monster">
+</div>
+</div>
+<div class=paragraph>
+<p><em>Le RGPD ne se résume pas qu’au consentement autour des cookies, mais l’objectif ici n’est pas de lister les tenants et les aboutissants d’un <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/PDF/?uri=CELEX:32016R0679&from=FR" target=_blank rel=noopener>texte de loi de plus de 80 pages</a>.</em></p>
+</div>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_la_difficulté_de_faire_les_choses_proprement>La difficulté de faire les choses proprement</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Mais avant de jeter la pierre aux designers ou aux développeurs qui n’ont pas eu le choix, essayons de comprendre les difficultés qui résident dans la mise en œuvre du recueil du consentement des utilisateurs.</p>
+</div>
+<div class=sect2>
+<h3 id=_lister_les_cookies>Lister les cookies</h3>
+<div class=paragraph>
+<p>La première étape consiste à lister les cookies utilisés par le site.</p>
+</div>
+<div class=paragraph>
+<p>Bien souvent on retrouve un (ou plusieurs !) cookie(s) permettant la mesure d’audience, comme ceux déposés par Google Analytics ou ses concurrents.
+Mais il faut aussi penser à tous les services tiers utilisés…​</p>
+</div>
+<div class=paragraph>
+<p>C’est ainsi que sur ce blog, nous utilisons par exemple Disqus pour gérer le système de commentaires.</p>
+</div>
+<div class=paragraph>
+<p>Il ne faut pas non plus oublier l’intégration de lecteurs vidéo comme YouTube qui apportent leur lot de cookies, l’utilisation de fonctionnalités de réseaux sociaux, etc.</p>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_rendre_les_cookies_optionnels>Rendre les cookies optionnels</h3>
+<div class=paragraph>
+<p>Nous l’avons dit, de manière à être conforme aux recommandations de la CNIL, le site ne doit pas déposer de cookie sans le consentement du visiteur.</p>
+</div>
+<div class=paragraph>
+<p>Cela signifie donc qu’il faut gérer 3 états :</p>
+</div>
+<div class="olist arabic">
+<ol class=arabic>
+<li>
+<p>Le consentement n’a ni été donné, ni été refusé, donc les cookies ne doivent pas être déposés</p>
+</li>
+<li>
+<p>Le consentement a été refusé, donc les cookies n’ont pas été déposés et le site doit tout de même fonctionner normalement</p>
+</li>
+<li>
+<p>Le consentement a été accordé, donc les cookies peuvent être déposés</p>
+</li>
+</ol>
+</div>
+<div class=paragraph>
+<p>Il faut donc à tout moment savoir si le consentement a été accordé et être capable de désactiver des fonctionnalités le cas échéant.
+Ce qui ne manque pas d’avoir un impact direct sur le code source de la page concernée…​</p>
+</div>
+<div class=paragraph>
+<p>On se retrouve alors avec des petits morceaux de code retouchés qui ressemblent à cela :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-javascript data-lang=javascript>    if (isGoogleConsentGiven) {
+        // Add Google Analytics
+    }
+
+    if (isDisqusConsentGiven) {
+        // Add Disqus
+    }</code></pre>
+</div>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_ne_pas_trop_dégrader_lexpérience_utilisateur>Ne pas (trop) dégrader l’expérience utilisateur</h3>
+<div class=paragraph>
+<p>On l’a vu plus haut, même en ayant refusé les cookies (ou en tout cas certains), l’utilisateur doit pouvoir continuer sa navigation le plus normalement possible.
+Il convient donc de vérifier que les fonctionnalités au cœur de notre page ne sont pas impactées par l’absence d’un service.</p>
+</div>
+<div class=paragraph>
+<p>Par exemple, une page qui liste des vidéos YouTube sous forme de vignettes …​ sans YouTube …​ ça rend tout de suite moins bien.
+Il faut donc à minima prévoir un petit message pour expliquer l’apparence surprenante de la page.</p>
+</div>
+<div class=paragraph>
+<p>De plus, les bannières et autres encarts demandant le consentement viennent s’ajouter en superposition de pages souvent déjà bien remplies et complexifient parfois beaucoup trop la navigation.
+Même s’il y a du mieux ces derniers mois suite aux rappels à l’ordre de la CNIL, il est encore difficile de systématiquement refuser les cookies avec des boutons "ACCEPTER" bien trop mis en avant.</p>
+</div>
+<div class=paragraph>
+<p>Au-delà de l’aspect technique, il y a donc aussi des notions d’UX à prendre en compte pour éviter de retourner au web d’il y a 20 ans…​</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=./popup.gif alt=Popup>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_la_solution_tarteaucitron>La solution : tarteaucitron</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Nous l’avons vu, cette démarche de mise en conformité est donc relativement longue et complexe.<br>
+Et heureusement, il est temps de présenter l’outil qui pourra grandement vous faciliter la tâche, <a href=https://tarteaucitron.io target=_blank rel=noopener>Tarteaucitron</a> !</p>
+</div>
+<div class=paragraph>
+<p>Sans le savoir, il est probable que vous avez déjà utilisé Tarteaucitron, utilisé sur de nombreux sites (plus de 20 000 revendiqués sur le site de l’éditeur).</p>
+</div>
+<div class=paragraph>
+<p>C’est un outil qui se veut le plus générique possible, avec une version gratuite open-source et une version payante proposant une mise à jour continue ainsi qu’un plugin WordPress.
+Il consiste en une librairie JavaScript <a href=https://www.npmjs.com/package/tarteaucitronjs target=_blank rel=noopener>disponible via npm</a>, autrement dit très facilement installable.</p>
+</div>
+<div class=paragraph>
+<p>Il convient alors de l’intégrer à votre page :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-html data-lang=html>        &lt;script type=&#34;text/javascript&#34; src=&#34;/tarteaucitron/tarteaucitron.js&#34;/&gt;
+
+        &lt;script type=&#34;text/javascript&#34;&gt;
+            tarteaucitron.init({
+              // Configuration
+            });
+        &lt;/script&gt;</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>La configuration porte sur tous les aspects de l’outil : position de la bannière, affichage ou non des différents boutons de choix, etc.
+Il vous faudra vous retrousser les manches pour modifier l’apparence de la bannière, de l’icône et de l’écran de choix, mais rien de très compliqué.</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=./banner_labs.png alt="Aperçu de la bannière sur ce site" width="en plein écran">
+</div>
+<div class=title>Aperçu de la bannière sur ce site, en plein écran</div>
+</div>
+<div class=paragraph>
+<p>Ensuite, service par service, vous allez pouvoir remplacer votre intégration actuelle par celle de Tarteaucitron.<br>
+Par exemple, dans le cas de Google Analytics, vous aviez l’habitude de l’ajouter comme ceci :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-html data-lang=html>    &lt;!-- Global site tag (gtag.js) - Google Analytics --&gt;
+    &lt;script async src=&#34;https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX&#34;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag(&#39;js&#39;, new Date());
+
+        gtag(&#39;config&#39;, &#39;UA-XXXXXXX&#39;);
+    &lt;/script&gt;</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>Il faut désormais remplacer ce morceau de code par :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-html data-lang=html>    &lt;!-- Cookies management for Google Analytics --&gt;
+    &lt;script type=&#34;text/javascript&#34;&gt;
+        tarteaucitron.user.gtagUa = &#39;UA-XXXXXXX&#39;;
+        (tarteaucitron.job = tarteaucitron.job || []).push(&#39;gtag&#39;);
+    &lt;/script&gt;</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>À tout moment, l’utilisateur peut revenir sur ses choix, par défaut en cliquant sur l’icône située en bas à droite de l’écran comme sur ce site.<br>
+Il accède alors à l’écran détaillé de choix :</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=./screen_choice.png alt="Aperçu de l’écran de choix">
+</div>
+<div class=title>Aperçu de l’écran de choix</div>
+</div>
+<div class=paragraph>
+<p>De même, en naviguant sur le site, il peut se retrouver face à une fonctionnalité désactivée en l’absence de cookie, Tarteaucitron va automatiquement lui proposer d’accepter les cookies associés s’il veut s’en servir :</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=./disqus.png alt="Aperçu d’une fonction de commentaire désactivée en l’absence de consentement autour de Disqus">
+</div>
+<div class=title>Aperçu d’une fonction de commentaire désactivée en l’absence de consentement autour de Disqus</div>
+</div>
+<div class=paragraph>
+<p>En résumé, Tarteaucitron nous a permis de surmonter les difficultés listées plus haut :</p>
+</div>
+<div class="olist arabic">
+<ol class=arabic>
+<li>
+<p>En intégrant par défaut plus d’une centaine de services couramment utilisés, il permet de répondre à la grande majorité des cas que l’on peut lister sur son site</p>
+</li>
+<li>
+<p>Il gère le cas du consentement accordé au non, service par service</p>
+</li>
+<li>
+<p>Il évite de dégrader l’expérience utilisateur en proposant des bannières simples et en remplaçant proprement les encarts refusés</p>
+</li>
+</ol>
+</div>
+<div class=paragraph>
+<p>Par sa facilité d’installation et de configuration, nul doute que Tarteaucitron continuera de gagner de nombreux utilisateurs dans les prochaines années …​ pour le plus grand bien des internautes !</p>
+</div>
+</div>
+</div>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2021-10-27T07:02:05+01:00>
+27 octobre 2021
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/alain-nicolas/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Alain NICOLAS" src=https://blog.talanlabs.com/authors/alain_nicolas.png></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/alain-nicolas/>Alain NICOLAS</a></h1>
+<p class="mt-0 mb-2">Développeur Blockchain & DLT</p>
+</div>
+<div class=mb-6>
+<a href=https://twitter.com/alain_ncls target=_blank class="icon is-medium"><i class="fab fa-lg fa-twitter text-[#1DA1F2]"></i></a>
+<a href=https://www.linkedin.com/in/alainnicolas target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+<a href=https://github.com/alainncls target=_blank class="icon is-medium"><i class="fab fa-lg fa-github"></i></a>
+<a class="icon is-medium" href=https://alainncls.medium.com/ target=_blank><i class="fab fa-lg fa-medium"></i></a>
+<a href=https://alainnicolas.fr target=_blank class="icon is-medium"><i class="fas fa-lg fa-link"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/data>data</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/rgpd>#RGPD</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/cookies>#cookies</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/tarteaucitron>#tarteaucitron</a>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!doctype html><html lang=fr-fr>
+<head><title> REX : Intégration des API Microsoft | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Mise en contexte Nous allons parler dans cet article de l&rsquo;intégration des API Microsoft dans une application Web.">
+<meta property="og:title" content="REX : Intégration des API Microsoft">
+<meta property="og:description" content="Mise en contexte Nous allons parler dans cet article de l&rsquo;intégration des API Microsoft dans une application Web.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/2021-04-29-rex-api-o365/"><meta property="og:image" content="https://blog.talanlabs.com/2021-04-29-rex-api-o365/cover.png"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2021-04-29T15:17:56+02:00">
+<meta property="article:modified_time" content="2021-04-29T15:17:56+02:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/2021-04-29-rex-api-o365/cover.png">
+<meta name=twitter:title content="REX : Intégration des API Microsoft">
+<meta name=twitter:description content="Mise en contexte Nous allons parler dans cet article de l&rsquo;intégration des API Microsoft dans une application Web.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/2021-04-29-rex-api-o365/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>REX : Intégration des API Microsoft</h1>
+<figure class="cover image">
+<img src=/2021-04-29-rex-api-o365/cover.png width=530 height=265 alt="illustration de l'article">
+</figure>
+<h2 id=mise-en-contexte>Mise en contexte</h2>
+<p>Nous allons parler dans cet article de l&rsquo;intégration des API Microsoft dans une application Web. Commençons d&rsquo;abord par une mise en contexte :</p>
+<p>Microsoft 365 est maintenant présent dans la majorité des entreprises, le télétravail tend à se démocratiser de plus en plus avec le contexte actuel, et Teams est de plus en plus utilisé. En effet, partager de l&rsquo;information et chercher à améliorer nos manières de communiquer sont devenus de véritables enjeux.</p>
+<p>Certains grands groupes développent ainsi des portails clients (B2B ou B2C) pour répondre à ces problématiques. Il s&rsquo;agit là de mettre à disposition des clients diverses informations et services de manière centralisée sur un même portail.</p>
+<p>La question qui s&rsquo;est posée dans le cadre de notre mission est donc la suivante : comment pourrait-on faciliter les communications entres les clients de l&rsquo;entreprise et leurs contacts commerciaux, que ce soit par chat, audio, vidéo ou bien l&rsquo;organisation de meetings, le tout depuis ce portail ?</p>
+<p>→ Et bien Microsoft met à disposition des outils répondant à ces besoins (API Microsoft Graph, deeplinks…)</p>
+<p>Notre objectif a donc été de réaliser un POC pour tester ces API, voir ce qu&rsquo;il était possible de faire, de ne pas faire, en trouver les limites, etc. Pour ensuite éventuellement transmettre ce qu&rsquo;on aura appris à d&rsquo;autres équipes.</p>
+<h2 id=environnement-de-développement>Environnement de développement</h2>
+<p>Tout d&rsquo;abord, qu&rsquo;est-ce que Microsoft Graph ? <em>&ldquo;Microsoft Graph is the gateway to data and intelligence in Microsoft 365. It provides a unified programmability model that you can use to access the tremendous amount of data in Microsoft 365, Windows 10, and Enterprise Mobility + Security. Use the wealth of data in Microsoft Graph to build apps for organizations and consumers that interact with millions of users."</em> (<a href=https://docs.microsoft.com/en-us/graph/overview>source</a>)</p>
+<p>Avant de pouvoir utiliser les API Microsoft Graph, il va falloir quelques prérequis.</p>
+<h3 id=tenant>Tenant</h3>
+<p>Commençons par la notion de <strong>tenant</strong>, qui en fait représente une organisation dans Office 365, par exemple Talan.
+Il sera nécessaire d&rsquo;avoir accès au compte admin de notre tenant, ou bien de travailler avec les personnes qui y ont accès.</p>
+<p>Dans le cadre de notre POC, on nous a mis à disposition un tenant de test (avec de faux utilisateurs, de faux groupes, etc.) afin de faciliter nos recherches.</p>
+<h3 id=création-de-lapplication>Création de l&rsquo;application</h3>
+<p>L&rsquo;étape suivante a été d&rsquo;enregistrer une nouvelle application dans le portail azure, afin d&rsquo;être capable d&rsquo;utiliser les API Microsoft.</p>
+<p>→ Microsoft fournit un <a href=https://developer.microsoft.com/en-us/graph/Quick-Start>Quick Start</a> pour configurer l&rsquo;environnement de développement et ainsi lancer rapidement les développements dans le language que l&rsquo;on souhaite. Dans notre cas, en Node.js.</p>
+<p>A l&rsquo;issu de ces étapes, nous avons un ID et un secret pour notre application, qu&rsquo;il faudra renseigner dans les variables d&rsquo;environnement.</p>
+<p><img src=portal-add-new-app-registration.png alt="Enregistrer une nouvelle application dans le portail Azure"></p>
+<blockquote>
+<p>Note : pour plus d&rsquo;informations sur l&rsquo;enregistrement d&rsquo;applications dans le portail Azure, <a href=https://docs.microsoft.com/fr-fr/azure/healthcare-apis/fhir/register-public-azure-ad-client-app>voici le lien</a> !</p>
+</blockquote>
+<h3 id=authentification>Authentification</h3>
+<p>Afin d&rsquo;utiliser les API Microsoft Graph, il faut disposer d&rsquo;un <code>authentication token</code> en s&rsquo;authentifiant en tant qu&rsquo;utilisateur ou en tant que service.</p>
+<ul>
+<li><a href=https://docs.microsoft.com/fr-fr/graph/auth-v2-user>En tant qu&rsquo;utilisateur</a> (compte professionnel / étudiant, ou compte personnel): j&rsquo;aurai accès principalement à mes informations (mails, messages, calendrier&mldr;).</li>
+<li><a href=https://docs.microsoft.com/fr-fr/graph/auth-v2-service>En tant que service</a> (backend, daemons): cette authentification peut être utilisée lorsqu&rsquo;il s&rsquo;agit de services d&rsquo;arrière-plan ou bien lorsqu&rsquo;il faut des privilèges plus élevés que ceux d&rsquo;un simple utilisateur.</li>
+</ul>
+<blockquote>
+<p>Note : Microsoft Graph utilise l&rsquo;authentification standard OIDC / OAuth2</p>
+</blockquote>
+<p>Voici un <a href=https://docs.microsoft.com/fr-fr/graph/auth-v2-service#4-get-an-access-token>exemple de requête de demande de token</a> pour obtenir l&rsquo;accès sans utilisateur :</p>
+<pre tabindex=0><code>POST: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token HTTP/1.1 
+Host: login.microsoftonline.com 
+Content-Type: application/x-www-form-urlencoded 
+
+client_id=535fb089-9ff3-47b6...
+&amp;scope=https%3A%2F%2Fgraph.microsoft.com%2F.default 
+&amp;client_secret=qWgdYAmab0Y...
+&amp;grant_type=client_credentials
+</code></pre><p>Les paramètres passés dans le body de la requête <strong>client_id</strong> & <strong>client_secret</strong> sont les App ID et secret définis lors de l&rsquo;enregistrement de l&rsquo;application dans le portail azure.</p>
+<p>Pour le paramètre <strong>scope</strong> : <em>&ldquo;La valeur transmise pour le paramètre scope dans cette demande doit être l’identificateur (URI de l’ID d’application) de la ressource souhaitée, avec le suffixe .default. Pour Microsoft Graph, la valeur est <code>https://graph.microsoft.com/.default</code>. Cette valeur informe le point de terminaison de la Plateforme d’identités Microsoft que parmi toutes les autorisations que vous avez configurées pour votre application, un jeton doit être généré pour celles associées à la ressource que vous souhaitez utiliser."</em> (<a href=https://docs.microsoft.com/fr-fr/graph/auth-v2-service>https://docs.microsoft.com/fr-fr/graph/auth-v2-service</a>)</p>
+<p>Et enfin le paramètre <strong>grant_type</strong> doit prendre la valeur <code>client_credentials</code> lorsqu&rsquo;il s&rsquo;agit d&rsquo;une authentification en tant que service.</p>
+<p>Voici donc le token que nous recevons en réponse à la requête:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{ 
+  <span style=color:#f92672>&#34;token_type&#34;</span>: <span style=color:#e6db74>&#34;Bearer&#34;</span>, 
+  <span style=color:#f92672>&#34;expires_in&#34;</span>: <span style=color:#ae81ff>3599</span>, 
+  <span style=color:#f92672>&#34;access_token&#34;</span>: <span style=color:#e6db74>&#34;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...&#34;</span> 
+} 
+</code></pre></div><p>Pour résumer les 2 manières de s&rsquo;authentifier:</p>
+<p><img src=Schema-auth-api-graph.png alt="Schéma des différentes authentifications"></p>
+<h3 id=permissions---consentement-administrateur>Permissions - Consentement administrateur</h3>
+<p>Le scope d&rsquo;utilisation des API Microsoft Graph dans l&rsquo;application est régulé par l&rsquo;administrateur via le portail azure, où il va devoir donner son consentement, lorsque cela est nécessaire, afin d&rsquo;utiliser tel ou tel endpoint, et ce quelque soit l&rsquo;authentification.</p>
+<p>On pourra ainsi observer des différences de privilèges selon si la requête est au nom d&rsquo;un utilisateur ou en tant que service.</p>
+<p><img src=Admin-consent.png alt="Consentement administrateur"></p>
+<p>Les permissions relatives à chaque endpoint de l&rsquo;API sont décrites dans la documentation fournie par Microsoft.
+On y retrouve donc plusieurs types de permissions (déléguées et application). <a href="https://docs.microsoft.com/fr-fr/graph/api/user-list-calendarview?view=graph-rest-1.0&tabs=http">En voici un exemple</a> sur les endpoints de lecture / écriture du calendrier :</p>
+<p><img src=Permissions.png alt="Types de permissions"></p>
+<h3 id=résumé>Résumé</h3>
+<p>Une fois toutes ces notions de tenant, d&rsquo;authentification, de permissions comprises, il est relativement simple d&rsquo;utiliser les API Microsoft Graph. De plus, Microsoft fournit une documentation claire et complète, ainsi qu&rsquo;un set de requêtes Postman pour s&rsquo;y familiariser (<a href=https://docs.microsoft.com/fr-fr/graph/use-postman>voici le lien</a>).</p>
+<p>Maintenant que nous avons vu comment utiliser les API Microsoft Graph, nous allons pouvoir parler du travail que nous avons réalisé dans le cadre du POC.</p>
+<h2 id=cas-dutilisation>Cas d&rsquo;utilisation</h2>
+<p>Pour reprendre la problématique du projet, que mettent concrètement à disposition les API Microsoft Graph pour faciliter les communications ? Y a t-il des endpoints de lecture / écriture de messagerie ? Y a t-il d&rsquo;autres solutions ? Que recommande Microsoft pour ces cas d&rsquo;utilisation ?</p>
+<p>C&rsquo;est ce à quoi nous allons tenter de répondre.</p>
+<h3 id=communiquer-par-chat>Communiquer par chat</h3>
+<p>Pour commencer, nous avons fait quelques recherches sur la communication par chat et voici ce que nous en avons conclu :</p>
+<ul>
+<li>Il existe plusieurs endpoints pour récupérer des messages provenant de channels Teams, etc. Cependant, lors de nos recherches, il s&rsquo;agissait de fonctionnalités de la version beta des API Microsoft Graph, et non pas des versions officielles (il semble qu&rsquo;elles soient maintenant disponibles en version normale).</li>
+<li>Cette solution nécessite d&rsquo;implémenter un système de messagerie instantanée.</li>
+<li>Cette solution nécessite que le client se connecte avec son compte Teams sur l&rsquo;application.</li>
+<li>Une solution possible serait l&rsquo;utilisation de bots, mais avait l&rsquo;air trop complexe dans le cadre du projet.</li>
+</ul>
+<p>→ Nous avons été confrontés à beaucoup de freins, que ce soit par la faisabilité, la pertinence ou la complexité des solutions.</p>
+<p><strong>Comment alors faire plus simplement ?</strong></p>
+<p>→ <a href=https://azure.microsoft.com/fr-fr/services/communication-services/>Azure Communication Services</a></p>
+<p>Suite à la discussion que nous avons eue avec les équipes Microsoft Teams, nous avons été redirigés vers cette solution qui n&rsquo;allait pas tarder à être lancée (à l&rsquo;époque en tout cas) et qui répondrait à nos besoins en matière de communication.
+Cela étant, nous n&rsquo;avons pas creusé l&rsquo;idée plus que ça, bien qu&rsquo;elle avait l&rsquo;air assez intéressante.</p>
+<p>Les équipes Microsoft Teams nous ont ensuite expliqué que leur vision de l&rsquo;utilisation des services qu&rsquo;ils proposent était différente de la nôtre. En effet, leur vision s&rsquo;axe plus sur l&rsquo;intégration d&rsquo;applications externes dans l&rsquo;environnement Teams que l&rsquo;utilisation des API qu&rsquo;ils mettent à disposition dans des applications externes.</p>
+<p>→ <a href=https://docs.microsoft.com/en-us/microsoftteams/platform/concepts/build-and-test/deep-links#deep-linking-to-a-chat>Les deeplinks</a></p>
+<p>Les deeplinks sont des liens intelligents capables de rediriger vers une url spécifique, inaccessible via un lien classique. Ce qui est le cas pour les urls de conversation Teams.</p>
+<p>La structure des deeplinks vers une conversation est la suivante :<code>https://teams.microsoft.com/l/call/0/0?users=&lt;user1>,&lt;user2></code>. Elle nécessite donc uniquement les identifiants (emails) des utilisateurs concernés.</p>
+<p>Cette solution nécessite effectivement que le client ait un compte Teams, et que nous en connaissions l&rsquo;email.</p>
+<p>De plus, selon la configuration du tenant et les restrictions d&rsquo;accès que cela peut engendrer, il est possible que des utilisateurs d&rsquo;un certain tenant ne puissent pas discuter avec des utilisateurs Teams d&rsquo;un tenant externe au leur. Une solution existe : inviter des utilisateurs externes au tenant dans son tenant : ils auront alors un statut <code>guest</code>, impliquant des restrictions sur l&rsquo;utilisation de Teams, mais permettant de discuter avec les utilisateurs du tenant.</p>
+<p>Après avoir accepté les conditions, le client pourra donc échanger avec son contact via l&rsquo;interface Teams.</p>
+<p>Nous avons finalement choisi l&rsquo;utilisation des deeplinks, de par leur facilité d&rsquo;utilisation et par la solution qu&rsquo;ils apportent à notre besoin.</p>
+<p>Cependant, nous avons vu là uniquement les solutions d&rsquo;échanges instantanés. Mais les API Microsoft Graph permmettent aussi la planification de meetings, autrement dit la lecture / écriture dans les agendas des collaborateurs.</p>
+<h3 id=organiser-des-meetings>Organiser des meetings</h3>
+<p>Nous avons découpé ce cas d&rsquo;utilisation en 3 parties :</p>
+<ol>
+<li><a href="https://docs.microsoft.com/fr-fr/graph/api/calendar-getschedule?view=graph-rest-1.0&tabs=http">Accéder aux disponibilités de notre contact</a></li>
+</ol>
+<p>En voici la requête ainsi que la réponse :</p>
+<pre tabindex=0><code>POST https://graph.microsoft.com/v1.0/me/calendar/getSchedule
+Prefer: outlook.timezone=&quot;Pacific Standard Time&quot;
+Content-Type: application/json
+
+{
+    &quot;schedules&quot;: [&quot;adelev@contoso.onmicrosoft.com&quot;],
+    &quot;startTime&quot;: {
+        &quot;dateTime&quot;: &quot;2021-06-15T09:00:00&quot;,
+        &quot;timeZone&quot;: &quot;Pacific Standard Time&quot;
+    },
+    &quot;endTime&quot;: {
+        &quot;dateTime&quot;: &quot;2021-06-15T18:00:00&quot;,
+        &quot;timeZone&quot;: &quot;Pacific Standard Time&quot;
+    },
+    &quot;availabilityViewInterval&quot;: 60
+}
+</code></pre><pre tabindex=0><code>HTTP/1.1 200 OK
+Content-type: application/json
+
+{
+    &quot;value&quot;: [
+        {
+            &quot;scheduleId&quot;: &quot;adelev@contoso.onmicrosoft.com&quot;,
+            &quot;availabilityView&quot;: &quot;000220000&quot;,
+            &quot;scheduleItems&quot;: [...],
+            &quot;workingHours&quot;: {
+                &quot;daysOfWeek&quot;: [...],
+                &quot;startTime&quot;: &quot;08:00:00.0000000&quot;,
+                &quot;endTime&quot;: &quot;17:00:00.0000000&quot;,
+                &quot;timeZone&quot;: {
+                    &quot;name&quot;: &quot;Pacific Standard Time&quot;
+                }
+            }
+        },
+    ]
+}
+</code></pre><p>Les éléments intéressants de la réponse à cette requête sont :</p>
+<ul>
+<li>le champs <strong>scheduleItems</strong>, qui <em>&ldquo;Contient les éléments qui décrivent la disponibilité de l’utilisateur&rdquo;</em>, autrement dit les réunions déjà planifiées de la personne ou de l&rsquo;entité.</li>
+<li>le champs <strong>availabilityView</strong>, qui <em>&ldquo;Représente une vue fusionnée de la disponibilité de tous les éléments dans scheduleItems . L’affichage se compose de créneaux horaires. La disponibilité de chaque créneau horaire est indiquée par : 0 = libre, 1 = provisoire, 2 = occupé, 3 = absent du bureau, 4 = travail ailleurs."</em></li>
+</ul>
+<p>C&rsquo;est donc ce dernier champs que l&rsquo;on peut exploiter pour organiser des rendez-vous dans les créneaux disponibles du contact.</p>
+<ol start=2>
+<li><a href="https://docs.microsoft.com/fr-fr/graph/api/user-post-events?view=graph-rest-1.0&tabs=http#example-4-create-and-enable-an-event-as-an-online-meeting">Créer un meeting dans un agenda</a></li>
+</ol>
+<p>En voici la requête ainsi que la réponse :</p>
+<pre tabindex=0><code>POST https://graph.microsoft.com/v1.0/me/events
+Prefer: outlook.timezone=&quot;Pacific Standard Time&quot;
+Content-type: application/json
+
+{
+  &quot;subject&quot;: &quot;Let's go for lunch&quot;,
+  &quot;body&quot;: {
+    &quot;contentType&quot;: &quot;HTML&quot;,
+    &quot;content&quot;: &quot;Does noon work for you?&quot;
+  },
+  &quot;start&quot;: {...},
+  &quot;end&quot;: {...},
+  &quot;location&quot;:{...},
+  &quot;attendees&quot;: [...],
+  &quot;allowNewTimeProposals&quot;: true,
+  &quot;isOnlineMeeting&quot;: true,
+  &quot;onlineMeetingProvider&quot;: &quot;teamsForBusiness&quot;
+}
+</code></pre><p>Comme on peut le voir, plusieurs champs sont à renseigner pour créer la réunion.
+Mais ce sont les 2 champs <strong>isOnlineMeeting</strong> et <strong>onlineMeetingProvider</strong> qui vont permettre de créer une réunion Teams en ligne (si <code>onlineMeetingProvider</code> vaut <code>teamsForBusiness</code>) associée à la réunion et en générer le lien en réponse.</p>
+<pre tabindex=0><code>HTTP/1.1 201 Created
+Content-type: application/json
+
+{
+    &quot;subject&quot;:&quot;Let's go brunch&quot;,
+    &quot;bodyPreview&quot;:&quot;Does noon work for you?&quot;,
+    &quot;webLink&quot;:&quot;https://outlook.office365.com/...&quot;,
+    &quot;isOnlineMeeting&quot;: true,
+    &quot;onlineMeetingProvider&quot;: &quot;teamsForBusiness&quot;,
+    &quot;body&quot;:{...},
+    &quot;start&quot;:{...},
+    &quot;end&quot;:{...},
+    &quot;attendees&quot;:[...],
+    &quot;organizer&quot;:{
+        &quot;emailAddress&quot;:{
+            &quot;name&quot;:&quot;Dana Swope&quot;,
+            &quot;address&quot;:&quot;danas@contoso.onmicrosoft.com&quot;
+        }
+    },
+    &quot;onlineMeeting&quot;: {
+        &quot;joinUrl&quot;: &quot;https://teams.microsoft.com/l/meetup-join/...&quot;,
+        &quot;conferenceId&quot;: &quot;conferenceId&quot;,
+        &quot;tollNumber&quot;: &quot;tollNumber&quot;
+    }
+}
+</code></pre><p>Nous pouvons voir le champs <strong>onlineMeeting</strong> en réponse, qui fournit une url pour rejoindre le meeting ainsi que les informations nécessaires pour le rejoindre par téléphone.</p>
+<ol start=3>
+<li><a href="https://docs.microsoft.com/fr-fr/graph/api/user-list-events?view=graph-rest-1.0&tabs=http">Accéder à nos prochains RDV</a></li>
+</ol>
+<p>Cette requête renvoit en réponse plus ou moins les mêmes informations que la réponse à la création de meeting, dont le lien vers la réunion Teams s&rsquo;il s&rsquo;agit d&rsquo;une réunion en ligne, et toutes les informations dont on pourrait avoir besoin.</p>
+<p>Ces fonctionnalités sont faciles à exploiter et peuvent apporter une vraie valeur à l&rsquo;application.</p>
+<p>Seulement, utiliser les API Teams dans notre application n&rsquo;est pas le seul moyen d&rsquo;utiliser les outils Microsoft. Il est également possible d&rsquo;exposer notre application dans l&rsquo;application Teams.</p>
+<h3 id=intégrer-une-application-dans-teams>Intégrer une application dans Teams</h3>
+<p>Une solution très intéressante est donc de créer une application et de l&rsquo;intégrer dans l&rsquo;environnement Teams. Il existe plusieurs types d&rsquo;application que l&rsquo;on peut ajouter : des bots, des webhooks, des outils de messagerie et des contenus web intégrés dans des onglets de Teams, comme le montre le schéma ci-dessous :</p>
+<p><img src=https://docs.microsoft.com/en-us/microsoftteams/platform/assets/images/capabilities-overview.png alt=graph></p>
+<p>Pour notre POC, nous avons créé une application web intégrée dans un onglet de Teams en suivant ce <a href=https://docs.microsoft.com/en-us/microsoftteams/platform/tabs/quickstarts/create-personal-tab-node-yeoman>tutoriel</a>.</p>
+<p>L&rsquo;application aura besoin entre autres d&rsquo;un fichier <a href=https://docs.microsoft.com/en-us/microsoftteams/platform/resources/schema/manifest-schema>manifest.json</a> pour la décrire et indiquer à Teams où est exposée l&rsquo;application (voir le champs <code>staticTabs</code> ci-dessous), ainsi qu&rsquo;un grand nombre d&rsquo;autres informations.</p>
+<p>Voici une partie du manifest à fournir :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
+  <span style=color:#f92672>&#34;$schema&#34;</span>: <span style=color:#e6db74>&#34;https://developer.microsoft.com/en-us/json-schemas/teams/v1.8/MicrosoftTeams.schema.json&#34;</span>,
+  <span style=color:#f92672>&#34;manifestVersion&#34;</span>: <span style=color:#e6db74>&#34;1.8&#34;</span>,
+  <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;{{APPLICATION_ID}}&#34;</span>,
+  <span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;{{VERSION}}&#34;</span>,
+  <span style=color:#f92672>&#34;packageName&#34;</span>: <span style=color:#e6db74>&#34;{{PACKAGE_NAME}}&#34;</span>,
+  <span style=color:#f92672>&#34;developer&#34;</span>: {
+    <span style=color:#f92672>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;&lt;app_name&gt;&#34;</span>,
+    <span style=color:#f92672>&#34;websiteUrl&#34;</span>: <span style=color:#e6db74>&#34;https://{{HOSTNAME}}&#34;</span>,
+    <span style=color:#f92672>&#34;privacyUrl&#34;</span>: <span style=color:#e6db74>&#34;https://{{HOSTNAME}}/privacy.html&#34;</span>,
+    <span style=color:#f92672>&#34;termsOfUseUrl&#34;</span>: <span style=color:#e6db74>&#34;https://{{HOSTNAME}}/tou.html&#34;</span>
+  },
+  <span style=color:#f92672>&#34;staticTabs&#34;</span>: [
+    {
+      <span style=color:#f92672>&#34;entityId&#34;</span>: <span style=color:#e6db74>&#34;&lt;my_id&gt;&#34;</span>,
+      <span style=color:#f92672>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;&lt;display_name&gt;&#34;</span>,
+      <span style=color:#f92672>&#34;contentUrl&#34;</span>: <span style=color:#e6db74>&#34;https://{{HOSTNAME}}/&lt;my_tab&gt;/&#34;</span>,
+      <span style=color:#f92672>&#34;scopes&#34;</span>: [
+        <span style=color:#e6db74>&#34;personal&#34;</span>
+      ]
+    }
+  ]
+}
+</code></pre></div><p>Une fois que tout est prêt, et afin de permettre aux développeurs de tester leur application, il va falloir autoriser le chargement d&rsquo;une application locale dans Teams. Seul un administrateur peut <a href=https://admin.teams.microsoft.com>activer cette option</a>.
+Il sera alors possible d&rsquo;ajouter l&rsquo;application en tant qu&rsquo;utilisateur dans Teams, afin de faire profiter à tous les collaborateurs de la nouvelle application !</p>
+<h2 id=bilan>Bilan</h2>
+<p>Il est maintenant temps de faire un bilan de tout ce travail :</p>
+<ul>
+<li>Microsoft offre un grand nombre de possibilités pour utiliser ses services, que ce soit par ses API Graph, les deeplinks, Azure Communication Services et l&rsquo;intégration d&rsquo;applications dans Teams.</li>
+<li>Il est intéressant de savoir utiliser ces outils, car ils peuvent sans nul doute susciter l&rsquo;intérêt des clients.</li>
+<li>La documentation est exhaustive et très complète, à priori on peut y trouver tout ce dont on a besoin pour utiliser leurs API.</li>
+<li>L&rsquo;utilisation de leurs API en environnement de développement n&rsquo;était pas forcément très stable (trop sollicités), donc attention aux démos !</li>
+<li>Pouvoir customiser son environnement Teams avec des petites applications utiles peut être bien cool et peut encourager à plus utiliser Teams.</li>
+</ul>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2021-04-29T15:17:56+02:00>
+29 avril 2021
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/guillaume-collet/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Guillaume COLLET" src=https://blog.talanlabs.com/authors/guillaume-collet.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/guillaume-collet/>Guillaume COLLET</a></h1>
+<p class="mt-0 mb-2">Développeur Web</p>
+</div>
+<div class=mb-6>
+<a href=https://www.linkedin.com/in/guillaume-collet-75a128146 target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/back>back</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/cloud>cloud</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/api>#api</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/microsoft>#microsoft</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/rex>#rex</a>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

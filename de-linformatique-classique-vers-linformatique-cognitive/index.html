@@ -1,0 +1,238 @@
+<!doctype html><html lang=fr-fr>
+<head><title> De l’informatique classique vers l’informatique cognitive | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="LES PREMIERES LEÇONS DE L’IA DANS LES CONTEXTES INDUSTRIELS Une machine pensante comme l&rsquo;homme.">
+<meta property="og:title" content="De l’informatique classique vers l’informatique cognitive">
+<meta property="og:description" content="LES PREMIERES LEÇONS DE L’IA DANS LES CONTEXTES INDUSTRIELS Une machine pensante comme l&rsquo;homme.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/de-linformatique-classique-vers-linformatique-cognitive/"><meta property="og:image" content="https://blog.talanlabs.com/de-linformatique-classique-vers-linformatique-cognitive/cover.png"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2016-10-19T10:30:08+00:00">
+<meta property="article:modified_time" content="2016-10-19T10:30:08+00:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/de-linformatique-classique-vers-linformatique-cognitive/cover.png">
+<meta name=twitter:title content="De l’informatique classique vers l’informatique cognitive">
+<meta name=twitter:description content="LES PREMIERES LEÇONS DE L’IA DANS LES CONTEXTES INDUSTRIELS Une machine pensante comme l&rsquo;homme.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/de-linformatique-classique-vers-linformatique-cognitive/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>De l’informatique classique vers l’informatique cognitive</h1>
+<figure class="cover image">
+<img src=/de-linformatique-classique-vers-linformatique-cognitive/cover.png width=1461 height=734 alt="illustration de l'article">
+</figure>
+<h2 id=les-premieres-leçons-de-lia-dans-les-contextes-industriels>LES PREMIERES LEÇONS DE L’IA DANS LES CONTEXTES INDUSTRIELS</h2>
+<p>Une machine pensante comme l&rsquo;homme. Tel est le rêve des uns et le cauchemar des autres. Au-delà des hésitations éthiques et économiques inhérentes à chaque rupture technologique importante, la progression de l&rsquo;intelligence artificielle, déjà présente dans nombre d&rsquo;applications que nous utilisons au quotidien, ne cesse de se renforcer.</p>
+<p>Comment cette technologie, à l&rsquo;aube de sa gloire, révolutionne déjà l’industrie, la recherche, le monde médical, le marketing ? La liste est difficilement énumérable tant elle semble se prolonger à chaque seconde.</p>
+<p>A l&rsquo;instar de la prospection pétrolière où les technologies de localisation de nappes ont bousculé l&rsquo;industrie, le nouvel eldorado de l&rsquo;information, que le monde a convenu de nommer big-data, où des gisements de données s&rsquo;amoncellent en quête d&rsquo;interprétation compréhensible par l&rsquo;homme, a besoin de nouveaux outils d&rsquo;exploration.</p>
+<p>Sans objectifs d&rsquo;exhaustivité, cet article propose de parcourir les problématiques naissantes inhérentes à l&rsquo;utilisation d&rsquo;algorithmes d&rsquo;intelligence artificielle dans un contexte industriel, comme par exemple, le projet initié par SNCF Réseau auquel le groupe Talan participe actuellement</p>
+<p>Il précisera ensuite le positionnement de tels automates dans l&rsquo;équilibre des tâches entre l&rsquo;homme et les machines classiques, et finira par une ouverture sur la roadmap engagée vers des applications d’ IA complètements autonomes.</p>
+<h2 id=le-machine-learning-en-quelques-phrase>LE MACHINE LEARNING EN QUELQUES PHRASE</h2>
+<h3 id=i-le-principe>I. Le Principe</h3>
+<p>Le principe fondateur de cette classe d&rsquo;algorithme est simple, implémenter des modèles mathématiques proches du fonctionnement des réseaux de neurones biologiques permettant, via des « apprentissages », la reconnaissance de concepts (objets dans des images, signatures dans des sons ou autres signaux) avec des degrés de libertés inatteignables via des algorithmes classiques. Des neurones artificiels connectés en réseau (RNA) apprennent donc, soit de manière supervisée, où un expert qualifie une réponse à un stimulus, le logiciel corrigeant sa structure en conséquence pour apprendre ce nouvel élément, ou de manière autonome, non supervisée, où le réseau apprend, dans l&rsquo;état actuel de l’art, à reconnaître de lui-même des redondances plus ou moins complexes dans les entrées.</p>
+<p>Comme évoqué dans l’introduction, l’utilisation de ces algorithmes progresse dans de nombreux cas d’usages. Ils peuvent par exemple reconnaitre avec exhaustivité les objets dans une image et donc décrire une scène de manière automatisée en temps réel, rendant accessible la recherche d’instants dans une vidéo par recherche textuelle, par exemple « y-a-t-il une montagne bleue dans cette vidéo ? ». Au-delà de ses fonctions régaliennes de « reconnaissance de formes », que ce soit dans des images ou des sons, cette capacité à reconnaitre des « structures » dans des entrées a été utilisée récemment par Google DeepMind pour créer une partie de l’automate Alpha Go ayant battu l’humain au jeu de GO.</p>
+<p>Dans ce contexte, l&rsquo;utilisation du mot intelligence pose débat, néanmoins les progrès récents d&rsquo;apprentissages profonds commencent à justifier ce terme. En effet, nous le verrons dans le paragraphe 4, certains algorithmes sont dorénavant capables de créer des concepts auxquels les hommes de l&rsquo;art n&rsquo;avaient jamais pensé. Lorsque la machine commence à concevoir des solutions non pensées mais validées par l&rsquo;homme, le mot intelligence commence à prendre sens afin de qualifier cette nouvelle autonomie d&rsquo;analyse allouée aux machines.</p>
+<h3 id=ii-lhistorique>II. L’historique</h3>
+<p>Après une émergence remarquée au milieu du XXe siècle, la technologie a graduellement perdu de sa superbe pour ressortir de l’oubli à la fin du siècle dernier grâce à une méthode d’apprentissage, dit « rétropropagation du gradient », ouvrant le potentiel de ces algorithmes. Cette dernière reste le pilier de la technologie et porte encore de nos jours sa progression.</p>
+<p>L’engouement récent et « généralisé » pour cette technologie semble le fruit de plusieurs facteurs. Tout d’abord d’innovations comme les réseaux multicouches et les réseaux de convolution (convnet) qui servent maintenant de fers de lance au « deep learning » dans l’image. Ensuite, de la puissance de calcul des clusters actuels qui ont permis la réalisation de réseaux de « deep learning » comptant plusieurs milliards de neurones, gourmands en ressources pour leurs apprentissages. Et enfin, des usages du « web 2.0 » qui ont fait émerger de bases à très fort volume permettant des apprentissages exhaustifs (exemple base d’images taguées par des utilisateurs).</p>
+<p>Certaines avancées continuent de renforcer l’avenir de cette classe d’algorithme, notamment une nouvelle génération de réseaux plus proche du fonctionnement des neurones biologiques, les réseaux de neurones impulsionnels. Ces derniers intègrent en plus des réseaux existants la dimension temporelle des stimuli présentés aux neurones, permettant d’enrichir la capacité des réseaux à modéliser les mécanismes de la mémoire des neurones biologiques, mais aussi leur capacité à modéliser des problèmes non-linéaires.</p>
+<h2 id=les-projets-de-machine-learning-dans-un-contexte-industriel>LES PROJETS DE MACHINE LEARNING DANS UN CONTEXTE INDUSTRIEL</h2>
+<p>Intéressons-nous aux différences de cycles de vie entre un système d’information classique et un système apprenant. Elles sont majoritairement au nombre de trois. La première constitue une contrainte spécifique de gestion de projet, critique lors du développement d’une solution industrielle basée sur des algorithmes apprenant. Les deux autres sont des avantages intrinsèques aux cycles de vie de telles solutions comparées à des solutions classiques, « non apprenantes ».</p>
+<p>La courbe ci-dessous trace le cycle de vie de la solution, et l’exhaustivité de sa réponse au cahier des charges :</p>
+<p><img src=image-1.png alt=image-1></p>
+<h3 id=i-la-gestion-du-processus-dapprentissage-au-centre-de-la-réussite-du-projet>I. La gestion du processus d’apprentissage au centre de la réussite du projet</h3>
+<p>Nous nous apercevons que les processus projets doivent s&rsquo;adapter au concept d&rsquo;apprentissage par rapport au développement de solutions classiques.</p>
+<p>En effet un système« apprenant» sous-entend un système qui n&rsquo;est pas opérationnel en pré-production et donc un système qui n&rsquo;arrivera en « production » au sens fonctionnel, à savoir, une réponse exhaustive au cahier des charges, qu&rsquo;après un déploiement permettant de réaliser l&rsquo;exhaustivité de cet apprentissage.</p>
+<p>Une validation du système est donc une validation pré-déploiement d&rsquo;une aptitude à résoudre le problème, cela est légèrement différent de la validation d&rsquo;un système classique ou l&rsquo;exhaustivité du résultat est supposée pré déploiement. Au-delà de la validation technologique, cela impose également une stratégie de déploiement radicalement différente, plus progressive, où la rapidité de captation des occurrences des situations d’apprentissages est capitale pour la pérennisation du déploiement, même si la technologie avait éventuellement convaincu à un stade de preuve de concept.</p>
+<p>Il est souhaitable, dans la mesure du possible, de produire la preuve de concept sur les situations à apprendre les plus complexes pour fournir aux « décideurs » une « garantie » d&rsquo;exhaustivité des résultats avant la complétude des apprentissages qui n&rsquo;arrivera, comme nous venons de le voir, qu&rsquo;après un déploiement complet</p>
+<p>Cela constitue en soi un vrai challenge pour les projets de machine Learning devant faire leurs preuves sur des résultats basés essentiellement sur des simulations, le système n&rsquo;étant pas encore déployé. Un catalyste possible est d&rsquo;adjoindre au développement de la solution un environnement de simulation « émulant » un maximum de situations possibles pour réaliser des apprentissages exhaustifs pré-déploiement, cela n’est néanmoins pas possible dans tous les cas d’usage, il faut en effet veiller que les économies de développement accomplies avec des solutions apprenantes ne soient pas absorbées par des coûts de simulations prohibitifs.</p>
+<h3 id=ii-un-optimum-de-solution-supérieur>II. Un optimum de solution supérieur</h3>
+<p>Comme vu précédemment, les réseaux de neurones artificiels permettent aux solutions de fournir des résultats beaucoup plus agnostiques au contexte du problème que les solutions classiques. Cette adaptabilité aux conditions opérationnelles permet en général de gagner en robustesse et en exhaustivité face aux exigences du cahier des charges lors de la vie opérationnelle du produit.</p>
+<h3 id=iii-lobsolescence-nest-plus-une-fatalité>III. L’obsolescence n’est plus une fatalité</h3>
+<p>Un autre avantage des systèmes apprenants est de rapidement s’adapter à moindre coût à des contextes radicalement différents, sans repenser complètement la solution. Cela étend la durée de vie des solutions et les rend résistantes face à l’obsolescence gagnant généralement les systèmes classiques.</p>
+<p>Au-delà des difficultés de la vie du projet, la validation de cette technologie s&rsquo;accompagne dans certain cas d&rsquo;une nécessite de caractère GAME (globalement au moins équivalent) à un système existant, qu&rsquo;il soit un algorithme existant ou une tâche dévolue à un agent. Il est donc important de comprendre les avantages intrinsèques des systèmes apprenants.</p>
+<h2 id=bilan-cognitif-des-systèmes-apprenant>BILAN COGNITIF DES SYSTÈMES APPRENANT</h2>
+<p>Des univers normés comme SNCF Réseau (<a href=http://blog.cereza.fr/ferroviaire/premieres-experiences-dutilisation-de-reseaux-de-neurones-artificiels-chez-sncf-reseau-2173><em>Cf. article sur le Blog Cereza</em></a>), où la sécurité est omniprésente et à la racine des décisions technologiques, constituent un stress-test solide pour cette technologie.</p>
+<p>Nous entrons dans une phase où elle doit prouver, dans un premier temps, dans un cadre « non sécuritaire » d&rsquo;aide à la décision, une fiabilité « globalement au moins équivalente » aux algorithmes existants ou à une analyse humaine.</p>
+<p>La perception &ldquo;boîte noire&rdquo; des algorithmes de machine Learning est souvent à la source d&rsquo;un questionnement sur leur positionnement dans l&rsquo;accomplissement des tâches par rapport à l&rsquo;homme ou aux systèmes que l&rsquo;on qualifiera de &ldquo;classiques&rdquo;. La représentation abstraite suivante permet de définir les différences &ldquo;fonctionnelles&rdquo; d&rsquo;une analyse accomplies par ces différents systèmes.</p>
+<p><img src=image-2.png alt=image-2></p>
+<p>L&rsquo;avènement de l&rsquo;informatique, souvent qualifié de révolution industrielle, a bouleversé les processus de gestion et de traitement de l&rsquo;information jusqu&rsquo;à engendrer la société que nous connaissons actuellement. Les possibilités d’interconnections des systèmes leur ont permis de s&rsquo;affranchir des limitations que l&rsquo;homme subit dans sa corporalité. En effet notre physionomie nous empêche de nous combiner, et de former un réseau, ou un ensemble de cerveaux incrémenteraient une capacité de calcul en réseau local. L&rsquo;informatique classique a donc permis, par cette qualité, de capter beaucoup plus de contexte qu&rsquo;un humain pour répondre à un problème. A ceci près que la perception des algorithmes classiques est très dépendante du contexte, un exemple étant qu&rsquo;un algorithme classique de reconnaissance d&rsquo;objet aurait du mal à reconnaître une pomme dans un contexte changeant, ce qui ne pose aucun problème pour l&rsquo;homme qui reconnaitra un concept peu importe le contexte.</p>
+<p>La réponse à un problème donné dépend de 2 critères fondamentaux, la masse de contexte admissible par un système, où, comme nous l&rsquo;avons vu, l&rsquo;informatique classique possède un avantage sur l&rsquo;homme, mais également la profondeur d&rsquo;analyse, que certains pourraient ramener à une capacité d&rsquo;abstraction et de conceptualisation. C&rsquo;est précisément sur cet aspect que l&rsquo;homme conserve son net avantage et produit des analyses beaucoup plus complexes que des algorithmes.</p>
+<p>Les réseaux de neurones artificiels sont capables de se combiner pour faire émerger des concepts à l&rsquo;instar du cerveau humain, mais également des liens entre ces concepts et ce, sans que l&rsquo;homme n’ait à expliciter quelque règle que ce soit sous forme de code. Ils sont donc capables d&rsquo;abstraitiser des stimuli comme les humains et sont en ce sens capables d&rsquo;analyses beaucoup plus profondes que les algorithmes classiques. Ils sont néanmoins loin d&rsquo;être aussi capables que le cerveau humain dans cette manipulation de concepts pour résoudre des problèmes. Ils bénéficient par contre de l&rsquo;avantage de leurs aïeux classiques d&rsquo;une capacité de capter un contexte étendu par rapport à l&rsquo;humain et produisent ainsi des « raisonnements » inédits, complexes, et inaccessibles au cerveau humain.</p>
+<p>L’exemple marquant est la prolifération dans le domaine médical, notamment par l’université de Stanford, d’études montrant que des algorithmes de « deep learning » produisent des analyses inédites de tissus cancéreux en y détectant des signaux précurseurs dans les tissus environnants , signaux difficilement détectables par les hommes de l’art.</p>
+<p>Il est important de préciser qu’ « intelligence » dans la plus part de cet article réfère à la « capacité à résoudre un problème » nous laisserons pour l&rsquo;instant la « quête d&rsquo;un état de conscience » de côté, l&rsquo;intelligence artificielle générale étant encore hors de portée des algorithmes de « machine Learning » actuels.</p>
+<p>Cette combinaison de « digestibilité » de données massives couplée à une certaine capacité d&rsquo;abstraction donne au couple « Machine Learning » + « Big-Data » une valeur économique conséquente, sans pour autant avoir des systèmes « profondément » intelligents. Ces capacités algorithmiques nouvelles sont d&rsquo;autant plus intéressantes qu’elles sont rapides. En effet, leur rapidité leur permet des temps d&rsquo;analyse sur des contextes larges en temps réel alors que les algorithmes classiques digèreraient cette masse de donnée dans un temps relativement plus long..</p>
+<p>La prochaine étape pour ces algorithmes est d&rsquo;apprendre par « eux-mêmes », de gagner en autonomie pour créer des concepts ex-nihilo sans que l&rsquo;homme n’intervienne comme « guide » ou « professeur », c&rsquo;est ce que l&rsquo;on appelle les algorithmes autoapprenants.</p>
+<h2 id=intelligence-embarquée-ou-intelligence-centralisée>INTELLIGENCE EMBARQUÉE OU INTELLIGENCE CENTRALISÉE</h2>
+<p>Dans une époque où l&rsquo;augmentation de la capacité de calcul passe par une augmentation de l&rsquo;infrastructure et son interconnectivité, il a souvent été de mise de comparer l&rsquo;efficience énergétique des systèmes informatiques à celle du cerveau humain et de constater le gouffre énergique des clusters de calcul pour des fonctions que l&rsquo;homme accomplit sans effort à très faible coût énergétique. Nous entrons alors dans le monde de la performance par watt, ou devrait-on dire, de l&rsquo;intelligence par watt. Là encore les RNA permettent des analyses complexes à très faible coût énergétique. Il est alors possible d&rsquo;embarquer des traitements très complexes « on chip » sur des processeurs que l&rsquo;on qualifie de « neuromorphiques » avec les avantages d&rsquo;un traitement temps réel de l&rsquo;information et des gains en bande passante du fait de la communication du seul fruit de l&rsquo;analyse sans obligation de communication de la source ou stimuli. Bien évidemment, l&rsquo;intelligence des RNA étant scalable, il fait sens pour certaines applications de centraliser le réseau de neurones sur une infrastructure centralisée de plus grosse taille pour une analyse plus complexe, cela dépend donc du cas d&rsquo;utilisation, mais il faut retenir que le bond en performances par watt des RNA a permis l&rsquo;émergence d&rsquo;une multitude d&rsquo;applications embarquées inaccessibles aux systèmes classiques.</p>
+<h2 id=limpact-du-machine-learning-sur-écosystème-des-entreprises-de-linformation>L&rsquo;IMPACT DU MACHINE LEARNING SUR ÉCOSYSTÈME DES ENTREPRISES DE L&rsquo;INFORMATION</h2>
+<p>Bien évidemment, une telle révolution ne va pas sans restructurer des faces entières de l&rsquo;économie. Il est dès lors tout naturel que la physionomie du marché des ESN (Entreprises de Services Numériques) s&rsquo;adapte à ces nouveaux outils.</p>
+<p>Deux caractéristiques, le concept d&rsquo;apprentissage d&rsquo;une part, et l&rsquo;aspect générique de la technologie d&rsquo;autre part, vont faire évoluer le métier de développement informatique ainsi que le conseil en management des systèmes d&rsquo;informations.</p>
+<p>L&rsquo;apprentissage met donc en scène des experts métiers devant des plateformes pour « apprendre » à la machine directement la fonctionnalité métier recherchée, sans passer par une étape de développement, ce dernier étant implicitement « encodé » par l&rsquo;algorithme d&rsquo;apprentissage. Il est à noter que les RNA actuels nécessitent encore l&rsquo;intervention d&rsquo;un « architecte » RNA pour suggérer la meilleure structure de réseau pour apprendre le cas d&rsquo;usage, mais un réseau générique suffisamment flexible pour accueillir une diversité de cas d&rsquo;usages métier est de plus en plus « réalisable ».</p>
+<p>L&rsquo;intelligence artificielle transfère donc un coût et temps élevé de développement externalisé vers un coût et temps réduit d&rsquo;expertise interne à l&rsquo;entreprise.</p>
+<p>Une partie du marché de développement va donc graduellement disparaître, les ESN peuvent couvrir cette perte par soit, offrir leur propre plateforme « intelligente », soit par de l&rsquo;AMOA spécialisée dans le déploiement de solutions de « machine Learning ».</p>
+<h2 id=vers-lautoapprentissage-des-abstraitisations-au-delà-de-lhumain>VERS L&rsquo;AUTOAPPRENTISSAGE, DES ABSTRAITISATIONS AU DELÀ DE L&rsquo;HUMAIN</h2>
+<p>Les algorithmes autoapprenants, au gré de leurs perfectionnements, vont, dans un premier temps, permettre l&rsquo;automatisation de tâches complexes où l&rsquo;improvisation est sollicitée plus que la répétition. Cela va bien évidement contribuer à remplacer l&rsquo;homme dans de nombreux services.</p>
+<p>Mais la recherche est encore longue avant d&rsquo;arriver à une intelligence artificielle générale, et plusieurs facteurs sont peut-être, sans le savoir, en train d&rsquo;en ralentir ces efforts.</p>
+<p>Le premier est que l&rsquo;homme crée pour son propre « confort » et surtout pour ses propres capacités d&rsquo;interprétations des résultats, or, cette part systémiquement &ldquo;anthropomorphique&rdquo; dans nos solutions bornera potentiellement les raisonnements de ces algorithmes, là où la machine pourrait éventuellement nous dépasser. Il faut donc que l&rsquo;homme centre sa recherche fondamentale pour fusionner le meilleur de notre biologie avec celui d&rsquo;une intelligence dématérialisée i.e., s&rsquo;inspirer de l&rsquo;humain sans s&rsquo;y confiner, ce dernier ayant été « construit » sur un ensemble d&rsquo;organes « limités » fournissant les stimuli.</p>
+<p>Les briques de bases que sont les modèles mathématiques des réseaux de neurones artificiels doivent également encore progresser pour arriver au niveau d&rsquo;un cerveau humain, les limitations actuelles étant dans la manière dont se propage l&rsquo;information dans les réseaux de neurones artificiels (feedforwarding only) et la nécessité de forts volumes de données pour l’apprentissage, les réseaux actuels n&rsquo;étant pas encore capables d&rsquo;apprendre sur très peu d&rsquo;exemples.</p>
+<p>Enfin, l&rsquo;industrie sort petit à petit du biais introduit par l&rsquo;informatique actuelle dite booléenne de ne pas tolérer l&rsquo;erreur. Les exemples d&rsquo;introduction d&rsquo;hardware/software bayésien tolérant des taux d&rsquo;erreurs non négligeables se multiplient, allant des efforts d&rsquo;informatiques quantiques à des solutions utilisant les processus de fonderie actuels, comme le PCMOS pour Probabilistic CMOS introduit par l&rsquo;université de Rice où un processeur tolérant 8% d’erreur a doublé ses performances et réduit sa consommation énergétique de 30% <a href=hhttp://www.ece.rice.edu/~al4/visen/2006date.pdf%5D>[http://www.ece.rice.edu/~al4/visen/2006date.pdf]</a>.</p>
+<p>Cette aversion à l&rsquo;erreur est encore un réflexe naturel et les résultats exigés des RNA sont également extrêmement élevés avec des niveaux de réponses de l&rsquo;ordre de 99,5%. Ces scores sont effectivement à rechercher pour les domaines où l&rsquo;homme opère également à ces niveaux, comme la reconnaissance visuelle, mais la recherche en cognition et raisonnements artificiels ne doit pas se structurer autour de la quête d&rsquo;un taux d&rsquo;erreur de 0,1%. En effet, l&rsquo;homme vit constamment avec l&rsquo;erreur, si nous devions quantifier le taux d&rsquo;erreur de nos « choix » et « raisonnements », il serait probablement plus autour de 60%, légèrement au-dessus d&rsquo;un résultat « aléatoire » (l&rsquo;évolution nous ayant doté de ces capacités, elles doivent probablement avoir une valeur ajoutée par rapport à l&rsquo;aléa pur) mais avec un taux d&rsquo;erreur relativement important.</p>
+<p>Au-delà de ces quelques limitations, cette intelligence artificielle généralisée, proche de l&rsquo;homme, reste l&rsquo;obsession d&rsquo;une poignée de chercheurs à la convergence des neurosciences (retro-engineering de l&rsquo;activité/structure cérébrale, de la mémoire), des mathématiques (progrès sur le modèle) et de la psychologie/psychanalyse (fonctionnement des concepts humains) et sera sans nul doute parmi les plus intrigantes inventions que le futur nous réserve.</p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2016-10-19T10:30:08Z>
+19 octobre 2016
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/antoine-grieszmann/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Antoine GRIESZMANN" src=https://blog.talanlabs.com/authors/antoine_grieszmann.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/antoine-grieszmann/>Antoine GRIESZMANN</a></h1>
+<p class="mt-0 mb-2">Consultant</p>
+</div>
+<div class=mb-6>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/ia>IA</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/deep-learning>#Deep Learning</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/ia>#IA</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/machine-learning>#Machine Learning</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/reseaux-de-neurones-artificiels-rna>#Réseaux de Neurones Artificiels (RNA)</a>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

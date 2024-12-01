@@ -1,0 +1,366 @@
+<!doctype html><html lang=fr-fr>
+<head><title> R3 Corda : Limites | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Nous avons vu dans un article précédent la présentation des grands principes de Corda, le DLT (Distributed Ledger Technology) développé par le consortium R3.">
+<meta property="og:title" content="R3 Corda : Limites">
+<meta property="og:description" content="Nous avons vu dans un article précédent la présentation des grands principes de Corda, le DLT (Distributed Ledger Technology) développé par le consortium R3.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/r3-corda-limites/"><meta property="og:image" content="https://blog.talanlabs.com/r3-corda-limites/cover.png"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2019-04-15T16:22:37+02:00">
+<meta property="article:modified_time" content="2019-04-15T16:22:37+02:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/r3-corda-limites/cover.png">
+<meta name=twitter:title content="R3 Corda : Limites">
+<meta name=twitter:description content="Nous avons vu dans un article précédent la présentation des grands principes de Corda, le DLT (Distributed Ledger Technology) développé par le consortium R3.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://alainnicolas.fr/blog/r3-corda-limites/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>R3 Corda : Limites</h1>
+<figure class="cover image">
+<img src=/r3-corda-limites/cover.png width=1920 height=500 alt="illustration de l'article">
+</figure>
+<div class=paragraph>
+<p>Nous avons vu dans un <a href=https://alainnicolas.fr/blog/r3-corda-presentation/>article précédent</a> la présentation des grands principes de Corda, le DLT (Distributed Ledger Technology) développé par le consortium R3. Utilisé en très grande majorité par des banques, Corda semble répondre à de nombreux besoins non assouvis par les blockchains publiques.
+Nous allons désormais tâcher d’explorer les limites de Corda.</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=./corda_logo.png alt="corda logo">
+</div>
+</div>
+<div class=sect1>
+<h2 id=_est_ce_que_cest_une_blockchain>Est-ce que c’est une blockchain ?</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>À question directe …​ réponse directe : non.
+<strong>Corda n’est pas une blockchain.</strong></p>
+</div>
+<div class=paragraph>
+<p>Ok, mais, pourquoi ?
+Tout simplement parce que le registre Corda n’est pas stocké sous forme de blocs, donc pas de chaîne de blocs possible.</p>
+</div>
+<div class=paragraph>
+<p>Mais alors, si ce n’est pas une blockchain, ce n’est pas intéressant ?
+C’est beaucoup plus compliqué que ça…​</p>
+</div>
+<div class=paragraph>
+<p>Certes, ces deux dernières années, le mot ‘blockchain’ fait le buzz, y compris dans les médias généralistes, notamment suite à l’envol de la valeur de certaines crypto-monnaies.
+Pour autant, pour l’immense majorité des entreprises et tout particulièrement des banques, tout ce qui touche aux crypto-monnaies est bien loin de leurs intérêts premiers, et on parle plus volontiers de DLT (<strong>Distributed Ledger Technologies</strong>).
+Les DLT forment un ensemble de technologies qui englobent les blockchains, bien plus large que simplement Bitcoin ou Ethereum.</p>
+</div>
+<div class=paragraph>
+<p>Pour autant, la communication autour de Corda, principalement par le consortium R3, a entretenu un certain flou sur la question depuis les origines.
+Et ce flou perdure !
+Lorsque l’on se rend sur le <a href=https://www.corda.net/>site officiel de Corda</a>, la baseline du logo est claire :</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=./corda_limites_blockchain.png alt="Capture d’écran du site corda.net">
+</div>
+</div>
+<div class=paragraph>
+<p>Pour autant, la polémique ne date pas d’hier, puisque déjà en 2017 R3 publiait <a href=https://www.r3.com/blog/when-is-blockchain-not-a-blockchain/>un article</a> sur son blog pour expliquer que le problème est plus de l’ordre de la sémantique que de l’architecture.
+Il semblerait donc que le terme de ‘blockchain’ soit ici utilisé comme un raccourci pour ‘DLT’, avec une composante marketing indéniable. #buzzword</p>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_est_ce_que_corda_est_décentralisé>Est-ce que Corda est décentralisé ?</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Comme nous l’avons vu dans l’<a href=https://alainnicolas.fr/blog/r3-corda-presentation/>article de présentation</a>, pour rejoindre un réseau Corda il faut fournir son identité à un <em>doorman</em> qui autorise l’accès et fournit les certificats nécessaires.
+Ce <em>doorman</em> peut révoquer une identité (dans le cas du retrait d’un participant au sein d’un consortium par exemple).
+Mais ne serait-ce pas là une porte ouverte à la censure ?</p>
+</div>
+<div class=paragraph>
+<p>Tout dépend de qui gère ce service central.
+R3 a récemment annoncé la création de la “Corda Network Foundation”, une entité à but non lucratif en charge de gérer le réseau mondial Corda.
+Donc une seule entité va être chargée de gérer un réseau soi-disant décentralisé…​ Heureusement, l’aspect non lucratif garantit une certaine résilience à la corruption par exemple.</p>
+</div>
+<div class=paragraph>
+<p>Pour autant, si l’on craint une certaine centralisation du ‘pouvoir’, il est toujours possible de créer son propre réseau privé, avec sa propre gouvernance et ses propres règles.
+Donc inutile de paniquer, la solution existe.</p>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_est_ce_que_corda_est_réellement_open_source>Est-ce que Corda est réellement open-source ?</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Il existe deux versions de Corda : la version Community, totalement open-source et dont le code est disponible sur <a href=https://github.com/corda/corda>GitHub</a>, et une version Enterprise, pour laquelle il faut faire une <a href=https://www.r3.com/corda-enterprise-download/>demande à R3</a> pour obtenir les exécutables.</p>
+</div>
+<div class=paragraph>
+<p>Il s’agit là d’une différence majeure : on récupère des exécutables et non pas du code source.
+Même en considérant que la majorité du code de “Corda core” est similaire dans les deux versions, la brique “firewall”, argument principal justifiant la valeur de la version Enterprise, est totalement opaque.
+Difficile de savoir comment est assurée la sécurité <em>via</em> ce firewall…​</p>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_a_quoi_servent_les_notaires_de_corda>A quoi servent les notaires de Corda ?</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Actuellement, les nœuds de type ‘notaire’ d’un réseau Corda proposent deux modes : *validating *et <em>non-validating</em>.
+Lorsqu’ils sont <em>non-validating</em>, ils ne procèdent qu’à une seule vérification : la double dépense.
+En revanche, en mode <em>validating</em>, le notaire va inspecter le contenu de la transaction pour le valider, selon le protocole de consensus choisi (RAFT ou BFT disponibles).</p>
+</div>
+<div class=paragraph>
+<p>Toutefois, sur le réseau d’UAT fourni par R3, seul le mode <em>non-validating</em> est actuellement disponible, ce qui diminue l’intérêt des notaires.
+Cela s’explique par des besoins de performances qui ne semblent donc pas encore au rendez-vous avec le mode de fonctionnement cible.</p>
+</div>
+<div class=paragraph>
+<p>À noter que les notaires jouent tout de même un rôle intéressant en étant des témoins supplémentaires des transactions, notamment en permettant d’horodater de manière univoque celles-ci.</p>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_intégration_dans_un_système_dinformation_legacy>Intégration dans un système d’information legacy</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Corda étant vendue comme une solution tournée vers les entreprises, tout laisse à penser que son intégration a été prévue pour s’imbriquer sans souci dans le SI des grandes banques qui constituent le consortium R3. Malheureusement, la réalité n’est pas aussi rose…​</p>
+</div>
+<div class=paragraph>
+<p>Alors évidemment, la notion même de <em>peer-to-peer</em> est antinomique de ce que font les banques.
+Par exemple, pour convaincre les équipes de sécurité d’accepter de nouveaux flux considérés comme ‘exotiques’ dans leur SI, il est nécessaire de travailler de concert dès le lancement des initiatives Corda.</p>
+</div>
+<div class=paragraph>
+<p>Une fois les validations obtenues <em>via</em> les équipes d’architecture technique et de sécurité, encore faut-il s’attaquer à la réalisation technique.
+Malheureusement, la <a href=https://docs.corda.r3.com>documentation de Corda Enterprise</a> (légèrement différente de <a href=https://docs.corda.net>celle de Corda open-source</a>) n’est pas parfaitement auto-porteuse.
+De nombreux allers-retours sont nécessaires avec les équipes de support et de déploiement de R3.</p>
+</div>
+<div class=paragraph>
+<p>Par exemple, si un flux n’est pas documenté par R3, l’impact temporel sur un déploiement peut être assez conséquent : toutes les étapes de documentation, de validation et de mise en pratique sont parfois longues.</p>
+</div>
+<div class=paragraph>
+<p>Pour autant, Corda reste une solution très tournée vers le monde des entreprises sécurisées.
+Évoquons notamment Hyperledger Fabric qui utilise des flux gRPC (<strong>Remote Procedure Call</strong>, développé initialement par Google), alors qu’il n’y a actuellement pas de WAF (<strong>Web Application Firewall</strong>, chargé de protéger le serveur applicatif) en mesure d’analyser ces flux qui contiennent de surcroit de nombreuses failles CVE identifiées.
+Idem par rapport à Quorum qui ne comporte pas de brique firewall, donc avec tout le traitement dans la même zone réseau.</p>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_conclusions_et_ouvertures>Conclusion(s) et ouverture(s)</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>En guise de conclusion, précisons tout de même que le but n’était pas de critiquer unilatéralement cette solution, mais bien d’examiner des axes d’amélioration ou des contradictions dans la communication officielle.</p>
+</div>
+<div class=paragraph>
+<p>Si Corda est une solution DLT encore jeune et prometteuse, elle n’en a pas moins de nombreux challenges à relever.
+Améliorer son intégration aux SI existants, avoir une documentation à jour, clarifier sa nature (blockchain vs.
+DLT) …​ les pistes sont nombreuses !</p>
+</div>
+<div class=paragraph>
+<p>De plus, pourquoi ne pas aller un cran plus loin et imaginer une solution interopérable avec d’autres DLT, pour devenir une brique incontournable d’un système décentralisé ?
+Si les blockchains actuelles ne sont pas interopérables, Corda aurait tout à y gagner, pour se démarquer plus fermement sur un marché (déjà) concurrentiel.</p>
+</div>
+<div class=paragraph>
+<p>La documentation a été pointée comme lacunaire, toutefois il faut noter un effort certain de transparence avec la page “<a href=https://docs.corda.net/key-concepts-tradeoffs.html>Tradeoffs</a>” qui liste les points sur lesquels des concessions ont été faites.
+Parmi ces concessions, on relèvera un point : R3 encourage à doubler les contrats en code par des contrats sur papier.
+Un comble pour une solution censée désintermédier les échanges de ses participants !
+En opposant “<strong>Code is law</strong>” et “<strong>Existing legal systems</strong>”, R3 trahit en fait une réalité : les entreprises et les réglementations en vigueur ne sont pas encore prêtes à reposer uniquement sur du code.</p>
+</div>
+<div class=paragraph>
+<p>Si le produit n’est pas fini, avec une roadmap encore floue, il n’en est pas moins en constante (r)évolution, réagissant aux demandes de ses clients, grâce à une équipe de développeurs très investis, réactifs et heureux d’échanger avec les utilisateurs finaux.</p>
+</div>
+<div class=paragraph>
+<p>Au-delà des difficultés initiales, Corda devrait réussir à repousser ses limites et s’assurer un avenir plus radieux dans le monde bouillonnant des blockchains et DLT !</p>
+</div>
+<div class=paragraph>
+<p>Cet article fait partie d’une série sur Corda, commencée par <a href=https://alainnicolas.fr/blog/r3-corda-presentation/>R3 Corda : Présentation</a>.</p>
+</div>
+<div class=paragraph>
+<p><br></p>
+</div>
+<hr>
+<div class=paragraph>
+<p><br>
+<em>Cet article a initialement été publié sur <a href="https://medium.com/@Alain_Ncls/r3-corda-limites-c14847508c01?source=friends_link&sk=aedf3207b62d4ad261703201376282b6">Medium</a>.</em></p>
+</div>
+</div>
+</div>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2019-04-15T16:22:37+02:00>
+15 avril 2019
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/alain-nicolas/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Alain NICOLAS" src=https://blog.talanlabs.com/authors/alain_nicolas.png></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/alain-nicolas/>Alain NICOLAS</a></h1>
+<p class="mt-0 mb-2">Développeur Blockchain & DLT</p>
+</div>
+<div class=mb-6>
+<a href=https://twitter.com/alain_ncls target=_blank class="icon is-medium"><i class="fab fa-lg fa-twitter text-[#1DA1F2]"></i></a>
+<a href=https://www.linkedin.com/in/alainnicolas target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+<a href=https://github.com/alainncls target=_blank class="icon is-medium"><i class="fab fa-lg fa-github"></i></a>
+<a class="icon is-medium" href=https://alainncls.medium.com/ target=_blank><i class="fab fa-lg fa-medium"></i></a>
+<a href=https://alainnicolas.fr target=_blank class="icon is-medium"><i class="fas fa-lg fa-link"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/corda>#corda</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/r3>#R3</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/dlt>#DLT</a>
+</div>
+</div>
+</div>
+</div>
+<aside>
+<h4 class="subtitle mt-10 mb-8"><i class="fas fa-forward"></i> Vous aimerez peut-être...</h4>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/r3-corda-presentation/>
+<img class="border object-cover w-full m-0 max-w-md" src=/r3-corda-presentation/cover_huca5e9b86b5919fd02a1f2f95305a2620_519112_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/r3-corda-presentation/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">R3 Corda : Presentation</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2019-03-11T14:51:37+01:00>
+11 mars 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Les technologies Blockchain & DLT (Distributed Ledger Technology) sont nombreuses. Nous allons ici nous …</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

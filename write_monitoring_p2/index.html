@@ -1,0 +1,440 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Écrire soit même son outil de monitoring, partie 2 | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Écrire soi même un outil de monitoring pour Rasperry PI, partie 2">
+<meta property="og:title" content="Écrire soit même son outil de monitoring, partie 2">
+<meta property="og:description" content="Écrire soi même un outil de monitoring pour Rasperry PI, partie 2">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/write_monitoring_p2/"><meta property="og:image" content="https://blog.talanlabs.com/write_monitoring_p2/cover.jpg"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2022-03-03T00:08:00+02:00">
+<meta property="article:modified_time" content="2022-03-03T00:08:00+02:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/write_monitoring_p2/cover.jpg">
+<meta name=twitter:title content="Écrire soit même son outil de monitoring, partie 2">
+<meta name=twitter:description content="Écrire soi même un outil de monitoring pour Rasperry PI, partie 2">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/write_monitoring_p2/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Écrire soit même son outil de monitoring, partie 2</h1>
+<figure class="cover image">
+<img src=/write_monitoring_p2/cover.jpg width=350 height=180 alt="illustration de l'article">
+</figure>
+<p>Cet article fait suite à la <a href=/write_monitoring><strong>partie 1, écrire soi même un outil de monitoring</strong></a>.</p>
+<h2 id=architecture-de-loutil-de-monitoring>Architecture de l&rsquo;outil de monitoring</h2>
+<div class=mermaid align=center>
+flowchart RL;
+A1[Agent 1]-- Send metric--->M[ ];
+A2[Agent 2]-- Send metric--->M[ ];
+A3[Agent 3]-- Send metric--->M[ ];
+subgraph Monitoring server
+M[Server]-- Save on disk --->F[(Filer)]
+end
+</div>
+<script>mermaid.initialize({startOnLoad:!0,securityLevel:'loose'})</script>
+<p>Ce schéma décrit l&rsquo;architecture minimale pour monitorer : l&rsquo;outil ne peut pas accéder directement aux informations des machines.<br>
+Il faut installer, sur chaque machine, <strong>un agent</strong> qui aura la charge de lire les métriques et de l&rsquo;envoyer vers le serveur.
+On retrouve ce mécanisme chez Elastic avec les <strong>&ldquo;beats&rdquo;</strong> : metricbeat, heartbeat.</p>
+<p>Pour gérer le heartbeat, une <strong>goroutine tournera à intervalle régulier</strong> pour vérifier si les urls renvoient une 200.<br>
+Cela implique d&rsquo;avoir, pour chaque service, une url de test qui renvoie toujours un <a href=https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP>code HTTP 200</a>.</p>
+<p><strong>🔺</strong> Les valeurs de la mémoire, cpu, l&rsquo;espace disque et la température dépendent des OS.
+Vous pouvez utiliser les <a href=https://pkg.go.dev/cmd/go#hdr-Build_constraints><strong>contraintes au build</strong></a> pour écrire du code spécifique à votre OS.</p>
+<h2 id=solutions-pour-écrire-à-la-main>Solutions pour écrire à la main</h2>
+<p>Voici différentes façon d&rsquo;écrire des données en gardant en mémoire cette règle : <em>une écriture rapide implique souvent une lecture lente, et vice versa.</em></p>
+<h3 id=sérialisation-json>Sérialisation JSON</h3>
+<p>Très rapide à mettre à place et supportée par de nombreux langages, les inconvénients sont nombreux dans notre cas :</p>
+<ul>
+<li>L&rsquo;écriture est lente de base (introspection)</li>
+<li>Le stockage est plus important à cause de la redondance de la structure</li>
+<li>Impossible de streamer la lecture pour traiter au fil de l&rsquo;eau</li>
+<li>Impossible d&rsquo;ajouter des données, il faut tout réécrire</li>
+</ul>
+<h3 id=sérialisation-langage>Sérialisation langage</h3>
+<p><a href=https://pkg.go.dev/encoding/gob>Gobencode en go</a>, serialisable en Java :</p>
+<ul>
+<li>
+<p>Dépend du langage, ne peut pas être lu dans un autre langage</p>
+</li>
+<li>
+<p>Illisible par un humain</p>
+</li>
+<li>
+<p>Impossible d&rsquo;ajouter des données, il faut tout réécrire</p>
+</li>
+<li>
+<p>Go propose une solution pour écrire les données avec un buffer en implémentant <a href=https://pkg.go.dev/io#Writer><strong>io.writer</strong></a> mais elle est plutôt complexe à mettre en œuvre.</p>
+</li>
+</ul>
+<h3 id=chante-sloubi-ou-lécriture-manuelle>Chante Sloubi ou l&rsquo;écriture manuelle</h3>
+<p>La dernière solution est <strong>l&rsquo;écriture manuelle</strong> où on est libre de définir notre structure et nos propres critères :</p>
+<ul>
+<li>Faible utilisation des resources (CPU & Ram) pour écrire</li>
+<li>Ne pas tout réécrire à chaque fois toutes les valeurs d&rsquo;une métrique</li>
+<li>Écrire uniquement les informations nécessaires sans overload</li>
+</ul>
+<p>On est d&rsquo;accord, <strong>cette solution est la plus sympa</strong>, allons-y.</p>
+<h2 id=ecrire-ses-fichiers-à-la-main>Ecrire ses fichiers à la main</h2>
+<p>On ne souhaite pas stocker pas pour stocker, mais en <strong>réfléchissant à comment on souhaite accéder aux données</strong>.
+Dans mon cas, je souhaite afficher, pour chaque machine, une ou plusieurs métriques d&rsquo;une journée.
+Cela implique, si je veux une recherche efficace, de stocker <strong>ensemble les métriques de la machine</strong> pour une même journée dans un même fichier.
+Au niveau de la volumétrie, pour 4 machines, j&rsquo;aurai 120 fichiers créés pour un mois.</p>
+<p>Voici une proposition de structure. Le fichier se découpe <strong>en deux parties</strong> :</p>
+<ul>
+<li>Un <strong>header</strong> de taille fixe en début de fichier avec les informations sur chaque métrique stockée et où les trouver
+<ul>
+<li>La taille fixe permet de lire le header en une seule fois, beaucoup plus rapide. Pour cela, il faut fixer le nombre maximum de header</li>
+<li>Chaque header de métrique va pointer vers la position du fichier où se trouvent les données</li>
+<li>On fixe le nombre de métriques que l&rsquo;on veut afin d&rsquo;un header avec une taille fixe</li>
+</ul>
+</li>
+<li>Le <strong>corps du fichier</strong> avec les valeurs pour chaque métrique.
+<ul>
+<li>On stocke les métriques dans des blocs : l&rsquo;espace est réservé et toutes les valeurs seront contigües</li>
+<li>S&rsquo;il n&rsquo;y a plus d&rsquo;espace dans le bloc pour cette métrique</li>
+</ul>
+</li>
+</ul>
+<p>On peut représenter le fichier avec des structures :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>headerFileMetrics</span> <span style=color:#66d9ef>struct</span> {
+  <span style=color:#a6e22e>name</span> <span style=color:#66d9ef>string</span>	<span style=color:#75715e>// max length 48
+</span><span style=color:#75715e></span>  <span style=color:#a6e22e>headerMetrics</span> []<span style=color:#f92672>*</span><span style=color:#a6e22e>headerMetric</span>
+}
+
+<span style=color:#66d9ef>type</span> <span style=color:#a6e22e>headerMetric</span> <span style=color:#66d9ef>struct</span> {
+	<span style=color:#a6e22e>name</span> <span style=color:#66d9ef>string</span>
+	<span style=color:#a6e22e>firstBlockPosition</span> <span style=color:#66d9ef>int64</span>  <span style=color:#75715e>// first block of data, used to read values
+</span><span style=color:#75715e></span>	<span style=color:#a6e22e>currentBlockPosition</span> <span style=color:#66d9ef>int64</span>	<span style=color:#75715e>// last block of metric. Used to know where to write new metrics
+</span><span style=color:#75715e></span>}
+
+<span style=color:#66d9ef>type</span> <span style=color:#a6e22e>MetricPoint</span> <span style=color:#66d9ef>struct</span>{
+	<span style=color:#a6e22e>Timestamp</span> <span style=color:#66d9ef>int64</span>
+	<span style=color:#a6e22e>Value</span> <span style=color:#66d9ef>float32</span>
+}
+
+<span style=color:#75715e>// Header in each block
+</span><span style=color:#75715e></span><span style=color:#66d9ef>type</span> <span style=color:#a6e22e>blockHeader</span> <span style=color:#66d9ef>struct</span> {
+  <span style=color:#a6e22e>nbPoints</span> <span style=color:#66d9ef>int32</span> <span style=color:#75715e>// current points in block
+</span><span style=color:#75715e></span>  <span style=color:#a6e22e>nextBlock</span> <span style=color:#66d9ef>int64</span> <span style=color:#75715e>// position of next block if this is full
+</span><span style=color:#75715e></span>  <span style=color:#a6e22e>positionInFile</span>  <span style=color:#66d9ef>int64</span> <span style=color:#75715e>// position of this block in file
+</span><span style=color:#75715e></span>  <span style=color:#a6e22e>pointsByBlock</span>  <span style=color:#66d9ef>int</span>  <span style=color:#75715e>// nb points max by block
+</span><span style=color:#75715e></span>}
+
+<span style=color:#66d9ef>type</span> <span style=color:#a6e22e>block</span> <span style=color:#66d9ef>struct</span>{
+  <span style=color:#a6e22e>header</span> <span style=color:#a6e22e>blockHeader</span>
+  <span style=color:#a6e22e>points</span> []<span style=color:#a6e22e>MetricPoint</span>
+}
+</code></pre></div><p>La structure du fichier avec le détail pour chaque champ :<br>
+<img src=header.png alt=header></p>
+<p>L&rsquo;écriture se fera en une seule fois en pré-calculant le bloc à écrire : le header sera gardé en mémoire, modifié et écrit en une fois.
+Chaque nouveau bloc (ou mise à jour) sera écrit en une fois en réservant tout l&rsquo;espace nécessaire (même s&rsquo;il n&rsquo;y a pas de valeur encore).</p>
+<div class=mermaid align=center>
+flowchart TD;
+subgraph Header Metric 1
+H1[Header 1]-->FB1[First block]
+FB1-->CB1[Current block]
+end
+subgraph Header Metric 2
+H2[Header 2]-->FB2[First block]
+FB2-->CB2[Current block]
+end
+subgraph Data 1
+B11[Block 1]-->BB12[Block 2]
+FB1-->B11
+CB1-->BB12
+end
+subgraph Data 2
+FB2-->B21[Block 1]
+CB2-->B21
+end
+</div>
+<script>mermaid.initialize({startOnLoad:!0,securityLevel:'loose'})</script>
+<p>Go fournit plusieurs fonctions pour écrire des données octet par octet :</p>
+<ul>
+<li><strong>String</strong> : Pour écrire une chaine de caractères de longueur <em>n</em>, on écrit d&rsquo;abord la taille de la chaine (1o pour longueur de 255 par ex)</li>
+<li><strong>Entier</strong> : choix de la taille, int8 (1 o) / 255 valeurs, int 16 (2 o) / 65000, int32 (4 o) / 4 milliards ou int64 (8 o). Attention au bit de poids fort <a href=https://pkg.go.dev/encoding/binary#pkg-variables>LittleEndian / BigEndian</a></li>
+<li><strong>Float</strong> : Go permet de représenter les floats sous forme d&rsquo;entier de 32 bits :</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#a6e22e>math</span>.<span style=color:#a6e22e>Float32bits</span>(float32(<span style=color:#ae81ff>3.2</span>)) <span style=color:#75715e>// =&gt; 1078774989
+</span><span style=color:#75715e></span><span style=color:#a6e22e>math</span>.<span style=color:#a6e22e>Float32frombits</span>(<span style=color:#ae81ff>1078774989</span>) <span style=color:#75715e>// =&gt; 3.2
+</span></code></pre></div><p>Voici un exemple d&rsquo;algorithme pour écrire les points dans un block de données.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>pointsByBlock</span> = <span style=color:#ae81ff>1440</span>
+
+<span style=color:#66d9ef>func</span> <span style=color:#a6e22e>writePointsInBlock</span>(<span style=color:#a6e22e>f</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>os</span>.<span style=color:#a6e22e>File</span>,<span style=color:#a6e22e>bh</span> <span style=color:#f92672>*</span><span style=color:#a6e22e>blockHeader</span>,<span style=color:#a6e22e>points</span> []<span style=color:#a6e22e>model</span>.<span style=color:#a6e22e>MetricPoint</span>, <span style=color:#a6e22e>hm</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>headerMetric</span>){
+	<span style=color:#a6e22e>size</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>bh</span>.<span style=color:#a6e22e>availableSpace</span>() <span style=color:#75715e>// available nb points in block
+</span><span style=color:#75715e></span>	<span style=color:#a6e22e>pointsToWrite</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>points</span>     
+	<span style=color:#75715e>// If no enough space, juste write some point
+</span><span style=color:#75715e></span>	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>size</span> &lt; len(<span style=color:#a6e22e>points</span>){
+		<span style=color:#a6e22e>pointsToWrite</span> = <span style=color:#a6e22e>points</span>[<span style=color:#ae81ff>0</span>:<span style=color:#a6e22e>size</span>]
+	}
+	<span style=color:#75715e>// Write points in block
+</span><span style=color:#75715e></span>	<span style=color:#a6e22e>f</span>.<span style=color:#a6e22e>WriteAt</span>(<span style=color:#a6e22e>getPointsAsBytes</span>(<span style=color:#a6e22e>pointsToWrite</span>),<span style=color:#a6e22e>bh</span>.<span style=color:#a6e22e>getPositionInBlock</span>())
+	<span style=color:#a6e22e>bh</span>.<span style=color:#a6e22e>updateNbPoints</span>(len(<span style=color:#a6e22e>pointsToWrite</span>))
+	<span style=color:#75715e>// If no enough space for all metrics, create new block and write inside
+</span><span style=color:#75715e></span>	<span style=color:#66d9ef>if</span> <span style=color:#a6e22e>size</span> &lt; len(<span style=color:#a6e22e>points</span>){
+		<span style=color:#a6e22e>nextBlock</span> <span style=color:#f92672>:=</span> <span style=color:#a6e22e>createNewBlockHeader</span>(<span style=color:#a6e22e>getEndPosition</span>(<span style=color:#a6e22e>f</span>),<span style=color:#a6e22e>pointsByBlock</span>)
+        <span style=color:#75715e>// Reserve space in file for while block
+</span><span style=color:#75715e></span>		<span style=color:#a6e22e>f</span>.<span style=color:#a6e22e>WriteAt</span>(make([]<span style=color:#66d9ef>byte</span>,<span style=color:#a6e22e>bh</span>.<span style=color:#a6e22e>getSizeBlock</span>()),<span style=color:#a6e22e>nextBlock</span>.<span style=color:#a6e22e>positionInFile</span>)
+		<span style=color:#75715e>// Link actual block to next block
+</span><span style=color:#75715e></span>		<span style=color:#a6e22e>bh</span>.<span style=color:#a6e22e>nextBlock</span> = <span style=color:#a6e22e>nextBlock</span>.<span style=color:#a6e22e>positionInFile</span>
+		<span style=color:#75715e>// Update header to link current block to the new one
+</span><span style=color:#75715e></span>		<span style=color:#a6e22e>hm</span>.<span style=color:#a6e22e>currentBlockPosition</span> = <span style=color:#a6e22e>nextBlock</span>.<span style=color:#a6e22e>positionInFile</span>
+		<span style=color:#a6e22e>writePointsInBlock</span>(<span style=color:#a6e22e>f</span>,<span style=color:#a6e22e>nextBlock</span>,<span style=color:#a6e22e>points</span>[<span style=color:#a6e22e>size</span>:],<span style=color:#a6e22e>hm</span>)
+	}
+	<span style=color:#a6e22e>bh</span>.<span style=color:#a6e22e>flushHeader</span>(<span style=color:#a6e22e>f</span>)
+}
+</code></pre></div><p>Désormais je suis capable d&rsquo;écrire mes métriques à la main. La <strong>prochaine étape</strong> va consister à aller <strong>les lire</strong>.</p>
+<h2 id=lançons-une-requête>Lançons une requête</h2>
+<p>Voici le déroulé d&rsquo;une requête :</p>
+<div class=mermaid align=center>
+sequenceDiagram
+participant User
+participant Server
+participant Memory
+participant Disk
+participant File
+User->>Server:ask metrics
+Server->>Memory:Get last metrics not flushed
+Memory-->>Server:Return metrics
+Server->>Disk:find file
+note right of Server:by instance and date
+File-->>Server:return good file
+Server->>File:read header (971B)
+Server->>Server:Find data position in header
+Server->>File:read metric block
+File-->>Server:return list of timestamp/value
+Server->>Server:Aggregate
+note right of Server:Aggregation of metrics from memory and disk
+Server-->>User:return values
+</div>
+<script>mermaid.initialize({startOnLoad:!0,securityLevel:'loose'})</script>
+<p>La subtilité consiste à agréger les métriques provenant du fichier ainsi que les dernières métriques en mémoire (si elles correspondent à la date recherchée).</p>
+<h2 id=et-ensuite->Et ensuite ?</h2>
+<p>Une petite API en Go pour lancer des requêtes, un front léger en <a href=https://svelte.dev/><strong>svelte</strong></a> pour afficher les graphiques et voici le résultat :</p>
+<p><img src=monitor.png alt=monitoring></p>
+<p>Mon besoin de créer un outil de monitoring était guidé par <strong>les performances</strong> : peu d&rsquo;utilisation des resources aussi bien pour le serveur que pour les agents.</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:center>Instance</th>
+<th style=text-align:center>CPU</th>
+<th style=text-align:center>Mémoire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:center>Serveur</td>
+<td style=text-align:center>1%</td>
+<td style=text-align:center>1Mo</td>
+</tr>
+<tr>
+<td style=text-align:center>Agent 1</td>
+<td style=text-align:center>3%</td>
+<td style=text-align:center>1Mo</td>
+</tr>
+<tr>
+<td style=text-align:center>Agent 2</td>
+<td style=text-align:center>2.6%</td>
+<td style=text-align:center>1Mo</td>
+</tr>
+<tr>
+<td style=text-align:center>Agent 3</td>
+<td style=text-align:center>1%</td>
+<td style=text-align:center>1Mo</td>
+</tr>
+</tbody>
+</table>
+<p>L&rsquo;empreinte <strong>mémoire et CPU sont très faibles</strong> et c&rsquo;est exactement ce que je voulais !</p>
+<p><img src=whou.gif alt=Whaou></p>
+<h2 id=pour-aller-plus-loin>Pour aller plus loin</h2>
+<p>J&rsquo;ai pensé à plusieurs améliorations possibles :</p>
+<ul>
+<li><strong>Stocker plusieurs journées</strong> dans un même fichier (par ex la semaine) afin de limiter le nombre de fichiers générés
+<ul>
+<li>On devra changer la structure de header pour inclure les dates</li>
+<li>On pourra trier les éléments du header pour rechercher rapidement dedans (sans devoir parser toutes les valeurs du header)</li>
+</ul>
+</li>
+<li>Mettre en place un <strong>système d&rsquo;alerting</strong> pour éviter de regarder régulièrement les métriques</li>
+</ul>
+<p>Vous pouvez retrouver tout le code du projet sur <a href=https://github.com/jotitan/monitor-pis><strong>mon compte github</strong></a>.</p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2022-03-03T00:08:00+02:00>
+3 mars 2022
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/jonathan-baranzini/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Jonathan BARANZINI" src=https://blog.talanlabs.com/authors/jonathan_baranzini.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/jonathan-baranzini/>Jonathan BARANZINI</a></h1>
+<p class="mt-0 mb-2">Développeur</p>
+</div>
+<div class=mb-6>
+<a href=https://github.com/jotitan target=_blank class="icon is-medium"><i class="fab fa-lg fa-github"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/back>back</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/iot>iot</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/golang>#Golang</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/monitoring>#Monitoring</a>
+</div>
+</div>
+</div>
+</div>
+<aside>
+<h4 class="subtitle mt-10 mb-8"><i class="fas fa-forward"></i> Vous aimerez peut-être...</h4>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/write_monitoring/>
+<img class="border object-cover w-full m-0 max-w-md" src=/write_monitoring/cover_hu592d1e4e9970007cd348532818833d58_43068_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/back>back</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/iot>iot</a>
+</div>
+<a href=/write_monitoring/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Écrire soit même son outil de monitoring, partie 1</h2></a>
+<div class=my-1>
+<span>Jonathan BARANZINI</span>,
+<time datetime=2022-02-28T00:15:00+02:00>
+28 février 2022
+</time>
+</div>
+<p class="my-1 text-slate-500">Écrire soi même un outil de monitoring pour Rasperry PI, partie 1</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

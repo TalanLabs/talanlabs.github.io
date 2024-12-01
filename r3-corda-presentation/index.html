@@ -1,0 +1,487 @@
+<!doctype html><html lang=fr-fr>
+<head><title> R3 Corda : Presentation | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Les technologies Blockchain & DLT (Distributed Ledger Technology) sont nombreuses. Nous allons ici nous concentrer sur Corda, un DLT développé par le consortium R3.">
+<meta property="og:title" content="R3 Corda : Presentation">
+<meta property="og:description" content="Les technologies Blockchain & DLT (Distributed Ledger Technology) sont nombreuses. Nous allons ici nous concentrer sur Corda, un DLT développé par le consortium R3.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/r3-corda-presentation/"><meta property="og:image" content="https://blog.talanlabs.com/r3-corda-presentation/cover.png"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2019-03-11T14:51:37+01:00">
+<meta property="article:modified_time" content="2019-03-11T14:51:37+01:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/r3-corda-presentation/cover.png">
+<meta name=twitter:title content="R3 Corda : Presentation">
+<meta name=twitter:description content="Les technologies Blockchain & DLT (Distributed Ledger Technology) sont nombreuses. Nous allons ici nous concentrer sur Corda, un DLT développé par le consortium R3.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://alainnicolas.fr/blog/r3-corda-presentation/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>R3 Corda : Presentation</h1>
+<figure class="cover image">
+<img src=/r3-corda-presentation/cover.png width=1920 height=500 alt="illustration de l'article">
+</figure>
+<div class=paragraph>
+<p>Les technologies Blockchain & DLT (Distributed Ledger Technology) sont nombreuses.
+Nous allons ici nous concentrer sur Corda, un DLT développé par le consortium R3.</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=./corda_logo.png alt="corda logo">
+</div>
+</div>
+<div class=sect1>
+<h2 id=_genèse_du_projet>Genèse du projet</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>À l’origine de Corda : cinq problématiques des blockchains publiques les rendent inadaptées à l’utilisation en entreprise.
+Nous allons commencer par détailler ces problématiques.</p>
+</div>
+<div class=sect2>
+<h3 id=_manque_de_confidentialité>Manque de confidentialité</h3>
+<div class=paragraph>
+<p>Les blockchains classiques telles qu’Ethereum proposent un registre complet distribué entre tous les participants (les ‘nœuds’).
+Or, pour des raisons de compétition voire de régulation, il est difficilement envisageable de donner accès à toutes les transactions réalisées par une entreprise à ses concurrents directs.</p>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_risque_de_non_finalité>Risque de non-finalité</h3>
+<div class=paragraph>
+<p>R3 considère que le protocole PoW (<em>Proof of Work</em>) utilisé par Bitcoin ne répond pas au besoin de ‘finalité’ requis par les entreprises.
+En effet, pour entériner une transaction dans le registre, il faut attendre le travail des mineurs, et même si la transaction est ajoutée à un bloc, rien ne permet de s’assurer définitivement qu’un fork n’aura pas lieu.</p>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_pseudonymat_des_participants>Pseudonymat des participants</h3>
+<div class=paragraph>
+<p>Si l’inscription sur un réseau tel qu’Ethereum est très facile, par exemple en créant son portefeuille via <a href=https://www.myetherwallet.com>MyEtherWallet</a>, à aucun moment dans le processus il n’est demandé de fournir son identité.
+Alors, anonymat complet ?
+Non, pas complètement.
+À travers des pratiques de crawling on peut assez aisément relier de nombreuses adresses de portefeuilles à des individus précis.
+On parle de ‘pseudonymat’.</p>
+</div>
+<div class=paragraph>
+<p>Lorsque l’on parle d’échanges entre des entreprises, il est évident qu’elles doivent savoir à tout moment à qui elles ont affaire.
+Plutôt que de masquer l’identité des participants, il faut bien au contraire identifier fortement les entités qui traitent sur le réseau.</p>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_faible_scalabilité>Faible scalabilité</h3>
+<div class=paragraph>
+<p>On recense plusieurs milliards de transactions de type ‘paiement’ dans le monde chaque jour.
+À l’inverse, Bitcoin ne traite qu’environ 300 000 transactions dans une journée.
+Pour qu’un système actuel puisse être remplacé par un système blockchain, il faut que ce dernier puisse absorber autant de transactions.
+Ce critère est d’autant plus important en entreprise que la rapidité de transfert est parfois indispensable (par opposition de la moyenne actuelle de 19 secondes par bloc sur Ethereum).</p>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_faible_productivité_et_lenteur_dintégration>Faible productivité et lenteur d’intégration</h3>
+<div class=paragraph>
+<p>Si les technologies et langages exotiques comme Solidity (pour Ethereum) sont loin de rebuter les startups, il est clair qu’un grand compte (une grande banque, un assureur, etc.) aura plus de mal à accepter l’ajout d’une brique d’un nouveau format dans son système d’information.
+De plus, il est aujourd’hui plus facile de recruter des développeurs Java que Solidity…​</p>
+</div>
+<div class=paragraph>
+<p>Pénurie des talents et standardisation du SI poussent les entreprises à privilégier des technologies déjà éprouvées plutôt que les nouveautés encore mal maîtrisées voire interdites par les experts de la sécurité.</p>
+</div>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_historique_rapide>Historique rapide</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>C’est sur la base de ces observations communes à plusieurs acteurs financiers que consortium R3 est fondé en 2015 par des grandes banques du monde entier, comme Barclays, Société Générale ou Deutsche Bank.
+La première version officielle de Corda sort en octobre 2017, avant une version d’entreprise en juillet 2018.</p>
+</div>
+<div class=paragraph>
+<p>Corda est présentée comme étant une ‘blockchain’ d’entreprise, mais nous aurons l’occasion de revenir sur la notion de ‘blockchain’ dans ce cas précis.
+R3 part du constat que les solutions comme Ethereum ou Bitcoin ne répondent pas aux besoins spécifiques d’une entreprise.</p>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_deux_versions_de_corda>Deux versions de Corda</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Corda se décline en deux versions, chacune dédiée à un usage différent.</p>
+</div>
+<div class=sect2>
+<h3 id=_community_edition>Community Edition</h3>
+<div class=paragraph>
+<p>Version open-source de Corda, accessible à tous et dont le code source est <a href=https://github.com/corda/corda>disponible sur GitHub</a>.</p>
+</div>
+<div class=paragraph>
+<p>Un très bon moyen de se former aux concepts de base, créer sa première CorDapp (application Corda, par analogie aux ÐApps d’Ethereum — applications décentralisées).
+Pour cela, la documentation de Corda propose des tutoriels qui permettent assez rapidement de faire fonctionner un réseau Corda, de développer des contrats et faire des transactions.</p>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_enterprise_edition>Enterprise Edition</h3>
+<div class=paragraph>
+<p>Version dédiée aux entreprises, accès aux exécutables <a href=https://www.r3.com/corda-enterprise-download/>sur demande</a>.</p>
+</div>
+<div class=paragraph>
+<p>Cette version entend répondre plus spécifiquement aux besoins des entreprises.
+C’est ainsi qu’elle permet de coller aux exigences de haute performance et haute disponibilité, propose un support de plusieurs bases de données (Oracle, SQL Server, etc.) et une migration d’un système à l’autre.</p>
+</div>
+<div class=paragraph>
+<p>Mais surtout, cette version inclut un composant supplémentaire : le firewall.
+Élément à l’aspect marketing indéniable, surtout en pensant à des contextes très sécurisés comme dans une banque.
+Composé de deux éléments (bridge & float), il entend garantir la qualité des données en entrée et sortie du SI.</p>
+</div>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_quelques_concepts_de_base>Quelques concepts de base</h2>
+<div class=sectionbody>
+<div class=sect2>
+<h3 id=_un_réseau_sous_contrôle>Un réseau sous contrôle</h3>
+<div class=paragraph>
+<p>Un réseau Corda est semi-privé, dans la mesure où chaque nœud doit fournir des éléments permettant de justifier de son identité à un <em>doorman</em> pour rejoindre le réseau.
+Ce service permet de s’assurer que chaque entité participant au réseau est connue de manière non ambigüe.
+On parle alors d’un processus de <em>KYC</em> (<em>Know Your Customer</em>), largement répandu dans de nombreuses activités hors blockchain.</p>
+</div>
+<div class=paragraph>
+<p>Un réseau Corda est donc composé de nœuds et d’un <em>doorman</em>, mais aussi d’un ou plusieurs service(s) de notaire.
+Un <em>notary</em> est un nœud particulier, chargé de garantir l’unicité des mises à jour du registre.</p>
+</div>
+<div class=paragraph>
+<p>Une fois validée par le <em>doorman</em>, l’identité d’une entité est attestée par un certificat X.509 délivré par celui-ci, et publiée sur l’ensemble du réseau <em>via</em> un service dit de <em>network map</em>.</p>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_un_registre_semi_partagé>Un registre semi-partagé</h3>
+<div class=paragraph>
+<p>Contrairement à Ethereum où tous les participants ont accès au registre de toutes les transactions, le registre de Corda n’est pas entièrement partagé.
+En effet, un nœud n’a accès qu’aux données pertinentes pour son activité.
+C’est ainsi que sur le schéma ci-dessous, le nœud <strong>Alice</strong> n’a pas accès aux données partagées entre <strong>Bob</strong> et <strong>Carl</strong> alors même qu’il partage certaines informations avec <strong>Bob</strong>.</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=./corda_presentation_ledger_1.png alt="Représentation d’une partie du registre © R3 Limited">
+</div>
+</div>
+<div class=paragraph>
+<p>De plus, Corda va synchroniser en continu les données partagées par deux nœuds.
+Ainsi, nous avons l’assurance qu’à tout moment <strong>Alice</strong> et <strong>Bob</strong> voient la même chose.</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=./corda_presentation_ledger_2.png alt="Représentation de la synchronisation des données entre deux nœuds © R3 Limited">
+</div>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_des_états_propres_aux_nœuds>Des ‘états’ propres aux nœuds</h3>
+<div class=paragraph>
+<p>Chacun des points de couleurs des schémas ci-dessus représente un fait, un ‘état’.
+Les <em>states</em> d’un nœud peuvent évoluer dans le temps.
+Pour réaliser cette évolution, l’état courant est marqué comme ‘historique’ et un nouvel état mis à jour est créé.
+L’ensemble des états, y compris leurs versions historiques, est stocké dans un <em>vault</em> propre à chaque nœud.
+Ce coffre-fort ne contient donc que les états relatifs au nœud.</p>
+</div>
+<div class=paragraph>
+<p>En rentrant un peu plus dans les détails, ce <em>vault</em> est en réalité une base de données classique (par défaut H2 pour la version Community, avec possibilité de passer sur des systèmes plus complets comme Oracle avec la version Enterprise).
+Nous sommes donc bien loin d’une blockchain puisque la notion même de ‘bloc’ est totalement absente de Corda.
+C’est notamment cette architecture radicalement différente qui permet d’assurer de meilleures performances de transaction.</p>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_automatisation_via_des_contrats>Automatisation via des contrats</h3>
+<div class=paragraph>
+<p>Si vous avez déjà approché Ethereum, vous avez entendu parler des <em>smart contracts</em>.
+Ces bouts de code qui n’ont d’intelligent que le nom permettent l’automatisation de certaines tâches lors de transactions avec la blockchain.</p>
+</div>
+<div class=paragraph>
+<p>Corda n’échappe pas à ce concept, en le nommant plus sobrement ‘contrat’.
+Les contrats Corda sont rédigés dans des langages exécutables par la JVM (Java Virtual Machine), Java et Kotlin en tête.
+C’est ainsi qu’un développeur Java ‘classique’ pourra s’approprier un contrat Corda assez facilement, sans apprendre un nouveau langage, uniquement en exploitant l’API fournie par Corda.</p>
+</div>
+<div class=paragraph>
+<p>L’exécution d’un contrat doit être ‘déterministe’, dans la mesure où l’acceptation d’une transaction par le contrat dépend uniquement du contenu de celle-ci.</p>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_des_transactions_sous_conditions>Des transactions sous conditions</h3>
+<div class=paragraph>
+<p>Nous venons tout juste d’évoquer le terme de ‘transaction’, il est temps de le définir.
+Une transaction est avant tout un souhait de mettre à jour le registre.
+Ce souhait ne peut ensuite être entériné dans le registre qu’à trois conditions :</p>
+</div>
+<div class=ulist>
+<ul>
+<li>
+<p>Elle ne contient pas de ‘double dépense’ (autrement dit elle n’essaye pas de consommer un état déjà consommé)</p>
+</li>
+<li>
+<p>Elle respecte les termes du contrat Corda (nature des paramètres d’entrée, etc.)</p>
+</li>
+<li>
+<p>Elle a été signée par les parties requises</p>
+</li>
+</ul>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_des_flows_pour_atteindre_le_consensus>Des flows pour atteindre le consensus</h3>
+<div class=paragraph>
+<p>Entre l’émission du souhait de mettre à jour le registre et sa prise en compte par les nœuds impliqués, il y a donc plusieurs étapes, qui peuvent paraître lourdes et redondantes, là où une blockchain classique se charge entièrement de traiter la transaction émise.</p>
+</div>
+<div class=paragraph>
+<p>C’est là que la notion de <em>flow</em> entre en jeu.
+Les <em>flows</em> Corda visent à automatiser le processus de consensus.
+Fort heureusement, il n’y a pas besoin de développer les mêmes <em>flows</em> de manière répétitive, car Corda fournit par défaut des <em>flows</em> standardisés pour les actions courantes (signature de transaction, vérification d’un ensemble de transactions, etc.).</p>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_validité_des_transactions_en_deux_volets>Validité des transactions en deux volets</h3>
+<div class=paragraph>
+<p>Comme nous l’avons vu, pour être intégrée au registre, une transaction doit répondre à des règles précises et inaltérables.
+Ces règles ont deux pendants :</p>
+</div>
+<div class=paragraph>
+<p><strong>Validité</strong> - Les entités devant signer une transaction vérifient sa validité avant d’apposer leur signature.
+Pour cela, les <em>inputs</em> et <em>outputs</em> de la transaction doivent répondre aux règles pré-établies, ainsi que toutes les transactions antérieures ayant amené au <em>state</em> que nous essayons de modifier.
+On peut donc parler de ‘chaînage’ des transactions même si on est loin du fonctionnement d’une blockchain.</p>
+</div>
+<div class=paragraph>
+<p><strong>Unicité</strong> - Une transaction ne doit pas consommer un état qui a déjà été consommé.
+Par exemple, une entité ne doit pas pouvoir dépenser de l’argent qu’elle a déjà donné à une autre entité.
+Donc, les <em>inputs</em> de la transaction ne doivent pas avoir été historisés auparavant.</p>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_le_cœur_de_corda_le_nœud>Le cœur de Corda : le nœud</h3>
+<div class=paragraph>
+<p>Un nœud Corda est une instance de JVM possédant une identité unique au sein d’un réseau.
+Il possède deux interfaces avec l’extérieur :</p>
+</div>
+<div class=ulist>
+<ul>
+<li>
+<p>Une <strong>couche réseau</strong> pour interagir avec les autres nœuds</p>
+</li>
+<li>
+<p>Une <strong>interface RPC</strong> pour interagir avec son propriétaire</p>
+</li>
+</ul>
+</div>
+<div class=paragraph>
+<p>Comme nous l’avons vu, un nœud contient aussi son <em>vault</em> qui contient les <em>states</em> et un service de stockage pour héberger les transactions et leurs éventuelles pièces jointes.</p>
+</div>
+<div class=paragraph>
+<p>Tel quel, le nœud permet donc des opérations basiques, mais ses fonctionnalités sont évidemment restreintes et doivent être étendues par l’ajout de <em>CorDapps</em>.</p>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_lapplication_distribuée_la_cordapp>L’application distribuée : la CorDapp</h3>
+<div class=paragraph>
+<p>Une CorDapp est une application distribuée sur un réseau Corda, à l’image des ÐApps sur un réseau Ethereum.
+Elles sont constituées de :</p>
+</div>
+<div class=ulist>
+<ul>
+<li>
+<p><em>states</em> qui définissent les ‘faits’ manipulés par la CorDapp</p>
+</li>
+<li>
+<p><em>contracts</em> qui définissent les règles de validation de transaction à appliquer</p>
+</li>
+<li>
+<p><em>services</em> qui fournissent des méthodes utilitaires pour interagir avec les composants du nœud</p>
+</li>
+<li>
+<p><em>whitelists</em> qui imposent les données que le nœud peut recevoir.</p>
+</li>
+</ul>
+</div>
+<div class=paragraph>
+<p>Contrairement à un réseau Ethereum, la CorDapp ne sera pas propagée dans tous les nœuds du réseau, mais installée de manière optionnelle sur les nœuds volontaires.
+Tant qu’un nœud n’a pas la CorDapp <em>ad hoc</em> pour exécuter un certain <em>flow</em>, il ne pourra pas l’exploiter.</p>
+</div>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_pour_aller_plus_loin>Pour aller plus loin…​</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Nous avons évoqué de nombreux concepts à la base de Corda et de ses composants, mais il est évident que de nombreux détails pourraient être ajoutés.
+La <a href=https://docs.corda.net/>documentation officielle</a> de Corda pourra sûrement répondre aux questions plus poussées !</p>
+</div>
+<div class=paragraph>
+<p>Dans un <a href=https://alainnicolas.fr/blog/r3-corda-limites/>prochain article</a>, nous évoquerons les limites de Corda, pour garder un regard critique sur cette solution largement employée dans le milieu bancaire notamment.</p>
+</div>
+<div class=paragraph>
+<p><br></p>
+</div>
+<hr>
+<div class=paragraph>
+<p><br>
+<em>Cet article a initialement été publié sur <a href="https://medium.com/@Alain_Ncls/r3-corda-pr%C3%A9sentation-b2cab9598fbd?source=friends_link&sk=7aff16bc24b59974d9da8028e5dfb598">Medium</a>.</em></p>
+</div>
+</div>
+</div>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2019-03-11T14:51:37+01:00>
+11 mars 2019
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/alain-nicolas/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Alain NICOLAS" src=https://blog.talanlabs.com/authors/alain_nicolas.png></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/alain-nicolas/>Alain NICOLAS</a></h1>
+<p class="mt-0 mb-2">Développeur Blockchain & DLT</p>
+</div>
+<div class=mb-6>
+<a href=https://twitter.com/alain_ncls target=_blank class="icon is-medium"><i class="fab fa-lg fa-twitter text-[#1DA1F2]"></i></a>
+<a href=https://www.linkedin.com/in/alainnicolas target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+<a href=https://github.com/alainncls target=_blank class="icon is-medium"><i class="fab fa-lg fa-github"></i></a>
+<a class="icon is-medium" href=https://alainncls.medium.com/ target=_blank><i class="fab fa-lg fa-medium"></i></a>
+<a href=https://alainnicolas.fr target=_blank class="icon is-medium"><i class="fas fa-lg fa-link"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/corda>#corda</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/r3>#R3</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/dlt>#DLT</a>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Gefco : intégrateur - mise en place d'un intégrateur de flux | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="L&rsquo;intégrateur est une application qui se place au niveau du back-office d&rsquo;une solution SI.">
+<meta property="og:title" content="Gefco : intégrateur - mise en place d'un intégrateur de flux">
+<meta property="og:description" content="L&rsquo;intégrateur est une application qui se place au niveau du back-office d&rsquo;une solution SI.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/gefco-integrateur-mise-place-dun-integrateur-de-flux/"><meta property="og:image" content="https://blog.talanlabs.com/img/logo_talanlabs_hd_w600.png"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2015-06-08T08:30:00+00:00">
+<meta property="article:modified_time" content="2015-06-08T08:30:00+00:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/img/logo_talanlabs_hd_w600.png">
+<meta name=twitter:title content="Gefco : intégrateur - mise en place d'un intégrateur de flux">
+<meta name=twitter:description content="L&rsquo;intégrateur est une application qui se place au niveau du back-office d&rsquo;une solution SI.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/gefco-integrateur-mise-place-dun-integrateur-de-flux/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Gefco : intégrateur - mise en place d'un intégrateur de flux</h1>
+<p>L&rsquo;intégrateur est une application qui se place au niveau du back-office d&rsquo;une solution SI. C&rsquo;est le composant qui permet d&rsquo;échanger avec les autres SI (partenaires, historiques, &mldr;) via l&rsquo;intermédiaire de flux que ce soit sous forme JMS (MQSeries), mails, file system, SMS &mldr; Ces flux peuvent être reçus ou envoyés et une supervision adéquate est de rigueur.</p>
+<p>Préambule</p>
+<ul>
+<li>Contraintes</li>
+<li>Cahier des charges</li>
+<li>Mise en place</li>
+<li>Ecrans</li>
+<li>Statistiques</li>
+<li>Réception</li>
+<li>Emission</li>
+<li>Observations</li>
+<li>Exploitation</li>
+<li>Cahier de tests</li>
+<li>Import de cas de tests</li>
+<li>Sauvegarde du résultat</li>
+<li>Cas de tests : groupes</li>
+<li>Variables</li>
+<li>Limites techniques</li>
+</ul>
+<h1 id=préambule>Préambule</h1>
+<p>Dans un tel SI, l&rsquo;intégration de ces flux est soumise à des contraintes de performance directement liées à la forte volumétrie et la taille des échanges et doit se faire en asynchrone afin de tirer meilleure partie des ressources matérielles. Cette contrainte sur la volumétrie est renforcée par le type d&rsquo;activité de l&rsquo;entreprise puisqu&rsquo;il est fort probable que la réception et l&rsquo;émission de ces flux se fasse sur un créneau horaire assez spécifique.</p>
+<blockquote>
+<p>On pourrait concevoir que l&rsquo;essentialité des flux serait reçu en semaine. La répartition sur une journée est elle-même hétérogène et se calque sur les horaires d&rsquo;ouverture (8h-20h par exemple)</p>
+</blockquote>
+<p>Alors que le client est connecté au serveur d&rsquo;application, l&rsquo;intégrateur fonctionne en mode stand-alone et peut avoir plusieurs instances lancées simultanément (à condition de bien compartimenter les traitements).</p>
+<blockquote>
+<p>Pour compartimenter, on pourrait par exemple mettre sur une instance tous les traitements pour l&rsquo;envoi de flux, dont les batch d&rsquo;envoi de mail et sur une autre instance ceux de l&rsquo;intégration et donc le recyclage.
+On pourrait également traiter certains types de flux sur une instance et le reste sur une autre.
+L&rsquo;intégrateur développé par Synaptix permet de faire dialoguer les différentes instances entre elles.</p>
+</blockquote>
+<h1 id=contraintes>Contraintes</h1>
+<h2 id=contraintes-techniques>Contraintes techniques</h2>
+<p>Les contraintes techniques sont principalement dues à la volumétrie des échanges mais également à des contraintes d&rsquo;unicité qui peuvent intervenir.</p>
+<p>Deux traitements en parallèle peuvent ainsi se bloquer mutuellement s&rsquo;ils modifient les mêmes objets dans un ordre différent, travailler sur des versions obsolètes des objets, créer en doublon des objets censés être uniques &mldr;</p>
+<p>Etant donné la volumétrie, il faut pouvoir paramétrer le nombre de traitements en parallèle suivant le type de flux et ce afin de protéger l&rsquo;intégrateur contre toute surcharge. Il ne s&rsquo;agirait pas de noyer l&rsquo;application avec plusieurs milliers de traitements en parallèle.
+Pouvoir intervenir sur ces paramètres à chaud, c&rsquo;est-à-dire même une fois l&rsquo;application lancée, est un avantage non négligeable.</p>
+<h2 id=contraintes-fonctionnelles>Contraintes fonctionnelles</h2>
+<p>Avec toute solution d&rsquo;intégration de flux se pose le problème du recyclage notamment dans le cas où ces flux sont hiérarchisés et dépendent d&rsquo;un autre.</p>
+<blockquote>
+<p>Dans le cas quasi systématique où un premier flux crée un objet qui doit être modifié par le second, l&rsquo;intégration du second ne peut se faire que si le premier a correctement été intégré. Cela vaut également dans le cas où les deux arrivent à quelques millisecondes d&rsquo;écart, il est fort à parier que le premier n&rsquo;aura pas fini d&rsquo;être intégré étant donné le caractère asynchrone des traitements.</p>
+</blockquote>
+<p>De plus, le besoin de supervision apparaît rapidement afin de pouvoir contrôler les traitements et ce afin de permettre des actions utilisateur pour débloquer la situation.</p>
+<blockquote>
+<p>Avec des données référentielles, il arrive qu&rsquo;il manque des données. Ces données doivent alors être rajoutées ou mises à jour via une action utilisateur. Une fois corrigé, l&rsquo;utilisateur doit relancer les traitements bloqués.</p>
+</blockquote>
+<p>Parfois, l&rsquo;intégration d&rsquo;un flux ne doit pas se faire. C&rsquo;est le cas lorsqu&rsquo;une contrainte d&rsquo;unicité sur un objet doit être respectée et qu&rsquo;un nouveau flux demande à nouveau sa création.</p>
+<blockquote>
+<p>Le flux &ldquo;doublon&rdquo; doit être archivé ou supprimé sans qu&rsquo;il ait été intégré.</p>
+</blockquote>
+<h1 id=cahier-des-charges>Cahier des charges</h1>
+<p>Suite aux contraintes détectées, il faut proposer une solution qui permet de caractériser des types d&rsquo;erreurs et de les rendre paramétrable afin de modifier le statut du flux en conséquence.</p>
+<p>Ces différentes contraintes nous imposent de proposer un système de recyclage et de supervision, dans lequel les erreurs peuvent bénéficier d&rsquo;un type de recyclage afin de savoir que faire du flux.</p>
+<p>Le principe proposé retenu est le suivant :</p>
+<ul>
+<li>
+<p>Chaque traitement se fait dans un thread à part</p>
+</li>
+<li>
+<p>Ces traitements peuvent remonter des erreurs</p>
+</li>
+<li>
+<p>Si les flux sont des XML, ils peuvent être validés en utilisant un XSD</p>
+</li>
+<li>
+<p>Les types d&rsquo;erreurs sont paramétrables et entraînent les actions suivantes : alerte, recyclage automatique (délai paramétrable), recyclage manuel, rejeté</p>
+</li>
+<li>
+<p>Un écran permet de visualiser les messages reçus, de les recycler</p>
+</li>
+<li>
+<p>Un écran permet de choisir un type de recyclage pour chaque type d&rsquo;erreur</p>
+</li>
+<li>
+<p>Un écran permet de visualiser des statistiques sur les flux, par jour</p>
+</li>
+<li>
+<p>Un écran permet de visualiser des statistiques sur les erreurs, par jour</p>
+</li>
+<li>
+<p>Mise en place d&rsquo;une servlet technique permettant de paramétrer le nombre de traitements en parallèle</p>
+</li>
+<li>
+<p>Les flux doivent être stockés</p>
+</li>
+<li>
+<p>Il faut pouvoir intégrer des flux pour effectuer des tests ou des rattrapages</p>
+</li>
+</ul>
+<h1 id=mise-en-place>Mise en place</h1>
+<p>L&rsquo;intégrateur mis en place au sein du programme TOSCA à GEFCO sur le projet Plate-forme Service Client intègre un système complet de recyclage et de supervision des différents flux reçus.
+La solution retenue pour le stockage des flux a été de mettre à contribution la base de données. Cette solution n&rsquo;est pas optimale mais a pour mérite de faciliter le recyclage et la supervision. Le principal problème est le stockage des flux pour lesquels une compression a été mise en place tardivement.</p>
+<p>Les flux ont un état qui permet d&rsquo;indiquer où ils en sont dans leur vie :</p>
+<table>
+<tr>
+<td>
+Messages en import</td>
+<td>
+Messages en export</td>
+</tr>
+<tbody>
+<tr>
+<td>A intégrer</td>
+<td>A émettre</td>
+</tr>
+<tr>
+<td>En cours de traitement</td>
+<td>En cours de traitement</td>
+</tr>
+<tr>
+<td>A recycler manuellement</td>
+<td>A recycler manuellement</td>
+</tr>
+<tr>
+<td>A recycler automatiquement</td>
+<td>A recycler automatiquement</td>
+</tr>
+<tr>
+<td>Intégré</td>
+<td>Envoyé</td>
+</tr>
+<tr>
+<td>Rejeté</td>
+<td>Rejeté</td>
+</tr>
+<tr>
+<td>Annulé</td>
+<td>Annulé</td>
+</tr>
+</tbody>
+</table>
+Deux états supplémentaires ont été rajoutés pour les flux en mode **_test_** :
+<ul>
+<li>Test réussi
+<ul>
+<li>Test échoué</li>
+</ul>
+</li>
+</ul>
+<p>Lors de l&rsquo;intégration d&rsquo;un flux XML pour lequel le type de flux indique qu&rsquo;il faut effectuer une validation en utilisant un XSD, la première étape est de vérifier sa syntaxe. En cas d&rsquo;erreur, le flux remonte une erreur technique de type XSD_ERROR mais le traitement continue car elle peut-être caractérisée en tant qu'<em>Alerte</em>, donc non bloquante pour l&rsquo;intégration.</p>
+<h1 id=ecrans>Ecrans</h1>
+<p>Ce premier écran présente les différents flux qui n&rsquo;ont pas encore été intégrés : ceux qui viennent d&rsquo;être reçu et ceux qui sont en recyclage.</p>
+<p><img src=https://gitlab.talanlabs.com/talanlabs/documentation-interne/uploads/b716275aed6a99e84a6bbf2b94c046d8/en_cours.png alt=en_cours></p>
+<p>Une fois intégrés, ils seront transféré dans l&rsquo;écran des messages archivés, quasi identique à celui présenté.</p>
+<p>Cet écran présente des statistiques sur le nombre de messages, ici ceux qui ont été archivés.</p>
+<p><img src=https://gitlab.talanlabs.com/talanlabs/documentation-interne/uploads/d7dbeba9c39c7c0b26d750f90645afb1/analyse3.png alt=analyse3></p>
+<p>Cet écran présente des statistiques sur les erreurs remontées par des traitements d&rsquo;intégration et le mode de recyclage associé (automatique, manuel, rejeté, alerte).</p>
+<p><img src=https://gitlab.talanlabs.com/talanlabs/documentation-interne/uploads/b9b55832e97b314d6e459ac70ccc6295/analyse4.png alt=analyse4></p>
+<p>Ce dernier écran présente le système de cahier de test avec le cas d&rsquo;un cahier utilisé pour les tests de non régression.</p>
+<p><img src=https://gitlab.talanlabs.com/talanlabs/documentation-interne/uploads/a2b3acc76bd2fb1331029ac0e1be432b/test.png alt=test></p>
+<p>L&rsquo;édition du contenu d&rsquo;un flux se fait dans une interface conviviale où il est facile de variabiliser des références et de voir la valeur actuelle.</p>
+<p><img src=https://gitlab.talanlabs.com/talanlabs/documentation-interne/uploads/b5ca8fd2bbc8490a690fb8317a1ab06c/edit_test.png alt=edit_test></p>
+<h1 id=statistiques>Statistiques</h1>
+<p>Les statistiques suivantes ont été réalisées sur une semaine complète.</p>
+<table>
+<tr>
+<td>
+Sens</td>
+<td>
+Nombre de flux</td>
+<td>
+Proportion</td>
+</tr>
+<tbody>
+<tr>
+<td>Réception</td>
+<td>3 828 408</td>
+<td>79%</td>
+</tr>
+<tr>
+<td>Emission</td>
+<td>1 016 041</td>
+<td>21%</td>
+</tr>
+</tbody>
+</table>
+<h2 id=réception>Réception</h2>
+<p>Malheureusement sur les quatre millions de flux reçus en une semaine, ils ne sont pas répartis équitablement par jour.
+Nous observons que 98% d&rsquo;entre eux sont reçus du lundi au vendredi.
+De plus, en semaine, 70% des flux sont reçus de 8h à 20h (50% de la journée).</p>
+<p>Sur ce créneau, nous recevons donc environ 550 000 flux, soit 45 800 par heure, 763 par minute, 12 par seconde.</p>
+<h3 id=_recyclage_><em>Recyclage</em></h3>
+<p>Ces flux ne s&rsquo;intègrent pas tous dès le premier coup, une bonne partie tombe en recyclage.
+Sur un échantillon donné, voici une approximation des proportions observées</p>
+<table>
+<tr>
+<td>
+Intégration</td>
+<td>
+Nombre de flux</td>
+<td>
+Proportion</td>
+</tr>
+<tbody>
+<tr>
+<td>Intégré du premier coup</td>
+<td>1 413 025</td>
+<td>67%</td>
+</tr>
+<tr>
+<td>Avec recyclage</td>
+<td>681 646</td>
+<td>33%</td>
+</tr>
+</tbody>
+</table>
+Ces 681 646 flux ont été joués au total plus de 8 000 000 de fois. C'est le paramétrage des types d'erreurs qui va pouvoir directement influer sur le nombre de recyclages.
+Les recyclages étant répartis sur la semaine entière, nous pouvons en déduire que nous en traitons 47 500 par heure, soit 793 par minute, c'est à dire environ 13 par seconde. Du moins en théorie !
+Dans les faits, le recyclage s'effectue par des batchs qui ont pour effet de concentrer le recyclage sur une période très réduite.
+<h2 id=emission>Emission</h2>
+<p>99.7% des flux à émettre le sont en semaine et la plage horaire 8h à 20h représente plus de 80% des envois.
+Sur le million de flux à envoyer, 810 000 le seront sur les heures ouvrées, totalisant au total 162 078 par jour, soit 13 506 par heure, 225 par minute, c&rsquo;est-à-dire près de 4 par seconde.</p>
+<p>Le recyclage n&rsquo;est que peu utilisé dans les flux à l&rsquo;export, il s&rsquo;agirait principalement d&rsquo;erreurs techniques relevées lors de la confection du flux et nous ayant contraint à ne pas pouvoir l&rsquo;envoyer.</p>
+<h2 id=observations>Observations</h2>
+<p>Nos calculs nous amènent à penser que nous traitons à l&rsquo;import 25 flux par seconde en semaine de 8h à 20h, recyclage compris, et 4 à l&rsquo;export. Le reste du temps, nous en traitons moins d&rsquo;une quizaine.
+En réalité, il est fréquent d&rsquo;observer que pendant une seconde nous traitons plus de 60 flux avec des maximum relevés allant jusqu&rsquo;à 75 flux, ce qui semble être notre capacité maximale.</p>
+<h2 id=exploitation>Exploitation</h2>
+<p>Il est très intéressant de pouvoir suivre l&rsquo;état de l&rsquo;intégrateur du point de vue technique. A ces fins, une servlet a été mise en place et permet de consulter le nombre de traitements en cours et en attente. Le format de sortie est en JSON.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
+  <span style=color:#f92672>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;TRIP_FILE&#34;</span>,
+  <span style=color:#f92672>&#34;available&#34;</span>: <span style=color:#66d9ef>true</span>,
+  <span style=color:#f92672>&#34;busy&#34;</span>: <span style=color:#66d9ef>true</span>,
+  <span style=color:#f92672>&#34;overloaded&#34;</span>: <span style=color:#66d9ef>false</span>,
+  <span style=color:#f92672>&#34;meaning&#34;</span>: <span style=color:#e6db74>&#34;Processing Channel 40/80, fr.gefco.tli.psc.integrator.agent.in.TripFileAgent, 24 running, 0 pending&#34;</span>,
+  <span style=color:#f92672>&#34;nbWorking&#34;</span>: <span style=color:#ae81ff>24</span>,
+  <span style=color:#f92672>&#34;nbWaiting&#34;</span>: <span style=color:#ae81ff>0</span>
+}
+</code></pre></div><blockquote>
+<p><strong><em>name</em></strong> est le nom de la file (qui est liée à un agent)
+<strong><em>available</em></strong> indique si l&rsquo;agent est actif
+<strong><em>busy</em></strong> indique si au moins un thread est lancé sur l&rsquo;agent
+<strong><em>overloaded</em></strong> indique si la file est surchargée
+<strong><em>meaning</em></strong> est une description
+<strong><em>nbWorking</em></strong> indique le maximum de threads en parallèle autorisé
+<strong><em>nbWaiting</em></strong> indique le maximum de messages en attente (utile s&rsquo;il y a plusieurs instances de l&rsquo;intégrateur)</p>
+</blockquote>
+<p>A tout moment il est possible de modifier le nombre de traitements en parallèle en utilisant une servlet.</p>
+<blockquote>
+<p>Cette opération doit être sécurisée, c&rsquo;est pourquoi cette servlet n&rsquo;est accessible qu&rsquo;en interne et a besoin d&rsquo;un token passé en paramètre pour être prise en compte</p>
+</blockquote>
+<h1 id=cahier-de-tests>Cahier de tests</h1>
+<p>Un système de tests a été développé et est accessible depuis un écran permettant d&rsquo;ajouter, modifier, effacer et jouer des flux. Permettant de jouer des cas de tests complets, il met également en avant les tests de non régression en proposant de sauvegarder le résultat de l&rsquo;intégration (l&rsquo;état du message et les erreurs remontées) afin de pouvoir effectuer un delta lorsqu&rsquo;il sera rejoué.</p>
+<p>Les cas de tests sont placés dans un cahier, créé par un utilisateur.</p>
+<blockquote>
+<p>Afin de proposer une référence permettant ce delta, il est nécessaire de jouer au moins une fois le flux et d&rsquo;indiquer que le résultat obtenu est la référence.</p>
+</blockquote>
+<p>Une erreur dispose de trois propriétés</p>
+<table>
+<tr>
+<td>
+Propriété</td>
+<td>
+Exemple 1</td>
+<td>
+Exemple 2</td>
+</tr>
+<tbody>
+<tr>
+<td>Code</td>
+<td>_LIEU_INCONNU_</td>
+<td>_MARCHANDISE_INEXISTANTE_</td>
+</tr>
+<tr>
+<td>Attribut</td>
+<td>_VILLE_</td>
+<td>_NO_</td>
+</tr>
+<tr>
+<td>Valeur</td>
+<td>_Pariss_</td>
+<td>_123456_</td>
+</tr>
+</tbody>
+</table>
+Le delta effectué est fait en utilisant toutes les propriétés. Si une erreur était attendue et n'a pas été remontée ou si une erreur inattendue a été remontée, le cas de test est invalide.
+<h2 id=import-de-cas-de-tests>Import de cas de tests</h2>
+<p>Il existe plusieurs façons de créer des flux, allant du simple bouton <em>Ajouter</em> au bouton <em>Ajouter dans un cahier de tests</em> depuis un flux reçu en passant par le bouton <em>Charger les dépendances</em>, ce dernier permettant de chercher en base tous les flux qui portent sur le même objet ou qui sont nécessaires afin de pouvoir jouer le flux sélectionné.</p>
+<blockquote>
+<p>Il est également possible d&rsquo;exporter un ou plusieurs flux d&rsquo;un cahier dans un <em>.zip</em> permettant de les importer dans un autre cahier, sur un autre environnement par exemple.</p>
+</blockquote>
+<p>Ces méthodes permettent de reproduire très rapidement un cas observé en PROD sur un autre environnement.</p>
+<p>Lors de l&rsquo;ajout d&rsquo;un flux ou lors de son édition, et si le type de flux le permet, la validation du XML en utilisant un XSD est faite à la volée, ce qui minimise les risques de se tromper.</p>
+<h2 id=sauvegarde-du-résultat>Sauvegarde du résultat</h2>
+<p>Pour chaque flux, il est possible d&rsquo;indiquer s&rsquo;il s&rsquo;agit d&rsquo;un test à blanc ou s&rsquo;il faut sauvegarder le résultat en base. Dans le premier cas, l&rsquo;intégralité des modifications effectuées en base par l&rsquo;intégration du flux est rollback. Pour le second cas, il est nécessaire de bénéficier d&rsquo;une autorisation et ce afin de protéger contre toute erreur de manipulation en particulier sur l&rsquo;environnement de production.</p>
+<h2 id=cas-de-tests--groupes>Cas de tests : groupes</h2>
+<p>Un cas de test complet comporte des flux hiérarchisés. Ainsi, un ensemble de flux qui doit se jouer consécutivement sera placé dans un même groupe. A la fin de l&rsquo;intégration d&rsquo;un flux, le système jouera le suivant du même groupe et ainsi de suite. Si l&rsquo;un des flux est rejeté les suivants ne sont pas joués, le test de non régression (si référence présente) est alors invalide.</p>
+<blockquote>
+<p>Plusieurs groupes peuvent être joués en même temps. Des flux de deux groupes différents ne doivent pas dépendre l&rsquo;un de l&rsquo;autre.</p>
+</blockquote>
+<h2 id=variables>Variables</h2>
+<p>Lors de l&rsquo;édition du flux, il est possible de faire recours à des variables qui sont paramétrables, et ce par cahier.
+On variabilisera alors les identifiants, codes, &mldr; qui sont utilisés par différents flux du groupe.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml>	<span style=color:#75715e>&lt;!-- premier flux --&gt;</span>
+  #{tripFileNoCas1}
+  
+  <span style=color:#75715e>&lt;!-- second flux --&gt;</span>
+  #{tripFileNoCas1}
+</code></pre></div><p>Lors du test, la variable sera remplacée par sa valeur dans chacun des flux.</p>
+<blockquote>
+<p>Afin de faciliter les tests, il est possible de variabiliser une chaîne de caractères directement dans l&rsquo;interface d&rsquo;édition d&rsquo;un flux en sélectionnant la chaîne de caractères à remplacer puis via <em>clic-droit, variabiliser</em> ou <em>alt-shift-L</em>. Cette variabilisation se fait dans tous les flux du groupe, c&rsquo;est pourquoi il faut avoir commencé par le regroupement des flux du même cas de test.</p>
+</blockquote>
+<h3 id=incrémentation>Incrémentation</h3>
+<p>Pour les tests de non régression, où les objets sont habituellement sauvegardés en base, il est indispensable de repartir sur de nouveaux jeux de données, d&rsquo;où la possibilité qui est donnée à l&rsquo;utilisateur d&rsquo;incrémenter automatiquement une ou plusieurs variables lors du test. C&rsquo;est directement dans l&rsquo;édition du flux que sela s&rsquo;opère, en utilisant une syntaxe qui indique à quel moment se fait l&rsquo;incrémentation.</p>
+<p>Première solution, on part sur un nouveau jeu de données</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml>	<span style=color:#75715e>&lt;!-- premier flux --&gt;</span>
+  #{++tripFileNoCas1} <span style=color:#75715e>&lt;!-- l&#39;incrémentation se fait avant la lecture de la valeur --&gt;</span>
+  <span style=color:#75715e>&lt;!-- second flux --&gt;</span>
+  
+  #{tripFileNoCas1}
+</code></pre></div><p>Deuxième solution, on prépare le jeu de données suivant</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml>	<span style=color:#75715e>&lt;!-- premier flux --&gt;</span>
+  #{tripFileNoCas1}
+  <span style=color:#75715e>&lt;!-- second flux --&gt;</span>
+  
+  #{tripFileNoCas1++} <span style=color:#75715e>&lt;!-- l&#39;incrémentation se fait après la lecture de la valeur --&gt;</span>
+</code></pre></div><p>Nous préférerons la première solution puisqu&rsquo;elle permet, en cas d&rsquo;erreur d&rsquo;intégration sur l&rsquo;un des flux, de pouvoir recommencer sur un nouveau jeu de données.</p>
+<blockquote>
+<p><strong><em>N.B.</em></strong> Les dates sont elles-aussi incrémentables en utilisant une syntaxe un peu plus complexe.
+Exemple : <code>${++(1w1d;yyyy-MM-dd'T'HH:mm:ss'Z')variable}</code> indiquant qu&rsquo;on souhaite afficher la date sous tel format et que l&rsquo;incrémentation se fait d&rsquo;une semaine et un jour.</p>
+</blockquote>
+<h1 id=limites-techniques>Limites techniques</h1>
+<p>A GEFCO, nous avons rencontré plusieurs limites techniques.</p>
+<p>Sur un environnement UNIX, le nombre de traitements qui peuvent être lancés simultanément sur une machine est limité par un paramètre (cf <em>ulimit -a</em>, <em>max user processes</em>). Par défaut configurée à 1024, il ne faut pas oublier de l&rsquo;augmenter lorsque l&rsquo;intégrateur monte en charge.</p>
+<p>Une autre limite rencontrée a été au niveau de l&rsquo;espace mémoire HEAP Space, actuellement fixée à 4 096Mo. Lors de tout développement, il faut penser à garder le moins longtemps possible les gros objets sinon lors d&rsquo;une surcharge ou d&rsquo;un retard accumulé, l&rsquo;espace mémoire pourra saturer.</p>
+<p>Un certain nombre de traitements ont besoin d&rsquo;être synchronisés. Synchroniser un traitement destiné à être asynchrone pour des raisons de performances est à proscrire, on risque de figer tout le traitement. Dans ce genre de cas, il ne faut pas hésiter à retarder un traitement en le remettant dans la file d&rsquo;attente et donc en jouer un autre plutôt que le faire attendre avec un verrou et par la même occasion accumuler le retard sur les autres traitements.</p>
+<p>Lors de la sauvegarde des objets en base, une vérification de leur version est effectuée. Si la version a été changée, une erreur est remontée et le traitement doit recommencer après un certain délai (recyclage automatique).</p>
+<p>Afin d&rsquo;éviter les blocages en base de données, les objets ne sont sauvegardés qu&rsquo;à la fin des traitements pour être le plus proche possible de leur commit en base.
+Attention, cette décision aura pour effet d&rsquo;augmenter le nombre d&rsquo;objets pour lesquels la version est obsolète (cf point précédent).</p>
+<p>Des inter-blocages entre la partie Java et la partie BDD sont apparus lorsqu&rsquo;un verrou Java et un verrou BDD étaient sollicités en même temps. Avant de rentrer dans un bloc synchronisé, la partie Java avait mis à jour une ligne en BDD sans commiter, et attend de pouvoir dans le bloc, sauf que le verrou Java est déjà utilisé par un traitement qui a besoin de mettre à jour la même ligne.
+Côté bonnes pratiques, il vaut mieux éviter l&rsquo;utilisation de verrous Java en simultané avec Oracle Database et laisser à Oracle la gestion des verrous.</p>
+<p>Le stockage des flux sur la base de données se fait dans un BLOB, difficilement optimisé pour des traitements par Oracle Database. La compression des flux a permis d’accélérer la récupération et le stockage de ces flux dans la base.</p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2015-06-08T08:30:00Z>
+8 juin 2015
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/nicolas-poste/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Nicolas POSTE" src=https://blog.talanlabs.com/authors/nicolas_poste.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/nicolas-poste/>Nicolas POSTE</a></h1>
+<p class="mt-0 mb-2">Tech Lead</p>
+</div>
+<div class=mb-6>
+<a href=https://www.linkedin.com/in/nicolas-poste target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/back>back</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/data>data</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/performance>#Performance</a>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!doctype html><html lang=fr-fr>
+<head><title> LeSS, c’est quoi ? | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Carte d’identité Nom : Large-Scale Scrum aka LeSS
+Catégorie : mise à l’échelle de Scrum">
+<meta property="og:title" content="LeSS, c’est quoi ?">
+<meta property="og:description" content="Carte d’identité Nom : Large-Scale Scrum aka LeSS
+Catégorie : mise à l’échelle de Scrum">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/less-cest-quoi/"><meta property="og:image" content="https://blog.talanlabs.com/less-cest-quoi/cover.png"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2019-01-14T09:02:51+00:00">
+<meta property="article:modified_time" content="2019-01-14T09:02:51+00:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/less-cest-quoi/cover.png">
+<meta name=twitter:title content="LeSS, c’est quoi ?">
+<meta name=twitter:description content="Carte d’identité Nom : Large-Scale Scrum aka LeSS
+Catégorie : mise à l’échelle de Scrum">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/less-cest-quoi/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>LeSS, c’est quoi ?</h1>
+<figure class="cover image">
+<img src=/less-cest-quoi/cover.png width=2008 height=1266 alt="illustration de l'article">
+</figure>
+<h1 id=carte-didentité>Carte d’identité</h1>
+<p><em>Nom</em> : Large-Scale Scrum aka LeSS<br>
+<em>Catégorie</em> : mise à l’échelle de Scrum<br>
+<em>Créateurs</em> : Craig Larman & Bas Vodde<br>
+<em>Documentation de référence</em> : <a href=https://less.work>https://less.work</a><br>
+<em>Cible</em> : plusieurs équipes travaillant ensemble sur le même produit ; produit au sens solution adressant les problèmes clients/utilisateurs et utilisée par de vrais clients/utilisateurs.</p>
+<h1 id=petit-rappel-sur-scrum>Petit rappel sur Scrum</h1>
+<p>Scrum est un cadre de développement dans lequel une équipe développe un produit de manière incrémentale et itérative. À chaque Sprint, un incrément de produit est livré. Un Product Owner (PO) est responsable de la maximisation de la valeur du produit, de la hiérarchisation des éléments dans le backlog de produit et de la détermination du but de chaque sprint tout cela en se basant sur des retours d&rsquo;expérience et un apprentissage constants. Une équipe de développement est responsable de la réalisation de l&rsquo;objectif de Sprint. Un Scrum Master aide le Product Owner, l’équipe de développement et l’organisation à appliquer Scrum et à en tirer profit.</p>
+<p><img src=cover.png alt=scrum-flow></p>
+<p>Vous trouverez <a href="https://www.youtube.com/watch?v=TRcReyRYIMg">ici</a> une présentation succincte illustrée et <a href=https://www.scrumguides.org/scrum-guide.html>là</a> la documentation officielle.</p>
+<h1 id=less-cest-scrum>LeSS c’est Scrum</h1>
+<p>LeSS se veut une extension de Scrum pour plusieurs équipes travaillant sur le même produit. Nous retrouvons donc dans LeSS tous les rôles, événements et artéfacts définis par Scrum.</p>
+<p>LeSS se veut léger, simple et peu contraignant. Pour cela, il n’introduit ni nouveaux rôles ni nouveaux artéfacts.</p>
+<h2 id=à-quoi-ça-ressemble->À quoi ça ressemble ?</h2>
+<p><img src=less-framework.png alt=less-framework></p>
+<p>À l’échelle du produit, LeSS prend la forme du Scrum classique : un PO unique qui donne la vision, un Backlog produit, un Sprint, un planning de Sprint, une revue de Sprint, une rétrospective, un incrément et une définition de “Fini”.</p>
+<h3 id=ce-qui-diffère-de-scrum>Ce qui diffère de Scrum</h3>
+<p>Là où, dans Scrum, on a une <strong>équipe de développement</strong> accompagnée d’un Scrum master, on trouve dans LeSS plusieurs équipes de développement chacune aidée d’un Scrum master.</p>
+<p>À cause du nombre de personnes impliquées, les événements Scrum ont été adaptés.</p>
+<p>Le <strong>planning de Sprint</strong> a pour objectifs de déterminer ce que nous allons faire et comment nous allons le faire. LeSS le divise donc en deux phases :</p>
+<ol>
+<li>le PO et les représentants (ie. personnes pertinentes) de chaque équipe déterminent les fonctionnalités à réaliser pendant le Sprint et se les répartissent ;
+2. chaque équipe décide de son côté comment elle effectuera le travail nécessaire pour achever l’incrément.</li>
+</ol>
+<p>Lors de la <strong>rétrospective</strong>, l’équipe cherche à améliorer sa manière de travailler. LeSS la divise en deux phases pour adresser deux périmètres :</p>
+<ol>
+<li>chaque équipe de développement avec un focus sur son fonctionnement interne ;
+2. le produit pour adresser les problèmes liés à l’organisation ; y participent le PO, les Scrum masters et les représentants (ie. personnes pertinentes) de chaque équipe de développement</li>
+</ol>
+<h3 id=communicationsynchronisation>Communication/Synchronisation</h3>
+<p>Les besoins de synchronisation entre les équipes sont identifiés lors de la première phase du planning de Sprint.</p>
+<p>La synchronisation entre les équipes est de la responsabilité des équipes. Il n’y a pas de rôle ou d’évènement spécifique pour la coordination des équipes.</p>
+<p>Un dialogue direct entre les clients/utilisateurs et les équipes permet à la fois d’alléger la charge du PO et de rapprocher les développeurs du terrain. Le PO se positionne alors en tant que facilitateur plutôt qu’intermédiaire pour les tâches de clarification des éléments du Backlog.</p>
+<p>Et LeSS ne spécifie rien de plus sur la forme.</p>
+<h2 id=la-partie-immergée-de-liceberg>La partie immergée de l’iceberg</h2>
+<p>Les règles qui décrivent le cadre ne représentent qu’une petite partie de LeSS.</p>
+<p><img src=ecosysteme-less.png alt=ecosysteme-less></p>
+<p>Le cœur de LeSS est constitué de <strong>dix principes</strong> qui guident la mise en œuvre :</p>
+<ol>
+<li>Large Scale Scrum est Scrum : facile à comprendre, difficile à maîtriser et dont la mise en œuvre risque de révéler les problèmes organisationnels ;
+2. transparence : principe édicté par Scrum comme la base de l’amélioration continue ;
+3. “more with less” : être plus efficace avec moins de complexité (procédures, rôles, bureaucratie, etc) ;
+4. le produit est un tout (whole product focus) : tant que ce n’est pas intégré au produit ça n’a aucune valeur pour le client/utilisateur ;
+5. centré sur le client/utilisateur final : les processus et les personnes doivent apporter de la valeur au client de la manière la plus directe possible ;
+6. amélioration continue jusqu’à la perfection : continuer de s’améliorer même si le système en place est satisfaisant ;
+7. Lean : embrasser les principes du Lean ;
+8. pensée systémique (Systems thinking) : travailler sur le système dans sa globalité et éviter les optimisations locales ;
+9. processus de contrôle empirique : c’est l’essence de Scrum, tester, analyser et adapter de manière itérative ;
+10. la théorie des files : supprimer les files dans l’organisation et les processus séquentiels pour éviter les goulots d’étranglement et les ralentissements.</li>
+</ol>
+<p>Vous en aurez reconnus la plupart : ils sont essentiellement issus ou inspirés du manifeste Agile, de Scrum et du Lean.</p>
+<p>La documentation fournit aussi des <strong>conseils et recommandations</strong> pour la mise en œuvre de LeSS et en faciliter l’adoption. Ils concernent :</p>
+<ul>
+<li>l’adoption pour que les équipes s’approprient la nouvelle organisation ;
+<ul>
+<li>l&rsquo;excellence technique pour que les équipes puissent livrer fréquemment un logiciel de qualité ;</li>
+<li>la structure des équipes pour qu’elles partagent au mieux les informations utiles sans être ralenties par les interactions superflues ;</li>
+<li>le management pour que celui-ci passe de la direction à l’accompagnement des équipes.</li>
+</ul>
+</li>
+</ul>
+<p>On y trouve aussi de nombreux <strong>retours d’expérimentations</strong> dans diverses entreprises qui constitueront une base d’inspiration pour construire votre propre implémentation.</p>
+<h2 id=jusquoù-le-modèle-peut-il-tenir->Jusqu’où le modèle peut-il tenir ?</h2>
+<p>Jusqu’à ce que le PO fasse un burnout !</p>
+<p>Le PO est en effet unique quelque soit le nombre d’équipes &mldr; Équipes qu’il faut alimenter en fonctionnalités &mldr; Fonctionnalités qu’il faut recueillir et affiner &mldr;</p>
+<p>Empiriquement, la limite a été mise à huit équipes. Au delà de huit équipes, LeSS propose une version Huge du framework qui est une mise à l’échelle de la version standard.</p>
+<p><img src=less-huge-framework.png alt=less-huge-framework></p>
+<p>La version Huge propose simplement de séparer les éléments du Backlog par “domaines de prérequis” et d’en déléguer la gestion à des PO de domaine (ou APO). Pour le reste tout fonctionne comme dans la version pour moins de huit équipes.</p>
+<h1 id=points-dattention>Points d’attention</h1>
+<h2 id=la-charge-du-po>La charge du PO</h2>
+<p>Le point faible de LeSS est la charge que l’on met sur le PO. Même si LeSS a quelques conseils pour la limiter, elle est importante à prendre en compte, et ce, dès le début de la mise en place de LeSS. On peut pour cela porter une attention particulière à la définition du produit. La définition du produit permet d’identifier naturellement le nombre de personnes impliquées. Le périmètre sur lequel vous souhaitez mettre en place LeSS ne sera peut-être plus celui auquel vous pensiez au départ …</p>
+<h2 id=more-with-less>More with LeSS</h2>
+<p>S’il ne fallait retenir qu’un principe ce serait celui-là : « More with LeSS ». Il incarne la philosophie de la démarche des créateurs de LeSS : réduire la complexité (procédures, rôles, bureaucratie, organisations imposées, etc.) pour augmenter la valeur apportée aux clients/utilisateurs.</p>
+<p>En suivant ce principe et le constat par lequel il est plus facile d’ajouter que de retirer des règles, LeSS donne une structure minimale juste suffisante dont les équipes ont besoin pour démarrer. L’adaptation nécessaire qui suivra permettra aux équipes de s’approprier leurs process.</p>
+<p>Ce principe encourage aussi les équipes à résister à la tendance naturelle de rajout de complexité pour résoudre les problèmes. Un des moyens d’y parvenir est d’adresser la source du problème plutôt que de s’attaquer aux symptômes.</p>
+<h2 id=passer-à-léchelle-cest-transformer>Passer à l’échelle c’est transformer</h2>
+<p>LeSS est un framework qui séduit de par sa simplicité surtout quand on est déjà familier avec Scrum. Mais, comme Scrum, sa simplicité cache la difficulté à le maîtriser. Cette difficulté n’est pas propre à LeSS, elle est au cœur de toutes les transformation organisationnelles.</p>
+<p>Le succès d’une transformation repose sur quelques principes clefs : ne pas changer pour changer, accepter de sortir les squelettes du placard, engager les individus, faire en sorte que les acteurs s’approprient le système, etc. Les auteurs de LeSS adressent cette difficulté sous forme de conseils et d’exemples concrets issus d’expérimentations de mise à l’échelle de Scrum. Leur présence dans le framework même rassure quant à la maturité de LeSS : les auteurs vous annoncent clairement la couleur, la mise en œuvre demandera du travail.</p>
+<h2 id=commencer-petit>Commencer petit</h2>
+<p>Tous les auteurs de framework de mise à l’échelle de Scrum sont d’accord sur ce point : il faut commencer par faire fonctionner Scrum correctement dans une équipe avant de passer à l’échelle.</p>
+<p>Une des raisons pour laquelle la mise en place Scrum au sein d’une équipe échoue est souvent que les principes de Scrum ne sont pas respectés :</p>
+<ul>
+<li>l’équipe de développement est-elle réellement en capacité de réaliser l’incrément ? Sans dépendance extérieure qui la ralentisse ?
+<ul>
+<li>l’équipe de développement est-elle réellement habilitée à s’auto-organiser ?</li>
+<li>le PO a-t’il le dernier mot quant à la priorisation du backlog produit ?</li>
+<li>est-ce que la mission principale du PO est bien d’être PO ? L’organisation lui accorde-t’elle bien le temps et l’aide nécessaire pour accomplir sa mission ?</li>
+</ul>
+</li>
+</ul>
+<p>Pour LeSS c’est pareil … et c’est d’autant plus important que la mise à l’échelle accentue les problèmes. Alors autant les résoudre avant de passer à l’échelle ;)</p>
+<h1 id=conclusion>Conclusion</h1>
+<p>Comme Scrum, LeSS propose une organisation simple qui laisse de la marge pour s’adapter à votre situation. Comme avec Scrum, pour en tirer le maximum de bénéfices de LeSS, il faut respecter les principes et les valeurs qui soutiennent le framework. Cela représente un challenge qui, je pense, mérite d’être relevé. Réussir à mettre en place LeSS permettra aux équipes de se concentrer sur livrer de la valeur aux clients/utilisateurs plutôt que suivre des processus dont elles ont oublié la raison d’être. On pourra appeler ça être agile si ça fait plaisir, mais est-ce le plus important ?</p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2019-01-14T09:02:51Z>
+14 janvier 2019
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/maud-guyon/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Maud GUYON" src=https://blog.talanlabs.com/authors/maud_guyon.png></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/maud-guyon/>Maud GUYON</a></h1>
+<p class="mt-0 mb-2">Coach Agile</p>
+</div>
+<div class=mb-6>
+<a href=https://www.linkedin.com/in/maud-guyon-464224162 target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

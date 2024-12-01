@@ -1,0 +1,446 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Qu’est-ce que TalanCoin ? | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="_Présentée pour la première fois le 4 octobre au 1er Forum Parlementaire de la Blockchain, la monnaie virtuelle du groupe Talan est en passe de rentrer en phase de production.">
+<meta property="og:title" content="Qu’est-ce que TalanCoin ?">
+<meta property="og:description" content="_Présentée pour la première fois le 4 octobre au 1er Forum Parlementaire de la Blockchain, la monnaie virtuelle du groupe Talan est en passe de rentrer en phase de production.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/quest-ce-que-talancoin/"><meta property="og:image" content="https://blog.talanlabs.com/quest-ce-que-talancoin/cover.jpg"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2017-10-17T15:39:11+00:00">
+<meta property="article:modified_time" content="2017-10-17T15:39:11+00:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/quest-ce-que-talancoin/cover.jpg">
+<meta name=twitter:title content="Qu’est-ce que TalanCoin ?">
+<meta name=twitter:description content="_Présentée pour la première fois le 4 octobre au 1er Forum Parlementaire de la Blockchain, la monnaie virtuelle du groupe Talan est en passe de rentrer en phase de production.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://alainnicolas.fr/blog/quest-ce-que-talancoin/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Qu’est-ce que TalanCoin ?</h1>
+<figure class="cover image">
+<img src=/quest-ce-que-talancoin/cover.jpg width=1024 height=500 alt="illustration de l'article">
+</figure>
+<div class=paragraph>
+<p>_Présentée pour la première fois le 4 octobre au 1er Forum Parlementaire de la Blockchain, la monnaie virtuelle du groupe Talan est en passe de rentrer en phase de production.
+L’occasion de présenter en détails les tenants et les aboutissants d’un projet et d’une initiative pas comme les autres : <a href=https://talancoin.com>TalanCoin</a> !</p>
+</div>
+<div class="imageblock text-center img-fluid">
+<div class=content>
+<img src=./banner.jpg alt="Bannière TalanCoin">
+</div>
+</div>
+<div class=paragraph>
+<p>La blockchain, tout le monde en parle, depuis les médias généralistes jusqu’aux startups les plus innovantes.
+Et pourtant, rares sont les idées à aller jusqu’à la phase de production.
+C’est pourquoi Talan a souhaité se démarquer et proposer à ses collaborateurs une application réelle de cette technologie en plein essor.
+C’est ainsi que l’idée d’une monnaie interne est née de l’envie de fédérer le personnel d’un groupe international autour d’un modèle de partage commun.</p>
+</div>
+<div class=paragraph>
+<p>TalanCoin, c’est son nom, abrégé en ‘TC’, est une monnaie basée sur la blockchain, et plus particulièrement sur Ethereum.
+Ethereum est une blockchain largement utilisée, et sa monnaie, l’Ether, est la deuxième plus grosse capitalisation des crypto-monnaies, derrière le Bitcoin.
+Le principal apport d’Ethereum par rapport à Bitcoin est sa capacité à intégrer de la logique et des règles métier inaltérables puisque stockées sur la blockchain en elle-même.
+Il s’agit des fameux “Smart Contracts”, concept que nous développerons plus amplement dans un article à venir.</p>
+</div>
+<div class=sect1>
+<h2 id=_pourquoi_lancer_cette_monnaie>Pourquoi lancer cette monnaie ?</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Comme toutes les entreprises, Talan cherche à catalyser la collaboration en son sein.
+De plus, Talan souhaite renforcer son unité en tant que groupe malgré des entités distinctes et une répartition sur 4 continents et développer une horizontalité bien loin des hiérarchies verticales classiques.
+Une monnaie interne, commune à tous les collaborateurs, peu importe leur localisation ou leur rôle hiérarchique, permet de trouver un point commun entre tous les acteurs de l’entreprise.
+C’est aussi une manière de permettre à tous de mieux échanger, y compris entre équipes distinctes, affirmant ainsi une hiérarchie horizontale.</p>
+</div>
+<div class="imageblock text-center img-fluid">
+<div class=content>
+<img src=./DashBoard-TC-2.png alt="Aperçu du Dashboard de suivi de TalanCoin">
+</div>
+<div class=title>Aperçu du Dashboard de suivi de TalanCoin</div>
+</div>
+<div class=paragraph>
+<p>De plus, en suivant l’évolution des échanges de cette monnaie et les raisons de transfert, Talan Coin permet un feedback immédiat des tendances chez Talan.
+L’introduction d’un volet de gamification incite par ailleurs à plus d’utilisation encore, à travers l’organisation de challenges.</p>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_à_quoi_ressemble_talan_coin>À quoi ressemble Talan Coin ?</h2>
+<div class=sectionbody>
+<div class="imageblock text-center img-fluid">
+<div class=content>
+<img src=./mobile_home.png alt="Aperçu de la version mobile de TalanCoin" width=400>
+</div>
+<div class=title>Aperçu de la version mobile de TalanCoin</div>
+</div>
+<div class=paragraph>
+<p>Talan Coin est accessible à tous les collaborateurs du groupe à travers une application mobile (iOS et Android) téléchargeable sur les stores officiels de Google et Apple.
+L’orientation mobile de Talan Coin garantit une adoption assez large de l’application et permet à tous d’accéder au système.
+Cela élimine les éventuelles restrictions de connexion pour nos collaborateurs en mission chez nos clients ou tout simplement en déplacement.</p>
+</div>
+<div class="imageblock text-center img-fluid">
+<div class=content>
+<img src=./mepDashBoard-TC.png alt="Aperçu de la version web de TalanCoin" width=500>
+</div>
+<div class=title>Aperçu de la version web de TalanCoin</div>
+</div>
+<div class=paragraph>
+<p>Par ailleurs, de manière à étendre encore la portée et l’accessibilité du produit, une version web, orientée desktop est en cours de finalisation, pour permettre une nouvelle expérience, dans tous les moments d’une journée de travail.</p>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_et_concrètement_comment_ça_marche><a id=comment-ca-marche></a>Et concrètement, comment ça marche ?</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Il y a deux types de portefeuilles en circulation : les portefeuilles personnels pour l’ensemble des collaborateurs et les portefeuilles d’équipes, gérés par une ou plusieurs personne(s) identifiée(s) comme leader(s) sur un sujet ou d’une équipe.</p>
+</div>
+<div class=paragraph>
+<p>Les portefeuilles personnels peuvent échanger de l’argent avec tous les autres portefeuilles personnels, mais pas directement avec les portefeuilles équipes.
+Ces derniers permettent de ‘rémunérer’ les collaborateurs oeuvrant au bénéfice d’une équipe.</p>
+</div>
+<div class=sect2>
+<h3 id=_comment_gagner_des_talan_coins>Comment gagner des Talan Coins ?</h3>
+<div class="imageblock text-center img-fluid">
+<div class=content>
+<img src=./Slide-intro1_750x980.png alt="Comment gagner des TC ?" width=300>
+</div>
+</div>
+<div class=paragraph>
+<p>Comme nous l’avons vu précédemment, l’objectif principal de Talan Coin est de favoriser les échanges et le partage au sein de l’entreprise.
+C’est ainsi que toutes les actions visant à aider Talan et plus largement qui y facilitent la vie quotidienne sont susceptibles d’être récompensées en Talan Coins.</p>
+</div>
+<div class=paragraph>
+<p>Les axes clairement identifiés pour le moment sont les suivants :</p>
+</div>
+<div class=ulist>
+<ul>
+<li>
+<p><strong>Aider ses collègues</strong> (coup de main occasionnel, soutien technique, etc.)</p>
+</li>
+<li>
+<p><strong>Innover</strong> (lancer un nouveau projet, une idée qui peut changer les processus internes, etc.)</p>
+</li>
+<li>
+<p><strong>S’impliquer dans la vie du groupe</strong> (participation aux communautés, organisation de meetups, rédaction d’articles pour les blogs Talan, etc.)</p>
+</li>
+<li>
+<p><strong>Être sympa</strong> (la blague du matin, l’aide spontanée, etc.)</p>
+</li>
+<li>
+<p><strong>Partager ses connaissances</strong> (production de formations, organisation d’une présentation technique, mentoring et parrainage, etc.)</p>
+</li>
+<li>
+<p><strong>Fluidifier les process internes</strong> (participation à un appel d’offre, cooptation, etc.)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_comment_donner_des_talan_coins>Comment donner des Talan Coins ?</h3>
+<div class="imageblock text-center img-fluid">
+<div class=content>
+<img src=./Slide-intro2_750x980.png alt="Comment donner des TC ?" width=300>
+</div>
+</div>
+<div class=paragraph>
+<p>La fonctionnalité de transfert est disponible depuis les applications mobiles et web.
+Une raison est associée à chaque transfert, afin de fournir des indicateurs d’utilisation, mais aussi dans un but de laisser une trace dans les historiques de chacun.</p>
+</div>
+<div class=paragraph>
+<p>Ces raisons de transfert permettent aussi de créer autant de catégories de classement dans le volet ‘gamification’.
+Il est évidemment prévu de faire évoluer cette liste en fonction des besoins qui seront découverts.</p>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_comment_convertir_ses_talan_coins>Comment convertir ses Talan Coins ?</h3>
+<div class="imageblock text-center img-fluid">
+<div class=content>
+<img src=./Slide-intro3_750x980.png alt="Comment convertir ses TC ?" width=300>
+</div>
+</div>
+<div class=paragraph>
+<p>Une participation active à la vie de l’entreprise permet de gagner des Talan Coins, mais encore faut-il pouvoir les utiliser, en autre via une conversion en biens ou services.
+C’est ainsi que Talan se repose sur 2 boutiques propres à fournir des produits ou services payables en Talan Coin.</p>
+</div>
+<div class=sect3>
+<h4 id=_campus_talan>Campus Talan</h4>
+<div class=paragraph>
+<p>Historiquement, il s’agit de la première ‘boutique’ identifiée comme source d’offres pour Talan Coin.
+En effet, le Campus Talan héberge déjà l’ensemble des formations internes et externes délivrées aux collaborateurs Talan.
+Il paraissait donc naturel d’y ajouter de nouvelles offres de formations jusqu’alors non disponibles, pour ouvrir de nouvelles opportunités.</p>
+</div>
+<div class=paragraph>
+<p>Il n’est évidemment pas question de rendre payant ce qui était gratuit depuis le lancement du Campus Talan, mais bien d’étendre la portée d’un outil central au groupe Talan.</p>
+</div>
+<div class="imageblock text-center img-fluid">
+<div class=content>
+<img src=./campus.jpg alt="Aperçu du Campus Talan">
+</div>
+<div class=title>Aperçu du Campus Talan</div>
+</div>
+<div class=paragraph>
+<p>Chaque leader d’équipe a la possibilité d’ajouter une offre dans le Campus, en spécifiant un tarif en TC, ce qui rend l’offre visible depuis les applications mobile et web.
+On peut donc imaginer un collaborateur souhaitant se rendre à une formation payante jusqu’alors non prise en charge par Talan et qui ferait une demande à un leader d’équipe.
+Celui-ci n’aurait donc qu’à acheter une place à cette formation en € (<em>via</em> le processus classique), et la rendre disponible sur le Campus Talan avec un prix en TC associé.
+Les TC récoltés par la vente de cette offre au collaborateur reviendrait donc au portefeuille équipe, remboursant l’investissement en € initié.</p>
+</div>
+<div class=paragraph>
+<p>Un tel dispositif garantit par ailleurs que les offres de formation ne sont plus négociées au cas par cas, mais ouvertes à tous, assurant une plus grande équité et une mise à disposition de tous les collaborateurs des offres.</p>
+</div>
+</div>
+<div class=sect3>
+<h4 id=_talan_coin_shop>Talan Coin Shop</h4>
+<div class=paragraph>
+<p>De manière à fournir des offres en plus des formations, nous avons développé une nouvelle boutique adaptée pour vendre des objets et des services.
+Ce ‘Talan Coin Shop’ permet de notifier l’acheteur et le vendeur du bon déroulement d’une transaction.</p>
+</div>
+<div class="imageblock text-center img-fluid">
+<div class=content>
+<img src=./Iphone_maquetteMEP_TCshop_accueil.png alt="Aperçu du TalanCoin Shop" width=300>
+</div>
+<div class=title>Aperçu du TalanCoin Shop</div>
+</div>
+<div class=paragraph>
+<p>Là aussi, les leaders d’équipes peuvent ajouter des offres, composées d’un titre, d’une description, d’une image et d’un prix.
+Lors d’un achat, le vendeur et l’acheteur sont notifiés par mail une fois la transaction bien déroulée.</p>
+</div>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_talan_coin_est_une_monnaie_fondante>Talan Coin est une monnaie fondante</h3>
+<div class="imageblock text-center img-fluid">
+<div class=content>
+<img src=./Slide-intro4_750x980.png alt="Attention monnaie fondante !" width=300>
+</div>
+</div>
+<div class=paragraph>
+<p>De manière à dynamiser l’économie de Talan Coin, nous avons imaginé utiliser un principe de monnaie fondante.
+Le concept en est assez simple : lorsqu’un collaborateur ne dépense pas l’argent qu’il a reçu au bout d’un mois, il perd un pourcentage de la somme gagnée.
+Sans trop pénaliser un collaborateur qui serait en congés par exemple, la somme ponctionnée sera ainsi ré-injectée dans le système global, tout en motivant tout un chacun à utiliser, échanger ou dépenser ses Talan Coins.</p>
+</div>
+<div class=paragraph>
+<p>En effet, pour nous l’un des indicateurs clés de la réussite du projet Talan Coin réside tout simplement dans le nombre de transactions qui auront lieu au jour le jour, indiquant ainsi l’adoption de la monnaie dans la vie quotidienne de l’entreprise.</p>
+</div>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_la_suite>La suite…​</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>La réalisation d’un tel projet, résolument novateur, n’a pas été sans embûche, ni sans découvertes et enseignements de toutes sortes.
+Nous tenons à partager notre expérience et nos connaissances nouvelles avec le plus grand nombre, ne serait-ce qu’au regard de l’aide apportée par la communauté de plus en plus importante de développeurs Ethereum.</p>
+</div>
+<div class=paragraph>
+<p>C’est ainsi que nous publierons dans les prochaines semaines le making-of de Talan Coin, agrémenté des anecdotes les plus marquantes, mais aussi des articles plus techniques autour de Talan Coin, et de la BlockChain en général.</p>
+</div>
+<div class="paragraph text-center">
+<p><a href=https://talancoin.com><strong>>>> Le site officiel Talan Coin &lt;&lt;&lt;</strong></a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2017-10-17T15:39:11Z>
+17 octobre 2017
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/alain-nicolas/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Alain NICOLAS" src=https://blog.talanlabs.com/authors/alain_nicolas.png></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/alain-nicolas/>Alain NICOLAS</a></h1>
+<p class="mt-0 mb-2">Développeur Blockchain & DLT</p>
+</div>
+<div class=mb-6>
+<a href=https://twitter.com/alain_ncls target=_blank class="icon is-medium"><i class="fab fa-lg fa-twitter text-[#1DA1F2]"></i></a>
+<a href=https://www.linkedin.com/in/alainnicolas target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+<a href=https://github.com/alainncls target=_blank class="icon is-medium"><i class="fab fa-lg fa-github"></i></a>
+<a class="icon is-medium" href=https://alainncls.medium.com/ target=_blank><i class="fab fa-lg fa-medium"></i></a>
+<a href=https://alainnicolas.fr target=_blank class="icon is-medium"><i class="fas fa-lg fa-link"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/blockchain>#blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/cryptomonnaie>#cryptomonnaie</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/ethereum>#ethereum</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/talancoin>#TalanCoin</a>
+</div>
+</div>
+</div>
+</div>
+<aside>
+<h4 class="subtitle mt-10 mb-8"><i class="fas fa-forward"></i> Vous aimerez peut-être...</h4>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/methode-talanlabs/>
+<img class="border object-cover w-full m-0 max-w-md" src=/methode-talanlabs/cover_hub8e6a3aa5eb2f4a6c421e0d156b23302_378326_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+</div>
+<a href=/methode-talanlabs/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Mathieu et Vivien parlent de la « méthode Talan …</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2017-03-30T08:12:49Z>
+30 mars 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Mathieu Mélé, chef de projet technique chez Talan Labs et Vivien Auguy, ingénieur également chez Talan Labs, …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/3-questions-nicolas-thomas-agilite-ntic-partie-2/>
+<img class="border object-cover w-full m-0 max-w-md" src=/3-questions-nicolas-thomas-agilite-ntic-partie-2/cover_hu6db3096862167f92ecfc6f0c781c2ad8_52952_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/3-questions-nicolas-thomas-agilite-ntic-partie-2/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">3 questions à Nicolas Thomas - Partie 2</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2017-05-02T07:13:08Z>
+2 mai 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Vers toujours plus d’agilité dans le déploiement des nouvelles technologies Dans l’interview précédente, nous …</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

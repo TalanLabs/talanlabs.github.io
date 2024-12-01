@@ -1,0 +1,786 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Créer une API rapidement avec Flask | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Dans le cadre d’un projet, j’ai eu besoin de développer une API rapidement.">
+<meta property="og:title" content="Créer une API rapidement avec Flask">
+<meta property="og:description" content="Dans le cadre d’un projet, j’ai eu besoin de développer une API rapidement.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/2023-03-13-quickstart-flask-api/"><meta property="og:image" content="https://blog.talanlabs.com/2023-03-13-quickstart-flask-api/cover.png"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2023-03-13T09:03:51+01:00">
+<meta property="article:modified_time" content="2023-03-13T09:03:51+01:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/2023-03-13-quickstart-flask-api/cover.png">
+<meta name=twitter:title content="Créer une API rapidement avec Flask">
+<meta name=twitter:description content="Dans le cadre d’un projet, j’ai eu besoin de développer une API rapidement.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/2023-03-13-quickstart-flask-api/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Créer une API rapidement avec Flask</h1>
+<figure class="cover image">
+<img src=/2023-03-13-quickstart-flask-api/cover.png width=640 height=251 alt="illustration de l'article">
+</figure>
+<div class=paragraph>
+<p>Dans le cadre d’un projet, j’ai eu besoin de développer une <strong>API</strong> rapidement.
+Je me suis alors posée la question de l’outil à utiliser.
+En faisant quelques recherches, je suis tombée plusieurs fois sur <strong>Flask</strong>.
+Ayant déjà fait un peu de python, je me suis lancée dans la découverte de ce framework…​</p>
+</div>
+<div class=sect1>
+<h2 id=_a_la_découverte_de_flask>A la découverte de Flask</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>La première version de Flask date de 2010. Il s’agit d’un framework de développement web en <strong>python</strong>.
+Ce framework open-source est qualifié de <strong>micro-framework</strong> car il est très léger.
+Il est particulièrement adapté dans le cas de petites applications ou de PoC (Proof of Concept), ce qui correspond tout à fait à notre cas d’usage.</p>
+</div>
+<div class=paragraph>
+<p>Flask est utilisé par de nombreux développeurs.
+On peut retrouver son utilisation dans des sites tels que <strong>LinkedIn</strong> ou encore <strong>Pinterest</strong>.</p>
+</div>
+<div class=sect2>
+<h3 id=_pourquoi_utiliser_flask>Pourquoi utiliser Flask ?</h3>
+<div class=paragraph>
+<p>Flask permet une prise en main simple et rapide, tout en permettant d’évoluer vers des applications plus complexes.
+En 5 lignes seulement, il est possible de créer une application web simplifiée.</p>
+</div>
+<div class="flex justify-between">
+<img src=flask_hello_world_code.png style=width:35% alt="hello world code">
+<span style=align-self:center>=></span>
+<img src=flask_hello_world.png style=height:120px;align-self:center alt="hello world on browser">
+</div>
+</div>
+<div class=sect2>
+<h3 id=_pré_requis_installation_de_python>Pré-requis : installation de python</h3>
+<div class=paragraph>
+<p>Commencez par vérifier que python est bien installé sur votre ordinateur.</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-shell data-lang=shell>$ python3 --version</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>Si ce n’est pas le cas, installez-le :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-shell data-lang=shell>$ sudo apt install python3</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>Pour installer python sur d’autres OS que Linux : <a href=https://www.python.org/downloads/ class=bare>https://www.python.org/downloads/</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_initier_un_nouveau_projet>Initier un nouveau projet</h2>
+<div class=sectionbody>
+<div class=sect2>
+<h3 id=_création_du_dossier>Création du dossier</h3>
+<div class=paragraph>
+<p>Créons un dossier dans lequel mettre notre nouveau projet. Appelons le <code><em>bookshop-api</em></code> :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-shell data-lang=shell>$ mkdir bookshop-api</code></pre>
+</div>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_versioning_du_code>Versioning du code</h3>
+<div class=paragraph>
+<p>Afin de versionner notre api, nous allons initialiser un nouveau dépôt git :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-shell data-lang=shell>$ cd bookshop-api
+$ git init</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>N’oublions pas de créer un fichier <code><em>.gitignore</em></code> qui comportera les fichiers/dossiers qu’on ne veut pas versionner ni partager.
+Nous le remplirons par la suite.</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-shell data-lang=shell>$ touch .gitignore</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_mettre_en_place_un_environnement_virtuel>Mettre en place un environnement virtuel</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Il est recommandé de créer un environnement virtuel pour chaque projet sur lequel on travaille, dans lequel on installera localement les packages dont nous avons besoin.
+En effet, cela permet de travailler sur différents projets sans se soucier de la compatibilité entre les versions des librairies des différents projets.</p>
+</div>
+<div class=paragraph>
+<p>Pour créer un nouvel environnement virtuel, lancer à la racine du projet :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-shell data-lang=shell>$ cd bookshop-api
+$ python3 -m venv &lt;name_of_virtual_env&gt;</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>Appelons <code><em>venv</em></code> notre environnement virtuel.
+Maintenant que nous l’avons créé, il faut l’activer :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-shell data-lang=shell>$ source venv/bin/activate</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>L’environnement virtuel ne doit pas être versionné/partagé.
+Pour cela nous ajoutons la ligne suivante dans le fichier <code><em>.gitigore</em></code> :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-shell data-lang=shell>/venv/</code></pre>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_installation_de_flask>Installation de Flask</h3>
+<div class=paragraph>
+<p>Entrons maintenant dans le vif du sujet : l’installation de Flask.</p>
+</div>
+<div class=paragraph>
+<p>Pour installer Flask dans l’environnement virtuel :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-shell data-lang=shell>$ pip install flask
+$ python -c &#34;import flask; print(flask.__version__)&#34;
+$ pip install -U flask-cors
+$ pip install python-dotenv</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>L’installation du package <code><em>flask-cors</em></code> permet la gestion du CORS. Pour en savoir plus sur ce package, rendez-vous <a href=https://flask-cors.readthedocs.io/en/latest/>ici</a>.
+Pour en savoir plus sur le CORS, ou <strong>"Cross-origin resource sharing"</strong>, rendez-vous <a href=https://developer.mozilla.org/fr/docs/Web/HTTP/CORS>ici</a>.</p>
+</div>
+<div class=paragraph>
+<p>Nous verrons plus bas l’utilisation du package <code><em>python-dotenv</em></code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_création_dun_premier_endpoint>Création d’un premier endpoint</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Créer un fichier <code><em>main.py</em></code> à la racine du projet, qui sera le point de départ de notre API.</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-python data-lang=python>from flask import Flask
+
+app = Flask(__name__)
+
+@app.route(&#39;/&#39;)
+def hello():
+    return &#39;Hello World!&#39;</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>Comme vous pouvez le constater, il ne suffit vraiment que de 5 lignes pour créer un premier endpoint.</p>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_lancement_de_lapplication>Lancement de l’application</h2>
+<div class=sectionbody>
+<div class=sect2>
+<h3 id=_variables_denvironnement>Variables d’environnement</h3>
+<div class=paragraph>
+<p>Définissons le nom de l’application ainsi que l’environnement de développement.
+La variable <code><em>FLASK_APP</em></code> permet d’indiquer à Flask où trouver l’application.
+Ici, le nom de l’application est <code><em>main</em></code> car le fichier à lancer est <code><em>main.py</em></code>.
+La variable <code><em>FLASK_ENV</em></code> indique quant à elle à Flask dans quel mode exécuter l’application.
+Ici, nous voulons l’exécuter en mode developpement, afin d’activer automatiquement le mode de debug.
+La valeur par défaut étant <code><em>FLASK_ENV=production</em></code>.</p>
+</div>
+<div class=paragraph>
+<p>Nous allons enregistrer ces variables d’environnement dans un fichier <code><em>.env</em></code> situé à la racine du projet :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-shell data-lang=shell>FLASK_APP=main
+FLASK_ENV=development</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>N’oubliez pas d’ajouter ce fichier <code><em>.env</em></code> dans votre .gitignore.
+Les variables d’environnement ne sont pas supposées être partagées, surtout dans le cas où il s’agit de variables secrètes.</p>
+</div>
+<div class=paragraph>
+<p>Le package <code><em>python-dotenv</em></code> est nécessaire pour que ce fichier contenant les variables d’environnement soit automatiquement lu au lancement de l’application.
+C’est pourquoi nous l’avons installé lors de la mise en place de l’application.</p>
+</div>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_lancement_de_lapi>Lancement de l’API</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Pour démarrer le serveur Flask, lancer la commande suivante :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-shell data-lang=shell>$ flask run</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>La console affiche alors les lignes suivantes :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-shell data-lang=shell> * Serving Flask app &#34;main&#34; (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 813-894-335</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>En se rendant à l’adresse <code><a href=http://127.0.0.1:5000/ class=bare>http://127.0.0.1:5000/</a></code>, la phrase "Hello World" apparaît sur la page du navigateur.</p>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_ajout_de_nouvelles_routes>Ajout de nouvelles routes</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Ce n’est pas tout d’afficher un "Hello World", passons maintenant aux choses sérieuses : la création des routes de notre librairie en ligne.</p>
+</div>
+<div class=sect2>
+<h3 id=_cruds_endpoints>CRUD(S) endpoints</h3>
+<div class=paragraph>
+<p>Dans le cadre de ce projet, j’avais besoin de répondre aux besoins suivants :</p>
+</div>
+<div class=ulist>
+<ul>
+<li>
+<p>Récupérer la liste de tous les livres ;</p>
+</li>
+<li>
+<p>Récupérer un livre par son id ;</p>
+</li>
+<li>
+<p>Créer un livre ;</p>
+</li>
+<li>
+<p>Modifier un livre ;</p>
+</li>
+<li>
+<p>Supprimer un livre.</p>
+</li>
+</ul>
+</div>
+<div class=paragraph>
+<p>Nous allons donc créer 5 endpoints correspondant aux 5 opérations CREATE, READ, UPDATE, DELETE, et SEARCH dans le fichier <code>main.py</code>:</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-python data-lang=python>from flask import Flask, request, jsonify
+from flask_cors import CORS
+from utils.seeds import default_books
+from domain.Book import Book, from_json
+
+app = Flask(__name__)
+CORS(app, supports_credentials=True)
+
+@app.route(&#39;/&#39;)
+def hello():
+    return &#39;Hello World!&#39;
+
+@app.route(&#39;/books&#39;, methods=[&#39;GET&#39;])
+def get_all_books():
+    return jsonify([book.to_json() for book in default_books]), 200
+
+@app.route(&#39;/books/&lt;book_id&gt;&#39;, methods=[&#39;GET&#39;])
+def get_one_book(book_id):
+        for book in default_books:
+        if str(book.id) == str(book_id):
+            return book.to_json(), 200
+    return jsonify({&#39;error&#39;: &#39;book not found&#39;}), 404
+
+@app.route(&#39;/books&#39;, methods=[&#39;POST&#39;])
+def create_book():
+    data = request.get_json()
+    book = from_json(data)
+    book.id = len(default_books) + 1
+    default_books.append(book)
+    return jsonify({&#39;message&#39;: &#39;book successfully created&#39;}), 200
+
+@app.route(&#39;/books/&lt;book_id&gt;&#39;, methods=[&#39;PUT&#39;])
+def update_book(book_id):
+    data = request.get_json()
+    updated_book = from_json(data)
+    for book in default_books:
+        if str(book.id) == str(book_id):
+            index = default_books.index(book)
+            default_books[index] = updated_book
+            return jsonify({&#39;message&#39;: &#34;book successfully updated&#34;}), 200
+    return jsonify({&#39;error&#39;: &#39;book not found&#39;}), 404
+
+@app.route(&#39;/books/&lt;book_id&gt;&#39;, methods=[&#39;DELETE&#39;])
+def delete_book(book_id):
+    for book in default_books:
+        if str(book.id) == str(book_id):
+            default_books.remove(book)
+            return jsonify({&#39;message&#39;: &#39;book successfully deleted&#39;}), 200
+    return jsonify({&#39;error&#39;: &#39;book not found&#39;}), 404</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>La classe <strong>Book</strong> se trouve dans le fichier <code>Book.py</code> :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-python data-lang=python>import string
+
+class Book:
+    def __init__(self, title: string, code_name: string, author: string, quantity: int, publish_date: string,
+                id: int = 0) -&gt; None:
+        self.id = id
+        self.title = title
+        self.code_name = code_name
+        self.author = author
+        self.quantity = quantity
+        self.publish_date = publish_date
+
+    def to_json(self):
+        return {
+            &#39;id&#39;: self.id,
+            &#39;title&#39;: self.title,
+            &#39;codeName&#39;: self.code_name,
+            &#39;author&#39;: self.author,
+            &#39;publishDate&#39;: self.publish_date,
+            &#39;quantity&#39;: self.quantity
+        }
+
+def from_json(data):
+    return Book(
+        data[&#39;title&#39;], data[&#39;codeName&#39;], data[&#39;author&#39;], data[&#39;quantity&#39;], data[&#39;publishDate&#39;], data[&#39;id&#39;]
+    )</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>La liste de livres <strong>default_books</strong> se trouve dans le fichier <code><em>seeds.py</em></code></p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-python data-lang=python>from domain.Book import Book
+
+b1 = Book(&#34;Juste un regard&#34;, &#34;juste_un_regard&#34;, &#34;Harlan Coben&#34;, 8, 2010, 1)
+b2 = Book(&#34;Ne le dis à personne&#34;, &#34;ne_le_dis_a_personne&#34;, &#34;Harlan Coben&#34;, 1, 2005, 2)
+b3 = Book(&#34;Dans les bois&#34;, &#34;dans_les_bois&#34;, &#34;Harlan Coben&#34;, 5, 2020, 3)
+b4 = Book(&#34;Balle de match&#34;, &#34;balle_de_match&#34;, &#34;Harlan Coben&#34;, 3, 2007, 4)
+b5 = Book(&#34;Disparu à jamais&#34;, &#34;disparu_a_jamais&#34;, &#34;Harlan Coben&#34;, 3, 2003, 5)
+b6 = Book(&#34;Promets moi&#34;, &#34;promets_moi&#34;, &#34;Harlan Coben&#34;, 7, 1999, 6)
+
+default_books: [Book] = [b1, b2, b3, b4, b5, b6]</code></pre>
+</div>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_appels_à_lapi>Appels à l’API</h3>
+<div class=sect3>
+<h4 id=_méthode_get_récupérer_tous_les_livres><em>Méthode GET - Récupérer tous les livres</em></h4>
+<div class=paragraph>
+<p>Requête curl :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-shell data-lang=shell>curl http://127.0.0.1:5000/books</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>Résultat :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-json data-lang=json>[
+  {
+    &#34;author&#34;: &#34;Harlan Coben&#34;,
+    &#34;codeName&#34;: &#34;innocent&#34;,
+    &#34;id&#34;: 1,
+    &#34;publishDate&#34;: 2005,
+    &#34;quantity&#34;: 10,
+    &#34;title&#34;: &#34;Innocent&#34;
+  },
+  {
+    &#34;author&#34;: &#34;Harlan Coben&#34;,
+    &#34;codeName&#34;: &#34;ne_le_dis_a_personne&#34;,
+    &#34;id&#34;: 2,
+    &#34;publishDate&#34;: 2001,
+    &#34;quantity&#34;: 7,
+    &#34;title&#34;: &#34;Ne le dis à personne&#34;
+  },
+  {
+    &#34;author&#34;: &#34;Harlan Coben&#34;,
+    &#34;codeName&#34;: &#34;dans_les_bois&#34;,
+    &#34;id&#34;: 3,
+    &#34;publishDate&#34;: 2007,
+    &#34;quantity&#34;: 12,
+    &#34;title&#34;: &#34;Dans les bois&#34;
+  },
+  {
+    &#34;author&#34;: &#34;Harlan Coben&#34;,
+    &#34;codeName&#34;: &#34;balle_de_match&#34;,
+    &#34;id&#34;: 4,
+    &#34;publishDate&#34;: 2006,
+    &#34;quantity&#34;: 3,
+    &#34;title&#34;: &#34;Balle de match&#34;
+  }
+]</code></pre>
+</div>
+</div>
+</div>
+<div class=sect3>
+<h4 id=_méthode_get_récupérer_un_livre><em>Méthode GET - Récupérer un livre</em></h4>
+<div class=paragraph>
+<p>Requête curl :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-shell data-lang=shell>curl http://127.0.0.1:5000/books/1</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>Résultat :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-json data-lang=json>{
+  &#34;author&#34;: &#34;Harlan Coben&#34;,
+  &#34;codeName&#34;: &#34;innocent&#34;,
+  &#34;id&#34;: 1,
+  &#34;publishDate&#34;: 2005,
+  &#34;quantity&#34;: 10,
+  &#34;title&#34;: &#34;Innocent&#34;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class=sect3>
+<h4 id=_méthode_post_créer_un_livre><em>Méthode POST - Créer un livre</em></h4>
+<div class=paragraph>
+<p>Requête curl :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-shell data-lang=shell>curl -X POST http://127.0.0.1:5000/books
+-H &#34;Content-Type: application/json&#34;
+-d &#39;{&#34;author&#34;: &#34;Harlan Coben&#34;, &#34;title&#34;: &#34;Juste un regard&#34;, &#34;publishDate&#34;: 2004, \
+&#34;quantity&#34;: 12, &#34;codeName&#34;: &#34;juste_un_regard&#34;, &#34;id&#34;: &#34;&#34;}&#39;</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>Résultat :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-json data-lang=json>{
+  &#34;message&#34;: &#34;book successfully created&#34;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class=sect3>
+<h4 id=_méthode_put_editer_un_livre><em>Méthode PUT - Editer un livre</em></h4>
+<div class=paragraph>
+<p>Requête curl :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-shell data-lang=shell>curl -X PUT http://127.0.0.1:5000/books/5
+-H &#34;Content-Type: application/json&#34;
+-d &#39;{&#34;author&#34;: &#34;Harlan Coben&#34;, &#34;title&#34;: &#34;Juste un regard&#34;, &#34;publishDate&#34;: 2004, &#34;quantity&#34;: 20, \
+&#34;codeName&#34;: &#34;juste_un_regard&#34;, &#34;id&#34;: 5}&#39;</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>Résultat :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-json data-lang=json>{
+  &#34;message&#34;: &#34;book successfully updated&#34;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class=sect3>
+<h4 id=_méthode_delete_supprimer_un_livre><em>Méthode DELETE - Supprimer un livre</em></h4>
+<div class=paragraph>
+<p>Requête curl :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-shell data-lang=shell>curl -X DELETE http://127.0.0.1:5000/books/46</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>Résultat :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-json data-lang=json>{
+  &#34;message&#34;: &#34;book successfully deleted&#34;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class=sect3>
+<h4 id=_livre_non_trouvé><em>Livre non trouvé</em></h4>
+<div class=paragraph>
+<p>Requête curl :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-shell data-lang=shell>curl http://127.0.0.1:5000/books/157</code></pre>
+</div>
+</div>
+<div class=paragraph>
+<p>Résultat :</p>
+</div>
+<div class=listingblock>
+<div class=content>
+<pre class=highlight><code class=language-json data-lang=json>{
+  &#34;error&#34;: &#34;book not found&#34;
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_conclusion>Conclusion</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Le choix de Flask était adapté pour mon cas d’usage.
+En effet, la prise en main a été très facile, et une API simplifiée a pu être créée en quelques lignes.</p>
+</div>
+<div class=paragraph>
+<p>Python est un langage très utilisé, et cela vaut le coup de s’y mettre pour utiliser Flask.
+En effet, la montée en compétence est très rapide.</p>
+</div>
+<div class=paragraph>
+<p>Flask étant un micro-framework, il faut tout développer soi-même tandis qu’avec un framework plus complet tel que
+Django, le développement de certaines fonctionnalité peut être facilité. De plus, la communauté de Flask n’est pas
+aussi grande que celle de Django.</p>
+</div>
+<div class=paragraph>
+<p>Cependant, il faut garder à l’esprit que l’utilisation de Flask est surtout recommandée pour de petites applications,
+pour lesquelles Flask est le choix idéal.</p>
+</div>
+<div class=paragraph>
+<p>Pour aller plus loin :</p>
+</div>
+<div class=ulist>
+<ul>
+<li>
+<p>Flask permet de renvoyer des templates HTML directement.
+Ayant déjà un front et n’ayant que besoin d’une API, ce sujet n’a pas été abordé ici mais vous pourrez trouver de la documentation à ce sujet <a href=https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3-fr#etape-3-utilisation-des-modeles-html>sur le site DigitalOcean</a>.</p>
+</li>
+<li>
+<p>La connexion avec une base de données n’a pas été traitée dans cet article, mais elle peut également se faire aisément avec Flask.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2023-03-13T09:03:51+01:00>
+13 mars 2023
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/pauline-maitre/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Pauline Maitre" src=https://blog.talanlabs.com/authors/pauline_maitre.png></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/pauline-maitre/>Pauline Maitre</a></h1>
+<p class="mt-0 mb-2">Développeuse Web</p>
+</div>
+<div class=mb-6>
+<a href=https://www.linkedin.com/in/paulinemaitre target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+<a href=https://github.com/PaulineMaitre target=_blank class="icon is-medium"><i class="fab fa-lg fa-github"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/back>back</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/api>#api</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/python>#python</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/flask>#flask</a>
+</div>
+</div>
+</div>
+</div>
+<aside>
+<h4 class="subtitle mt-10 mb-8"><i class="fas fa-forward"></i> Vous aimerez peut-être...</h4>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/2021-04-29-rex-api-o365/>
+<img class="border object-cover w-full m-0 max-w-md" src=/2021-04-29-rex-api-o365/cover_hu0d2dc76868fe2044695e7076b6d2f2fd_21458_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/back>back</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/cloud>cloud</a>
+</div>
+<a href=/2021-04-29-rex-api-o365/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">REX : Intégration des API Microsoft</h2></a>
+<div class=my-1>
+<span>Guillaume COLLET</span>,
+<time datetime=2021-04-29T15:17:56+02:00>
+29 avril 2021
+</time>
+</div>
+<p class="my-1 text-slate-500">Mise en contexte Nous allons parler dans cet article de l’intégration des API Microsoft dans une application …</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

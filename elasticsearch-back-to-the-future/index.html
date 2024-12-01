@@ -1,0 +1,241 @@
+<!doctype html><html lang=fr-fr>
+<head><title> ElasticSearch, back to the future | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Je me suis remis à ElasticSearch après plusieurs années d&rsquo;absence et le choc a été dur : revenir à Oracle après 5 ans, pas de souci, mais dans le cas d&rsquo;Elasticsearch, ça avait tellement évolué que j&rsquo;ai du prendre un peu de temps pour m&rsquo;y remettre.">
+<meta property="og:title" content="ElasticSearch, back to the future">
+<meta property="og:description" content="Je me suis remis à ElasticSearch après plusieurs années d&rsquo;absence et le choc a été dur : revenir à Oracle après 5 ans, pas de souci, mais dans le cas d&rsquo;Elasticsearch, ça avait tellement évolué que j&rsquo;ai du prendre un peu de temps pour m&rsquo;y remettre.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/elasticsearch-back-to-the-future/"><meta property="og:image" content="https://blog.talanlabs.com/elasticsearch-back-to-the-future/cover.jpg"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2019-02-19T08:29:31+00:00">
+<meta property="article:modified_time" content="2019-02-19T08:29:31+00:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/elasticsearch-back-to-the-future/cover.jpg">
+<meta name=twitter:title content="ElasticSearch, back to the future">
+<meta name=twitter:description content="Je me suis remis à ElasticSearch après plusieurs années d&rsquo;absence et le choc a été dur : revenir à Oracle après 5 ans, pas de souci, mais dans le cas d&rsquo;Elasticsearch, ça avait tellement évolué que j&rsquo;ai du prendre un peu de temps pour m&rsquo;y remettre.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/elasticsearch-back-to-the-future/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>ElasticSearch, back to the future</h1>
+<figure class="cover image">
+<img src=/elasticsearch-back-to-the-future/cover.jpg width=1067 height=331 alt="illustration de l'article">
+</figure>
+<p>Je me suis remis à ElasticSearch après plusieurs années d&rsquo;absence et le choc a été dur : revenir à Oracle après 5 ans, pas de souci, mais dans le cas d&rsquo;Elasticsearch, ça avait tellement évolué que j&rsquo;ai du prendre un peu de temps pour m&rsquo;y remettre.</p>
+<p>Que s&rsquo;est-il donc passé entre un <strong><a href=https://www.elastic.co/downloads/past-releases/elasticsearch-0-90-5>ES 0.90.5 de 2013</a></strong> et un <strong><a href=https://www.elastic.co/guide/en/elasticsearch/reference/6.5/release-notes-6.5.4.html>ES 6.5.4 de 2019</a></strong> ?</p>
+<h2 id=mes-usages><strong>Mes usages</strong></h2>
+<h4 id=2013---cadremploi>2013 - Cadremploi</h4>
+<p>En 2013, je travaillais chez Cadremploi et nous avions besoin de faire évoluer le moteur de recherche du site qui fonctionnait uniquement avec Lucene. La promesse d&rsquo;Elasticsearch : un cœur Lucene, une recherche simplifiée (la syntaxe Lucene est étrange) disponible par une API REST et une base de données distribuée répliquée automatiquement. Le projet avait été un succès et avait été mis en production par l&rsquo;équipe suivante.</p>
+<h4 id=2018---grdf>2018 - GrDF</h4>
+<p>Retour à ElasticSearch chez GrDF qui souhaite accélérer sa recherche dans une de ses bases clientes. Environ 30 millions de clients présents dans la base et des nouveaux besoins de recherche : une recherche libre &ldquo;à la google&rdquo; ainsi qu&rsquo;une recherche par préfixe.</p>
+<h2 id=les-changements><strong>Les changements</strong></h2>
+<p>Voyons maintenant ces changements qui m&rsquo;ont marqué.</p>
+<h4 id=la-fin-des-plugins-site-embarqués>La fin des plugins &ldquo;site&rdquo; embarqués</h4>
+<p>En 2013, la meilleure façon de visualiser son cluster ElasticSearch était d&rsquo;utiliser un plugin &ldquo;site&rdquo; comme <a href=https://github.com/mobz/elasticsearch-head>head</a> ou <a href=https://github.com/lmenezes/elasticsearch-kopf>kopf</a> (notez le lien entre les deux).
+Une fois installée, ElasticSearch servait directement ces pages web sur son port 9200 (par défaut). Il y en de toute sorte, du monitoring de cluster aux tests des plugins phonétiques.
+En octobre 2016, la version 5.0.0 d&rsquo;ElasticSearch sonnait la fin des plugins site notamment à cause de problèmes de sécurité (<a href=https://www.elastic.co/guide/en/elasticsearch/reference/5.0/breaking_50_plugins.html#_site_plugins_removed>ici</a> et <a href=https://www.elastic.co/fr/blog/running-site-plugins-with-elasticsearch-5-0>là</a>).
+Désormais, il faut embarquer un serveur indépendant pour pouvoir distribuer une fonctionnalité annexe à ElasticSearch. C&rsquo;est peut-être un peu contraignant, mais cela garantit une vraie indépendance des produits, indispensable quand on passe en production.</p>
+<p>A noter que Kibana fournit un monitoring basique dans sa <a href=https://www.elastic.co/fr/subscriptions>version gratuite</a>.</p>
+<p><img src="https://lh3.googleusercontent.com/n2KT8pW_-XWU9i9bWxY9iKcJLudH_f1PIrj1qODwWuJ7hKQVr_rlI4GTYuluWQBx0ix4Idr5=w640-h400-e365" alt>
+Plugin head</p>
+<h4 id=logstash-principal-point-dentrée>Logstash, principal point d&rsquo;entrée</h4>
+<p>Une façon d&rsquo;alimenter ElasticSearch était d&rsquo;utiliser une river, c&rsquo;est à dire un batch intégré à ElasticSearch capable de parcourir plus ou moins fréquemment une source pour en extraire les données.
+Il y en avait plusieurs, en particulier pour extraire des données d&rsquo;une base de données (à partir d&rsquo;une requête), de CouchDB, RabbitMQ, Wikipedia ou encore Twitter.
+Le problème venait de la consommation des ressources nécessaires (mémoire, sockets…) au bon fonctionnement du batch au détriment du fonctionnement d&rsquo;ElasticSearch.
+En mars 2015, la version 2.0.0 <a href=https://www.elastic.co/blog/deprecating-rivers>les fait disparaitre</a> et ElasticSearch propose soit d&rsquo;extraire le code des rivers pour externaliser le fonctionnement ou d&rsquo;utiliser <a href=https://www.elastic.co/fr/products/logstash>LogStash</a> comme solution d&rsquo;approvisionnement.</p>
+<p>Même si les rivers wikipedia ou twitter revêtaient un caractère pratique pour remplir sa base, dans un contexte de production, il y avait une vraie appréhension à en utiliser une, la question de la reprise sur erreur en cas de crash du nœud hébergeant la river étant difficilement solvable.</p>
+<h4 id=le-ttl-est-mort->Le TTL est mort !</h4>
+<p>Le <a href=https://www.elastic.co/guide/en/elasticsearch/reference/2.3/mapping-ttl-field.html>TTL</a> (time to live) est une fonctionnalité que l&rsquo;on retrouve dans de nombreuses SGBD : lorsque vous ajoutez une donnée, vous pouvez préciser sa durée de vie. Une fois le temps écoulé, le système supprime automatiquement cette donnée.</p>
+<p>Ce mécanisme peut sembler séduisant mais il présente de nombreux inconvénients : il faut fréquemment (60s) parcourir l&rsquo;ensemble des données pour détecter celles à supprimer mais également &ldquo;recompacter&rdquo; les fichiers dans lesquels on supprime ces données.
+Le champ _timestamp (date d&rsquo;insertion de la donnée) est utilisé pour calculer le ttl.
+La <a href=https://www.elastic.co/guide/en/elasticsearch/reference/5.0/breaking_50_mapping_changes.html#_literal__timestamp_literal_and_literal__ttl_literal>version 5.0.0 d&rsquo;ElasticSearch</a> supprime cette fonctionnalité précédemment dépréciée. Il est conseillé d&rsquo;utiliser sa propose date au lieu du champ timestamp (si nécessaire) et d&rsquo;utiliser des index temporels pour &ldquo;partitionner&rdquo; les données. De cette manière, il est facile de supprimer les données ajoutées au même moment en supprimant directement l&rsquo;index.</p>
+<p>Si vous avez cependant besoin de définir des durées de vie différentes en fonction de vos données, il faudra gérer le mécanisme à la main : créer un champ spécial et appeler manuellement une requête <a href=https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete-by-query.html>&ldquo;delete_by_query&rdquo;</a>. Ce sera toujours plus efficace qu&rsquo;avec un ttl car le parcours et la suppression des données ne se fera qu&rsquo;une seule fois (et en utilisant les index).</p>
+<p>De manière générale, je pense que les TTL sont une fausse bonne idée : ils dégradent les performances et une meilleure conception de sa structure de données permet d&rsquo;anticiper la question du nettoyage des données.</p>
+<h4 id=la-gestion-avancée-du-type-de-données-string>La gestion avancée du type de données string</h4>
+<p>De nombreux <a href=https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-types.html>types de données</a> sont disponibles dans ES (dates, numériques, les tableaux…).<br>
+Le type string, qui représente une chaîne de caractères, a vu son fonctionnement évoluer avec la version 5.0.0 (toujours la même).
+Celle-ci introduit la séparation du type string en <a href=https://www.elastic.co/guide/en/elasticsearch/reference/current/text.html>text</a> et <a href=https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html>keyword</a>. La nuance est importante car elle est influence directement la manière dont on recherche les données :</p>
+<ul>
+<li>Le type keyword représente un champ qui ne pourra être recherché que par sa valeur exacte et pourra être utilisé dans le filtrage, les agrégations et les tris. On privilégie ce champ pour des données de référentiels (code postaux, mails, statuts…). * Le type text représente un champ dans lequel on pourra rechercher une partie de texte.<br>
+Il est toutefois possible d&rsquo;agréger / trier pour un type text en utilisant <a href=https://www.elastic.co/guide/en/elasticsearch/reference/current/fielddata.html>fielddata</a> lors du mapping.</li>
+</ul>
+<p>Ces nouvelles notions sont intéressantes car elles nous encouragent à mieux penser notre schéma de données en gardant bien à l&rsquo;esprit que la question la plus importante est &ldquo;comment je veux chercher mes données&rdquo;.</p>
+<h4 id=la-fin-des-mapping-types>La fin des mapping types</h4>
+<p>En étant légèrement grossier, on pourrait dire que les mapping types sont à un index Elasticsearch ce que les tables sont à un schéma sur une base de données.
+On peut créer plusieurs mapping types sur un index, ce qui n&rsquo;implique pas pour autant de jointure. La version 7 d&rsquo;ElasticSearch va déprécier cet usage qui <a href=https://www.elastic.co/guide/en/elasticsearch/reference/master/removal-of-types.html>sera supprimé dans la version 8</a>.</p>
+<p>Pourquoi ? Parce que lorsque sur un même index, on a deux mapping types différents mais que des champs ont le même nom (par exemple une date), ces champs doivent être de même type (string, int&mldr;). On peut supposer qu&rsquo;une date sera toujours du type date, mais parfois, on va avoir un long, une string…</p>
+<p>La solution de contournement ? Un index pour chacun des mapping types (qui s&rsquo;appelle tous _doc). Elasticsearch permet de requêter dans plusieurs index en même temps (et même sur plusieurs clusters).</p>
+<h4 id=multicast-vs-unicast>Multicast vs Unicast</h4>
+<p>Je me rappelle encore de ma première installation d&rsquo;ElasticSearch : lors du premier démarrage, je regarde les logs et je vois le serveur commencer à discuter avec pleins de machines&mldr;mais que se passait-il ?</p>
+<p>La raison était très simple : par défaut ElasticSearch était configuré en mode multicast, c&rsquo;est à dire qu&rsquo;il demandait sur le réseau si des copains voulaient bien jouer avec lui&mldr;autant dire que la première étape était de couper son serveur et d&rsquo;aller voir la doc (ce que j&rsquo;aurais surement dû faire depuis le début&mldr;)</p>
+<p>La <a href=https://github.com/elastic/elasticsearch/pull/16326>version 5.0.0</a> supprime le plugin multicast, il faut désormais configurer le champ <em>discovery.zen.ping.unicast.hosts</em> afin de définir les nœuds à contacter (par défaut à 127.0.0.1).</p>
+<h4 id=lécosystème-étendu>L&rsquo;écosystème étendu</h4>
+<p>En 2013, ElasticSearch était un produit isolé autour duquel gravitaient des outils de la communauté : des plugins, des outils. Kibana en est un parfait exemple (outil de dataviz).</p>
+<p><img src=https://www.elastic.co/guide/en/kibana/6.1/monitoring/images/monitoring-kibana-instance.jpg alt="Résultat de recherche d&rsquo;images pour &ldquo;kibana 6 site:elastic.co&rdquo;">
+Exemple de dashboard avec Kibana</p>
+<p>Les choses ont beaucoup changé et désormais, la suite Elastic s&rsquo;est agrandie :</p>
+<ul>
+<li><a href=https://www.elastic.co/guide/en/elasticsearch/reference/current/keyword.html>Kibana</a> est pleinement intégré à Elastic et fournit des fonctionnalités de Dataviz, monitoring&mldr; * <a href=https://www.elastic.co/fr/products/logstash>Logstash</a> constitue un outil d&rsquo;approvisionnement d&rsquo;ElasticSearch (à la manière d&rsquo;un ETL) * <a href=https://www.elastic.co/fr/products/beats>Beats</a> et ses déclinaisons (<a href=https://www.elastic.co/fr/products/beats/filebeat>FileBeat</a>, <a href=https://www.elastic.co/fr/products/beats/metricbeat>MetricBeat</a>…) sont des agents permettant de collecter des métriques sur des machines et de les transférer, entre autre, vers ElasticSearch. * <a href=https://www.elastic.co/fr/products/stack>Suite Elastic</a> (anciennement X-pack) pour le monitoring et la gestion de la sécurité&mldr; * Bonus : avec la version 6.5 vient une fonctionnalité utile et inattendue, la <a href=https://www.elastic.co/fr/subscriptions>suppression de la licence gratuite</a> d&rsquo;un an pour l&rsquo;usage basique d&rsquo;ElasticSearch. C&rsquo;est un réel avantage car sur un petit cluster, devoir chaque année régénérer une licence pour la mettre à jour…c&rsquo;était fatigant.</li>
+</ul>
+<p><img src=image-1.png alt>
+Outils de la Stack Elastic</p>
+<h3 id=conclusion>Conclusion</h3>
+<p>ElasticSearch a beaucoup évolué ces dernières années. Cela tient en partie aux nouveaux marchés qu&rsquo;il vise : à l&rsquo;origine, on utilisait uniquement ES pour faire de la recherche full-texte, le cas d&rsquo;usage était très précis et ça fonctionnait. Cela fait plusieurs années que le terme &ldquo;ELK&rdquo; est bien associé au stockage et à la recherche de log.</p>
+<p>Désormais, la réorientation time-series du moteur ainsi que les nombreux outils annexes ouvrent la voie à de nouveaux usages comme le monitoring. Attention toutefois à ne pas toujours utiliser ElasticSearch en pensant qu&rsquo;il est le plus adapté car il &ldquo;sait&rdquo; le faire : InfluxDB est une solution particulièrement performante en terme de time-series, mais <a href=https://www.influxdata.com/products/editions/>plus onéreuse</a>.</p>
+<p>Les cas que j&rsquo;ai traités dans cet article sont uniquement ceux auxquels j&rsquo;ai été confronté. N&rsquo;hésitez pas à commenter pour me faire part des évolutions qui vous ont particulièrement marqué.</p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2019-02-19T08:29:31Z>
+19 février 2019
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/jonathan-baranzini/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Jonathan BARANZINI" src=https://blog.talanlabs.com/authors/jonathan_baranzini.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/jonathan-baranzini/>Jonathan BARANZINI</a></h1>
+<p class="mt-0 mb-2">Développeur</p>
+</div>
+<div class=mb-6>
+<a href=https://github.com/jotitan target=_blank class="icon is-medium"><i class="fab fa-lg fa-github"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/data>data</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/elasticsearch>#elasticsearch</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/retour-dexperience>#retour d'experience</a>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

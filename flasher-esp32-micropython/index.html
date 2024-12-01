@@ -1,0 +1,314 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Flasher un ESP32 avec micropython sous Linux | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Dans cet article, nous allons explorer l&rsquo;installation de python embarqué (MicroPython) sur une carte microcontrôleur ESP32, jusqu&rsquo;à pouvoir exécuter du Python en étant directement connecté à la carte en question.">
+<meta property="og:title" content="Flasher un ESP32 avec micropython sous Linux">
+<meta property="og:description" content="Dans cet article, nous allons explorer l&rsquo;installation de python embarqué (MicroPython) sur une carte microcontrôleur ESP32, jusqu&rsquo;à pouvoir exécuter du Python en étant directement connecté à la carte en question.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/flasher-esp32-micropython/"><meta property="og:image" content="https://blog.talanlabs.com/flasher-esp32-micropython/cover.jpg"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2021-01-05T14:35:09+01:00">
+<meta property="article:modified_time" content="2021-01-05T14:35:09+01:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/flasher-esp32-micropython/cover.jpg">
+<meta name=twitter:title content="Flasher un ESP32 avec micropython sous Linux">
+<meta name=twitter:description content="Dans cet article, nous allons explorer l&rsquo;installation de python embarqué (MicroPython) sur une carte microcontrôleur ESP32, jusqu&rsquo;à pouvoir exécuter du Python en étant directement connecté à la carte en question.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/flasher-esp32-micropython/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Flasher un ESP32 avec micropython sous Linux</h1>
+<figure class="cover image">
+<img src=/flasher-esp32-micropython/cover.jpg width=600 height=425 alt="illustration de l'article">
+</figure>
+<p>Dans cet article, nous allons explorer l&rsquo;installation de python embarqué (MicroPython) sur une carte microcontrôleur ESP32, jusqu&rsquo;à pouvoir exécuter du Python en étant directement connecté à la carte en question.</p>
+<h2 id=esp32-cest-quoi->ESP32, c&rsquo;est quoi ?</h2>
+<p>L&rsquo;ESP32 est une série de microcontrôleurs de type système sur une puce (SOC pour &lsquo;System On a Chip&rsquo;). Les SOCs sont des systèmes complets embarqués sur un seul circuit intégré, dont la mémoire, les microprocesseurs et les différents périphériques d&rsquo;interface. L&rsquo;ESP32 est le successeur et une version plus musclée de l&rsquo;ESP8266, pour les bricoleurs qui l&rsquo;auront déjà utilisée.</p>
+<p><img src=flash_esp32_micropython/esp32_pwr_on.png alt="My ESP32"></p>
+<p>Un carte basée ESP32 est un candidat idéal pour l&rsquo;utilisation dans le domaine du développement des objets connectés, car</p>
+<ul>
+<li>son coût est très bas, je vous invite à aller regarder les prix sur AliExpress en cherchant &lsquo;esp32&rsquo;</li>
+<li>elle dispose de connectivité Wifi et Bluetooth intégrés, donc aucun besoin de rajouter du matériel supplémentaire pour avoir de la connectivité</li>
+<li>outre son aspect connecté elle dispose d&rsquo;une pléthore de possibilités pour l&rsquo;interfaçage de composants électroniques, les références sont disponibles sur <a href=http://esp32.net/>esp32.net</a> par exemple</li>
+<li>elle est adaptée aux problématiques temps réel (pour l&rsquo;utilisation des bibliothèques NeoPixel par exemple), et possède une RTC (Real Time Clock) intégrée</li>
+<li>son intégration est très facile pour ceux qui aiment bricoler sur de l&rsquo;IOT, il suffit de voir les différents projets qu&rsquo;on peut réaliser avec ces cartes sur <a href="https://hackaday.io/projects?tag=ESP32">Hackaday</a></li>
+</ul>
+<p>En résumé, l&rsquo;ESP32 se situe en milieu de chemin entre les besoins basiques de contrôle sur de l&rsquo;électronique non connectée (famille Arduino par exemple) et les besoins d&rsquo;un contrôleur basé sur un OS complet nécessitant des applications plus proches du monde logiciel OpenSource classique (famille des Raspberry Pis et dérivés).</p>
+<h2 id=micropython-cest-quoi->Micropython, c&rsquo;est quoi ?</h2>
+<p>Micropython est un interpréteur Python réduit OpenSource, développé pour être exécuté sur de l&rsquo;embarqué, basé sur du Python 3. Vous pouvez donc utiliser du code python pour contrôler du hardware embarqué à la place des langages classiques plus complexes et bas niveau basés sur du C/C++ comme ceux utilisés pour le développement sur Arduino par exemple.</p>
+<p>La simplicité du Python permet une approche plus facile pour ceux qui sont moins familiers au domaine du développement, et MicroPython garde une grande partie des capacités du Python classique</p>
+<p>En plus de sa facilité de développement, micropython a quelques features qui le démarquent du développement embarqué traditionnel :</p>
+<ul>
+<li>un REPL (ou Read-Evaluate-Print-Loop) interactif, qui permet de se connecter à une carte et d&rsquo;exécuter des lignes de code à la volée sans compilation ou upload, ce qui est pratique pour tester des branchements de composants et capteurs rapidement</li>
+<li>une bibliothèque large permettant de faciliter des tâches associées aux traitements des messages sur les systèmes distribués, et facilitant l&rsquo;utilisation de composants électroniques branchés sur une carte</li>
+<li>MicroPython est aussi extensible avec des fonctions bas niveau C/C++ pour des utilisations plus avancées</li>
+</ul>
+<h2 id=pré-requis>Pré-requis</h2>
+<p>Si vous voulez appliquer cet article sur une carte ESP32, vous aurez besoin de :</p>
+<ul>
+<li>un cable usb (s&rsquo;assurer que c&rsquo;est bien un cable data et pas seulement alimentation)</li>
+<li>une carte ESP32 (dans notre cas c&rsquo;est une DevKit V1 de DOIT basée sur le module ESP-WROOM-32)</li>
+<li>un pc sous Linux (ici un pc sous Ubuntu 20.04)</li>
+<li>python version 3.4+ recommandé</li>
+</ul>
+<h1 id=configuration-de-votre-environnement>Configuration de votre environnement</h1>
+<h2 id=1-installer-picocom>1. Installer picocom</h2>
+<p>Picocom est un émulateur de terminal pour les connections série sur les tty Linux, nous en aurons besoin pour accéder au REPL de micropython lorsqu&rsquo;il sera installé sur l&rsquo;ESP32 afin de vérifier que nous avons réussi notre flashage.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo apt install picocom
+</code></pre></div><h2 id=2-disposer-des-droits-daccès-à-devttyusb0>2. Disposer des droits d&rsquo;accès à /dev/ttyUSB0</h2>
+<p>Lorsque vous brancherez votre ESP32 à votre PC, vous aurez besoin de communiquer via le port série USB, qui sera typiquement <strong>/dev/ttyUSB0</strong> si vous n&rsquo;avez aucun autre composant USB connecté.</p>
+<p>Dépendant du Linux utilisé, il se peut que vous ayez besoin d&rsquo;appartenir aux groupes <strong>tty</strong> et <strong>dialout</strong> pour disposer des droits d&rsquo;écriture sur /dev/ttyUSB0.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo usermod -a -G tty &lt;username&gt;
+sudo usermod -a -G dialout &lt;username&gt;
+</code></pre></div><p>Si vous avez toujours des &ldquo;permission denied&rdquo; sur les étapes suivantes pour écrire sur <strong>/dev/ttyUSB0</strong>, vous pourrez toujours changer l&rsquo;owner (à refaire à chaque fois que vous rebrancherez l&rsquo;ESP32 à votre PC) :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>sudo chown &lt;username&gt; /dev/ttyUSB0
+</code></pre></div><h2 id=3-installation-des-outils-pour-flasher>3. Installation des outils pour flasher</h2>
+<p>Nous aurons enfin besoin de télécharger les outils pour pouvoir flasher correctement la carte ESP32.
+Je préfère personnellement créer un environnement virtuel python dès que je dois utiliser des bibliothèques dans un contexte spécifique, permettant ainsi d&rsquo;isoler les dépendances nécessaires à chaque projet.</p>
+<p>Pour créer son environnement virtuel, il suffit de lancer la commande suivante dans un répertoire de son choix :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>python3 -m venv --system-site-packages ./venv_micropython
+</code></pre></div><p>Une fois l&rsquo;environnement virtuel installé, on l&rsquo;active avec la commande suivante :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>source ./venv_micropython/bin/activate
+</code></pre></div><p>Nous pouvons maintenant installer les outils nécessaires au flashage (esptools) dans notre environnement virtuel :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>pip install esptool
+</code></pre></div><p>Pour désactiver son environnement virtuel, il suffira d&rsquo;exécuter :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>deactivate
+</code></pre></div><h1 id=déployer-le-firmware-micropython>Déployer le firmware micropython</h1>
+<p>Avant de pouvoir flasher notre carte ESP32 avec MicroPython, il nous manque un dernier élément : le firmware. Vous pouvez le télécharger sur <a href=https://micropython.org/download/esp32/>https://micropython.org/download/esp32/</a></p>
+<p>J&rsquo;ai récupéré la dernière version stable de septembre 2020 : esp32-idf3-20200902-v1.13.bin.</p>
+<p>Une fois le firmware téléchargé, le flashage s&rsquo;effectuera en deux étapes recommandées, notamment si c&rsquo;est le premier flash MicroPython sur la carte :</p>
+<h2 id=1-effacer-le-flash-existant-sur-la-carte-esp32>1. Effacer le flash existant sur la carte ESP32</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>esptool.py --chip esp32 --port /dev/ttyUSB0 erase_flash
+</code></pre></div><p>Si l&rsquo;effaçage du flash s&rsquo;est bien déroulé, vous devriez voir une sortie console d&rsquo;esptool indiquant qu&rsquo;il a correctement détecté votre carte et que l&rsquo;effaçage a été effectué :</p>
+<p><img src=flash_esp32_micropython/esp32_micropython_1.png alt="Effaçage du flash ESP32"></p>
+<h2 id=2-installer-le-firmware-micropython>2. Installer le firmware micropython</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>esptool.py --chip esp32 --port /dev/ttyUSB0 --baud <span style=color:#ae81ff>460800</span> write_flash -z 0x1000 esp32-idf3-20200902-v1.13.bin
+</code></pre></div><p>Idem que pour la première commande, une sortie console d&rsquo;esptool vous indiquera le flashage effectué avec le firmware que nous avons installé et que la carte a fait l&rsquo;objet d&rsquo;un hard reboot.</p>
+<p><img src=flash_esp32_micropython/esp32_micropython_2.png alt="Installation du firmware micropython"></p>
+<h2 id=3-tester-micropython-via-le-serial>3. Tester micropython via le Serial</h2>
+<p>Lancer picocom sur le terminal série approprié avec un baud rate à 115200 pour la communication avec la carte :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>picocom /dev/ttyUSB0 -b115200
+</code></pre></div><p>Si vous avez pu vous connecter correctement, vous devriez voir un message d&rsquo;accueil indiquant que l&rsquo;ESP32 est connecté et prêt à recevoir vos inputs, il suffit d&rsquo;appuyer sur [Enter] pour avoir accès au REPL MicroPython :</p>
+<p><img src=flash_esp32_micropython/esp32_micropython_3.png alt="Console picocom"></p>
+<p>Nous pouvons maintenant vérifier la version de MicroPython installée :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>&gt;&gt;&gt; import sys
+&gt;&gt;&gt; sys.version_info
+<span style=color:#f92672>(</span>3, 4, 0<span style=color:#f92672>)</span>
+</code></pre></div><p>Et tester avec un petit hello world :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>&gt;&gt;&gt; print<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;hello world&#34;</span><span style=color:#f92672>)</span>
+hello world
+&gt;&gt;&gt;
+</code></pre></div><p>Nous pouvons aussi tester le hello world façon Maker, qui consiste à allumer la led on-board de la carte testée (dépendant du modèle le pin utilisé pourra être différent) :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>&gt;&gt;&gt; from machine import Pin
+&gt;&gt;&gt; p2 <span style=color:#f92672>=</span> Pin<span style=color:#f92672>(</span>2,Pin.OUT<span style=color:#f92672>)</span>
+&gt;&gt;&gt; p2.on<span style=color:#f92672>()</span>
+&gt;&gt;&gt;
+</code></pre></div><p><img src=flash_esp32_micropython/esp32_led_on.png alt="ESP32 led on"></p>
+<h1 id=conclusion>Conclusion</h1>
+<p>Dans cet article, nous avons pu aborder en quelques lignes de commande le flashage et le test via le REPL Python d&rsquo;une carte ESP32 sous micropython.</p>
+<p>Nous pourrons, dans un article suivant, aborder le développement et l&rsquo;intégration avec un IDE Python (PyCharm) d&rsquo;une carte ESP32 sur une problématique d&rsquo;objet connecté.</p>
+<h1 id=références>Références</h1>
+<ol>
+<li>Site de référence sur ESP32 : <a href=http://esp32.net/>http://esp32.net/</a></li>
+<li>Projets sur l&rsquo;ESP32 : <a href="https://hackaday.io/projects?tag=ESP32">https://hackaday.io/projects?tag=ESP32</a></li>
+<li>Téléchargement du firmware micropython pour ESP32 : <a href=https://micropython.org/download/esp32/>https://micropython.org/download/esp32/</a></li>
+<li>Installation de micropython sur ESP32 : <a href=https://docs.micropython.org/en/latest/esp32/quickref.html#installing-micropython>https://docs.micropython.org/en/latest/esp32/quickref.html#installing-micropython</a></li>
+</ol>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2021-01-05T14:35:09+01:00>
+5 janvier 2021
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/daniel-domingue/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Daniel DOMINGUE" src=https://blog.talanlabs.com/authors/daniel_domingue.png></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/daniel-domingue/>Daniel DOMINGUE</a></h1>
+<p class="mt-0 mb-2">Développeur</p>
+</div>
+<div class=mb-6>
+<a href=https://www.linkedin.com/in/danieldomingue target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/iot>iot</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/iot>#IoT</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/microcontroleurs>#microcontroleurs</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/micropython>#micropython</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/esp32>#ESP32</a>
+</div>
+</div>
+</div>
+</div>
+<aside>
+<h4 class="subtitle mt-10 mb-8"><i class="fas fa-forward"></i> Vous aimerez peut-être...</h4>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/smart-building-coeur-enjeux/>
+<img class="border object-cover w-full m-0 max-w-md" src=/smart-building-coeur-enjeux/cover_hubc5e2fae6a634ae9d4fae2414b856379_4019608_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/iot>iot</a>
+</div>
+<a href=/smart-building-coeur-enjeux/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Le smart building, au cœur de tous les enjeux</h2></a>
+<div class=my-1>
+<span>Sami KHALFAOUI</span>,
+<time datetime=2020-12-03T11:47:26+01:00>
+3 décembre 2020
+</time>
+</div>
+<p class="my-1 text-slate-500">A la croisée des défis de notre temps, le bâtiment intelligent permet de gagner en efficience énergétique tout …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/android-things-iot-google/>
+<img class="border object-cover w-full m-0 max-w-md" src=/android-things-iot-google/cover_hub8e6a3aa5eb2f4a6c421e0d156b23302_378326_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/iot>iot</a>
+</div>
+<a href=/android-things-iot-google/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Android Things : l’IoT par Google</h2></a>
+<div class=my-1>
+<span>Sylvain MÉNARD</span>,
+<time datetime=2017-05-24T08:24:37Z>
+24 mai 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Android Things , l’OS Google pour la gestion des objets connectés a été lancé en décembre 2016.</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

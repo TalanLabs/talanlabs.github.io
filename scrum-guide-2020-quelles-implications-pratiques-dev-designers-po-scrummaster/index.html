@@ -1,0 +1,362 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Scrum Guide 2020 : Quelles implications pratiques pour les dev, les designers, les PO et les Scrum Master ? | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Une nouvelle version du Scrum Guide a été dévoilée en novembre 2020.">
+<meta property="og:title" content="Scrum Guide 2020 : Quelles implications pratiques pour les dev, les designers, les PO et les Scrum Master ?">
+<meta property="og:description" content="Une nouvelle version du Scrum Guide a été dévoilée en novembre 2020.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/scrum-guide-2020-quelles-implications-pratiques-dev-designers-po-scrummaster/"><meta property="og:image" content="https://blog.talanlabs.com/scrum-guide-2020-quelles-implications-pratiques-dev-designers-po-scrummaster/cover.png"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2021-01-06T00:00:00+00:00">
+<meta property="article:modified_time" content="2021-01-06T00:00:00+00:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/scrum-guide-2020-quelles-implications-pratiques-dev-designers-po-scrummaster/cover.png">
+<meta name=twitter:title content="Scrum Guide 2020 : Quelles implications pratiques pour les dev, les designers, les PO et les Scrum Master ?">
+<meta name=twitter:description content="Une nouvelle version du Scrum Guide a été dévoilée en novembre 2020.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/scrum-guide-2020-quelles-implications-pratiques-dev-designers-po-scrummaster/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Scrum Guide 2020 : Quelles implications pratiques pour les dev, les designers, les PO et les Scrum Master ?</h1>
+<figure class="cover image">
+<img src=/scrum-guide-2020-quelles-implications-pratiques-dev-designers-po-scrummaster/cover.png width=814 height=398 alt="illustration de l'article">
+</figure>
+<p>Une nouvelle version du Scrum Guide a été dévoilée en novembre 2020. Un évènement ? Tout est relatif, mais voyons déjà ce qui change, pourquoi et quels impacts sur nous.</p>
+<h2 id=pourquoi-cest-important->Pourquoi c’est important ?</h2>
+<p>Eh bien&mldr; ça n&rsquo;est pas important ! Par contre, cette nouvelle version, je la trouve <strong>intéressante</strong>.</p>
+<p>Intéressante car, comme nous allons le voir, les modifications sont une véritable réponse aux pratiques que nous pouvons voir dans les implémentations de Scrum depuis des années. Les bonnes et surtout les mauvaises.</p>
+<h2 id=quest-ce-qui-change--dans-la-forme->Qu’est-ce qui change – dans la forme ?</h2>
+<p>Autant le dire, la version 2020 est une réécriture du Scrum Guide. Elle n&rsquo;a plus grand-chose à voir avec la version 2017 dans sa forme.</p>
+<ul>
+<li>Elle est plus courte (13 pages)</li>
+<li>Elle est moins prescriptive</li>
+<li>Elle ne porte plus du tout sur l&rsquo;informatique spécifiquement</li>
+<li>Le mot &ldquo;agile&rdquo; n&rsquo;apparaît plus</li>
+<li>Par contre, &ldquo;Lean&rdquo; a été ajouté</li>
+</ul>
+<p>Comme je vous le disais, rien que cette suppression (agile) et cet ajout (lean) sont intéressants.
+Si vous n&rsquo;êtes pas sûr de la signification de &ldquo;lean&rdquo;, je vous invite à aller voir <a href=https://en.wikipedia.org/wiki/Lean_manufacturing>la page wikipedia</a> sur le sujet.</p>
+<h2 id=quest-ce-qui-change--dans-le-fond->Qu’est-ce qui change – dans le fond ?</h2>
+<p>Rien.
+Juste quelques éclaircissements.</p>
+<p>Vraiment&mldr; <strong>Scrum</strong>, ne change pas. Par contre pour beaucoup, la compréhension de Scrum peut changer. Et c&rsquo;est justement, à mon avis, la raison de ces changements sur la forme. Comme écrit plus haut, le Scrum Guide a été réécrit, alors c&rsquo;est forcément pour une bonne raison, non ?</p>
+<p>Je vais vous donner mon avis sur les raisons de ces changements :</p>
+<ul>
+<li>Parce que 95 % des implémentations de Scrum que j&rsquo;ai pu voir n’ont rien à voir avec Scrum</li>
+<li>Le Scrum Guide était donc clairement mal écrit et donc mal interprété</li>
+<li>Cette nouvelle version cible spécifiquement les plus mauvaises pratiques de Scrum, celles éloignant les équipes de l’efficacité</li>
+</ul>
+<h2 id=où-trouver-le-scrum-guide->Où trouver le Scrum Guide ?</h2>
+<p>Nous allons voir en détail les points les plus impactant pour les équipes (nous verrons dans un autre article ce qui change pour les parties prenantes et toutes les personnes en dehors de l&rsquo;équipe), mais avant, au cas où, voici comment trouver les documents :</p>
+<ul>
+<li><a href=https://www.scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-French.pdf>Version Française</a></li>
+<li><a href=https://www.scrumguides.org/docs/scrumguide/v2020/2020-Scrum-Guide-US.pdf>Version Originale</a></li>
+</ul>
+<p>Personnellement je vous conseille la version originale (anglaise) si vous le pouvez.</p>
+<h2 id=scrum-explique-pourquoi-utiliser-scrum>Scrum explique pourquoi utiliser Scrum</h2>
+<blockquote>
+<p>Essayez‐le tel qu&rsquo;il est et, déterminez si sa philosophie, sa théorie et sa structure aident à atteindre les objectifs et à créer de la valeur. (page 4)</p>
+</blockquote>
+<p>Déjà c&rsquo;est quelque chose qu&rsquo;on dit souvent chez Talan Labs depuis des années et ça fait plaisir de le voir écrit dans les premières pages : ESSAYEZ-LE. Avant de dire que telle ou telle partie de Scrum ne va pas dans votre contexte : essayez et voyez si c&rsquo;est vraiment le cas et pourquoi.
+Comme toujours, le plus important est de comprendre <em>pourquoi</em> vous prenez une décision.</p>
+<p>Si Scrum ou certaines de ses contraintes ne vous aident pas à atteindre vos objectifs, alors Scrum n&rsquo;est pas adapté. Si c&rsquo;est votre système ou votre fonctionnement qui vous empêche d&rsquo;utiliser Scrum pour atteindre votre objectif&mldr; alors c&rsquo;est peut-être à vous de changer, qui sait ?</p>
+<h2 id=scrum-ne-suffit-pas-et-nest-pas-une-formule-magique>Scrum ne suffit pas et n’est pas une formule magique</h2>
+<blockquote>
+<p>Le cadre de travail Scrum est volontairement incomplet [&mldr;] Divers processus, techniques et méthodes peuvent être employés dans ce cadre de travail. (page 4)</p>
+</blockquote>
+<p>Scrum ne suffit pas. Il faut d&rsquo;autres choses, qui ne sont pas dites dans Scrum car elles dépendent entièrement de votre context et de votre domaine.</p>
+<h2 id=une-clarification-des-responsabilités-dans-lenvironnement>Une clarification des responsabilités dans l’environnement</h2>
+<blockquote>
+<p>Un Product Owner ordonne le travail à faire pour résoudre un problème complexe dans le Product Backlog.
+La Scrum Team transforme une sélection de ce travail en un Incrément de valeur lors d&rsquo;un Sprint.
+La Scrum Team et ses parties prenantes inspectent les résultats et s&rsquo;adaptent pour le prochain Sprint. (page 4)</p>
+</blockquote>
+<h2 id=les-piliers-de-scrum-forment-un-tout>Les piliers de Scrum forment un tout</h2>
+<p>J&rsquo;ai aussi apprécié dans cette version que les piliers de Scrum forment un tout. Nous comprenons alors mieux qu&rsquo;il faut impérativement les 3 piliers pour ne pas avoir une équipe et un produit bancal.</p>
+<blockquote>
+<p>La transparence permet l&rsquo;inspection [&mldr;] L&rsquo;inspection permet l&rsquo;adaptation.
+Une inspection sans transparence est trompeuse et source de gaspillage.
+Une inspection sans adaptation est considérée comme infructueuse.
+L&rsquo;adaptation devient plus difficile lorsque les personnes impliquées ne sont pas en possession de tous leurs moyens ou autogérées. (page 4 et 5)</p>
+</blockquote>
+<h2 id=la-scrum-team>La Scrum Team</h2>
+<p>Un détail, Scrum change la taille maximale recommandée pour une équipe en la fixant à 10 personnes maximum.</p>
+<blockquote>
+<p>Elles sont structurées et habilitées par l&rsquo;organisation à gérer leur propre travail.
+Toute la Scrum Team est responsable de la création d&rsquo;un incrément qui ait de la valeur et qui soit utile, à chaque Sprint. (page 6)</p>
+</blockquote>
+<p>Mais aussi, Scrum définit la Scrum Team comme une équipe <strong>auto-gérée</strong> là où dans les versions précédentes nous parlions d&rsquo;auto-organisation. Le sens d&rsquo;auto-gestion est à mon avis bien plus fort et devrait être le signal que l&rsquo;équipe doit pouvoir prendre ses propres décisions sur son produit et la façon de le réaliser.</p>
+<blockquote>
+<p>Elles sont également autogérées, elles décident en interne qui fait quoi, quand et comment. (page 6)</p>
+</blockquote>
+<p>Attention néanmoins, comme j&rsquo;aime bien à le dire, auto-organisée ou auto-gérée ne veut pas dire que l&rsquo;équipe vit en autarcie. Elle existe dans un monde, dans un environnement
+et doit prendre en compte les règles et les contraintes de cet environnement, tout comme elle doit s&rsquo;auto-gérer pour lui permettre de travailler avec les autres équipes de l&rsquo;entreprise, les clients, les utilisateurs, etc.
+La gestion se faisant par rapport à tout cela, dans l&rsquo;équipe.</p>
+<h2 id=le-concept-de-rôles-a-laissé-place-aux-responsabilités>Le concept de rôles a laissé place aux responsabilités</h2>
+<blockquote>
+<p>Scrum définit trois responsabilités spécifiques au sein de la Scrum Team : les Developers, le Product Owner et le Scrum Master. (page 6)</p>
+</blockquote>
+<h2 id=les-développeuses-et-développeurs>Les développeuses et développeurs</h2>
+<p>“L’équipe de développement” a disparu pour “<em>éliminer le concept d&rsquo;équipe dans l’équipe, qui conduit à un comportement « proxy », du « nous et eux » entre le PO et l&rsquo;équipe de développement.</em>”</p>
+<blockquote>
+<p>Les Developers* sont les membres de la Scrum Team qui s&rsquo;engagent à traiter tout ou partie utile d’un Increment à chaque Sprint. (page 6)</p>
+</blockquote>
+<ul>
+<li>Attention, ici, l&rsquo;anglais Developers est un faux-ami, il n&rsquo;a pas du tout la même signification en français, je préfère donc parler de <em>personnes réalisant l’incrément</em>.</li>
+</ul>
+<p>Responsabilités des “dev” :</p>
+<blockquote>
+<p>Créer un plan de Sprint, un Sprint Backlog
+Adapter leur plan chaque jour par rapport à l&rsquo;Objectif de Sprint
+Se tenir mutuellement responsables en tant que professionnels
+Inculquer (Instilling) la notion de qualité en adhérant à une Definition of Done</p>
+</blockquote>
+<p>Ici, je ne trouve pas que la traduction française au jour où j&rsquo;écris ces lignes ait traduit correctement <em>instilling</em>. En effet il existe un mot bien plus proche qu&rsquo;inculquer en français : <a href=https://www.larousse.fr/dictionnaires/francais/instiller/43432>instiller</a> dont la définition me parait plus juste par rapport à la version originale :</p>
+<blockquote>
+<p>Faire ressentir peu à peu un sentiment chez quelqu&rsquo;un.</p>
+</blockquote>
+<h2 id=responsabilités-de-la-ou-du-product-owner>Responsabilités de la ou du Product Owner</h2>
+<p>Pas grand-chose ne change dans les responsabilités de la ou du Product Owner, sauf bien sûr, l&rsquo;ajout de l&rsquo;Objectif de Produit :</p>
+<blockquote>
+<p>Formuler et communiquer explicitement l&rsquo;Objectif de Produit ; (page 6)</p>
+</blockquote>
+<h2 id=responsabilités-de-la-ou-du-scrum-master>Responsabilités de la ou du Scrum Master</h2>
+<p>Le Scrum Master a subi pas mal d&rsquo;éclaircissements.</p>
+<blockquote>
+<p>Faire en sorte qu’il n’y ait pas d’obstacles pouvant entraver la progression de la Scrum Team</p>
+</blockquote>
+<p>Il est bien explicite ici que la ou le Scrum Master n&rsquo;est pas <em>la personne qui s&rsquo;occupe des problèmes</em> mais bien, qui fait en sorte qu&rsquo;il n&rsquo;y en ait pas. Cela peut passer par des actions d&rsquo;elle-même, ou d&rsquo;autres.</p>
+<blockquote>
+<p>S&rsquo;assurer que tous les événements Scrum ont bien lieu et sont efficients, productifs et respectent bien les [timebox]</p>
+</blockquote>
+<p>J&rsquo;espère que cette formulation montrera bien que non, la ou le Scrum Master n&rsquo;est pas un animateur de réunion.</p>
+<blockquote>
+<p>Encourager l’application de la planification produit empirique</p>
+</blockquote>
+<p>Ici, nous pouvons montrer que oui, l&rsquo;équipe et ses parties prenantes doivent écouter l&rsquo;avis du Scrum Master dans la planification. Non pas sur la pertinence de prioriser une chose, ou d&rsquo;en retirer une autre. Mais bien de la manière de planifier une construction empirique. Et oui, ce n&rsquo;est PAS en faisant un backlog de 50, 100 ou 200 éléments avant même de commencer à construire le produit. #empirisme</p>
+<blockquote>
+<p>La ou le Scrum Master est redevable (accountable) de l’efficacité de la Scrum Team</p>
+</blockquote>
+<p>Sûrement la phrase ayant fait couler le plus d&rsquo;encre numérique depuis sa sortie. Non cette phrase ne change rien à l&rsquo;approche d&rsquo;un bon Scrum Master par rapport à la version 2017. Oui, le Scrum Master fait partie de l&rsquo;équipe, elle ou il mouille sa chemise avec les autres et elle ou il est responsable de l&rsquo;efficacité de l&rsquo;équipe.
+Faire en sorte que l&rsquo;équipe soit efficace est le but de sa présence, donc pas de dédouanement quand ça ne marche pas, c&rsquo;est qu&rsquo;on ne fait pas notre travail correctement. Être <em>accountable</em>, c&rsquo;est aussi le moyen de se rendre compte qu&rsquo;on n&rsquo;est pas là où nous sommes attendu et donc de corriger notre façon de faire.
+Par contre, avec cette responsabilité, doit venir les pouvoirs qui vont avec.</p>
+<h2 id=les-évènements>Les évènements</h2>
+<p>Le Sprint Planning est maintenant clairement découpé en 3 phases (ou “topic”) : “Pourquoi ?”, “Quoi ?” et “Comment ?” (page 9)</p>
+<blockquote>
+<p>Pourquoi ce Sprint est‐il important ?
+Le Product Owner explique comment augmenter la valeur du produit et son utilité pour le Sprint en cours.
+L&rsquo;ensemble de la Scrum Team collabore ensuite à définir un Objectif de Sprint qui énonce clairement aux parties prenantes l’utilité du Sprint. L&rsquo;Objectif de Sprint doit être finalisé avant la fin du Sprint Planning.</p>
+</blockquote>
+<blockquote>
+<p>Que peut‐on faire durant ce Sprint ?
+En discutant avec le PO, les Developers [personnes réalisant l’incrément] sélectionnent les éléments du Product Backlog à inclure dans le Sprint en cours. Au fur et à mesure de la discussion, la Scrum Team affine ces éléments, améliorant ainsi leur compréhension et leur confiance dans leur capacité à les développer.</p>
+</blockquote>
+<blockquote>
+<p>Comment le travail choisi sera‐t‐il réalisé ?
+Pour chaque élément sélectionné du Product Backlog, les Developers [personnes réalisant l’incrément] planifient le travail nécessaire pour créer un Increment qui réponde à la Definition of Done. Cela se fait souvent en décomposant les éléments du Product Backlog en éléments de travail d&rsquo;une journée ou moins.</p>
+</blockquote>
+<p>Concernant le daily, beaucoup ont remarqué que l&rsquo;exemple des &ldquo;3 questions&rdquo; a disparu. Tant mieux. Trop d&rsquo;équipes déroulaient ces questions bêtement, sans les comprendre et très souvent même en oubliant les 3/4 de ces questions qui portaient toutes sur l&rsquo;atteinte de l&rsquo;objectif de sprint.</p>
+<p>Moi ce que j&rsquo;ai remarqué aussi, c&rsquo;est la précision du fait que ce n&rsquo;est pas le seul moment de discussion et de planification :</p>
+<blockquote>
+<p>Le Daily Scrum n&rsquo;est pas le seul moment où les Developers [personnes réalisant l’incrément] sont autorisés à ajuster leur plan. Ils se réunissent souvent tout au long de la journée pour des discussions plus détaillées sur l’adaptation ou la re‐planification du reste du travail du Sprint. (page 10)</p>
+</blockquote>
+<p>La revue de sprint (Sprint Review) a subi, à mon sens, les plus gros éclaircissements et simplifications. Et elle en avait besoin !</p>
+<p>Voici la nouvelle première phrase :</p>
+<blockquote>
+<p>L&rsquo;objectif de la Sprint Review est d&rsquo;inspecter le résultat du Sprint et de déterminer les adaptations futures. (page 10)</p>
+</blockquote>
+<p>Il y a moins la notion de “on a fait un truc, on passe à un autre truc”.</p>
+<blockquote>
+<p>Un Incrément peut être livré aux parties prenantes avant la fin du Sprint. La Sprint Review ne doit jamais être considérée comme le seul moment pour délivrer de la valeur.
+Afin de fournir une valeur, l&rsquo;Incrément doit être utilisable.
+La Sprint Review est une session de travail et la Scrum Team doit éviter de la limiter à une session de présentation.</p>
+</blockquote>
+<p>Clairement ici, Scrum veut casser le rythme des équipes faisant juste <em>une démo</em> en lieu de la revue.</p>
+<p>J&rsquo;aime.</p>
+<h2 id=les-artefacts>Les artefacts</h2>
+<p>Ils sont maintenant plus clairs et servent un objectif à chaque échelle (page 11) :</p>
+<blockquote>
+<p>Chaque artefact contient un engagement qui apporte l’information nécessaire à la transparence et au focus rendant possible la mesure de la progression :
+Pour le Product Backlog, il s&rsquo;agit de l&rsquo;Objectif de Produit
+Pour le Sprint Backlog, c&rsquo;est l&rsquo;Objectif de Sprint
+Pour l&rsquo;Incrément, c&rsquo;est la Definition of Done</p>
+</blockquote>
+<blockquote>
+<p>L&rsquo;Objectif de Produit décrit un état futur du produit qui peut servir de cible à la Scrum Team pour planifier.
+L&rsquo;Objectif de Produit est dans le Product Backlog. Le reste du Product Backlog émerge pour définir « ce qui » permettra d&rsquo;atteindre l&rsquo;Objectif de Produit.</p>
+</blockquote>
+<p><img src=verslalune.jpg alt="illustration d&rsquo;un personnage visant la lune pour imager l&rsquo;objectif de produit"></p>
+<blockquote>
+<p>L&rsquo;Objectif de Produit est l&rsquo;objectif à long terme de la Scrum Team. Ils doivent atteindre (ou abandonner) un objectif avant de s&rsquo;attaquer au suivant (page 12)</p>
+</blockquote>
+<h2 id=et-donc->Et donc ?</h2>
+<p>Tout ça pour quoi ?</p>
+<p>Pour les équipes qui faisaient preuve de bon sens, de recul, de transparence et d’inspection, c’est un non-évènement.
+Elles devraient même plus se retrouver dans cette version de Scrum.</p>
+<p>Pour les autres…
+Eh bien le rôle “d&rsquo;exécutant” des codeuses/codeurs, designer et autres experts devrait être plus flagrant.
+Dans Scrum, plus que jamais, celles et ceux qui réalisent le produit sont des créateurs, plutôt que des exécutants.
+Une équipe Scrum conçoit, réalise un produit, en tant qu’équipe. Codeuses/codeurs, designer et autres experts aident le produit à émerger, à se développer.
+Le rôle de “PO-Passe-Plat” devraient donc être aussi plus visible, comme étant peu efficace ou valorisant.</p>
+<p>Pour ces équipes, le Scrum Guide peut être utilisé comme <strong>une carte d’un chemin à prendre</strong> pour être plus efficace et pour construire <strong>le bon produit, plutôt que le produit que vous voulez faire</strong>.</p>
+<p><img src=panneauvaleur.jpg alt="illustration d&rsquo;un personnage regardant un panneau lui indiquant que l&rsquo;incrément doit être utilisable pour apporter de la valeur"></p>
+<p>Répétons-le encore une fois : <strong>Scrum n’est pas un but</strong>. Les clients et les utilisateurs s’en fichent de ce que vous voulez faire, ce qui leur importe, c’est ce qu’ils veulent faire eux.</p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2021-01-06T00:00:00Z>
+6 janvier 2021
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/constantin-guay/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Constantin GUAY" src=https://blog.talanlabs.com/authors/constantin_guay.png></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/constantin-guay/>Constantin GUAY</a></h1>
+<p class="mt-0 mb-2">Coach Agile</p>
+</div>
+<div class=mb-6>
+<a href=https://twitter.com/cog_g target=_blank class="icon is-medium"><i class="fab fa-lg fa-twitter text-[#1DA1F2]"></i></a>
+<a href=https://www.linkedin.com/in/constantinguay target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+<a href=https://const.fr/ target=_blank class="icon is-medium"><i class="fas fa-lg fa-link"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/scrum>#scrum</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/scrumguide>#scrumguide</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/dans-la-vraie-vie>#dans-la-vraie-vie</a>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

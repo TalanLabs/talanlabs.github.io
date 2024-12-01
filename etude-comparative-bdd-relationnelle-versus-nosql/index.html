@@ -1,0 +1,291 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Etude comparative bdd relationnelle versus NoSQL | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Un constat On assiste ces dernières années à un changement des habitudes des utilisateurs notamment sur l&rsquo;Internet mondial avec la démocratisation des offres haut débits.">
+<meta property="og:title" content="Etude comparative bdd relationnelle versus NoSQL">
+<meta property="og:description" content="Un constat On assiste ces dernières années à un changement des habitudes des utilisateurs notamment sur l&rsquo;Internet mondial avec la démocratisation des offres haut débits.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/etude-comparative-bdd-relationnelle-versus-nosql/"><meta property="og:image" content="https://blog.talanlabs.com/etude-comparative-bdd-relationnelle-versus-nosql/cover.png"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2015-06-23T15:36:53+00:00">
+<meta property="article:modified_time" content="2015-06-23T15:36:53+00:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/etude-comparative-bdd-relationnelle-versus-nosql/cover.png">
+<meta name=twitter:title content="Etude comparative bdd relationnelle versus NoSQL">
+<meta name=twitter:description content="Un constat On assiste ces dernières années à un changement des habitudes des utilisateurs notamment sur l&rsquo;Internet mondial avec la démocratisation des offres haut débits.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/etude-comparative-bdd-relationnelle-versus-nosql/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Etude comparative bdd relationnelle versus NoSQL</h1>
+<figure class="cover image">
+<img src=/etude-comparative-bdd-relationnelle-versus-nosql/cover.png width=385 height=114 alt="illustration de l'article">
+</figure>
+<h1 id=un-constat>Un constat</h1>
+<p>On assiste ces dernières années à un changement des habitudes des utilisateurs notamment sur l&rsquo;Internet mondial avec la démocratisation des offres haut débits. Dans ce contexte certaines personnes se sont rendues compte qu&rsquo;un modèle relationnel des données atteignait ses limites : le NoSQL allait faire son entrée dans le monde de la représentation des données.</p>
+<p>Même si initialement le NoSQL est une réponse à la croissance toujours plus importante sur Internet, il trouve également sa place dans le monde de l&rsquo;entreprise sur des échelles moindres. L&rsquo;objet de cet article est de confronter les deux approches : le modèle relationnel versus le NoSQL.</p>
+<h1 id=les-bases-de-données-relationnelles>Les bases de données relationnelles</h1>
+<p>Avantages :</p>
+<ul>
+<li>La technologie est mature (création il y a plusieurs dizaines d&rsquo;années) ce qui fait qu&rsquo;aujourd&rsquo;hui le SQL est un langage standard et normalisé</li>
+<li>On a une garantie que les transactions sont atomiques, cohérentes, isolées et durables &ndash; principe ACID (Atomic, Consistent, Independant, Durable)</li>
+<li>La possibilité de mettre en œuvre des requêtes complexes (croisement multiple des données)</li>
+<li>Du fait du nombres d&rsquo;années d&rsquo;existence, un large support est disponible et il existe également de fortes communautés.</li>
+</ul>
+<p>Inconvénients :</p>
+<ul>
+<li>La modification du modèle établi peut être couteuse</li>
+<li>L’évolutivité des performances est privilégiée de manière verticale (augmentation des ressources du serveur) bien qu&rsquo;une évolutivité horizontale soit possible, cette dernière reste plus coûteuse (environnement type cluster)</li>
+<li>Sur un très grand volume de données (centaines-milliers de Teraoctets) le modèle peut atteindre des limites en terme de performance</li>
+<li>Pour certains éditeurs, le prix de licence est élevé.</li>
+</ul>
+<p>Quelques exemples de solutions :</p>
+<ul>
+<li>Oracle Database</li>
+<li>PostgreSQL</li>
+<li>Microsoft SQL Sever</li>
+<li>Oracle MySQL</li>
+</ul>
+<h1 id=les-bases-de-données-nosql>Les bases de données NoSQL</h1>
+<p>Avantages :</p>
+<ul>
+<li>L&rsquo;évolutivité se fait de manière horizontale (pour augmenter les performances on ajoute des nouvelles machines)</li>
+<li>Les données sont distribuées sur plusieurs machines (sharding) de ce fait on évite les goulets d&rsquo;étranglements lors de la récupération des données (fortes performances de lecture)</li>
+<li>La représentation des données est notable par l&rsquo;absence de schéma (schemaless)</li>
+<li>La majorité des solutions est Open Source, néanmoins il existe des Support Pro pour répondre aux besoins des entreprises.</li>
+</ul>
+<p>Inconvénients :</p>
+<ul>
+<li>Il n&rsquo;existe pas de langage d&rsquo;interrogation standardisé : chaque éditeur a mis en place le sien</li>
+<li>La mise en œuvre d&rsquo;un environnement fortement transactionnel (fort besoin d&rsquo;écriture) où le séquencement des écritures est primordial, reste complexe puisque l&rsquo;architecture est distribuée compliquant l&rsquo;atomicité et la cohérence des transactions</li>
+<li>L&rsquo;écriture de requêtes complexes est difficile à mettre en œuvre</li>
+<li>L&rsquo;offre NoSQL est segmentée en plusieurs familles où chacune répond à un besoin précis.</li>
+</ul>
+<p>Quelques exemples de solutions (divisés en 4 familles) :</p>
+<ul>
+<li>clé-valeur : Riak, Redis</li>
+<li>Orientée colonne : Cassandra, HBase</li>
+<li>Orientée document : MongoDB, CouchDB, ElasticSearch</li>
+<li>Orientée graphe : Neo4j, HypergraphDB</li>
+</ul>
+<h3 id=famille-clé-valeur>Famille clé-valeur</h3>
+<p>Cette catégorie de bases fonctionne comme une table associative clé/valeur ce qui en fait une base simple à mettre en place et permet un accès rapide aux informations (système de cache). Néanmoins il n&rsquo;est pas possible d&rsquo;indexer le contenu d&rsquo;une telle base ce qui entraine un développement plus important pour garantir les performances.</p>
+<p>Ce système est adapté dans le cadre de communication temps réel comme une messagerie en ligne.</p>
+<h3 id=famille-orientée-colonne>Famille orientée colonne</h3>
+<p>La représentation se fait par colonnes et non par lignes comme pour un système classique, il s&rsquo;agit peut-être du modèle le plus difficile à se représenter.</p>
+<p><img src=nosql_relationnel.png alt=nosql_relationnel>Modèle d&rsquo;une base de données relationnelle</p>
+<p><img src=nosql_colonne.png alt=nosql_colonne>Modèle d&rsquo;une base de données NoSQL famille colonne</p>
+<p>Cette modélisation apporte une simplification d&rsquo;ajout de colonne et est capable de gérer des millions de colonnes. De plus la valeur &ldquo;null&rdquo; a désormais un coût de stockage de zéro. Comme les données d&rsquo;une même colonne sont similaires, la compression des données en est plus efficace et les recherches &ldquo;verticales&rdquo; plus performantes.</p>
+<p>Un inconvénient notable est qu&rsquo;une mise à jour peut nécessiter la modification de toutes les valeurs d&rsquo;une colonne pour tous les enregistrements et donc devenir très coûteux.</p>
+<p>Cette base peut être mise en place pour gérer les commentaires d&rsquo;un article de blog.</p>
+<h3 id=famille-orientée-document>Famille orientée document</h3>
+<p>Cette famille est une extension de la famille clé/valeur en associant une clé à un document hiérarchique comme le XML, le JSON.</p>
+<p>Ici on va pouvoir stocker toute forme de structure non plane simplement, pouvoir profiter de la puissance de l&rsquo;indexation en ciblant les balises du document et ainsi bénéficier d&rsquo;une interrogation simplifiée (absence de jointure).</p>
+<p>En évoquant la mise en œuvre de requêtes une limite peut être atteinte dans la mise en place de requêtes analytiques complexes.</p>
+<p>Dans le web, ce modèle se prête bien à la sauvegarde de profils utilisateur.</p>
+<h3 id=famille-orientée-graphe>Famille orientée graphe</h3>
+<p>Le principe de cette famille repose sur le fait d&rsquo;utiliser des objets en s&rsquo;appuyant sur la théorie des graphes (représentation de nœuds et d&rsquo;arcs) : chaque élément connait son(ses) voisin(s).</p>
+<p>Un tel principe permet de mettre facilement des algorithmes de parcours de graphe (recherche du plus court chemin, nœud(s) ayant une position centrale, &mldr;) et via une indexation d&rsquo;augmenter sensiblement les performances (création de listes chainées).</p>
+<p>Cependant ce principe reste un domaine bien spécifique compliqué à utiliser concrètement et sera moins efficace dans l&rsquo;exploitation des relations.</p>
+<p>L&rsquo;exemple le plus parlant est la mise en place d&rsquo;un arbre généalogique : avec ce principe il est simple de retrouver les degrés de parenté entre les personnes.</p>
+<p>Un petit tableau récapitulatif des différentes familles</p>
+<p><img src=nosql_famille.png alt="Comparatif familles NoSQL"></p>
+<h1 id=pour-conclure>Pour conclure</h1>
+<p>Aujourd&rsquo;hui le NoSQL apporte une nouvelle façon d&rsquo;appréhender la modélisation des données. Le NoSQL n&rsquo;est pas là pour remplacer les bases de données relationnelles, il répond à des besoins différents mais les deux approches peuvent cohabiter. Le choix de l&rsquo;une ou de l&rsquo;autre sera donc fortement dépendante du contexte et du besoin.</p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2015-06-23T15:36:53Z>
+23 juin 2015
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/timothe-fulcrand/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Timothé FULCRAND" src=https://blog.talanlabs.com/authors/timothe_fulcrand.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/timothe-fulcrand/>Timothé FULCRAND</a></h1>
+<p class="mt-0 mb-2">DBA</p>
+</div>
+<div class=mb-6>
+<a href=https://www.linkedin.com/in/timoth%c3%a9-fulcrand-02951924 target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/back>back</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/data>data</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/nosql>#NoSQL</a>
+</div>
+</div>
+</div>
+</div>
+<aside>
+<h4 class="subtitle mt-10 mb-8"><i class="fas fa-forward"></i> Vous aimerez peut-être...</h4>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/outils-developpeur-cmder/>
+<img class="border object-cover w-full m-0 max-w-md" src=/outils-developpeur-cmder/cover_hu629d0c648bfcffd51e0a5fcc9eec22bd_18953_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+</div>
+<a href=/outils-developpeur-cmder/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Outils du développeur - Cmder</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2015-06-10T06:42:28Z>
+10 juin 2015
+</time>
+</div>
+<p class="my-1 text-slate-500">Qui n’a jamais pesté contre le terminal windows (cmd), son copier/coller non ergonomique, le noir et blanc ou …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/gefco-tableau-de-bord/>
+<img class="border object-cover w-full m-0 max-w-md" src=/gefco-tableau-de-bord/cover_hu2a1fc1cf10337d9a2e21ac29806eb816_222571_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/back>back</a>
+</div>
+<a href=/gefco-tableau-de-bord/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Gefco : Tableau de bord</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2015-06-03T14:48:21Z>
+3 juin 2015
+</time>
+</div>
+<p class="my-1 text-slate-500">Gefco a fait appel à Cereza et Talan Labs pour le développement de leur plateforme service client et la …</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

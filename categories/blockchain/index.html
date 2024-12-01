@@ -1,0 +1,415 @@
+<!doctype html><html lang=fr-fr>
+<head><title> blockchain | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Découvrez les expertises et savoire-faire de Talan Labs">
+<meta property="og:title" content="blockchain">
+<meta property="og:description" content="Découvrez les expertises et savoire-faire de Talan Labs">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://blog.talanlabs.com/categories/blockchain/"><meta property="og:image" content="https://blog.talanlabs.com/img/logo_talanlabs_hd_w600.png"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/img/logo_talanlabs_hd_w600.png">
+<meta name=twitter:title content="blockchain">
+<meta name=twitter:description content="Découvrez les expertises et savoire-faire de Talan Labs">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/categories/blockchain/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto mt-4 md:mt-8 p-4">
+<h1 class="title mb-10">Les articles #Blockchain</h1>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/blockchain-projet-scolaire-monde-entreprise/>
+<img class="border object-cover w-full m-0 max-w-md" src=/blockchain-projet-scolaire-monde-entreprise/cover_hu4d7c49fecda9ece5fdd0a9f1acc5ffe3_1322398_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+</div>
+<a href=/blockchain-projet-scolaire-monde-entreprise/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Blockchain : du projet scolaire au monde de …</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2020-03-04T07:18:05+01:00>
+4 mars 2020
+</time>
+</div>
+<p class="my-1 text-slate-500">Comme je l’ai déjà évoqué dans un article précédent, le partenariat entre Talan et l’EPF m’a fait découvrir le …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/blockchain-former-les-ingenieurs-de-demain/>
+<img class="border object-cover w-full m-0 max-w-md" src=/blockchain-former-les-ingenieurs-de-demain/cover_huec2d4ca0e2cab827d5d2d602dcdd270d_861477_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+</div>
+<a href=/blockchain-former-les-ingenieurs-de-demain/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Blockchain : former les ingénieurs de demain</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2020-01-18T17:52:05+01:00>
+18 janvier 2020
+</time>
+</div>
+<p class="my-1 text-slate-500">Depuis deux ans j’ai la chance et le plaisir d’intervenir auprès des étudiants de l’EPF, école d’ingénieurs …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/r3-corda-limites/>
+<img class="border object-cover w-full m-0 max-w-md" src=/r3-corda-limites/cover_hu1184f2799be2529e7c199ab1fc96ce2b_511644_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+</div>
+<a href=/r3-corda-limites/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">R3 Corda : Limites</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2019-04-15T16:22:37+02:00>
+15 avril 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Nous avons vu dans un article précédent la présentation des grands principes de Corda, le DLT (Distributed …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/r3-corda-presentation/>
+<img class="border object-cover w-full m-0 max-w-md" src=/r3-corda-presentation/cover_huca5e9b86b5919fd02a1f2f95305a2620_519112_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/r3-corda-presentation/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">R3 Corda : Presentation</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2019-03-11T14:51:37+01:00>
+11 mars 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Les technologies Blockchain & DLT (Distributed Ledger Technology) sont nombreuses. Nous allons ici nous …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/asseth-meetup-fevrier/>
+<img class="border object-cover w-full m-0 max-w-md" src=/asseth-meetup-fevrier/cover_huebca299aaae48fbfa558b39ddb1c5b72_932950_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/asseth-meetup-fevrier/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Meetup Asseth : CryptoBooks & DAI</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2019-03-01T10:00:59+01:00>
+1 mars 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Une nouvelle fois Talan Labs a accueilli l’Asseth pour son meetup du jeudi 28 février.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/experience-share2gether/>
+<img class="border object-cover w-full m-0 max-w-md" src=/experience-share2gether/cover_hu6185707ac421f7d865e76254855e6e18_1346608_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/experience-share2gether/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Share2gether : collaboration avec l'EPF</h2></a>
+<div class=my-1>
+<span>Sarah MAURET</span>,
+<time datetime=2019-02-15T12:05:59+01:00>
+15 février 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Le contexte Une des grandes problématiques lorsque l’on constitue une équipe autour des technologies …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/asseth-meetup-janvier/>
+<img class="border object-cover w-full m-0 max-w-md" src=/asseth-meetup-janvier/cover_hucf967c33f389130ab619766a81118218_50002_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/asseth-meetup-janvier/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Meetup Asseth : table ronde</h2></a>
+<div class=my-1>
+<span>Sarah MAURET</span>,
+<time datetime=2019-02-04T12:05:59+01:00>
+4 février 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Le mercredi 30 janvier 2019, Talan Labs a accueilli l’Asseth, l’association française dédiée à l’éducation et …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/meetup-lasseth-recoit-tribute/>
+<img class="border object-cover w-full m-0 max-w-md" src=/meetup-lasseth-recoit-tribute/cover_hue4715d69ef50c5facde5f11d60b2ef71_1393313_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/meetup-lasseth-recoit-tribute/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Meetup - L'Asseth reçoit Tribute</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2018-11-09T18:08:18+01:00>
+9 novembre 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Le mercredi 17 octobre 2018, Talan Labs accueillait un meetup de l’Asseth dans les locaux de Talan.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/meetup-ethereum-2/>
+<img class="border object-cover w-full m-0 max-w-md" src=/meetup-ethereum-2/cover_hu05438883a8dcc49d20be30c8fd561956_83626_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/meetup-ethereum-2/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Meetup ConsenSys : présentation d'Ethereum 2.0</h2></a>
+<div class=my-1>
+<span>Sarah MAURET</span>,
+<time datetime=2018-10-26T12:05:59+01:00>
+26 octobre 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Le mardi 9 octobre 2018, l’équipe Pegasys de ConsenSys tenait un meetup sur Ethereum 2.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/hackathon-casino/>
+<img class="border object-cover w-full m-0 max-w-md" src=/hackathon-casino/cover_huf23e337d4510304868ee805c6cd896c7_279651_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/hackathon-casino/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Retour sur le hackathon Blockchain and Shop …</h2></a>
+<div class=my-1>
+<span>Jérôme BERNARD</span>,
+<time datetime=2018-02-24T12:17:01+01:00>
+24 février 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Hackathon Blockchain & Shop Casino organisait un hackathon du 16 au 18 Février autour de la blockchain, avec …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/meetup-asseth-janvier/>
+<img class="border object-cover w-full m-0 max-w-md" src=/meetup-asseth-janvier/cover_hu5c1e9907c0c96e9a71ff1abfca53576f_12856_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/meetup-asseth-janvier/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Meetup Asseth chez Talan : présentation de Colony</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2018-02-13T12:05:59+01:00>
+13 février 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">Vendredi 19 janvier 2018 avait lieu le meetup de l’Asseth (Association Ethereum française), sponsorisé et …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/presentation-ganache/>
+<img class="border object-cover w-full m-0 max-w-md" src=/presentation-ganache/cover_hu5ab0bda07a890cbda3d1f19fa1f029c2_5088_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+</div>
+<a href=/presentation-ganache/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Présentation de Ganache</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2018-02-01T14:31:12+01:00>
+1 février 2018
+</time>
+</div>
+<p class="my-1 text-slate-500">A l’heure où tout le monde parle de blockchain, peut-être vous êtes-vous intéressés à l’aspect technique du …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/meetup-asseth-devcon3-talan-ethereum/>
+<img class="border object-cover w-full m-0 max-w-md" src=/meetup-asseth-devcon3-talan-ethereum/cover_hu1a83641b92ebcf10e1e303188c94abaa_108233_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/meetup-asseth-devcon3-talan-ethereum/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Meetup Asseth chez Talan : retour sur Devcon3</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2017-11-16T16:10:55Z>
+16 novembre 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Lundi 13 novembre 2017 avait lieu le meetup de l’Asseth (Association Ethereum française).</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/meetup-asseth-talan-debrief-devcon3/>
+<img class="border object-cover w-full m-0 max-w-md" src=/meetup-asseth-talan-debrief-devcon3/cover_hu1a83641b92ebcf10e1e303188c94abaa_108233_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/meetup-asseth-talan-debrief-devcon3/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Meetup Asseth chez Talan : débrief du Devcon3</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2017-11-09T09:54:55Z>
+9 novembre 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Le lundi 13 novembre à partir de 18h30 dans les locaux de Talan aura lieu le débrief du Devcon3, la conférence …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/quest-ce-que-talancoin/>
+<img class="border object-cover w-full m-0 max-w-md" src=/quest-ce-que-talancoin/cover_hud229c0216a68414ecccf5fabcea6bcda_240808_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+</div>
+<a href=/quest-ce-que-talancoin/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Qu’est-ce que TalanCoin ?</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2017-10-17T15:39:11Z>
+17 octobre 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">_Présentée pour la première fois le 4 octobre au 1er Forum Parlementaire de la Blockchain, la monnaie …</p>
+</div>
+</div>
+</div>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

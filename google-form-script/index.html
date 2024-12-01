@@ -1,0 +1,320 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Un bon de commande gratuit avec un récapitulatif par mail | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Créer un formulaire gratuit avec envoi d&rsquo;un mail personnalisé">
+<meta property="og:title" content="Un bon de commande gratuit avec un récapitulatif par mail">
+<meta property="og:description" content="Créer un formulaire gratuit avec envoi d&rsquo;un mail personnalisé">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/google-form-script/"><meta property="og:image" content="https://blog.talanlabs.com/google-form-script/cover.jpg"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2022-01-26T00:08:00+02:00">
+<meta property="article:modified_time" content="2022-01-26T00:08:00+02:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/google-form-script/cover.jpg">
+<meta name=twitter:title content="Un bon de commande gratuit avec un récapitulatif par mail">
+<meta name=twitter:description content="Créer un formulaire gratuit avec envoi d&rsquo;un mail personnalisé">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/google-form-script/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Un bon de commande gratuit avec un récapitulatif par mail</h1>
+<figure class="cover image">
+<img src=/google-form-script/cover.jpg width=897 height=461 alt="illustration de l'article">
+</figure>
+<p>Récemment, j&rsquo;ai proposé à une association de moderniser leur manière de réaliser leur commande groupée :
+fin des formulaires papiers à remplir et à déposer dans une boîte aux lettres pour passer à la dématérialisation.</p>
+<p>L&rsquo;objectif est d&rsquo;obtenir, à la fin, un fichier de type excel avec l&rsquo;ensemble des éléments à commander afin de le fournir au commerçant,
+tout en ayant un coût nul.</p>
+<p>En plus de ce fichier, contenant l&rsquo;ensemble de la commande, je souhaiterais envoyer un récapitulatif à la personne ainsi que le montant de sa commande
+afin de limiter les erreurs de paiement (qui se fera toujours par chèque).</p>
+<h3 id=faire-un-formulaire-en-ligne-je-sais-faire>Faire un formulaire en ligne, je sais faire</h3>
+<p>Faire un formulaire gratuit, avec google forms, c&rsquo;est très facile :
+je peux faire rapidement un bon de commande avec des tableaux et des boutons radios.</p>
+<p><img src=form.png alt=Formulaire></p>
+<p>Forms peut également envoyer un e-mail avec le récapitulatif des réponses, c&rsquo;est parti.</p>
+<p>Pour le formulaire, je choisis :</p>
+<ul>
+<li>Champ texte pour le nom</li>
+<li>Grille à choix multiples pour les produits :
+<ul>
+<li>en ligne, le nom du produit. Le nom est suffixé par le prix, séparé par un - (10 chocolats - 5.3€)</li>
+<li>en colonne la quantité de 0 à 9, pour limiter les problèmes de saisie</li>
+</ul>
+</li>
+</ul>
+<p>C&rsquo;est bien mais je ne peux pas personnaliser le contenu du récapitulatif ou calculer le montant de la commande.</p>
+<h3 id=ce-qui-existe>Ce qui existe</h3>
+<p>En fouillant, on trouve plusieurs extensions pour google forms permettant de gérer des bons de commande, certains directement avec paiement en ligne.
+Malheureusement, ces extensions sont lourdes à utiliser, peu intuitives et surtout&mldr;payantes.</p>
+<p>En dehors de google forms, un bon de commande gratuit avec une réponse personnalisée, impossible à trouver.</p>
+<p>Il n&rsquo;y aurait donc pas de solution ?<br>
+<img src=fifth-element-never-gonna-make-it.gif alt=5element></p>
+<p>En fait si : avec google scripts, il est possible de personnaliser l&rsquo;usage de l&rsquo;ensemble des outils de la suite google.</p>
+<h3 id=quest-ce-que-google-script>Qu&rsquo;est ce que google script</h3>
+<p>Dans tous les outils de la suite google, il est possible de développer ses propres scripts pour étendre les capacités
+des outils originaux.
+Ces <a href=https://www.google.com/script/start/>scripts</a> sont écrits en Javascript et exploitent la puissante API de google :</p>
+<ul>
+<li>Déclencheurs de fonction sur des événements</li>
+<li>Manipulation des fichiers du drive</li>
+<li>Accès à toutes les API google : accéder à l&rsquo;agenda, à la boîte email, aux services google maps, translate&mldr;</li>
+</ul>
+<p>Pour accéder aux scripts, cliquer sur les 3 points verticaux -> éditeur de scripts</p>
+<p><img src=menu_select_script.png alt="Editer un script"></p>
+<p>L&rsquo;écran qui s&rsquo;affiche est celui de l&rsquo;éditeur de fonction. A partir de cet écran, vous pouvez éxecuter une fonction et consulter toutes les exécutions.
+L&rsquo;éditeur propose la coloration syntaxique et l&rsquo;autocomplétion. Même sans typescript, il devine les types et propose les bonnes méthodes.</p>
+<p>Sur la gauche, vous avez accès au paramétrage des déclencheurs, à la liste des executions&mldr;</p>
+<p><img src=app_script.png alt="Ecran google script"></p>
+<h3 id=il-est-temps-de-coder>Il est temps de coder</h3>
+<p>L&rsquo;algorithme que j&rsquo;ai en tête est le suivant :</p>
+<ol>
+<li>Lorsque l&rsquo;utilisateur valide le formulaire, une fonction est appelée</li>
+<li>On récupère le contenu de sa commande</li>
+<li>On récupère le prix des articles</li>
+<li>On calcule le prix total</li>
+<li>On prépare le contenu du mail qui liste la commande</li>
+<li>On envoie le mail</li>
+</ol>
+<p>La <a href=https://developers.google.com/apps-script/reference/forms/form-app>documentation</a> nous explique comment manipuler un formulaire :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>form</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>FormApp</span>.<span style=color:#a6e22e>openById</span>(<span style=color:#e6db74>&#39;mon_identifiant_de_form&#39;</span>); <span style=color:#75715e>// Ouvre un formulaire à partir de l&#39;id
+</span><span style=color:#75715e></span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>lastResponse</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>form</span>.<span style=color:#a6e22e>getResponses</span>()[<span style=color:#a6e22e>form</span>.<span style=color:#a6e22e>getResponses</span>().<span style=color:#a6e22e>length</span><span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>];   <span style=color:#75715e>// Dernière reponse
+</span></code></pre></div><p>Pour trouver votre id, il est dans l&rsquo;url du formulaire :
+<img src=get_id.png alt="Id formulaire"></p>
+<p>A partir de la réponse, on peut ensuite parcourir l&rsquo;ensemble des questions avec :</p>
+<ul>
+<li>le nom de la question</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#a6e22e>getItem</span>().<span style=color:#a6e22e>getTitle</span>() 
+</code></pre></div><ul>
+<li>le type de question</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#a6e22e>getItem</span>().<span style=color:#a6e22e>getType</span>() 
+</code></pre></div><p>Une enum permet de tester facilement le type de question :
+<img src=type_question.png alt="type question"></p>
+<ul>
+<li>les différentes réponses et leur valeur</li>
+</ul>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#a6e22e>getItem</span>().<span style=color:#a6e22e>asGridItem</span>().<span style=color:#a6e22e>getRows</span>()
+</code></pre></div><h4 id=calcul-du-montant>Calcul du montant</h4>
+<p>Attention : il n&rsquo;y a pas de champ commentaire permettant d&rsquo;enrichir le formulaire.
+Si l&rsquo;on souhaite des infos supplémentaires, il faut les extraire du formulaire.
+Pour ma part, je l&rsquo;extrais directement du titre de la réponse en respectant toujours le même format : &lsquo;Produit ABC - 25€&rsquo;.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>cost</span> <span style=color:#f92672>=</span> parseFloat(<span style=color:#a6e22e>title</span>.<span style=color:#a6e22e>split</span>(<span style=color:#e6db74>&#39; - &#39;</span>)[<span style=color:#ae81ff>1</span>].<span style=color:#a6e22e>replace</span>(<span style=color:#e6db74>&#39;€&#39;</span>,<span style=color:#e6db74>&#39;&#39;</span>));
+</code></pre></div><p>Pour calculer le coût de la commande, on va parcourir les questions de type GRID et faire le calcul :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>computeTotalAmount</span>(<span style=color:#a6e22e>lastResponse</span>){
+  <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>total</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+  <span style=color:#a6e22e>lastResponse</span>.<span style=color:#a6e22e>getItemResponses</span>().<span style=color:#a6e22e>forEach</span>(<span style=color:#a6e22e>ir</span>=&gt;{ <span style=color:#75715e>// Parcours de toutes les questions
+</span><span style=color:#75715e></span>    <span style=color:#66d9ef>if</span>(<span style=color:#a6e22e>ir</span>.<span style=color:#a6e22e>getItem</span>().<span style=color:#a6e22e>getType</span>() <span style=color:#f92672>==</span> <span style=color:#a6e22e>FormApp</span>.<span style=color:#a6e22e>ItemType</span>.<span style=color:#a6e22e>GRID</span>){    <span style=color:#75715e>// getItem renvoie le détail de la question
+</span><span style=color:#75715e></span>      <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>costs</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>ir</span>.<span style=color:#a6e22e>getItem</span>().<span style=color:#a6e22e>asGridItem</span>().<span style=color:#a6e22e>getRows</span>().<span style=color:#a6e22e>map</span>(<span style=color:#a6e22e>value</span>=&gt;parseFloat(<span style=color:#a6e22e>value</span>.<span style=color:#a6e22e>split</span>(<span style=color:#e6db74>&#39; - &#39;</span>)[<span style=color:#ae81ff>1</span>].<span style=color:#a6e22e>replace</span>(<span style=color:#e6db74>&#39;€&#39;</span>,<span style=color:#e6db74>&#39;&#39;</span>)))
+      <span style=color:#a6e22e>ir</span>.<span style=color:#a6e22e>getResponse</span>().<span style=color:#a6e22e>forEach</span>((<span style=color:#a6e22e>val</span>,<span style=color:#a6e22e>pos</span>)=&gt;<span style=color:#a6e22e>total</span><span style=color:#f92672>+=</span><span style=color:#a6e22e>costs</span>[<span style=color:#a6e22e>pos</span>]<span style=color:#f92672>*</span><span style=color:#a6e22e>val</span>)    <span style=color:#75715e>// Calcul à partir des réponses à la question
+</span><span style=color:#75715e></span>    }
+  })
+  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>total</span>.<span style=color:#a6e22e>toFixed</span>(<span style=color:#ae81ff>2</span>);  <span style=color:#75715e>// On garde deux décimales au prix
+</span><span style=color:#75715e></span>}
+</code></pre></div><h4 id=envoi-dun-email>Envoi d&rsquo;un email</h4>
+<p>Le mail est envoyé à partir de la boîte de du compte de l&rsquo;utilisateur.
+L&rsquo;avantage est que chaque mail envoyé se retrouve dans les messages envoyés : une sorte d&rsquo;accusé qu&rsquo;un mail a bien été envoyé.</p>
+<p>La <a href=https://developers.google.com/apps-script/reference/mail/mail-app>documentation</a> détaille plusieurs méthodes dont
+<a href=https://developers.google.com/apps-script/reference/mail/mail-app#sendEmail(String,String,String,Object)>une pour envoyer du HTML</a>
+et personnaliser le mail comme le nom de l&rsquo;expéditeur, le noReply :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>messageHtml</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>`Un message avec mise en forme.&lt;br/&gt; Montant &lt;b&gt;</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>total</span><span style=color:#e6db74>}</span><span style=color:#e6db74>€&lt;/b&gt; à l&#39;ordre de &lt;b&gt;moi&lt;/b&gt;.`</span>
+ <span style=color:#f92672>+</span> <span style=color:#e6db74>`&lt;br/&gt;Vous pouvez modifier votre commande avec &lt;a href=&#34;</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>lastResponse</span>.<span style=color:#a6e22e>getEditResponseUrl</span>()<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;&gt;ce lien&lt;/a&gt;. &lt;br/&gt;</span><span style=color:#e6db74>${</span><span style=color:#a6e22e>formatRecap</span>(<span style=color:#a6e22e>recap</span>)<span style=color:#e6db74>}</span><span style=color:#e6db74>.&lt;br/&gt;&lt;br/&gt;L&#39;équipe Talan Labs.&lt;br/&gt;&lt;a href=&#34;https://blog.talanlabs.com/&#34;&gt;Notre blog&lt;/a&gt;`</span>
+<span style=color:#a6e22e>MailApp</span>.<span style=color:#a6e22e>sendEmail</span>(<span style=color:#a6e22e>lastResponse</span>.<span style=color:#a6e22e>getRespondentEmail</span>(),<span style=color:#e6db74>&#39;Confirmation de commande&#39;</span>,<span style=color:#a6e22e>message</span>,{<span style=color:#a6e22e>name</span><span style=color:#f92672>:</span><span style=color:#e6db74>&#39;Mon nom&#39;</span>,<span style=color:#a6e22e>noReply</span><span style=color:#f92672>:</span><span style=color:#66d9ef>true</span>,<span style=color:#a6e22e>htmlBody</span><span style=color:#f92672>:</span><span style=color:#a6e22e>messageHtml</span>})
+</code></pre></div><p>Vous le voyez, il est également possible d&rsquo;obtenir le lien de modification du formulaire, permettant de corriger sa commande.</p>
+<p>Cet exemple donnera :<br>
+<img src=exemple_mail.png alt="exemple mail"></p>
+<h4 id=mise-en-place-du-déclencheur>Mise en place du déclencheur</h4>
+<p>La dernière étape consiste à connecter notre formulaire à notre script avec un déclencheur.
+L&rsquo;ajout d&rsquo;un déclencheur se fait dans le menu de gauche &ldquo;Déclencheurs -> Ajouter un déclencheur&rdquo;.</p>
+<p>Vous devez ensuite choisir la fonction à appeler et le type de déclencheur (ouverture formulaire, envoi formulaire, horaire&mldr;)
+Dans mon exemple, j&rsquo;ai choisi le déclencheur formulaire / lors de l&rsquo;envoi du formulaire.</p>
+<p><img src=trigger.png alt=declencheur></p>
+<h4 id=un-schéma-pour-résumer>Un schéma pour résumer</h4>
+<p><img src=schema_prez.png alt=schema></p>
+<h3 id=pour-aller-plus-loin>Pour aller plus loin</h3>
+<p>Ce n&rsquo;est parce qu&rsquo;on développe un script qui devrait peu évoluer qu&rsquo;il faut oublier les bases :</p>
+<ul>
+<li>Pensez à bien découper votre code avec des fonctions testables facilement (les plus pures possibles)</li>
+<li>Faites en sorte de pouvoir tester votre script sans avoir besoin de remplir le formulaire, par exemple en exécutant
+la fonction toujours sur la dernière ligne</li>
+<li>On peut imaginer modifier le fichier excel généré pour indiquer le prix final, s&rsquo;il a été modifié&mldr;</li>
+</ul>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2022-01-26T00:08:00+02:00>
+26 janvier 2022
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/jonathan-baranzini/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Jonathan BARANZINI" src=https://blog.talanlabs.com/authors/jonathan_baranzini.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/jonathan-baranzini/>Jonathan BARANZINI</a></h1>
+<p class="mt-0 mb-2">Développeur</p>
+</div>
+<div class=mb-6>
+<a href=https://github.com/jotitan target=_blank class="icon is-medium"><i class="fab fa-lg fa-github"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/front>front</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/javascript>#Javascript</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/google-forms>#Google Forms</a>
+</div>
+</div>
+</div>
+</div>
+<aside>
+<h4 class="subtitle mt-10 mb-8"><i class="fas fa-forward"></i> Vous aimerez peut-être...</h4>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/javascript-service-de-lentreprise/>
+<img class="border object-cover w-full m-0 max-w-md" src=/javascript-service-de-lentreprise/cover_hu2401854b0bbe873ae995f6b6195da66d_91175_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/front>front</a>
+</div>
+<a href=/javascript-service-de-lentreprise/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">JavaScript au service de l’entreprise</h2></a>
+<div class=my-1>
+<span>Sallah KOKAINA</span>,
+<time datetime=2015-06-05T09:57:30Z>
+5 juin 2015
+</time>
+</div>
+<p class="my-1 text-slate-500">Introduction JavaScript fut, depuis sa création par Brendan Eich en 1995 jusqu’à l’arrivée du moteur …</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang='fr-FR'>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><title> Scrum@Scale |  Talan Labs | Blog 
+</title>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0" name="viewport" />
+<meta name="description" content="Découvrez les expertises et savoire-faire de Talan Labs">
+<meta property="og:url" content="http://localhost:1313/tags/scrum@scale/">
+  <meta property="og:site_name" content="Talan Labs | Blog">
+  <meta property="og:title" content="Scrum@Scale">
+  <meta property="og:description" content="Découvrez les expertises et savoire-faire de Talan Labs">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:type" content="website">
+    <meta property="og:image" content="http://localhost:1313/img/logo_talanlabs_hd_w600.png">
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/img/logo_talanlabs_hd_w600.png">
+  <meta name="twitter:title" content="Scrum@Scale">
+  <meta name="twitter:description" content="Découvrez les expertises et savoire-faire de Talan Labs">
+
+
+
+<script type="text/javascript" src=/js/mermaid.min.js></script>
+
+<script type="text/javascript" src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+
+<link rel="icon" type="image/png" sizes="96x96" href='/img/favicon.png'>
+
+<link rel="canonical" href="http://localhost:1313/tags/scrum@scale/">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css" type="text/css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js"></script>
+<script>hljs.highlightAll()</script>
+
+
+
+
+<link href="/css/main.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+</head>
+
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
+<script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+    <div class="max-w-8xl mx-auto">
+        <div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+            <div class="relative flex items-center justify-between">
+                <a class="level-item has-text-centered" href='/'>
+                    <img class="dark:hidden h-14 inline" height="30" src='/img/logo_talanlabs_hd_h55.png' alt="Logo Talan Labs" />
+                    <img class="h-14 inline" height="30" src='/img/logo_talanlabs_white_small.png' alt="Logo Talan Labs" />
+                </a>
+                <div class="relative hidden md:flex items-center ml-auto">
+                    <ul class="flex space-x-8">
+                        <ul class="flex space-x-8">
+    
+    <li>
+    
+    
+    
+    <a class=" hover:text-blue-500 dark:text-white" href="/post"  target="_parent">Publications</a>
+
+    </li>
+    
+    <li>
+    
+    
+    
+    <a class=" hover:text-blue-500 dark:text-white" href="/events/"  target="_parent">Evènements </a>
+
+    </li>
+    
+    <li>
+    
+    
+    
+    <a class=" hover:text-blue-500 dark:text-white" href="/startup-network"  target="_parent">Sun</a>
+
+    </li>
+    
+    <li>
+    
+    
+    
+    <a class=" hover:text-blue-500 dark:text-white" href="/authors/"  target="_parent">Auteurs</a>
+
+    </li>
+    
+    <li>
+    
+    
+    
+    <a class=" hover:text-blue-500 dark:text-white" href="/contact-us"  target="_parent">Contact</a>
+
+    </li>
+    
+</ul>
+
+                    </ul>
+
+                    <div class="flex items-center border-l border-slate-200 ml-6 pl-6 ">
+                        <label class="sr-only" id="headlessui-listbox-label-3">Theme</label>
+                        <button type="button" id="theme-toggle" aria-haspopup="true"
+                            aria-expanded="false"
+                            aria-labelledby="theme-toggle">
+                            <span class="hidden" id="theme-toggle-light-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="w-6 h-6">
+                                    <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                                        class="stroke-slate-400 dark:stroke-slate-500"></path>
+                                    <path
+                                        d="M12 4v1M17.66 6.344l-.828.828M20.005 12.004h-1M17.66 17.664l-.828-.828M12 20.01V19M6.34 17.664l.835-.836M3.995 12.004h1.01M6 6l.835.836"
+                                        class="stroke-slate-400 dark:stroke-slate-500"></path>
+                                </svg></span>
+                            <span class="" id="theme-toggle-dark-icon"><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M17.715 15.15A6.5 6.5 0 0 1 9 6.035C6.106 6.922 4 9.645 4 12.867c0 3.94 3.153 7.136 7.042 7.136 3.101 0 5.734-2.032 6.673-4.853Z"
+                                        class="fill-transparent"></path>
+                                    <path
+                                        d="m17.715 15.15.95.316a1 1 0 0 0-1.445-1.185l.495.869ZM9 6.035l.846.534a1 1 0 0 0-1.14-1.49L9 6.035Zm8.221 8.246a5.47 5.47 0 0 1-2.72.718v2a7.47 7.47 0 0 0 3.71-.98l-.99-1.738Zm-2.72.718A5.5 5.5 0 0 1 9 9.5H7a7.5 7.5 0 0 0 7.5 7.5v-2ZM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47 0 0 0 7 9.5h2Zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2Zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2Zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552 0 6.553-2.327 7.622-5.537l-1.897-.632Z"
+                                        class="fill-slate-400 dark:fill-slate-500"></path>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M17 3a1 1 0 0 1 1 1 2 2 0 0 0 2 2 1 1 0 1 1 0 2 2 2 0 0 0-2 2 1 1 0 1 1-2 0 2 2 0 0 0-2-2 1 1 0 1 1 0-2 2 2 0 0 0 2-2 1 1 0 0 1 1-1Z"
+                                        class="fill-slate-400 dark:fill-slate-500"></path>
+                                </svg>
+                            </span>
+                    </div>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="outline-none mobile-menu-button">
+                        <svg class=" w-6 h-6 text-gray-500 hover:text-blue-500 " x-show="!showMenu" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="hidden mobile-menu md:hidden">
+        <ul>
+    
+    <li>
+    
+    
+    
+
+    <a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href="/post"  target="_parent">Publications</a>
+
+    </li>
+    
+    <li>
+    
+    
+    
+
+    <a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href="/events/"  target="_parent">Evènements </a>
+
+    </li>
+    
+    <li>
+    
+    
+    
+
+    <a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href="/startup-network"  target="_parent">Sun</a>
+
+    </li>
+    
+    <li>
+    
+    
+    
+
+    <a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href="/authors/"  target="_parent">Auteurs</a>
+
+    </li>
+    
+    <li>
+    
+    
+    
+
+    <a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href="/contact-us"  target="_parent">Contact</a>
+
+    </li>
+    
+</ul>
+
+    </div>
+    <script>
+        const btn = document.querySelector("button.mobile-menu-button");
+        const menu = document.querySelector(".mobile-menu");
+
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+        });
+    </script>
+</div>
+
+
+<div class="container mx-auto mt-4 md:mt-8 p-4">
+    <h1 class="title mb-3">#Scrum@Scale</h1>
+    
+    <div class="grid grid-cols-1  gap-6 md:grid-cols-2 lg:grid-cols-3">
+        
+            <div class="mb-3">
+    
+    
+    
+        
+            
+                    <a href="/scrum-scale-cest-quoi/">
+                        <img class="border object-cover w-full m-0 max-w-md" src='/scrum-scale-cest-quoi/cover_hu7154763300737840681.jpeg' width="350" height="180" alt="illustration de l'article">
+                    </a>
+        
+    
+    <div class="">
+            <div class="mt-3">
+                
+	<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap"
+	   href='/categories/agile'>agile</a>
+            </div>
+            <a href="/scrum-scale-cest-quoi/" class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Scrum@Scale®️, c&#39;est quoi ?</h2></a>
+            <div class="my-1">
+                
+
+
+
+
+        <span class="">Maud GUYON</span>,
+    
+
+
+
+                <time class="" datetime='2019-02-05T09:01:02Z'>
+5 février 2019
+</time>
+
+            </div>
+            <p class="my-1 text-slate-500">Le petit dernier Il y a un an, Jeff Sutherland, co-fondateur de Scrum, a officialisé la naissance de son …</p>
+            
+    </div>
+</div>
+
+        
+    </div>
+</div>
+
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+    <div class="container mx-auto flex flex-row flex-wrap justify-center gap-8">
+        <div class="w-48">
+            <h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+            <nav role="navigation" aria-label="footer navigation">
+                <ul>
+                    <li><a class="dark:text-white" href="https://talan.com/metiers/labs/" target="_blank" rel="noopener"><i
+                                class="fas fa-link"></i> Site web</a></li>
+                    <li><a class="dark:text-white" href="https://twitter.com/TalanLabs" target="_blank" rel="noopener"><i
+                                class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a class="dark:text-white" href="https://www.linkedin.com/company/talanlabs/" target="_blank" rel="noopener"><i
+                                class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    <li><a class="dark:text-white" href="https://github.com/TalanLabs" target="_blank" rel="noopener"><i
+                                class="fab fa-github"></i> GitHub</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="w-48">
+            <h3 class="subtitle mt-6 mb-4 ml-0  dark:text-white">Le groupe Talan</h3>
+            <nav role="navigation" aria-label="footer navigation">
+                <ul>
+                    <li><a class="dark:text-white" href="https://talan.com/" target="_blank" rel="noopener"><i class="fas fa-link"></i> Site
+                            web</a></li>
+                    <li><a class="dark:text-white" href="https://twitter.com/talan_fr" target="_blank" rel="noopener"><i
+                                class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a class="dark:text-white" href="https://www.linkedin.com/company/talan/" target="_blank" rel="noopener"><i
+                                class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    <li><a class="dark:text-white" href="https://www.facebook.com/talan/" target="_blank" rel="noopener"><i
+                                class="fab fa-facebook"></i> Facebook</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+    </div>
+    <div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href="https://gohugo.io/" target="_blank"
+            rel="noopener">Hugo</a> et <a href="hhttps://tailwindcss.com" target="_blank" rel="noopener">Tailwindcss</a></div>
+</footer>
+
+<script>
+    var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        themeToggleLightIcon.classList.remove('hidden');
+        themeToggleDarkIcon.classList.add('hidden'); 
+        document.documentElement.classList.add('dark'); 
+    } else {
+        themeToggleLightIcon.classList.add('hidden');
+        themeToggleDarkIcon.classList.remove('hidden');
+        document.documentElement.classList.remove('dark');
+    }
+
+    var themeToggleBtn = document.getElementById('theme-toggle');
+
+    themeToggleBtn.addEventListener('click', function() {
+
+        
+        themeToggleDarkIcon.classList.toggle('hidden');
+        themeToggleLightIcon.classList.toggle('hidden');
+
+        
+        if (localStorage.getItem('color-theme')) {
+            if (localStorage.getItem('color-theme') === 'light') {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            }
+
+            
+        } else {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            }
+        }
+
+    });
+</script><script type="text/javascript">
+    tarteaucitron.init({
+        "privacyUrl"    : "",                
+        "hashtag"       : "#tarteaucitron",  
+        "cookieName"    : "tarteaucitron",   
+        "orientation"   : "bottom",          
+        "groupServices" : true,              
+        "showAlertSmall": false,             
+        "cookieslist"   : false,             
+        "closePopup"    : false,             
+        "showIcon"      : true,              
+        "iconSrc"       : "http:\/\/localhost:1313\/cookie.png",                
+        "iconPosition"  : "BottomRight",     
+        "adblocker"     : false,             
+        "DenyAllCta"    : true,              
+        "AcceptAllCta"  : true,              
+        "highPrivacy"   : true,              
+        "handleBrowserDNTRequest": false,    
+        "removeCredit"  : true,              
+        "moreInfoLink"  : true,              
+        "useExternalCss": false,             
+        "useExternalJs" : false,             
+        
+        "readmoreLink"  : "",                
+        "mandatory"     : false,             
+    });
+</script>
+<script type="text/javascript">
+    var tarteaucitronForceLanguage = 'fr';
+</script>
+
+
+
+<script type="text/javascript">
+    tarteaucitron.user.multiplegtagUa = ['UA-40718882-5', 'G-MED3GXXYSF'];
+    (tarteaucitron.job = tarteaucitron.job || []).push('multiplegtag');
+</script>
+
+
+<script type="text/javascript">
+    
+    
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

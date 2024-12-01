@@ -1,0 +1,367 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Les notions derrière la qualité logicielle, ce qu’il faut savoir | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="J&rsquo;imagine que pour la plupart d’entre vous, le terme &ldquo;qualité logicielle&rdquo; est flou, mais saviez-vous qu’il existe une norme internationale qui le définit ?">
+<meta property="og:title" content="Les notions derrière la qualité logicielle, ce qu’il faut savoir">
+<meta property="og:description" content="J&rsquo;imagine que pour la plupart d’entre vous, le terme &ldquo;qualité logicielle&rdquo; est flou, mais saviez-vous qu’il existe une norme internationale qui le définit ?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/notions-derriere-la-qualite-logicielle/"><meta property="og:image" content="https://blog.talanlabs.com/notions-derriere-la-qualite-logicielle/cover.png"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2018-08-23T14:02:51+00:00">
+<meta property="article:modified_time" content="2018-08-23T14:02:51+00:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/notions-derriere-la-qualite-logicielle/cover.png">
+<meta name=twitter:title content="Les notions derrière la qualité logicielle, ce qu’il faut savoir">
+<meta name=twitter:description content="J&rsquo;imagine que pour la plupart d’entre vous, le terme &ldquo;qualité logicielle&rdquo; est flou, mais saviez-vous qu’il existe une norme internationale qui le définit ?">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/notions-derriere-la-qualite-logicielle/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Les notions derrière la qualité logicielle, ce qu’il faut savoir</h1>
+<figure class="cover image">
+<img src=/notions-derriere-la-qualite-logicielle/cover.png width=720 height=460 alt="illustration de l'article">
+</figure>
+<p>J&rsquo;imagine que pour la plupart d’entre vous, le terme &ldquo;qualité logicielle&rdquo; est flou, mais saviez-vous qu’il existe une norme internationale qui le définit ?</p>
+<p>Il s’agit de la norme <em>ISO/IEC 25010:2011</em>. Étudions-la ensemble.</p>
+<h1 id=les-notions-principales-autour-de-la-qualité-logicielle><strong>Les notions principales autour de la qualité logicielle</strong></h1>
+<p>La qualité logicielle passe par différentes notions, dont vous avez sûrement déjà entendu parler, au moins pour certaines. Elles sont au nombre de huit, elles-mêmes composées de sous-notions :</p>
+<ul>
+<li>la capacité fonctionnelle
+<ul>
+<li>les performances</li>
+<li>la compatibilité</li>
+<li>l’utilisabilité</li>
+<li>la robustesse</li>
+<li>la sécurité</li>
+<li>la maintenabilité</li>
+<li>la portabilité</li>
+</ul>
+</li>
+</ul>
+<h1 id=cas-dexemple><strong>Cas d’exemple</strong></h1>
+<p>Pour illustrer l’intégralité des notions, plaçons nous dans le cas d’une application de vente en ligne (e-commerce) comme vous en utilisez déjà très certainement. Chaque notion sera suivie d’un exemple correspondant à ce cas.</p>
+<h1 id=la-capacité-fonctionnelle><strong>La capacité fonctionnelle</strong></h1>
+<h2 id=la-complétude-fonctionnelle-functional-completeness>La complétude fonctionnelle (Functional completeness)</h2>
+<p>L’ensemble des fonctions couvrent toutes les tâches spécifiées et les objectifs de l’utilisateur</p>
+<blockquote>
+<p>L’utilisateur doit pouvoir réaliser toutes les actions attendues, de la recherche à l’achat final, en passant par l’ajout dans un panier.</p>
+</blockquote>
+<h2 id=lexactitude-fonctionnelle-functional-correctness>L’exactitude fonctionnelle (Functional correctness)</h2>
+<p>Le produit ou système met à disposition les résultats corrects avec un degré de précision nécessaire</p>
+<blockquote>
+<p>Si je cherche des livres des années 80, j’ai bien la liste des livres des années 80.</p>
+</blockquote>
+<h2 id=la-pertinence-fonctionnelle-functional-appropriateness>La pertinence fonctionnelle (Functional appropriateness)</h2>
+<p>Les fonctions facilitent l’accomplissement de tâches et d’objectifs précis</p>
+<blockquote>
+<p>L’ajout d’un article dans le panier se fait sur les pages attendues, l’utilisateur se voit proposer des articles souvent achetés en même temps et l’enchaînement des actions fait tout son sens.</p>
+</blockquote>
+<h1 id=les-performances><strong>Les performances</strong></h1>
+<h2 id=le-comportement-temporel-time-behaviour>Le comportement temporel (Time behaviour)</h2>
+<p>Les temps de réponse, de traitement et de débits d’un produit ou d’un système, lors de l’exécution de ses fonctions, satisfont aux exigences</p>
+<blockquote>
+<p>La recherche de produits doit afficher les résultats en moins d’une seconde.</p>
+</blockquote>
+<h2 id=lutilisation-des-ressources-resource-utilization>L’utilisation des ressources (Resource utilization)</h2>
+<p>Les quantités et types de ressources utilisés par un produit ou un système, dans l’exercice de ses fonctions, satisfont aux exigences</p>
+<blockquote>
+<p>Je souhaite qu’un cluster seul puisse supporter une charge de 1 000 utilisateurs en simultané.</p>
+</blockquote>
+<h2 id=la-capacité-capacity>La capacité (Capacity)</h2>
+<p>Les limites maximales d’un produit ou d’un paramètre du système répondent aux exigences</p>
+<blockquote>
+<p>Je souhaite que mon système utilise au maximum 50Go de données par mois.</p>
+</blockquote>
+<h1 id=la-compatibilité><strong>La compatibilité</strong></h1>
+<h2 id=la-co-existence>La co-existence</h2>
+<p>Un produit peut exécuter ses fonctions de manière efficace tout en partageant un environnement et des ressources en communs avec d’autres produits, sans impact négatif sur tout autre produit</p>
+<blockquote>
+<p>L’application de e-commerce doit co-exister avec l’application de back-office permettant de faire les comptes de l’entreprise qui tourne sur le même serveur.</p>
+</blockquote>
+<h2 id=linteropérabilité-interoperability>L’interopérabilité (Interoperability)</h2>
+<p>Deux ou plus de systèmes, produits ou composants peuvent échanger des informations et utiliser les informations échangées</p>
+<blockquote>
+<p>L’application de e-commerce doit dispatcher la commande aux services de livraison.</p>
+</blockquote>
+<h1 id=lutilisabilité><strong>L’utilisabilité</strong></h1>
+<h2 id=laptitude-à-la-reconnaissance-appropriateness-recognizability>L’aptitude à la reconnaissance (Appropriateness recognizability)</h2>
+<p>Les utilisateurs peuvent reconnaître qu’un produit ou un système est adapté à leurs besoins</p>
+<blockquote>
+<p>Les utilisateur utilisent l’application pour acheter des articles dont ils ont besoin.</p>
+</blockquote>
+<h2 id=la-facilité-dapprentissage-learnability>La facilité d’apprentissage (Learnability)</h2>
+<p>Un produit ou un système peut être utilisé par des utilisateurs spécifiques pour atteindre des objectifs précis d’apprentissage de l’utilisation du produit ou du système avec efficacité, efficience, absence de risque et de satisfaction dans un contexte d’utilisation spécifique</p>
+<blockquote>
+<p>L’utilisateur est accompagné tout le long de son parcours sur l’ensemble du site, il comprend comment aller jusqu’à l’achat.</p>
+</blockquote>
+<h2 id=lopérabilité-operability>L’opérabilité (Operability)</h2>
+<p>Un produit ou un système a des attributs qui le rend facile à utiliser et à contrôler</p>
+<blockquote>
+<p>Je peux contrôler l’intérieur de mon panier, retirer des articles ajoutés par erreur, visualiser le prix final après éventuelles réductions.</p>
+</blockquote>
+<h2 id=la-protection-contre-les-erreurs-utilisateur-user-error-protection>La protection contre les erreurs utilisateur (User error protection)</h2>
+<p>Un produit ou un système est protégé contre les erreurs issues des utilisateurs</p>
+<blockquote>
+<p>Si l’utilisateur saisit une chaîne de caractères invalides, l’application doit le détecter et retourner un message d’erreur.</p>
+</blockquote>
+<h2 id=lesthétique-de-linterface-utilisateur-user-interface-aesthetics>L’esthétique de l’interface utilisateur (User interface aesthetics)</h2>
+<p>Une interface utilisateur permet une interaction agréable et satisfaisante pour l’utilisateur</p>
+<blockquote>
+<p>Les résultats des tests UX/UI montrent que les informations importantes pour l’utilisateur de manière claire et agréable.</p>
+</blockquote>
+<h2 id=laccessibilité-accessibility>L’accessibilité (Accessibility)</h2>
+<p>Un produit ou un système peut être utilisé par des personnes ayant le plus grand nombre de caractéristiques et de capacités pour atteindre un objectif spécifié dans un contexte d&rsquo;utilisation spécifique</p>
+<blockquote>
+<p>Les résultats des tests UX/UI montrent que l’application est suffisamment simple pour pouvoir être utilisée par des personnes de plus de 60 ans.</p>
+</blockquote>
+<h1 id=la-robustesse><strong>La robustesse</strong></h1>
+<h2 id=la-maturité-maturity>La maturité (Maturity)</h2>
+<p>Un système, un produit ou un composant répond aux besoins de fiabilité en fonctionnement normal</p>
+<blockquote>
+<p>L’application est stable et opérationnelle.</p>
+</blockquote>
+<h2 id=la-disponibilité-availability>La disponibilité (Availability)</h2>
+<p>Un système, un produit ou un composant est opérationnel et accessible au besoin</p>
+<blockquote>
+<p>L’application est accessible en ligne 24/24, 7/7, à un taux de disponibilité de 99,9%.</p>
+</blockquote>
+<h2 id=la-tolérance-aux-pannes-fault-tolerance>La tolérance aux pannes (Fault tolerance)</h2>
+<p>Un système, un produit ou un composant fonctionne comme prévu malgré la présence de pannes matérielles ou logicielles</p>
+<blockquote>
+<p>Si un serveur tombe, un autre prend le relai en moins d’une seconde. Les erreurs logicielles ne font pas tomber le matériel.</p>
+</blockquote>
+<h2 id=la-récupérabilité-recoverability>La récupérabilité (Recoverability)</h2>
+<p>En cas d&rsquo;interruption ou de défaillance, un produit ou un système peut récupérer les données directement affectées et rétablir l&rsquo;état souhaité du système</p>
+<blockquote>
+<p>Le serveur ayant pris le relai a gardé les articles dans les paniers de tous les utilisateurs actuellement connectés.</p>
+</blockquote>
+<h1 id=la-sécurité><strong>La sécurité</strong></h1>
+<h2 id=la-confidentialité-confidentiality>La confidentialité (Confidentiality)</h2>
+<p>Un produit ou un système garantit que les données ne sont accessibles qu&rsquo;aux personnes autorisées à y avoir accès</p>
+<blockquote>
+<p>Le gérant de l’application a des accès à des données que les autres utilisateurs ne peuvent pas obtenir de quelque façon que ce soit.</p>
+</blockquote>
+<h2 id=lintégrité-integrity>L’intégrité (Integrity)</h2>
+<p>Un système, un produit ou un composant empêche l&rsquo;accès non autorisé à des programmes informatiques ou des données, ou la modification de ceux-ci</p>
+<blockquote>
+<p>Seuls les accès via l’application de e-commerce peuvent modifier le contenu du panier des utilisateurs.</p>
+</blockquote>
+<h2 id=la-non-répudiation-non-repudiation>La non-répudiation (Non-repudiation)</h2>
+<p>Des actions ou des événements peuvent être prouvés avoir eu lieu, de sorte que les événements ou les actions ne peuvent être répudiées plus tard</p>
+<blockquote>
+<p>La validation de l’achat et du paiement ne peuvent être contestés.</p>
+</blockquote>
+<h2 id=la-responsabilité-accountability>La responsabilité (Accountability)</h2>
+<p>Les actions d&rsquo;une entité peuvent être tracées à l&rsquo;entité de façon unique</p>
+<blockquote>
+<p>Chaque action sur l’interface contient l’identité de son auteur.</p>
+</blockquote>
+<h2 id=lauthenticité-authenticity>L’authenticité (Authenticity)</h2>
+<p>Preuve de l&rsquo;identité d&rsquo;un sujet ou d&rsquo;une ressource</p>
+<blockquote>
+<p>L’application garanti que c’est bien cet utilisateur qui a passé la commande.</p>
+</blockquote>
+<h1 id=la-maintenabilité><strong>La maintenabilité</strong></h1>
+<h2 id=la-modularité-modularity>La modularité (Modularity)</h2>
+<p>Un système ou un programme informatique est composé de composants distincts, de sorte qu&rsquo;un changement sur un composant a un impact minimal sur les autres composants</p>
+<blockquote>
+<p>L’ajout d’une nouvelle brique d’analyses des tendances des achats n’impose pas la refonte totale de l’application.</p>
+</blockquote>
+<h2 id=la-réutilisabilité-reusability>La réutilisabilité (Reusability)</h2>
+<p>Un composant ou une brique peut être utilisé dans plusieurs systèmes ou dans la création d&rsquo;autres composants ou briques</p>
+<blockquote>
+<p>Le module de choix de date peut être utilisé partout, aussi bien dans le profil de l’utilisateur pour sa date de naissance que pour choisir sa date de livraison à la fin de son panier.</p>
+</blockquote>
+<h2 id=lanalysabilité-analysability>L’analysabilité (Analysability)</h2>
+<p>Efficacité avec lequel il est possible d&rsquo;évaluer l&rsquo;impact sur un produit ou un système d&rsquo;une modification envisagée à une ou plusieurs de ses parties, ou de diagnostiquer un produit pour détecter des défaillances ou des causes de défaillance, ou identifier des parties à modifier</p>
+<blockquote>
+<p>Si je veux modifier la fonctionnalité d’ajout d’un article dans le panier, je sais exactement tout ce que cela impacte. Les erreurs intervenues lors de son utilisation sont consultables dans un journal qui me permet d’y remédier.</p>
+</blockquote>
+<h2 id=la-possibilité-de-modification-modifiability>La possibilité de modification (Modifiability)</h2>
+<p>Un produit ou un système peut être modifié efficacement sans introduire des défauts ou dégrader la qualité du produit existant</p>
+<blockquote>
+<p>Le code est suffisamment bien construit et toute évolution n’entraîne pas de régression dans les fonctionnalités existantes.</p>
+</blockquote>
+<h2 id=la-testabilité-testability>La testabilité (Testability)</h2>
+<p>Efficacité et efficience avec lequel des critères de test peuvent être établis pour un système, un produit ou un composant et des tests peuvent être effectués pour déterminer si ces critères ont été respectés</p>
+<blockquote>
+<p>Je dispose de différentes façons pour tester efficacement le code, que ce soit avec des tests unitaires, d’intégration, de bout en bout ou de performance.</p>
+</blockquote>
+<h1 id=la-portabilité><strong>La portabilité</strong></h1>
+<h2 id=ladaptabilité-adaptability>L’adaptabilité (Adaptability)</h2>
+<p>Un produit ou un système peut être adapté de manière efficace et efficiente à des matériels, logiciels ou autres environnements opérationnels ou d&rsquo;utilisation différents ou en constante évolution</p>
+<blockquote>
+<p>Le site web peut être utilisé depuis un smartphone, peu importe son OS et sa résolution.</p>
+</blockquote>
+<h2 id=la-facilité-dinstallation-installability>La facilité d’installation (Installability)</h2>
+<p>Efficacité et efficience avec lequel un produit ou un système peut être installé et/ou désinstallé avec succès dans un environnement spécifié</p>
+<blockquote>
+<p>L’application peut être déployée sur une machine peu importe son OS ou sa configuration en moins de quelques minutes, voire secondes.</p>
+</blockquote>
+<h2 id=la-remplaçabilité-replaceability>La remplaçabilité (Replaceability)</h2>
+<p>Un logiciel ou un produit peut en remplacer un autre spécifiquement pour le même usage dans le même environnement</p>
+<blockquote>
+<p>Je dois pouvoir remplacer la sous application d’achat par une autre conçue dans une toute autre technologie sans grands impacts sur le reste de l&rsquo;écosystème.</p>
+</blockquote>
+<h1 id=bilan><strong>Bilan</strong></h1>
+<p>Ces huit notions permettent d’y voir un peu plus clair par rapport aux attentes de qualité logicielle.
+Lesquelles sont les plus importantes pour vous ? Et lesquelles appliquez-vous ?</p>
+<h1 id=sources><strong>Sources</strong></h1>
+<p><a href=https://www.iso.org/obp/ui/fr/#iso:std:iso-iec:25010:ed-1:v1:en>Norme ISO/IEC 25010:2011</a></p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2018-08-23T14:02:51Z>
+23 août 2018
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/nicolas-poste/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Nicolas POSTE" src=https://blog.talanlabs.com/authors/nicolas_poste.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/nicolas-poste/>Nicolas POSTE</a></h1>
+<p class="mt-0 mb-2">Tech Lead</p>
+</div>
+<div class=mb-6>
+<a href=https://www.linkedin.com/in/nicolas-poste target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/qualite>#Qualité</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/software-craftsmanship>#Software Craftsmanship</a>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

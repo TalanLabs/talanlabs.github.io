@@ -1,0 +1,215 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Les microservices pour une architecture orientée web n°1 | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Définitions et caractéristiques Cet article s&rsquo;insère dans la série &ldquo;microservices&rdquo; écrite par François Berthault dans le cadre de la participation de Talan Labs à Devoxx 2017, du 5 au 7 avril prochains au Palais des Congrès de Paris.">
+<meta property="og:title" content="Les microservices pour une architecture orientée web n°1">
+<meta property="og:description" content="Définitions et caractéristiques Cet article s&rsquo;insère dans la série &ldquo;microservices&rdquo; écrite par François Berthault dans le cadre de la participation de Talan Labs à Devoxx 2017, du 5 au 7 avril prochains au Palais des Congrès de Paris.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/architecture-microservices-partie-1-definitions/"><meta property="og:image" content="https://blog.talanlabs.com/architecture-microservices-partie-1-definitions/cover.png"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2017-02-21T09:09:17+00:00">
+<meta property="article:modified_time" content="2017-02-21T09:09:17+00:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/architecture-microservices-partie-1-definitions/cover.png">
+<meta name=twitter:title content="Les microservices pour une architecture orientée web n°1">
+<meta name=twitter:description content="Définitions et caractéristiques Cet article s&rsquo;insère dans la série &ldquo;microservices&rdquo; écrite par François Berthault dans le cadre de la participation de Talan Labs à Devoxx 2017, du 5 au 7 avril prochains au Palais des Congrès de Paris.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/architecture-microservices-partie-1-definitions/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Les microservices pour une architecture orientée web n°1</h1>
+<figure class="cover image">
+<img src=/architecture-microservices-partie-1-definitions/cover.png width=758 height=444 alt="illustration de l'article">
+</figure>
+<h1 id=définitions-et-caractéristiques>Définitions et caractéristiques</h1>
+<p><em>Cet article s&rsquo;insère dans la série &ldquo;microservices&rdquo; écrite par François Berthault dans le cadre de la participation de Talan Labs à <a href=https://www.devoxx.fr/>Devoxx 2017</a>, du 5 au 7 avril prochains au Palais des Congrès de Paris.</em></p>
+<p>La notion d’<strong>architecture en microservices</strong> est très récente, apparue depuis 3 à 4 ans. Précurseur et véritable gourou sur le sujet, <a href=https://www.martinfowler.com/>Martin Fowler</a> est la référence en matière de microservices. Il a notamment écrit de nombreux articles sur la <strong><em>componentization</em> des applications logicielles</strong>.</p>
+<p>Aujourd’hui, les microservices sont de plus en plus utilisés pour <strong>construire des applications d’entreprise</strong> ; certainement parce que les retours sont très positifs. Il existe pourtant peu d’informations sur le sujet.</p>
+<p>Cette série d’articles a pour objectif d’**expliquer les microservices **et d’en comprendre les implications et les usages.</p>
+<h2 id=quest-ce-quune-architecture-en-microservices->Qu’est-ce qu’une architecture en microservices ?</h2>
+<p>L’architecture en microservices est une approche servant à <strong>concevoir une application unique</strong> basé sur un <strong>ensemble de petits services indépendants</strong>. Chaque microservice s&rsquo;exécute dans un processus qui lui est propre et communique via un protocole léger, le plus souvent à base de <strong>ressource HTTP</strong> (tel que REST -<em>REpresentational State Transfer- par exemple</em>).</p>
+<p>Grâce à une <strong>gestion centralisée et minimaliste</strong>, chaque microservice peut être écrit dans un langage qui lui est propre. Pour chaque microservice, en fonction de l’objectif auquel il doit répondre, il est donc possible d’aller au plus simple et d’**utiliser les outils et langages les plus pertinents. **L’approche en microservices est donc totalement inverse de l’<strong>approche monolithique</strong>, certes plus homogène car composée d’une seule et même technologie, mais qui entraîne un certain nombre de problèmes, de réécriture notamment.</p>
+<h2 id=la-_componentization_-une-nécessité-pour-les-microservices>La <em>componentization</em>, une nécessité pour les microservices</h2>
+<p>Avec les microservices, <strong>chaque élément correspond à un service</strong> (<em>componentization</em>), ce qui les distingue de l’approche par librairies réutilisables, comme c’est encore majoritairement le cas dans l’industrie logicielle. L’objectif principal est de <strong>pouvoir déployer les microservices indépendamment</strong> (ce qui devrait réjouir vos OPS) et de <strong>respecter le principe de la responsabilité unique</strong>.</p>
+<p>Quelques facteurs indispensables à la <em>componentization</em> :</p>
+<ul>
+<li>**cohérence et logique du système **: tout service doit correspondre à une fonctionnalité précise ;</li>
+<li><strong>spécificité des fonctionnalités</strong> : chaque service ne fait qu’une chose et il la fait bien ;</li>
+<li>**autonomie des services **: chaque service dispose de son propre code, gère ses propres données et ne les partage pas (pas directement en tout cas) avec d’autres services ;</li>
+<li>**indépendance des microservices **: chaque microservice ne doit pas inclure de couplage fort avec un autre microservice.</li>
+</ul>
+<h2 id=un-modèle-darchitecture-plus-solide>Un modèle d’architecture plus solide</h2>
+<p><img src=microservices1.png alt="La gestion de la base de données dans une architecture monolithique et dans une architecture microservices © Martin Fowler">
+La gestion de la base de données dans une architecture monolithique et dans une architecture microservices © Martin Fowler</p>
+<p>L&rsquo;architecture microservices favorise la <a href=http://microservices.io/articles/scalecube.html>scalabité cubique</a> : contrairement aux applications de type monolithique, <strong>ce design apporte de la robustesse</strong> à votre application. Le clonage de serveur n’est plus une fatalité. Ainsi, <strong>seuls les services ayant besoin d’être étendus sont dupliqués</strong>, comme expliqué ci-dessous.</p>
+<p><img src=microservices2.png alt="Comparaison entre architecture monolithique et architecture microservices © Martin Fowler">
+Comparaison entre architecture monolithique et architecture microservices © Martin Fowler</p>
+<h2 id=microservices-et-architecture-orientée-services-soa--même-combat->Microservices et architecture orientée services (SOA) : même combat ?</h2>
+<p>On pourrait croire que le microservice est une sorte d’architecture orientée service (SOA) déguisée. Si, au premier abord, les deux approches peuvent sembler assez similaires, une différence majeure les distingue :</p>
+<ul>
+<li><strong>le SOA ou <em>service-oriented architecture</em></strong> est un modèle d&rsquo;architecture qui définit des composants applicatifs produisant des services pour d’autres composants via un protocole de communication réseau ;</li>
+<li><strong>l’architecture en microservices</strong> est, au contraire, liée à une application, qui se compose de petits processus indépendants qui communiquent entre eux en utilisant des API (<em>Application Programming Interface</em>), ce qui les rend indépendants des langages.</li>
+</ul>
+<p><em>Vous avez aimé cet article ? Découvrez ou redécouvrez les autres épisodes de la série « Les microservices pour une architecture orientée web » :</em></p>
+<p><em>Partie 2 <a href=https://blog.talanlabs.com/architecture-microservices-partie-2-changement-point-de-vue/>Les microservices pour une architecture orientée web n°2 : Un changement de point de vue</a></em></p>
+<p><em>Partie 3 <a href=https://blog.talanlabs.com/architecture-microservices-partie-3-organisation/>Les microservices pour une architecture orientée web n°3 : Organisation des équipes pour un projet d’architecture en microservices</a></em></p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2017-02-21T09:09:17Z>
+21 février 2017
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/francois-berthault/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar François BERTHAULT" src=https://blog.talanlabs.com/authors/francois_berthault.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/francois-berthault/>François BERTHAULT</a></h1>
+<p class="mt-0 mb-2">Coach DevOps</p>
+</div>
+<div class=mb-6>
+<a href=https://twitter.com/fanfansama target=_blank class="icon is-medium"><i class="fab fa-lg fa-twitter text-[#1DA1F2]"></i></a>
+<a href=https://www.linkedin.com/in/fran%c3%a7ois-berthault-491a5850 target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+<a href=https://github.com/fanfansama target=_blank class="icon is-medium"><i class="fab fa-lg fa-github"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/cloud>cloud</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/cloud>#Cloud</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/devops>#DevOps</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/microservice>#microservice</a>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

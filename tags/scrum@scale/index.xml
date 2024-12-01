@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Scrum@Scale on Talan Labs | Blog</title>
+    <link>http://localhost:1313/tags/scrum@scale/</link>
+    <description>Recent content in Scrum@Scale on Talan Labs | Blog</description>
+    <generator>Hugo</generator>
+    <language>fr-FR</language>
+    <copyright>© 2022 - Le Blog des Labs de Talan</copyright>
+    <lastBuildDate>Tue, 05 Feb 2019 09:01:02 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/scrum@scale/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Scrum@Scale®️, c&#39;est quoi ?</title>
+      <link>http://localhost:1313/scrum-scale-cest-quoi/</link>
+      <pubDate>Tue, 05 Feb 2019 09:01:02 +0000</pubDate>
+      <guid>http://localhost:1313/scrum-scale-cest-quoi/</guid>
+      <description>&lt;h1 id=&#34;le-petit-dernier&#34;&gt;Le petit dernier&lt;/h1&gt;&#xA;&lt;p&gt;Il y a un an, Jeff Sutherland, co-fondateur de Scrum, a officialisé la naissance de son dernier né : Scrum@Scale®️. Malgré tout sa gestation a été longue (il se base sur des pratiques mises en œuvre dès 2001) et on peut déjà compter sur plusieurs retours d’expérience.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

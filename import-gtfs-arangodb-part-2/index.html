@@ -1,0 +1,350 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Importer des GTFS dans ArangoDB - Partie 2 | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Partie 2 - Base de données ArangoDB">
+<meta property="og:title" content="Importer des GTFS dans ArangoDB - Partie 2">
+<meta property="og:description" content="Partie 2 - Base de données ArangoDB">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/import-gtfs-arangodb-part-2/"><meta property="og:image" content="https://blog.talanlabs.com/import-gtfs-arangodb-part-2/cover.png"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2023-04-21T08:05:00+01:00">
+<meta property="article:modified_time" content="2023-04-21T08:05:00+01:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/import-gtfs-arangodb-part-2/cover.png">
+<meta name=twitter:title content="Importer des GTFS dans ArangoDB - Partie 2">
+<meta name=twitter:description content="Partie 2 - Base de données ArangoDB">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/import-gtfs-arangodb-part-2/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Importer des GTFS dans ArangoDB - Partie 2</h1>
+<figure class="cover image">
+<img src=/import-gtfs-arangodb-part-2/cover.png width=700 height=360 alt="illustration de l'article">
+</figure>
+<h2 id=introduction>Introduction</h2>
+<p><strong><a href=/import-gtfs-arangodb-part-1>Dans la première partie</a></strong>, j&rsquo;ai expliqué comment obtenir les données gtfs. Maintenant je vais importer les fichiers GTFS dans ArangoDB.</p>
+<h2 id=la-base-de-données-nosql-arangodb>La base de données NoSQL ArangoDB</h2>
+<p><a href=https://www.arangodb.com/docs/stable/>ArangoDB</a> est une base de données, open-source gratuite en version community, développée par l&rsquo;entreprise du même nom. Elle est développée en C++ et javascript et propose une IHM web pour l&rsquo;administration de la BDD. ArangoDB est une base de données hybride, NoSQL et Graphe. Elle a son propre language AQL (Arango Query Language), ressemblant au SQL, qui permet de faire des requêtes.</p>
+<h2 id=installer-arangodb>Installer ArangoDB</h2>
+<p>J&rsquo;ai installé la version community d&rsquo;ArangoDB localement via un fichier docker compose.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-yml data-lang=yml><span style=color:#f92672>services</span>:
+  <span style=color:#f92672>arangodb</span>:
+    <span style=color:#f92672>container_name</span>: <span style=color:#ae81ff>arangodb</span>
+    <span style=color:#f92672>image</span>: <span style=color:#ae81ff>arangodb:3.9.3</span>
+    <span style=color:#f92672>ports</span>:
+      - <span style=color:#e6db74>&#34;8529:8529&#34;</span>
+    <span style=color:#f92672>command</span>:
+      - <span style=color:#e6db74>&#34;arangod&#34;</span>
+      - <span style=color:#e6db74>&#34;--cache.size&#34;</span>
+      - <span style=color:#e6db74>&#34;1048576&#34;</span>
+      - <span style=color:#e6db74>&#34;--rocksdb.block-cache-size&#34;</span>
+      - <span style=color:#e6db74>&#34;1048576&#34;</span>
+      - <span style=color:#e6db74>&#34;--rocksdb.enforce-block-cache-size-limit&#34;</span>
+    <span style=color:#f92672>volumes</span>:
+      - <span style=color:#ae81ff>arangodbdata:/var/lib/arangodb3</span>
+    <span style=color:#f92672>environment</span>:
+      - <span style=color:#ae81ff>ARANGO_NO_AUTH=1</span>
+<span style=color:#f92672>volumes</span>:
+  <span style=color:#f92672>arangodbdata</span>:
+</code></pre></div><p>Ceci n&rsquo;est pas obligatoire car il le calcule automatiquement suivant la taille totale de votre mémoire RAM.
+J&rsquo;ai ajouté un réglage sur la taille du cache. Ceci n&rsquo;est pas obligatoire il le calcule automatiquement suivant la taille totale de votre mémoire RAM</p>
+<h2 id=fonctionnement>Fonctionnement</h2>
+<p>ArangoDB contient des <strong>bases de données</strong> qui contiennent des <strong>collections</strong>.
+ArangoDB à une base <strong>_SYSTEM</strong> à partir de laquelle nous pouvons ajouter des bases de données ou bien accéder au dashboard.</p>
+<p>Il y a différents types de collections : le type <strong>Document</strong> ou le type <strong>Edges</strong>.</p>
+<h3 id=documents>Documents</h3>
+<p>Les <strong>documents</strong> contiennent des objets JSON. Ils sont considérés comme les sommets (vertex) de la bdd graph.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
+  <span style=color:#f92672>&#34;_id&#34;</span>: <span style=color:#e6db74>&#34;stops/IDFM:monomodalStopPlace:47052&#34;</span>, <span style=color:#75715e>// l&#39;id de l&#39;objet formé du nom de la collection et sa clef
+</span><span style=color:#75715e></span>  <span style=color:#f92672>&#34;_rev&#34;</span>: <span style=color:#e6db74>&#34;_e3we666---&#34;</span>, <span style=color:#960050;background-color:#1e0010>/*</span> <span style=color:#960050;background-color:#1e0010>la</span> <span style=color:#960050;background-color:#1e0010>révision</span> <span style=color:#960050;background-color:#1e0010>est</span> <span style=color:#960050;background-color:#1e0010>générée</span> <span style=color:#960050;background-color:#1e0010>à</span> <span style=color:#960050;background-color:#1e0010>la</span> <span style=color:#960050;background-color:#1e0010>création</span> <span style=color:#960050;background-color:#1e0010>du</span> <span style=color:#960050;background-color:#1e0010>document</span> <span style=color:#960050;background-color:#1e0010>et</span> <span style=color:#960050;background-color:#1e0010>est</span> <span style=color:#960050;background-color:#1e0010>mise</span> <span style=color:#960050;background-color:#1e0010>à</span> <span style=color:#960050;background-color:#1e0010>jour</span>
+                            <span style=color:#960050;background-color:#1e0010>à</span> <span style=color:#960050;background-color:#1e0010>la</span> <span style=color:#960050;background-color:#1e0010>modification</span> <span style=color:#960050;background-color:#1e0010>ou</span> <span style=color:#960050;background-color:#1e0010>au</span> <span style=color:#960050;background-color:#1e0010>remplacement.</span> <span style=color:#960050;background-color:#1e0010>Il</span> <span style=color:#960050;background-color:#1e0010>est</span> <span style=color:#960050;background-color:#1e0010>en</span> <span style=color:#960050;background-color:#1e0010>lecture</span> <span style=color:#960050;background-color:#1e0010>seule</span> <span style=color:#960050;background-color:#1e0010>pour</span> <span style=color:#960050;background-color:#1e0010>l&#39;utilisateur.*/</span>
+  <span style=color:#f92672>&#34;_key&#34;</span>: <span style=color:#e6db74>&#34;IDFM:monomodalStopPlace:47052&#34;</span>, <span style=color:#75715e>// la clef de l&#39;objet
+</span><span style=color:#75715e></span>  <span style=color:#960050;background-color:#1e0010>...</span> <span style=color:#75715e>// les données
+</span><span style=color:#75715e></span>}
+</code></pre></div><h3 id=edges>Edges</h3>
+<p>Les &ldquo;edges&rdquo; contiennent des objets JSON qui seront des arêtes.</p>
+<p>Les arêtes font partie de la définition des graphes. Ils décrivent quelles collections d&rsquo;arêtes (edges) connectent quelles collections de sommets (vertex).</p>
+<p>Les collections d&rsquo;arêtes auront également un index d&rsquo;arêtes créé automatiquement, qui ne peut pas être modifié. Cet index permet un accès rapide aux documents via les attributs _from et _to.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
+  <span style=color:#f92672>&#34;_id&#34;</span>:<span style=color:#e6db74>&#34;part_of_stop/251428286&#34;</span>,
+  <span style=color:#f92672>&#34;_rev&#34;</span>:<span style=color:#e6db74>&#34;_e3wf-uq--C&#34;</span>,
+  <span style=color:#f92672>&#34;_key&#34;</span>:<span style=color:#e6db74>&#34;251428286&#34;</span>,
+  <span style=color:#f92672>&#34;_from&#34;</span>:<span style=color:#e6db74>&#34;stops/IDFM:monomodalStopPlace:47052&#34;</span>, <span style=color:#75715e>// sommet de départ
+</span><span style=color:#75715e></span>  <span style=color:#f92672>&#34;_to&#34;</span>:<span style=color:#e6db74>&#34;stops/IDFM:62951&#34;</span> <span style=color:#75715e>// sommet d&#39;arrivé
+</span><span style=color:#75715e></span>}
+</code></pre></div><h2 id=les-index>Les index</h2>
+<p>Les documents peuvent avoir des index de types différents.</p>
+<p>La description des index est ici : <a href=https://www.arangodb.com/docs/stable/http/indexes.html>https://www.arangodb.com/docs/stable/http/indexes.html</a></p>
+<ul>
+<li>Geo-spatial index : un index créé à partir des valeurs des champs contenant une <em>latitude</em> et <em>longitude</em> (les nom des champs sont à spécifier lors de la création de l&rsquo;index)</li>
+<li>Primary Index</li>
+<li>Edge Index</li>
+<li>Persistent Index</li>
+<li>Inverted Index</li>
+<li>TTL (time-to-live) index</li>
+<li>Multi-dimensional index</li>
+<li>Address of an Index</li>
+</ul>
+<h3 id=parcourir-le-graphe-_traversals_>Parcourir le graphe <em>(Traversals)</em></h3>
+<pre tabindex=0><code>FOR vertex, edge, path
+  IN min..max
+  ANY startVertex
+  edgeCollection1, ..., edgeCollectionN
+</code></pre><p>Un parcours commence à un document spécifique (startVertex) et suit toutes les arêtes connectées à ce document.
+Pour tous les documents (sommets) qui sont ciblés par ces bords, il suivra à nouveau tous les bords qui leurs sont connectés et ainsi de suite.
+Il est possible de définir combien de ces itérations suivantes doivent être exécutées au minimum et maximum.</p>
+<h2 id=import>Import</h2>
+<p>Dans le but d&rsquo;importer les données du GTFS dans la base de données j&rsquo;ai créé un script qui permet d&rsquo;importer automatiquement dans la base.</p>
+<p>Voici le modèle de donnée de type graphe que je souhaite :</p>
+<p><em>Schéma du graphe :</em></p>
+<p><img src=./schema.svg alt=schema></p>
+<h3 id=démarrer-limport>Démarrer l&rsquo;import</h3>
+<p>Voici le projet sur gihub pour l&rsquo;import :</p>
+<p><a href=https://github.com/gregoire78/GTFS-arangodb--import>https://github.com/gregoire78/GTFS-arangodb--import</a></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>npm run build <span style=color:#f92672>&amp;&amp;</span> <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>npm start
+</code></pre></div><p>Cela peut prendre un certain temps, car il y a beaucoup de données à relier.</p>
+<h2 id=aql>AQL</h2>
+<p>Une fois l&rsquo;import fait on peut ouvrir la page pour faire des requêtes dans l&rsquo;interface web d&rsquo;ArangoDB (http://127.0.0.1:8529/_db/GTFS/)</p>
+<p>Sélectionnez la base de données &ldquo;GTFS&rdquo; en haut à droite en cliquant sur &ldquo;_SYSTEM&rdquo;.</p>
+<p>Il faut aller ensuite dans &ldquo;QUERIES&rdquo; à gauche.</p>
+<p>Il y a des tutoriels <a href=https://www.arangodb.com/docs/stable/aql/>AQL</a> très bien sur le <a href=https://github.com/arangodb/interactive_tutorials/>github</a>.</p>
+<p>ArrangoDB permet de faire des requêtes avec des données géographiques (coordonnées gps)</p>
+<pre tabindex=0><code>// boucle sur la collection &quot;stops&quot;
+for s in stops
+    // récupère la distance (en mètre) entre le point que l'on souhaite et les points dans la collection
+    let d = distance(s.lat, s.lon, 48.8497477377042, 2.4180963749631648)
+    // filtre les points d'arrêts dans un rayon de moins d'un kilomètre
+    filter s.locationType == 1 and d &lt; 1000
+    // ceci retourne le résultat
+    return {name: s.name, distance: d}
+</code></pre><p><img src=./img1.png alt=aql_requete></p>
+<p>Le résultat de la requête est visible sous la forme d&rsquo;une table :</p>
+<p><img src=./img2.png alt=aql_result></p>
+<p>Script pour afficher les noeuds qui dépendent d&rsquo;un arrêt et afficher le graphe on peut exécuter le script suivant :</p>
+<pre tabindex=0><code>for s in stops
+    let d = distance(s.lat, s.lon, 48.8497477377042, 2.4180963749631648)
+    filter d &lt; 1000
+    limit 1000
+    for stop,e,b IN 1 inbound s._id part_of_stop
+        return b
+</code></pre><p>Maintenant il est facile de jouer avec les données pour afficher de jolies graphes.</p>
+<p><img src=./exemple.png alt=exemple_graphe></p>
+<h2 id=visualisation-des-données>Visualisation des données</h2>
+<p><strong><a href=/import-gtfs-arangodb-part-3>Dans la troisième partie</a></strong>, le but sera de montrer la récupération de données et afficher sur une carte les horaires des points d&rsquo;arrêts.</p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2023-04-21T08:05:00+01:00>
+21 avril 2023
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/gregoire-joncour/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Grégoire Joncour" src=https://blog.talanlabs.com/authors/gregoire-joncour.jpg></a>
+</figure>
+</div>
+<div>
+<h3 class="text-2xl mb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/gregoire-joncour/>Grégoire Joncour</a></h3>
+<p class="mt-0 mb-2">Développeur</p>
+</div>
+<div class=mb-6>
+<a href=https://www.linkedin.com/in/gregoirejoncour target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+<a href=https://github.com/gregoire78 target=_blank class="icon is-medium"><i class="fab fa-lg fa-github"></i></a>
+<a href=https://joncour.dev target=_blank class="icon is-medium"><i class="fas fa-lg fa-link"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/data>data</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/arangodb>#arangodb</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/bdd>#bdd</a>
+</div>
+</div>
+</div>
+</div>
+<aside>
+<h4 class="subtitle mt-10 mb-8"><i class="fas fa-forward"></i> Vous aimerez peut-être...</h4>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/import-gtfs-arangodb-part-1/>
+<img class="border object-cover w-full m-0 max-w-md" src=/import-gtfs-arangodb-part-1/cover_hu47813739c8837ab93f8b8374dfc615d4_69326_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/data>data</a>
+</div>
+<a href=/import-gtfs-arangodb-part-1/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Importer des GTFS dans ArangoDB - Partie 1</h2></a>
+<div class=my-1>
+<span>Grégoire Joncour</span>,
+<time datetime=2023-04-14T08:00:00+01:00>
+14 avril 2023
+</time>
+</div>
+<p class="my-1 text-slate-500">Partie 1 - Format des fichiers GTFS pour le partage des horaires théoriques des transports en commun.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/dedoublonner-messages-channel-go/>
+<img class="border object-cover w-full m-0 max-w-md" src=/dedoublonner-messages-channel-go/cover_hu950fd07bbb417dbcf5987d828b3052a5_66496_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/back>back</a>
+</div>
+<a href=/dedoublonner-messages-channel-go/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Dédoublonner les messages d'un channel en Go</h2></a>
+<div class=my-1>
+<span>Jonathan BARANZINI</span>,
+<time datetime=2021-04-09T00:00:00Z>
+9 avril 2021
+</time>
+</div>
+<p class="my-1 text-slate-500">Dédoublonner les messages d’un channel en go Les channels en Go sont des files threadsafe très utiles.</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/talanlabs-sponsor-platinium-devoxx-2016/>
+<img class="border object-cover w-full m-0 max-w-md" src=/talanlabs-sponsor-platinium-devoxx-2016/cover_hub8e6a3aa5eb2f4a6c421e0d156b23302_378326_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/talanlabs-sponsor-platinium-devoxx-2016/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Talan Labs sponsor Platinium de Devoxx 2016</h2></a>
+<div class=my-1>
+<span>La Rédaction</span>,
+<time datetime=2016-02-05T17:55:26Z>
+5 février 2016
+</time>
+</div>
+<p class="my-1 text-slate-500">Talan Labs est sponsor Platinium de la 5ème édition de Devoxx France, qui se déroulera du 20 au 22 avril 2016 …</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

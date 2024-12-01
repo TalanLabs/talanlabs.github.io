@@ -1,0 +1,255 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Versionner une librairie - Design System | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Développer une librairie plutôt qu&rsquo;une application web plus classique amène de nouvelles problématiques.">
+<meta property="og:title" content="Versionner une librairie - Design System">
+<meta property="og:description" content="Développer une librairie plutôt qu&rsquo;une application web plus classique amène de nouvelles problématiques.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/2022-06-24-version-a-library/"><meta property="og:image" content="https://blog.talanlabs.com/2022-06-24-version-a-library/cover.png"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2022-06-24T13:33:19+02:00">
+<meta property="article:modified_time" content="2022-06-24T13:33:19+02:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/2022-06-24-version-a-library/cover.png">
+<meta name=twitter:title content="Versionner une librairie - Design System">
+<meta name=twitter:description content="Développer une librairie plutôt qu&rsquo;une application web plus classique amène de nouvelles problématiques.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/2022-06-24-version-a-library/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Versionner une librairie - Design System</h1>
+<figure class="cover image">
+<img src=/2022-06-24-version-a-library/cover.png width=329 height=241 alt="illustration de l'article">
+</figure>
+<p>Développer une librairie plutôt qu&rsquo;une application web plus classique amène de nouvelles problématiques. Parmi elles se trouve la question de comment versionner cette librairie. C&rsquo;est sur la base de cette problématique ainsi que d&rsquo;un retour d&rsquo;expérience que nous allons tenter d&rsquo;apporter des éléments de réponse.</p>
+<p>Le projet sur lequel nous allons nous appuyer dans cet article consiste en la création d&rsquo;un Design System pour un client.</p>
+<p>L&rsquo;objectif de ce Design System est d&rsquo;homogénéiser l&rsquo;ensemble de leurs applications en leur apportant une identité graphique. Cela passe donc par l&rsquo;uniformisation des composants et des styles graphiques pour chacune des applications utilisées par le client. Le tout en apportant un réel gain de temps dans la production de nouvelles maquettes de design et dans le développement front.</p>
+<p>Pour cela, nous avons développé une librairie de web components. L&rsquo;objectif de ces composants étant qu&rsquo;ils puissent être utilisés par n&rsquo;importe quel framework.</p>
+<p>Nous allons donc présenter dans cet article la manière dont nous avons appréhendé la gestion des versions de notre librairie. Que ce soient les points d&rsquo;attention à garder à l&rsquo;esprit, les erreurs commises ainsi que les solutions trouvées.</p>
+<h2 id=la-gestion-sémantique-de-version-semver>La gestion sémantique de version (semver)</h2>
+<p>Nous nous sommes basés sur <a href=https://semver.org/lang/fr/>semver</a> pour réaliser nos montées de versions. Voyons rapidement les grands principes :</p>
+<p>Partons d&rsquo;une version <code>A.B.C</code>, avec :</p>
+<ul>
+<li><code>A</code> : numéro de version <strong>majeur</strong></li>
+<li><code>B</code> : numéro de version <strong>mineur</strong></li>
+<li><code>C</code> : numéro de version de <strong>correctif</strong> (plus communément appelé &ldquo;patch&rdquo;)</li>
+</ul>
+<p>Une montée de version majeure implique un ou plusieurs <strong>Breaking changes</strong>, c&rsquo;est-à-dire des changements dans la librairie qui impliquent aux personnes qui l&rsquo;utilisent de devoir effectuer certaines modifications dans leur utilisation. Sans quoi certains services de la librairie, dans notre cas des composants web, par exemple, risquent de ne plus être fonctionnels. Une montée de version majeur n&rsquo;est donc pas rétrocompatible.</p>
+<p>Une montée de version mineure implique l&rsquo;ajout d&rsquo;une fonctionnalité qui ne provoque pas de Breaking change, qui est donc rétrocompatible. Par exemple, on peut imaginer l&rsquo;ajout d&rsquo;un nouveau composant, ou bien l&rsquo;ajout d&rsquo;une fonctionnalité sur un des composants existants.</p>
+<p>Une montée de version de correctif (patch) implique la plupart du temps la correction d&rsquo;un bug.</p>
+<h2 id=comment-et-quand-monter-de-version->Comment et quand monter de version ?</h2>
+<p>Le développement d&rsquo;une librairie implique de devoir définir comment et quand monter de version. Comme vu dans le paragraphe précédent, la montée de version se fait selon le contenu de cette dernière et débouchera sur une montée de version de correctif, mineure ou majeure.</p>
+<p>Il est important d&rsquo;en livrer régulièrement pour faire vivre la librairie et assurer son développement et son adoption par les utilisateurs. Dans notre cas, il va s&rsquo;agir principalement de livrer de nouveaux composants. Cependant, il arrive que certains composants soient plus longs à développer que d&rsquo;autres, impliquant un plus long délai pour sortir une nouvelle version mineure. Des versions de correctif peuvent donc être livrées entre-temps pour assurer la régularité des livraisons de nouvelles versions. Et au-delà de cette notion de régularité, les versions de correctif assurent la robustesse de la librairie en corrigeant les problèmes. Elles sont donc primordiales, en plus d&rsquo;assurer un contact régulier avec les utilisateurs, souvent à l&rsquo;origine des remontées d&rsquo;anomalies.</p>
+<p>Une fois la montée de version effectuée, il est nécessaire que les utilisateurs de la librairie aient accès à une page leur expliquant les modifications qu&rsquo;elle apporte. Plusieurs moyens peuvent être utilisés.</p>
+<p>Nous avons décidé, pour ce projet, d&rsquo;utiliser Storybook pour présenter notre librairie de composants à nos utilisateurs. Une page <strong>Release Notes</strong> dans l&rsquo;arborescence du Storybook peut alors être mise-à-jour lors de la montée de version afin d&rsquo;informer des changements apportés à chaque version. On pourra y trouver le numéro de la version, sa date de livraison ainsi qu&rsquo;une liste des nouveautés. En plus de cette page, il peut être opportun de notifier les utilisateurs d&rsquo;une nouvelle version, par le biais d&rsquo;envois de mails, par un réseau social ou autre.</p>
+<p><img src=release-notes.png alt="Release Notes Example"></p>
+<p>Une de nos erreurs a été dans un premier temps de monter de version à chaque changement sur la branche master, ce qui provoquait beaucoup de montées de version. Il est en fait préférable de grouper plusieurs changements dans une seule livraison. Un moyen d&rsquo;y parvenir peut être de déclencher la montée de version non plus sur un changement de la branche master, mais sur celui d&rsquo;une autre branche, <strong>release</strong> par exemple. Ainsi, la montée s&rsquo;effectuera uniquement lorsque l&rsquo;on décidera de fusionner (merge) la branche master, qui contient tous les changements, sur la branche release. Pour ne pas inclure certains changements dans la prochaine montée de version, il faudra donc attendre avant de les fusionner sur la master.</p>
+<h2 id=et-dans-le-cas-de-breaking-changes->Et dans le cas de breaking changes ?</h2>
+<p>Une montée de version majeure, impliquant en général des breaking changes, ne peut pas se faire de la même manière que les versions mineures et patch. En effet, une montée de version majeure doit se préparer et ne doit pas avoir lieu trop souvent.
+Cependant, des évolutions impliquant des breaking changes arrivent régulièrement, le plus souvent dûs à des choix antérieurs qui n&rsquo;étaient pas les bons. Cela arrivera dans tous les cas mais ce n&rsquo;est pas forcément grave.</p>
+<p>En attendant la version majeure, une solution est de passer, lorsque que cela est possible, par ce qu&rsquo;on appelle du <strong>deprecated</strong>, c&rsquo;est-à-dire une solution de transition où plusieurs manières de faire peuvent coexister. Cela en précisant bien aux utilisateurs la nouvelle manière de faire à l&rsquo;aide de warnings dans la console du navigateur par exemple, en plus d&rsquo;une mise-à-jour de la documentation de la librairie.</p>
+<p>Prenons l&rsquo;exemple d&rsquo;un renommage d&rsquo;attribut d&rsquo;un composant :</p>
+<p>Prenons un composant <strong><code>&lt;my-button></code></strong>, pour lequel on avait défini un attribut boolean <strong>isDisabled</strong>. Ce nommage est correct dans la plupart des cas pour un attribut boolean (par exemple lors d&rsquo;une application classique dans un framework JS tel que React, Vue, Angular), mais ne répond pas aux standards HTML quant au nommage d&rsquo;attribut de composants Web, où l&rsquo;on privilégiera des attributs nommés le plus simplement tels que <strong>disabled</strong>.</p>
+<p>Pour aller plus loin, selon les standards HTML, un attribut boolean a la valeur <strong>false</strong> par défaut, ce qui implique que la présence ou non de l&rsquo;attribut sur la balise HTML du composant lui attribue sa valeur.</p>
+<p>Composant <strong><code>&lt;my-button></code></strong> non disabled (absence de l&rsquo;attribut <strong>disabled</strong> impliquant une valeur égale à <strong>false</strong>) :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>&lt;<span style=color:#f92672>my-button</span>&gt;&lt;/<span style=color:#f92672>my-button</span>&gt;
+</code></pre></div><p>Composant <strong><code>&lt;my-button></code></strong> disabled (présence de l&rsquo;attribut <strong>disabled</strong> impliquant une valeur égale à <strong>true</strong>) :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>&lt;<span style=color:#f92672>my-button</span> <span style=color:#a6e22e>disabled</span>&gt;&lt;/<span style=color:#f92672>my-button</span>&gt;
+</code></pre></div><blockquote>
+<p><strong>Note</strong> : les standards relatifs aux attributs des balises HTML recommandent une écriture en <strong>snake-case</strong> (en reprenant l&rsquo;exemple : <strong>is-disabled</strong>), et pas <strong>camelCase</strong> (<strong>isDisabled</strong>). Le camelCase pourra par ailleurs provoquer des problèmes de compatiblité avec certains frameworks.</p>
+</blockquote>
+<p>Revenons-en maintenant à ce que ce renommage implique. Si nous décidions de renommer purement et simplement l&rsquo;attribut dans le composant et que nous effectuions la montée de version dans la foulée, cela représenterait un breaking change car si des utilisateurs utilisaient un composant <strong><code>&lt;my-button></code></strong> avec l&rsquo;attribut <strong>isDisabled</strong> et non pas <strong>disabled</strong>, le composant cesserait de fonctionner correctement et cela demanderait forcément une mise-à-jour de chaque composant <strong><code>&lt;my-button></code></strong> dans leur application.</p>
+<p>Pour éviter un changement soudain et trop brutal, nous pouvons aussi décider de mettre l&rsquo;attribut <strong>isDisabled</strong> en <strong>deprecated</strong> dans la documentation et dans les warnings tout en le gardant dans le composant. Ce dernier devra alors pouvoir supporter les 2 attributs <strong>isDisabled</strong> et <strong>disabled</strong> en même temps. Ainsi, les utilisateurs de la librairie auront le temps de se mettre à jour quant au nouvel attribut durant cette période de transition mais n&rsquo;y seront pas contraints jusqu&rsquo;à l&rsquo;arrêt du support de l&rsquo;ancien attribut, dans une prochaine version majeure à définir.</p>
+<p>Comme vous l&rsquo;aurez compris, la gestion des breaking changes dans le développement d&rsquo;une librairie est assez délicate et demande du temps. C&rsquo;est pourquoi il est préférable de grouper plusieurs breaking changes dans une même version majeure, de manière à ne pas avoir à monter le numéro majeur de la version trop souvent.</p>
+<h2 id=et-git-dans-tout-ça->Et Git dans tout ça ?</h2>
+<p>Comme évoqué plus haut, nos livraisons de nouvelles versions en production sont effectuées par notre CI/CD lors de changements sur la branche <strong>release</strong>, de manière à pouvoir regrouper plusieurs sujets sur une même montée de version.</p>
+<p>De plus, juste avant de fusionner la branche master sur la branche release, nous tirons une branche depuis la master afin de monter la version (<strong><code>npm version minor</code></strong> par exemple) et de mettre-à-jour la release note avec les modifications apportées.</p>
+<p>Voici un schéma récapitulatif :</p>
+<p><img src=git-design-system.png alt="GIT environnement"></p>
+<h2 id=les-erreurs-que-nous-avons-faites>Les erreurs que nous avons faites</h2>
+<p>Nous avons commis plusieurs erreurs lors du développement de la librairie. Et comme évoqué précédemment, certaines ont pu impliquer une montée de version majeure en passant ou non par du deprecated. Le mauvais nommage d&rsquo;attributs de certains de nos composants ou le fait d&rsquo;avoir livré de nouvelles versions à chaque changement sur la branche master en font partie.</p>
+<h2 id=bilan>Bilan</h2>
+<p>Pour récapituler, nous nous sommes basés sur <strong>semver</strong> pour versionner notre librairie de composants, oscillant entre montées de versions majeures, mineures et de correctif. L&rsquo;un des points d&rsquo;attention du <strong>semver</strong> se trouve dans l&rsquo;utilisation des numéros majeurs de version, impliquant dans de nombreux cas des Breaking changes. Ces derniers demandent une attention particulière des développeurs dans leur gestion, en décidant de passer ou non par du <strong>deprecated</strong>. Dans le cas contraire, il faudra bien faire attention à ne pas changer de version majeure trop souvent, de peur d&rsquo;être une contrainte trop grande pour les consommateurs de la librairie.</p>
+<p>Une librairie, comme toute autre application web, a besoin d&rsquo;un environnement adapté. La CI/CD doit être en mesure de livrer en production de nouvelles versions, contenant un ensemble maîtrisé de fonctionnalités et de correctifs. Pour cela, nous utilisons une branche dédiée à la livraison des nouvelles versions, nommée <strong>release</strong>.</p>
+<p>Pour terminer, il faut garder à l&rsquo;esprit que faire au plus simple pour les utilisateurs de la librairie reste l&rsquo;un des points les plus cruciaux, et que c&rsquo;est autour de ce principe que les solutions doivent se baser.</p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2022-06-24T13:33:19+02:00>
+24 juin 2022
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/guillaume-collet/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Guillaume COLLET" src=https://blog.talanlabs.com/authors/guillaume-collet.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/guillaume-collet/>Guillaume COLLET</a></h1>
+<p class="mt-0 mb-2">Développeur Web</p>
+</div>
+<div class=mb-6>
+<a href=https://www.linkedin.com/in/guillaume-collet-75a128146 target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/front>front</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/design-system>#design system</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/library>#library</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/versioning>#versioning</a>
+</div>
+</div>
+</div>
+</div>
+<aside>
+<h4 class="subtitle mt-10 mb-8"><i class="fas fa-forward"></i> Vous aimerez peut-être...</h4>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/tailwind-design-system/>
+<img class="border object-cover w-full m-0 max-w-md" src=/tailwind-design-system/cover_hu3356174f3829aba4f933df1149b3dc51_5255_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/front>front</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/design>design</a>
+</div>
+<a href=/tailwind-design-system/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Tailwind - Design System</h2></a>
+<div class=my-1>
+<span>Guillaume COLLET</span>,
+<time datetime=2021-10-15T15:53:03+02:00>
+15 octobre 2021
+</time>
+</div>
+<p class="my-1 text-slate-500">Qu’est-ce que Tailwind ? Tailwind est un framework CSS utilisant l’approche Utility first.</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

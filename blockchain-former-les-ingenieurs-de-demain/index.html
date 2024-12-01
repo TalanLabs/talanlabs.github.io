@@ -1,0 +1,460 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Blockchain : former les ingénieurs de demain | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Depuis deux ans j’ai la chance et le plaisir d’intervenir auprès des étudiants de l’EPF, école d’ingénieurs généraliste dont j’ai été diplômé en 2015.">
+<meta property="og:title" content="Blockchain : former les ingénieurs de demain">
+<meta property="og:description" content="Depuis deux ans j’ai la chance et le plaisir d’intervenir auprès des étudiants de l’EPF, école d’ingénieurs généraliste dont j’ai été diplômé en 2015.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/blockchain-former-les-ingenieurs-de-demain/"><meta property="og:image" content="https://blog.talanlabs.com/blockchain-former-les-ingenieurs-de-demain/cover.png"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2020-01-18T17:52:05+01:00">
+<meta property="article:modified_time" content="2020-01-18T17:52:05+01:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/blockchain-former-les-ingenieurs-de-demain/cover.png">
+<meta name=twitter:title content="Blockchain : former les ingénieurs de demain">
+<meta name=twitter:description content="Depuis deux ans j’ai la chance et le plaisir d’intervenir auprès des étudiants de l’EPF, école d’ingénieurs généraliste dont j’ai été diplômé en 2015.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://alainnicolas.fr/blog/blockchain-former-les-ingenieurs-de-demain/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Blockchain : former les ingénieurs de demain</h1>
+<figure class="cover image">
+<img src=/blockchain-former-les-ingenieurs-de-demain/cover.png width=1920 height=1080 alt="illustration de l'article">
+</figure>
+<div class=paragraph>
+<p>Depuis deux ans j’ai la chance et le plaisir d’intervenir auprès des étudiants de l’EPF, école d’ingénieurs généraliste dont j’ai été diplômé en 2015. Passer de l’autre côté de l’enseignement n’est pas une mince affaire, surtout sans expérience, mais revenir dans «son» école facilite largement le changement de posture.</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=./bc_epf_logo.png alt="Logo EPF">
+</div>
+</div>
+<div class=paragraph>
+<p>Une école d’ingénieurs a la lourde responsabilité de maintenir sa formation à jour, pour préparer les étudiants du mieux possible à leur entrée dans le monde du travail.
+C’est ainsi que Talan a développé un partenariat avec l’EPF, pour un cycle de formations sur le thème de la Blockchain pour ses 4ème et 5ème années de la filière informatique.</p>
+</div>
+<div class=sect1>
+<h2 id=_faire_passer_ses_idées>Faire passer ses idées</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Notre premier challenge était de créer une formation théorique.
+Travailler sur cette technologie relativement jeune et aux applications disruptives apporte des convictions et des idées fortes sur ce que la blockchain peut faire, mais aussi et surtout sur ce qu’elle ne peut pas faire.
+Les implications de la mise en place d’un tel système distribué ont plus d’impacts sur les organisations et les personnes que la technologie en elle-même sur les systèmes d’information.
+Pour autant, face à un public étudiant, il convient de regarder de près les composantes techniques de la blockchain pour en saisir l’intérêt.</p>
+</div>
+<div class=paragraph>
+<p>De nombreuses idées à faire passer, sur des thèmes très vastes et variés, de la plus petite brique technique à la conduite du changement, en passant par des concepts complexes, la gouvernance…​</p>
+</div>
+<div class=paragraph>
+<p>Formaliser et organiser ces idées en thèmes, les articuler de manière logique et fluide, en détaillant les concepts sans forcément entrer trop en détails dans l’implémentation, s’adapter aux connaissances supposées d’étudiants que l’on ne connaît pas…​ Autant de challenges à relever, mais non sans intérêt : c’est bel et bien le meilleur moyen de se rendre compte des concepts que l’on maitrise et de ceux qui méritent que l’on s’y attarde.</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=./bc_epf_definition.png alt="Définition des Blockchain & DLT en 5 mots">
+</div>
+<div class=title>Définition des Blockchain & DLT en 5 mots</div>
+</div>
+<div class=paragraph>
+<p>Grâce à de nombreuses présentations « à blanc » du support face aux collègues, on fait émerger les questions qui subsistent, les passages trop rapides sur des points complexes et, surtout, il devient possible de roder une première version du discours qui se doit de rester interactif et illustré pour intéresser.</p>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_du_baptême_du_feu_au_discours_rodé>Du baptême du feu au discours rodé</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Après une première édition de la formation en conditions réelles, face à des étudiants qui semblent intéressés et posent des dizaines de questions, nous ne comptions pas en rester là.
+L’objectif était de passer d’une formation basique à un parcours complet couvrant plusieurs technologies de Blockchain et DLT, à destination de nos clients.</p>
+</div>
+<div class=paragraph>
+<p>Il est clair qu’une formation sur un sujet aussi mouvant doit rester vivante et évolutive, même si cela suppose un investissement constant.</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=./bc_epf_theorie.png alt="Formation théorique @ EPF — 04/06/2019">
+</div>
+<div class=title>Formation théorique @ EPF — 04/06/2019</div>
+</div>
+<div class=paragraph>
+<p>C’est ainsi que les étudiants de la promotion 2020 ont bénéficié d’une formation largement revue, telle que nous la délivrons à nos clients ou lors de BBL.</p>
+</div>
+<div class=paragraph>
+<p>Pour éviter la perte de spontanéité et la routine, j’essaye de changer au moins un slide par présentation, de toujours adapter le contenu au public ou à la durée, voire de prendre des angles très différents, comme à l’https://www.esgi.fr/[ESGI] (une école d’informatique) où le thème était « <strong>Blockchain : des métiers pour tous</strong> ».</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=./bc_epf_logo_esgi.png alt="bc epf logo esgi">
+</div>
+</div>
+<div class=paragraph>
+<p>Adapter son discours au public est indispensable : face à un public très haut niveau et fonctionnel on survole les aspects techniques, tandis que face à des développeurs il convient souvent de descendre dans les entrailles de la blockchain, pour évoquer les algorithmes de consensus, etc.</p>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_de_la_théorie_à_la_pratique_il_ny_a_que_la_création_dun_tp>De la théorie à la pratique, il n’y a que la création d’un TP</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Sans en avoir la consigne directe de la part de l’EPF, nous souhaitions limiter le temps de présentation théorique pour accorder du temps à la pratique.</p>
+</div>
+<div class=paragraph>
+<p>De manière à rester relativement abordables et en accord avec une idée de réelle décentralisation, nous avons choisi dans un premier temps de nous concentrer sur Ethereum, probablement la blockchain la plus accessible.</p>
+</div>
+<div class=paragraph>
+<p>Mais par où commencer ?</p>
+</div>
+<div class=sect2>
+<h3 id=_cryptozombies>CryptoZombies</h3>
+<div class=paragraph>
+<p>Nos premières expérimentations sur Ethereum remontent à fin 2016, avant qu’un écosystème ne se mette parfaitement en place.
+Mais en gardant un œil sur les nouveautés nous ne pouvions rater la franche réussite de <a href=https://cryptozombies.io/fr/>CryptoZombies</a>, sûrement le meilleur moyen de découvrir le langage Solidity des <em>smart contracts</em> Ethereum.</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=./bc_epf_cryptozombies.jpeg alt="bc epf cryptozombies">
+</div>
+</div>
+<div class=paragraph>
+<p>CryptoZombies a été créé par <a href=https://loomx.io/>Loom Network</a> afin de rendre plus facile l’apprentissage de Solidity.
+Persuadés de leur pertinence, nous estimons qu’il faut faire profiter de ces excellents exercices à nos étudiants.
+Au-delà de la facilité que cela représente pour nous, il faut reconnaitre que CryptoZombies est bien pensé et surtout très ergonomique, il serait dommage de créer une formation dédiée alors que la communauté s’accorde à l’utiliser.</p>
+</div>
+<div class=paragraph>
+<p>En créant une armée de zombies, les étudiants acquièrent les bases techniques du développement de <em>smart contracts</em>, il est ensuite temps de passer aux choses encore plus sérieuses !</p>
+</div>
+</div>
+<div class=sect2>
+<h3 id=_vote_décentralisé>Vote décentralisé</h3>
+<div class=paragraph>
+<p>Pour le saut dans le grand bain, nous avons choisi de mettre en place un TP visant à développer une application de vote décentralisée.</p>
+</div>
+<div class=paragraph>
+<p>De manière à ne laisser personne en chemin, mais aussi pour faciliter l’encadrement de ce TP, nous avons choisi de rédiger un support le plus complet possible, ainsi que de proposer un jeu de tests unitaires qui valident étape par étape les développements.</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=./bc_epf_pdf.png alt="Page de garde du support de TP">
+</div>
+<div class=title>Page de garde du support de TP</div>
+</div>
+<div class=paragraph>
+<p>Cette préparation en amont est loin d’être anodine, et s’est déroulée sur plusieurs semaines :</p>
+</div>
+<div class=ulist>
+<ul>
+<li>
+<p>Réalisation du système de vote minimal (possibilité de créer une élection avec des candidats et de voter pour l’un d’entre eux à chaque élection) et validation des développements par des tests unitaires</p>
+</li>
+<li>
+<p>Rédaction d’un premier jet du support, basé sur des souvenirs des développements qui venaient d’avoir lieu</p>
+</li>
+<li>
+<p>Réalisation du TP par 10 de nos collègues, sur la base du support uniquement, afin d’obtenir un maximum de retours</p>
+</li>
+<li>
+<p>Correction et amélioration du support, mais aussi des exercices à réaliser (trouver la bonne balance entre le guidage total et l’incompréhension des consignes, établir la liste exhaustive des pré-requis, etc.)</p>
+</li>
+<li>
+<p>Nouveaux tests en conditions quasi-réelles, etc.</p>
+</li>
+</ul>
+</div>
+<div class=paragraph>
+<p>Et puis le jour J arrive.
+Une soixantaine d’étudiants doivent suivre nos instructions, à commencer par la mise en place du poste de développement.
+Et c’est bien là que les premières difficultés apparaissent.</p>
+</div>
+<div class=imageblock>
+<div class=content>
+<img src=./bc_epf_pratique.png alt="TP @ EPF — 04/06/2019">
+</div>
+<div class=title>TP @ EPF — 04/06/2019</div>
+</div>
+<div class=paragraph>
+<p>Évidement, sur le PC d’un développeur, la majorité des pré-requis est déjà présente (variables d’environnement maîtrisées, outils installés et maîtrisés, etc.).
+Mais sur des postes aux performances et systèmes d’exploitation variables, avec des niveaux de maîtrise très hétérogènes et des consignes parfois survolées, les premières salves de questions surprennent.
+Tout ce qui nous paraît évident ne l’est pas pour tout le monde, c’est bien là notre première leçon.
+Ce qui nous paraît complexe ne l’est pas pour tout le monde non plus, et c’est là notre meilleure surprise.</p>
+</div>
+<div class=paragraph>
+<p>Si nous attendions des difficultés dans la compréhension et la rédaction des <em>smart contracts</em> par exemple, le gros des problématiques rencontrées est finalement au niveau de leurs appels depuis une page web.
+Ces notions de <em>smart contracts</em> et leur langage (Solidity) ont beau être relativement novatrices, pour des débutants le développement web l’est tout autant.</p>
+</div>
+</div>
+</div>
+</div>
+<div class=sect1>
+<h2 id=_retour_dexpérience>Retour d’expérience</h2>
+<div class=sectionbody>
+<div class=paragraph>
+<p>Nous étions venus pour transmettre des connaissances, mais aussi pour bénéficier des enseignements que des étudiants ont à transmettre.
+En mettant en place un climat de confiance (facilité lorsque l’on sort de la même école), il devient possible de récolter des avis francs et des idées d’amélioration au plus près du terrain.</p>
+</div>
+<div class=paragraph>
+<p>Sur ces journées de formation, si la balance théorie / pratique a paru bonne, les difficultés rencontrées dans le développement web ont plombé le ressenti des étudiants.</p>
+</div>
+<div class=paragraph>
+<p>Nul doute que nous prenons en compte ces problèmes pour tenter de les effacer lors de la prochaine session.
+Par exemple en fournissant plus de tests unitaires qui guident de manière plus stricte, ou une interface web attrayante plus satisfaisante pour tous.</p>
+</div>
+<div class=paragraph>
+<p><br></p>
+</div>
+<hr>
+<div class=paragraph>
+<p><br></p>
+</div>
+<div class=paragraph>
+<p>Retrouvez la vidéo de présentation de ces formations auprès des étudiants de l’EPF réalisée par Talan :</p>
+</div>
+<div class="videoblock text-center">
+<div class=content>
+<iframe width=720 height=400 src="https://www.youtube.com/embed/PQ1Vc80qLZ4?rel=0" frameborder=0 allowfullscreen></iframe>
+</div>
+</div>
+<div class=paragraph>
+<p><br></p>
+</div>
+<hr>
+<div class=paragraph>
+<p><br></p>
+</div>
+<div class=paragraph>
+<p><em>Au-delà de ces formations ponctuelles de quelques jours en 4e et 5e années, Talan Labs s’est aussi lancé dans l’accompagnement d’un groupe de projet plus restreint (5 en 2018/2019 puis 8 en 2019/2020), toujours sur la thématique de la blockchain.</em></p>
+</div>
+<div class=paragraph>
+<p><em>C’est l’objet d’un <a href=https://alainnicolas.fr/blog/blockchain-projet-scolaire-monde-entreprise/>autre article</a> !</em></p>
+</div>
+<div class=paragraph>
+<p><br></p>
+</div>
+<hr>
+<div class=paragraph>
+<p><br>
+<em>Cet article a initialement été publié sur <a href="https://medium.com/@Alain_Ncls/blockchain-former-les-ing%C3%A9nieurs-de-demain-e0044e9a2e8c?source=friends_link&sk=e750e36ac6c0411048cfad9179560be8">Medium</a>.</em></p>
+</div>
+</div>
+</div>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2020-01-18T17:52:05+01:00>
+18 janvier 2020
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/alain-nicolas/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Alain NICOLAS" src=https://blog.talanlabs.com/authors/alain_nicolas.png></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/alain-nicolas/>Alain NICOLAS</a></h1>
+<p class="mt-0 mb-2">Développeur Blockchain & DLT</p>
+</div>
+<div class=mb-6>
+<a href=https://twitter.com/alain_ncls target=_blank class="icon is-medium"><i class="fab fa-lg fa-twitter text-[#1DA1F2]"></i></a>
+<a href=https://www.linkedin.com/in/alainnicolas target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+<a href=https://github.com/alainncls target=_blank class="icon is-medium"><i class="fab fa-lg fa-github"></i></a>
+<a class="icon is-medium" href=https://alainncls.medium.com/ target=_blank><i class="fab fa-lg fa-medium"></i></a>
+<a href=https://alainnicolas.fr target=_blank class="icon is-medium"><i class="fas fa-lg fa-link"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/blockchain>#blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/epf>#EPF</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/formation>#formation</a>
+</div>
+</div>
+</div>
+</div>
+<aside>
+<h4 class="subtitle mt-10 mb-8"><i class="fas fa-forward"></i> Vous aimerez peut-être...</h4>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/lego4devops/>
+<img class="border object-cover w-full m-0 max-w-md" src=/lego4devops/cover_hu1a2a0d8aad8bc5acd0682841c2b122c5_136019_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+</div>
+<a href=/lego4devops/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Lego4DevOps</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2019-03-27T19:55:37Z>
+27 mars 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Parce qu’il n’y a pas que les coachs agiles qui ont le droit de vous faire jouer au Lego — François - Coach …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/experience-share2gether/>
+<img class="border object-cover w-full m-0 max-w-md" src=/experience-share2gether/cover_hu6185707ac421f7d865e76254855e6e18_1346608_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/experience-share2gether/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Share2gether : collaboration avec l'EPF</h2></a>
+<div class=my-1>
+<span>Sarah MAURET</span>,
+<time datetime=2019-02-15T12:05:59+01:00>
+15 février 2019
+</time>
+</div>
+<p class="my-1 text-slate-500">Le contexte Une des grandes problématiques lorsque l’on constitue une équipe autour des technologies …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/meetup-asseth-devcon3-talan-ethereum/>
+<img class="border object-cover w-full m-0 max-w-md" src=/meetup-asseth-devcon3-talan-ethereum/cover_hu1a83641b92ebcf10e1e303188c94abaa_108233_350x180_resize_q75_box.jpg width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/blockchain>blockchain</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/event>event</a>
+</div>
+<a href=/meetup-asseth-devcon3-talan-ethereum/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Meetup Asseth chez Talan : retour sur Devcon3</h2></a>
+<div class=my-1>
+<span>Alain NICOLAS</span>,
+<time datetime=2017-11-16T16:10:55Z>
+16 novembre 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Lundi 13 novembre 2017 avait lieu le meetup de l’Asseth (Association Ethereum française).</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

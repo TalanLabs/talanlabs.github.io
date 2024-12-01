@@ -1,0 +1,310 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Les microservices pour une architecture orientée web n°4 | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Simple comme Spring Boot Cet article s’insère dans la série « microservices » écrite par François Berthault dans le cadre de la participation de Talan Labs à Devoxx 2017, du 5 au 7 avril prochains au Palais des Congrès de Paris.">
+<meta property="og:title" content="Les microservices pour une architecture orientée web n°4">
+<meta property="og:description" content="Simple comme Spring Boot Cet article s’insère dans la série « microservices » écrite par François Berthault dans le cadre de la participation de Talan Labs à Devoxx 2017, du 5 au 7 avril prochains au Palais des Congrès de Paris.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/microservices-partie-4-spring-boot/"><meta property="og:image" content="https://blog.talanlabs.com/microservices-partie-4-spring-boot/cover.png"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2017-03-14T08:21:08+00:00">
+<meta property="article:modified_time" content="2017-03-14T08:21:08+00:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/microservices-partie-4-spring-boot/cover.png">
+<meta name=twitter:title content="Les microservices pour une architecture orientée web n°4">
+<meta name=twitter:description content="Simple comme Spring Boot Cet article s’insère dans la série « microservices » écrite par François Berthault dans le cadre de la participation de Talan Labs à Devoxx 2017, du 5 au 7 avril prochains au Palais des Congrès de Paris.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/microservices-partie-4-spring-boot/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Les microservices pour une architecture orientée web n°4</h1>
+<figure class="cover image">
+<img src=/microservices-partie-4-spring-boot/cover.png width=300 height=300 alt="illustration de l'article">
+</figure>
+<h1 id=simple-comme-spring-boot>Simple comme Spring Boot</h1>
+<p><em>Cet article s’insère dans la série « microservices » écrite par François Berthault dans le cadre de la participation de Talan Labs à <em><a href=https://www.devoxx.fr/><em>Devoxx 2017</em></a></em>, du 5 au 7 avril prochains au Palais des Congrès de Paris.</em></p>
+<p>Maintenant que l'<strong>architecture en microservices</strong> n&rsquo;a plus de mystère pour vous, nous pouvons nous intéresser à <strong>son implémentation</strong>. Et comme nous l&rsquo;avons vu dans un <a href=https://blog.talanlabs.com/architecture-microservices-partie-3-organisation/>article précédent</a>, il existe de** nombreux frameworks** parmi lesquels vous pouvez faire votre choix. Si par exemple vous ne jurez que par <a href=https://github.com/google/guice>Guice</a>, <a href=http://www.dropwizard.io/>Dropwizard</a> est fait pour vous. <strong>Spring Boot</strong> reste tout de même la meilleure solution. C’est le projet qui a rendu à Spring sa <strong>simplicité d’origine</strong> (et sans XML).</p>
+<h2 id=spring-boot--le-super-couteau-suisse>Spring Boot : le super couteau suisse</h2>
+<p><img src=spring-boot-project-logo.png alt=spring-boot-project-logo>
+Si votre ordinateur est équipé d&rsquo;un <strong>JDK8</strong> et d&rsquo;un <strong>Maven3</strong> (ou d&rsquo;un <strong>Gradle</strong>), alors vous êtes prêt !</p>
+<p>Spring fournit un site de <strong>configuration automatique</strong> <a href=http://start.spring.io/>start.spring.io</a> pour les développeurs Java, <a href=http://www.groovy-lang.org/>Groovy</a> ou <a href=https://kotlinlang.org/>Kotlin</a> pressés. Mais prenons le temps d&rsquo;analyser les éléments qui composent un <strong>microservice Spring Boot</strong>.</p>
+<p>Pour rappel, le framework <a href=http://projects.spring.io/spring-framework/>Spring</a> est un <strong>conteneur dit léger</strong> qui permet d’obtenir une infrastructure similaire à celle d’un <strong>serveur d’application Java EE</strong> plus lourd. Spring Boot est un framework qui permet d&rsquo;obtenir une <strong>application Spring</strong> (microservice) avec un minimum d&rsquo;effort.</p>
+<h2 id=pom-bom-et-dépendances>&ldquo;POM&rdquo;, &ldquo;BOM&rdquo; et dépendances</h2>
+<p>Le point de départ est le <strong>&ldquo;modèle objet projet&rdquo;</strong> (appelé POM pour <em>Project Object Model</em>). Il contient une description détaillée de votre projet. La solution la plus simple est un héritage de la dépendance <strong>&ldquo;spring-boot-starter-parent&rdquo;</strong>.
+<img src=code1-1.jpg alt=code1>
+Seulement, vous n&rsquo;aviez pas l&rsquo;intention de réserver cette place unique et privilégiée à <strong>Spring Boot</strong>, votre équipe possède certainement déjà son <strong>&ldquo;parent pom&rdquo;</strong>. Pas de panique, Spring a pensé à tout !</p>
+<p><img src=code2.jpg alt=code2></p>
+<p>Spring, Jersey et d&rsquo;autres projets commencent à utiliser ce procédé d'<strong>import de dépendance</strong>. Cette utilisation d&rsquo;un <strong>BOM</strong> (pour <em>Bill Of Materials</em>) permet d&rsquo;ajouter une dépendance de type <strong>POM</strong> dans le <strong>scope import</strong> de Maven. Cette fonctionnalité mal connue est pourtant présente depuis 2008.</p>
+<h2 id=make-jar-not-war>Make JAR not WAR</h2>
+<p>La magie de Spring Boot réside dans le <strong>packaging de votre application</strong>. C&rsquo;est par défaut un <strong>jar &ldquo;self-contained&rdquo;</strong> (jar exécutable contenant l’<strong>ensemble des dépendances</strong> de l’application - aussi appelé <strong>&ldquo;fat jar&rdquo;</strong>). Le package est effectué par le plugin Maven <strong>&ldquo;spring-boot-maven-plugin&rdquo;</strong>.</p>
+<p><img src=code3.jpg alt=code3></p>
+<h2 id=les-starters>Les starters</h2>
+<p>Le projet Spring Boot fournit un <strong>ensemble de starters</strong> (plus de 150 sont disponibles sur <a href=http://start.spring.io/>start.spring.io</a>). Un starter est un <strong>kit de dépendances auto-configurables</strong>. Ajouter la dépendance à <strong>&ldquo;spring-boot-starter-web&rdquo;</strong> et votre projet devient un <strong>mini-serveur Tomcat</strong> auto-porté dans votre jar, pouvant également exposer des <strong>ressources REST</strong>, sans la moindre configuration.</p>
+<p><img src=code4.jpg alt=code4></p>
+<p>Et si vous ne voulez pas de Tomcat et que votre serveur d&rsquo;application préféré est <strong>Jetty</strong>, une simple exclusion de la dépendance <strong>&ldquo;spring-boot-starter-tomcat&rdquo;</strong>, l&rsquo;ajout de** &ldquo;spring-boot-starter-jetty&rdquo;** et le tour est joué.</p>
+<h2 id=création-dune-application-microservice-avec-spring-boot>Création d’une application microservice avec Spring Boot</h2>
+<h3 id=une-classe-_main_>Une classe <em>main</em></h3>
+<p><img src=code5-1.jpg alt=code5></p>
+<p>Subtilement placée dans le plus petit <strong>sous-package du code</strong>, la <strong>classe principale</strong> annotée uniquement <strong>@SpringBootApplication</strong> va automatiquement <strong>scruter vos dépendances</strong> et activer toutes les fonctionnalités présentes. Dans l’exemple, la présence de <strong>&ldquo;spring-boot-starter-web&rdquo;</strong>, activera et configurera les briques de base de <strong>Spring-Core</strong> (dont le &ldquo;scan-package&rdquo;), <strong>Tomcat</strong> et <strong>JAX-RS</strong> (pour la partie REST). Cela fonctionne également pour <strong>tous les autres starters de spring-boot</strong> (du moins si votre classe principale est bien placée).</p>
+<blockquote>
+<p><em>**&ldquo;Convention over Configuration&rdquo; **__@SpringBoot&rsquo;s Team</em></p>
+</blockquote>
+<h3 id=un-controller-rest>Un controller REST</h3>
+<p><img src=code6.jpg alt=code6></p>
+<p><strong>&ldquo;Spring-mvc&rdquo;</strong> est l&rsquo;implémentation par défaut de <strong>JAX-RS</strong>. Ajoutez la dépendance <strong>&ldquo;spring-boot-starter-jersey&rdquo;</strong>, si vous préférez celle de Jersey.</p>
+<h3 id=adieu-les-fichiers-xml-bonjour-applicationyml>Adieu les fichiers XML, bonjour &ldquo;application.yml&rdquo;</h3>
+<p><img src=code7.jpg alt=code7></p>
+<p>L&rsquo;ensemble des propriétés sont disponibles sur l'<a href=http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html>Appendix Spring BOOT</a>. La liste est longue, n&rsquo;ajoutez dans votre projet que les propriétés dont vous voulez <strong>surcharger les valeurs</strong> par défaut.</p>
+<h2 id=3-2-1--compilez-packagez-et-lancez-vous->3, 2, 1 &mldr; compilez, packagez et lancez vous !</h2>
+<p><img src=code8.jpg alt=code8></p>
+<p>Et voilà, votre microservice a démarré.</p>
+<p><img src=code14.jpg alt=code14></p>
+<h2 id=quelques-features-indispensables>Quelques Features indispensables</h2>
+<h3 id=actuator>Actuator</h3>
+<p><strong>Actuator</strong> vous permet de monitorer et d&rsquo;interagir avec votre application. Il ajoute :</p>
+<ul>
+<li>
+<p>des endpoints comme :</p>
+<pre><code>* **/health** : les informations sur l'état de santé,
+* **/info** : la description de votre application (nom, version, commit, ...),
+* **/env** : les valeurs des propriétés spring,
+* **/logfile** : pour voir les dernières logs dans votre navigateur web par exemple (qu'il est pratique de ne plus se connecter sur le serveur et d'ouvrir le bon fichier log),
+* des métriques sur les requêtes HTTP et sur l'état de la JVM ...
+</code></pre>
+</li>
+<li>
+<p>des outils de monitoring comme <strong>ApplicationPidFileWriter</strong> qui créé un fichier contenant le PID de l&rsquo;application (très utile pour vos OPS) et son équivalent pour le port d&rsquo;exécution <strong>EmbeddedServerPortFileWriter</strong>.</p>
+</li>
+</ul>
+<p>Et si vous ne voulez pas l&rsquo;exposer en REST, <a href=http://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html>Spring Boot</a> vous le permet aussi en <strong>Telnet</strong>, en <strong>JMX</strong> et en <strong>SSH</strong>.</p>
+<h3 id=la-gestion-des-logs>La gestion des logs</h3>
+<p><strong>Spring Boot</strong> vous fournira un <a href=http://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html>kit complet</a> de <strong>gestion des logs</strong> (dépendances et configuration de logback) pour aller directement en production. Si votre équipe est « DevOps », que vous indexez vos fichiers de logs afin de les exploiter, Spring ne vous a pas oubliez. L’intégration avec des outils comme <a href=https://www.splunk.com/fr_fr>Splunk</a> ou <strong>ELK</strong> (<a href=https://www.elastic.co>ElasticSearch</a>, <a href=https://www.elastic.co/products/logstash>Logstash</a> et <a href=https://www.elastic.co/products/kibana>Kibana</a>) a été mis en place.</p>
+<h3 id=spring-boot-devtools>Spring Boot DevTools</h3>
+<p>Cet outil vous permettra de <strong>redémarrer automatiquement votre application</strong> à chacune des modifications de votre code pendant la phase de <a href=http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html>développement</a>. Que de temps autrefois perdu à redémarrer son serveur.</p>
+<h3 id=et-le-jar-se-transforma-en-un-bash>Et le jar se transforma en un bash&mldr;</h3>
+<p>L&rsquo;idéal serait maintenant d&rsquo;avoir un <strong>script de démarrage</strong> (<em>start/stop/status</em>) afin d&rsquo;éviter les commandes disgracieuses de type <strong>&ldquo;java –jar&rdquo;</strong> et <strong>&ldquo;kill -1&rdquo;</strong> pour stopper notre service. Spring a encore pensé à tout puisqu’il <strong>package le jar</strong> avec un <a href=https://github.com/spring-projects/spring-boot/blob/master/spring-boot-tools/spring-boot-loader-tools/src/main/resources/org/springframework/boot/loader/tools/launch.script>lanceur</a> !</p>
+<p><img src=code10.jpg alt=code10></p>
+<p>La variable **&ldquo;server.port&rdquo; **du fichier de configuration <strong>&ldquo;application.yml&rdquo;</strong> a ainsi été surchargée par une variable <a href=https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html>d&rsquo;environnement</a>.</p>
+<h3 id=même-dockerhttpswwwdockercom-est-prévu>Même <a href=https://www.docker.com/>Docker</a> est prévu</h3>
+<p>À l&rsquo;aide d&rsquo;un simple <strong>plugin Maven</strong>&mldr;</p>
+<p><img src=code11.jpg alt=code11></p>
+<p>&mldr;et d&rsquo;un <strong>Dockerfile</strong> ! Votre application se transformera en une <strong>image Docker</strong> <a href=https://spring.io/guides/gs/spring-boot-docker/>prête à l&rsquo;emploi</a>.</p>
+<p><img src=code12.jpg alt=code12></p>
+<p>``Il ne reste plus qu&rsquo;à lancer votre image&mldr;.</p>
+<p><img src=code13.jpg alt=code13></p>
+<p><a href=http://www.commitstrip.com/fr/2016/12/10/a-server-thats-so-2014/><img src=mini-docker.png alt="Quand une développeur et un sysadmin discute &mldr;">
+</a> <em>Quand une développeur et un sysadmin discute</em></p>
+<h2 id=spring-boot--un-outil-simple-parfait-pour-créer-des-microservices>Spring Boot : un outil simple, parfait pour créer des microservices</h2>
+<p>L&rsquo;outillage de Spring Boot est vraiment impressionnant et comporte de nombreuses autres fonctionnalités comme l&rsquo;intégration de <strong>Flyway</strong>, d'<strong>Elastic Search</strong>, de <strong>MongoDB</strong>, de <strong>Kafka</strong>, de la sécurité, du projet** Spring Data JPA**, de l'<strong>Hateoas</strong>, de <strong>Logstash</strong> et de très nombreux autres.</p>
+<p>L&rsquo;expérience et la <strong>maturité de l’éco-système Spring</strong> fait ses preuves. Au niveau de la dynamique, des projets et des versions, rien à redire, l’outil est très vivant. D&rsquo;ailleurs, on attend <a href=http://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/>spring-boot 2.0</a> en version RELEASE pour bientôt !</p>
+<p>Prochaine étape : <a href=http://projects.spring.io/spring-cloud/>Spring Cloud</a> !</p>
+<p><img src=http://ryanjbaxter.com/wp-content/uploads/2015/09/spring-io-tree.png alt="Spring Boot : un outil simple, parfait pour créer des microservices">
+<em>© Ryan Baxter : ryanjbaxter.com</em></p>
+<p><em>Vous avez aimé cet article ? Découvrez ou redécouvrez les autres épisodes de la série « Les microservices pour une architecture orientée web » :</em></p>
+<p>_Partie 1 _<a href=https://blog.talanlabs.com/architecture-microservices-partie-1-definitions/>Les microservices pour une architecture orientée web n°1 : Définitions et caractéristiques</a></p>
+<p>_Partie 2 _<a href=https://blog.talanlabs.com/architecture-microservices-partie-2-changement-point-de-vue/>Les microservices pour une architecture orientée web n°2 : Un changement de point de vue
+</a></p>
+<p>_Partie 3 _<a href=https://blog.talanlabs.com/architecture-microservices-partie-3-organisation/>Les microservices pour une architecture orientée web n°3 : Organisation des équipes pour une projet d’architecture en microservices</a></p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2017-03-14T08:21:08Z>
+14 mars 2017
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/francois-berthault/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar François BERTHAULT" src=https://blog.talanlabs.com/authors/francois_berthault.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/francois-berthault/>François BERTHAULT</a></h1>
+<p class="mt-0 mb-2">Coach DevOps</p>
+</div>
+<div class=mb-6>
+<a href=https://twitter.com/fanfansama target=_blank class="icon is-medium"><i class="fab fa-lg fa-twitter text-[#1DA1F2]"></i></a>
+<a href=https://www.linkedin.com/in/fran%c3%a7ois-berthault-491a5850 target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+<a href=https://github.com/fanfansama target=_blank class="icon is-medium"><i class="fab fa-lg fa-github"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/back>back</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/cloud>cloud</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/framework>#framework</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/microservices>#Microservices</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/spring-boot>#Spring Boot</a>
+</div>
+</div>
+</div>
+</div>
+<aside>
+<h4 class="subtitle mt-10 mb-8"><i class="fas fa-forward"></i> Vous aimerez peut-être...</h4>
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+<div class=mb-3>
+<a href=/architecture-microservices-partie-3-organisation/>
+<img class="border object-cover w-full m-0 max-w-md" src=/architecture-microservices-partie-3-organisation/cover_hu02637152d1678e50f2efe6ac2f4723b6_345159_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/cloud>cloud</a>
+</div>
+<a href=/architecture-microservices-partie-3-organisation/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Les microservices pour une architecture orientée …</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2017-03-06T08:48:03Z>
+6 mars 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Organisation des équipes pour un projet d’architecture en microservices Cet article s’insère dans la série …</p>
+</div>
+</div>
+<div class=mb-3>
+<a href=/architecture-microservices-partie-2-changement-point-de-vue/>
+<img class="border object-cover w-full m-0 max-w-md" src=/architecture-microservices-partie-2-changement-point-de-vue/cover_hu3cb3c99f4d2ea946990f295772bc8156_50015_350x180_resize_box_3.png width=350 height=180 alt="illustration de l'article">
+</a>
+<div>
+<div class=mt-3>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/architecture>architecture</a>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/cloud>cloud</a>
+</div>
+<a href=/architecture-microservices-partie-2-changement-point-de-vue/ class="block my-1"><h2 class="text-xl font-bold text-slate-900 py-1">Les microservices pour une architecture orientée …</h2></a>
+<div class=my-1>
+<span>François BERTHAULT</span>,
+<time datetime=2017-02-27T12:46:03Z>
+27 février 2017
+</time>
+</div>
+<p class="my-1 text-slate-500">Un changement de point de vue Cet article s’insère dans la série “microservices” écrite par François Berthault …</p>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

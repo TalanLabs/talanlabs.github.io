@@ -1,0 +1,387 @@
+<!doctype html><html lang=fr-fr>
+<head><title> SAFE, c'est quoi? | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Safe Map (source : https://www.scaledagileframework.com)
+SAFe a été créé par Dean Leffingwell en 2011 afin d&rsquo;accompagner les entreprises dans le déploiement de l&rsquo;agilité à l&rsquo;échelle, à travers un framework structuré.">
+<meta property="og:title" content="SAFE, c'est quoi?">
+<meta property="og:description" content="Safe Map (source : https://www.scaledagileframework.com)
+SAFe a été créé par Dean Leffingwell en 2011 afin d&rsquo;accompagner les entreprises dans le déploiement de l&rsquo;agilité à l&rsquo;échelle, à travers un framework structuré.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/safe-cest-quoi/"><meta property="og:image" content="https://blog.talanlabs.com/safe-cest-quoi/cover.png"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2018-07-31T12:42:35+00:00">
+<meta property="article:modified_time" content="2018-07-31T12:42:35+00:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/safe-cest-quoi/cover.png">
+<meta name=twitter:title content="SAFE, c'est quoi?">
+<meta name=twitter:description content="Safe Map (source : https://www.scaledagileframework.com)
+SAFe a été créé par Dean Leffingwell en 2011 afin d&rsquo;accompagner les entreprises dans le déploiement de l&rsquo;agilité à l&rsquo;échelle, à travers un framework structuré.">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://blog.talanlabs.com/safe-cest-quoi/>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>SAFE, c'est quoi?</h1>
+<figure class="cover image">
+<img src=/safe-cest-quoi/cover.png width=1170 height=818 alt="illustration de l'article">
+</figure>
+<p><img src=cover.png alt="Safe Map"><em>Safe Map (source : <a href=https://www.scaledagileframework.com>https://www.scaledagileframework.com</a>)</em></p>
+<p>SAFe a été créé par Dean Leffingwell en 2011 afin d&rsquo;accompagner les entreprises dans le déploiement de l&rsquo;agilité à l&rsquo;échelle, à travers un framework structuré. L’agilité à l’échelle consiste à encadrer par une méthode la multiplication en volume des principes Agiles, ceux de SCRUM notamment.</p>
+<p>Pour développer ce framework, son auteur s&rsquo;est appuyé sur l&rsquo;ensemble des bonnes pratiques issues du lean, de la culture Agile et des REX des transformations d&rsquo;entreprises.</p>
+<h2 id=premier-contact-première-impression>Premier contact, première impression</h2>
+<p>La documentation de SAFe est riche, librement mise à disposition à travers le <a href=https://www.scaledagileframework.com/>site web</a> du Framework. Pour faciliter la navigation et la découverte de ce modèle, tout est accessible via une carte. Cette carte représente l&rsquo;ensemble du système mais révèle aussi toute la complexité de SAFe.</p>
+<p>Il est très agréable de disposer d’une carte pour contenir l’ensemble du framework. Cependant ce premier contact me laisse une impression mitigée car l&rsquo;objectif mis en avant par son auteur est louable mais lorsque je regarde la carte, ma première pensée est &ldquo;Des processus et des outils plus que les individus et leurs interactions&rdquo;. De plus on n’a pas une carte, mais trois, en fonction de la couverture de SAFe que l’on souhaite appliquer.</p>
+<h2 id=9-principes-pour-préserver-le-modèle>&ldquo;9 principes pour préserver le modèle&rdquo;</h2>
+<p>Conscient de la complexité d&rsquo;une mise à l&rsquo;échelle de l&rsquo;agilité, de la multitude de contextes auxquels les acteurs de la transformation sont confrontés au quotidien, l&rsquo;auteur a défini des principes qui servent de barrières.</p>
+<p>Ces principes sont des gardiens du modèle dans le cas où les pratiques recommandées par SAFe ne peuvent pas être appliquées. Ces barrières définissent les latitudes dans lesquelles nous pouvons adapter le framework.</p>
+<p>Ces 9 principes sont:</p>
+<ol>
+<li>Adopter une vision économique</li>
+<li>Appliquer la pensée systémique</li>
+<li>Assumer la variabilité, préserver les options</li>
+<li>Construire progressivement avec des cycles d&rsquo;apprentissage rapides et intégrés</li>
+<li>Poser des Jalons permettant de tester et aligner régulièrement le système de travail</li>
+<li>Visualiser et limiter les <em>Work in Progress</em>, réduire les tailles de lots et gérer les longueurs de file d&rsquo;attente</li>
+<li>Appliquer une cadence et se synchroniser avec la planification inter-domaine</li>
+<li>Déverrouiller la motivation intrinsèque des collaborateurs</li>
+<li>Décentraliser la prise de décision</li>
+</ol>
+<p>A leur lecture, rien de révolutionnaire, ni de choquant, que du bon sens au final, non ?</p>
+<h2 id=4-valeurs-pour-orienter-les-comportements>&ldquo;4 valeurs pour orienter les comportements&rdquo;</h2>
+<p>En plus de ces 9 principes, le créateur de SAFe pose 4 valeurs pour orienter les comportements des acteurs :</p>
+<ol>
+<li>L&rsquo;alignement : Repose sur des objectifs métiers de niveau entreprise afin que l&rsquo;ensemble des équipes agiles puissent faire face aux évolutions rapides du marché, comme par exemple l&rsquo;émergence d&rsquo;un concurrent. L&rsquo;alignement ne peut pas reposer sur l&rsquo;opinion combinée des équipes agiles. Cet alignement se fait du niveau stratégique jusqu&rsquo;au niveau des équipes qui exécutent le contenu des programmes.</li>
+<li>La qualité : Elle ne peut pas être décidée à rebours, elle doit être intégrée dès le départ afin d&rsquo;éviter des retards. Cette qualité intégrée se décline autour de 4 axes : Software, Hardware, Système d&rsquo;intégration, Conformité.</li>
+<li>La transparence</li>
+<li>L&rsquo;exécution du programme</li>
+</ol>
+<h2 id=1-mindset-pour-les-gouverner>&ldquo;1 mindset pour les gouverner&rdquo;</h2>
+<p>Pour gouverner ce modèle, il est nécessaire d&rsquo;avoir un certain <em>mindset</em> (état d’esprit) qui est lui aussi défini par l&rsquo;auteur. Ce mindset est formé de deux ensembles.</p>
+<p>Le premier ensemble s&rsquo;inspire de la Maison du Lean créée et définie par Toyota, baptisé ici : SAFe House Lean. Elle se compose des éléments suivants :</p>
+<ul>
+<li>
+<p>Un toit qui définit l&rsquo;objectif : fournir la valeur client maximale dans les délais les plus courts possibles tout en offrant la meilleure qualité possible aux clients et à la société dans son ensemble</p>
+</li>
+<li>
+<p>4 piliers qui soutiennent l&rsquo;objectif :</p>
+<ul>
+<li>Pilier 1 : Respect de la culture et des personnes</li>
+<li>Pilier 2 (Flux) : Établissement d’un flux de travail continu qui prend en charge une création de valeur continue, basée sur un retour d&rsquo;informations et des ajustements
+constants. Un flux continu permet une livraison de valeur plus rapide, des pratiques de qualité intégrée efficaces, une amélioration constante et une gouvernance fondée sur des preuves</li>
+<li>Pilier 3 (Innovation): Encourager la rencontre avec des utilisateurs pour vous nourrir de leurs problèmes afin d’innover</li>
+<li>Pilier 4 (Amélioration continue) : Encourager l’apprentissage et la croissance grâce à une réflexion continue et à des améliorations des processus</li>
+</ul>
+</li>
+<li>
+<p>Des fondations qui s&rsquo;appuient sur le leadership</p>
+</li>
+</ul>
+<p>Le deuxième ensemble n&rsquo;est autre que le manifeste Agile.</p>
+<h2 id=4-niveaux-pour-structurer>&ldquo;4 niveaux pour structurer&rdquo;</h2>
+<p>En complément de ce cadre déjà conséquent, l’auteur a organisé des pratiques recommandées à travers des niveaux dont nous pouvons faire le parallèle avec les strates de l’entreprise.</p>
+<p>L’objectif de ces niveaux : permettre d’aligner l’ensemble des forces selon les stratégies d’investissement prises à la tête de l’entreprise.</p>
+<p>Cet alignement s’effectue par le lien fait grâce aux livrables et aux événements de chaque niveau qui permettent la circulation dans les deux sens : Bottom up et Top Down. A chaque niveau, un objectif, des rôles, des évènements et des livrables sont définis.</p>
+<p>Ces niveaux sont :</p>
+<ul>
+<li>Le niveau <strong>« Portfolio »</strong> que nous pouvons rattacher à la strate « Top Management » de l’entreprise. C’est le lieu où l’on met en cohérence la vision de l’entreprise, avec
+les stratégies d’investissement pour enfin définir des Portefeuilles qui contiennent des Epics de niveau Business [NDR : !!!]</li>
+<li>Le niveau <strong>« Program »</strong> que nous pouvons rattacher à la strate « Middle Management » de l’entreprise. C’est le lieu où les EPiCs de niveau Business sont découpés pour
+donner naissance à un ou plusieurs Programme(s) de développement. C’est le coeur du Système de SAFe, là où la valeur se crée de façon itérative par l’intermédiaire de l’ Agile
+Release Train (ART).</li>
+<li>Le niveau <strong>« Team »</strong> que nous pouvons rattacher à la strate « Opérationnelle » de l’entreprise. C’est le lieu où les équipes agiles alimentent l’ART par leur développement.</li>
+<li>Le niveau <strong>« Large Solution »</strong> est une extension du niveau « Program » dont l’objectif est d’organiser la synchronisation de plusieurs ART.</li>
+</ul>
+<p>Chacun de ces niveaux possède son propre objectif dans la fusée SAFe mais avec une articulation identique pour tous : un objectif défini, incluant des rôles, des évènements, des livrables.</p>
+<h2 id=12-evènements-pour-lanimer>&ldquo;12 Evènements pour l&rsquo;animer&rdquo;</h2>
+<p>Le maintien de l&rsquo;alignement avec les objectifs stratégiques définis au niveau du portfolio se fait grâce à de nombreux événements répartis par niveau. Chacun a bien évidemment un objectif précis.</p>
+<h3 id=niveau-team>Niveau Team</h3>
+<ul>
+<li><em>Iteration Planning</em> : Moment où l&rsquo;Agile Team détermine les objectifs, le nombre de stories et d&rsquo;enabler de la prochaine itération. La CapEx de l&rsquo;équipe détermine le nombre de stories de l’itération.</li>
+<li><em>Iteration Review</em> : Inspection et démo de l&rsquo;incrément à la fin de l&rsquo;itération, les feedbacks reçus alimentent le Team Backlog.</li>
+<li><em>Iteration Execution</em> : Moment où l&rsquo;Agile Team développe l&rsquo;incrément avec une synchro quotidienne de 15 min.</li>
+<li><em>Iteration Retrospective</em> : Se passe en fin d&rsquo;itération, moment où l&rsquo;Agile Team examine ses pratiques et cherche des voies d&rsquo;améliorations</li>
+<li><em>Backlog Refinement</em> : Organisé 1 à 2 fois dans l&rsquo;itération pour affiner, réviser et estimer les stories, enablers présentes dans le team backlog</li>
+<li><em>Innovation and Planning Iteration</em> : Sert de tampon d&rsquo;estimation pour la réalisation des PI Objectives et fournit du temps consacré à l&rsquo;innovation, à la formation continue, PI Planning et Inspect and Adapt events</li>
+</ul>
+<h3 id=niveau-program>Niveau Program</h3>
+<ul>
+<li><em>PI Planning</em> : Événement de planification, d&rsquo;une durée de 2 jours, réunissant l&rsquo;ensemble des acteurs intervenant dans l&rsquo;ART</li>
+<li><em>System Demo</em> : Présenter l&rsquo;ensemble des fonctionnalités développées dans la dernière itération par toutes les Agile Teams de l&rsquo;ART</li>
+<li><em>Inspect & Adapt</em> : Phase d&rsquo;amélioration continue qui s&rsquo;appuie sur les feedbacks obtenus lors du System Demo</li>
+</ul>
+<h3 id=niveau-solution-program>Niveau Solution Program</h3>
+<ul>
+<li><em>Pre- et Post-PI Planning</em> : Phase de préparation et de suivi des résulats de l&rsquo;ART</li>
+<li><em>Solution Demo</em> : Présenter l&rsquo;ensemble des fonctionnalités développées par tous les ART qui composent la solution</li>
+<li><em>Inspect & Adapt</em> : Phase d&rsquo;amélioration continue qui s&rsquo;appuie sur les feedbacks obtenus lors du Solution Demo</li>
+</ul>
+<h3 id=niveau-portfolio--aucun>Niveau Portfolio : Aucun</h3>
+<h2 id=1-practice-pour-souder>&ldquo;1 Practice pour souder&rdquo;</h2>
+<p>Il y a un élément important qui se situe dans le niveau program mais qui n&rsquo;est pas décrit comme un événement lui-même. Il s&rsquo;agit de l&rsquo;Agile Release Train ou ART. C&rsquo;est le coeur du niveau program, celui qui soude tous les évènements des niveaux program et team.</p>
+<p>Un ART:</p>
+<ul>
+<li>regroupe plusieurs équipes travaillant sur une même Itération de PI Planning</li>
+<li>cadence la livraison de valeur de l&rsquo;ensemble des teams qui le composent</li>
+<li>délivre la valeur sur le rythme d&rsquo;itération le plus faible. C&rsquo;est à dire si une team travaille sur des sprints de 2 semaines et qu&rsquo;une autre travaille sur des sprints de 3 semaines, le rythme le plus faible est 3 semaines</li>
+</ul>
+<h2 id=13-rôles-pour-le-contrôler>&ldquo;13 rôles pour le contrôler&rdquo;</h2>
+<p>Pour donner vie et contrôler ce framework, il faut des rôles à incarner. Il y en a 13 définis, répartis sur les différents niveaux de SAFe.</p>
+<h3 id=niveau-team-1>Niveau Team</h3>
+<ul>
+<li><em>Agile Team</em> : 5 à 11 personnes (Dev team, PO, et SM) ayant la capacité et l&rsquo;autorité pour définir, construire et tester une story ou un enabler de la solution dans une itération.</li>
+<li><em>Dev Team</em> : Équipe interfonctionnelle composée de développeurs, de testeurs et autres spécialistes</li>
+<li><em>Product Owner</em> : Responsable de la définition des Stories et de la priorisation du Team Backlog. Est le seul à pouvoir décréter &ldquo;Done&rdquo; une Story</li>
+<li><em>Scrum Master</em> : Servant leader et coach, il aide à éliminer les obstacles, facilite les évènements d&rsquo;équipe</li>
+</ul>
+<h3 id=niveau-program-1>Niveau Program</h3>
+<ul>
+<li><em>System Architect / Engineer</em> : Petite équipe interdisciplinaire qui définit l&rsquo;architecture globale du système, aide à définir les besoins non fonctionnels (NFR), détermine
+les principaux éléments et sous-systèmes et aide à concevoir les interfaces et les collaborations entre eux.</li>
+<li><em>Product Management</em> : Représentent la voix interne du client, travaillent avec les clients et les Product Owners pour comprendre et communiquer leurs besoins, définir les caractéristiques du système et participer à la validation. Ils sont responsables du Program Backlog.</li>
+<li><em>Release Train Engineer</em> : Scrum Master pour L&rsquo;ART. Facilite l&rsquo;optimisation du flux de valeur à travers le Program en utilisant divers mécanismes, tel que KanBan program, Inspect & Adapt, PI Planning</li>
+<li><em>Business Owner</em> : Stakeholders responsables techniquement et commercialement de l&rsquo;adéquation au marché et du ROI de la solution développée par un ART</li>
+</ul>
+<h3 id=niveau-solution-program-1>Niveau Solution Program</h3>
+<ul>
+<li><em>Customer</em> : Acheteur ultime de la solution. Il intervient comme stakeholder lors du PI Planning</li>
+<li><em>Solution Architect/Engineering</em> : Petite équipe qui définit une vision technique et architecturale commune pour la solution en cours de développement</li>
+<li><em>Solution Management</em> : Voix interne du client qui travaille avec lui pour comprendre les besoins, créer la vision et la feuille de route de la solution, définir les exigences et guider le travail à travers Kanban Solution</li>
+<li><em>Solution Train Engineer</em> : Servant Leader et coach qui facilite et guide le travail de l&rsquo;ensemble des ART qui composent la solution</li>
+<li><em>Supplier</em> : Organisation interne ou externe qui développe et fournit des composants, des sous systèmes ou services</li>
+</ul>
+<h3 id=niveau-portfolio>Niveau Portfolio</h3>
+<ul>
+<li><em>Lean Portfolio Management</em> : Groupe de personnes qui organisent et pilotent les portefeuilles d&rsquo;investissement</li>
+<li><em>Epics Owners</em> : Responsables de coordonner les Epics PortFolia à travers le system Portfolio Kanban</li>
+<li><em>Enterprise Architect</em> : Personne qui aide à fournir l&rsquo;orientation technique stratégique</li>
+</ul>
+<h2 id=20-artifacts-à-délivrer>&ldquo;20 artifacts à délivrer&rdquo;</h2>
+<p>Un cadre, des niveaux, des events, des rôles mais on délivre quoi ? Une vingtaine d&rsquo;artefacts sont définis, décrits et répartis eux aussi par niveau</p>
+<h3 id=niveau-team-2>Niveau Team</h3>
+<ul>
+<li><em>Story</em> : Véhicule transportant les exigences du client. Utilisé par les équipes pour produire de la valeur au sein d&rsquo;une itération</li>
+<li><em>Enabler stories</em> : Initiative technique et architecture nécessaires pour réaliser les stories</li>
+<li><em>Iteration goals</em> : Résumé de haut niveau des objectifs commerciaux et techniques que l&rsquo;équipe agile accepte d&rsquo;accomplir dans une itération</li>
+<li><em>Team Backlog</em> : Contient les stories et enablers. La majorité est identifiée lors du PI Planning et Backlog refinement</li>
+<li><em>Team PI Objectives</em> : Résumé des objectifs métiers et techniques spécifiques qu&rsquo;une Agile team souhaite atteindre dans une itération</li>
+</ul>
+<h3 id=niveau-program-2>Niveau Program</h3>
+<ul>
+<li><em>Features</em> : Fonctionnalité dont un stakeholder a besoin. Elle contient les hypothèses de bénéfices et les critères d&rsquo;acceptance. Elle est dimensionnée pour tenir dans un ART</li>
+<li><em>Program Epics</em> : Premier découpage des Business Epics afin qu’elles rentrent sur un seul ART</li>
+<li><em>Program Backlog</em> : Zone d&rsquo;attente pour les fonctionnalités à vernir. On compte un program backlog par ART</li>
+<li><em>Program Kanban</em> : Gestion du flux des features pour assurer un pipeline de livraison continue</li>
+<li><em>PI Objectives</em> : Résumé des objectifs métiers et techniques spécifiques qu&rsquo;un ART souhaite atteindre dans le prochain IP</li>
+<li><em>Architectural Runway</em> : Contient le code, les composants et l&rsquo;infrastructure technique nécessaires pour mettre en œuvre les fonctionnalités</li>
+</ul>
+<h3 id=niveau-large-solution>Niveau Large Solution</h3>
+<ul>
+<li><em>Capabilities</em> : Ensemble de &ldquo;haut niveau&rdquo; qui donnera naissance à des Features et des Enablers qui alimenteront ensuite chacun des ART</li>
+<li><em>Solution Epics</em> : Premier découpage des Business Epics afin qu’elles rentrent sur plusieurs ART</li>
+<li><em>Nonfunctionnal Requirements (NFRs)</em> : Définit les exigences autour de la sécurité, de la fiabilité, de la robustesse, de la performance, etc…</li>
+<li><em>Solution Backlog</em> : Zone d&rsquo;attente des Capabilities avant leur split pour incorporation dans un ou plusieurs ART</li>
+<li><em>Solution Kanban</em> : Gestion du flux des capabilities pour assurer un pipeline de livraisons continues</li>
+</ul>
+<h3 id=niveau-portfolio-1>Niveau Portfolio</h3>
+<ul>
+<li><em>Business Epics</em> : Nouvelle idée business</li>
+<li><em>Enabler Epics</em> : Initiative technique et architecture nécessaires pour réaliser les Business EPICS</li>
+<li><em>Strategic themes</em> : Items qui permettent de faire le lien entre la stratégie d&rsquo;entreprise et les portefeuilles</li>
+<li><em>Portfolio backlog</em> : Zone d&rsquo;attente contenant les Business EPICs et Enabler Epics avant leur découpage en Solution Program ou Program</li>
+</ul>
+<h2 id=conclusion>Conclusion</h2>
+<p>Au vu de la taille exceptionnelle de la documentation, on peut s’interroger sur la priorité donnée à l’efficacité de la méthode. Ma longue lecture d&rsquo;une bonne partie de la documentation disponible et dont vous avez un résumé au dessus ne m&rsquo;a pas enlevé l&rsquo;impression que j&rsquo;avais à la découverte de la carte de la méthode : &ldquo;Des processus et des outils plus que les individus et leurs interactions&rdquo;.</p>
+<p>Cette impression subsiste pour plusieurs raisons :</p>
+<ul>
+<li>
+<p>Il y a tellement d&rsquo;éléments définis pour atteindre l&rsquo;objectif de l&rsquo;agilité à l&rsquo;échelle que cela donne l&rsquo;impression :</p>
+<ul>
+<li>qu&rsquo;il n&rsquo;y a aucune latitude pour s&rsquo;adapter au contexte et à la culture de l&rsquo;entreprise dans laquelle on souhaite l&rsquo;implémenter</li>
+<li>que l&rsquo;auto-organisation n&rsquo;est pas la bienvenue même si elle est maintes fois citée dans le framework</li>
+</ul>
+</li>
+<li>
+<p>La méthode crée un éloignement entre les clients et les créateurs de valeurs (l'<em>Agile Team</em>) : les product Owners ne semblent pas avoir un accès direct aux clients, ils passent
+par les program owners et les EPics Owners :</p>
+<ul>
+<li>Les clefs de l’agilité et du DevOps sont donc perdues.</li>
+<li>Les clefs du <em>Fast Fail</em> sont aussi perdues : l&rsquo;agilité a pour vocation d&rsquo;aider au <em>Fast Fail</em>, puisque rien ne se passe jamais vraiment comme cela devrait. Or avec ses différents
+niveaux de délégation, SAFe va freiner le côté <em>fast</em> du <em>Fast Fail</em>, du fait de l&rsquo;augmentation du temps de traversée des couches entre le développeur et le porteur de l&rsquo;Epic
+concernée. Restera le <em>fail</em> qui sera la responsabilité de l’équipe de développement.</li>
+</ul>
+</li>
+<li>
+<p>Le time to market pour délivrer reste lent car il faut s&rsquo;aligner sur la team la plus lente pour livrer un incrément. Or dans une ère numérique où il est important de délivrer vite de la valeur cela peut déranger : on aurait préféré d’autres moyens pour minimiser le time to market, comme par exemple un apprentissage par coaching ou partage de bonnes pratiques, un outillage pour s’en tenir strictement à un maximum de 2 semaines de sprints, etc.</p>
+</li>
+</ul>
+<p>Cette lecture m&rsquo;a donné l&rsquo;impression d&rsquo;un greenwashing des organisations existantes avec la quantité de rôles définis : on prend les organisations existantes dans les grandes
+entreprises, celles-là mêmes qui avaient échoué à mener leurs grands projets et s’étaient senties dépossédées de leur rôle avec l’apparition de l’agilité et du management 3.0, on
+les tague “SAFe” et hop! elles sont agiles, elles sont à l’échelle, elles sont légitimes.</p>
+<p>Au cours de mon expérience professionnelle, j’ai rencontré beaucoup de défauts de la mise à l’échelle, ils sont liés par exemple :</p>
+<ul>
+<li>à l’éloignement des acteurs : SAFe n’en tient pas compte</li>
+<li>à la gestion de différents environnements entre équipes (backlogs, source repositories, PIC) : SAFe suppose que tout est déjà harmonisé</li>
+<li>à la mise en place de Scrum multipliée par autant de Feature Teams : SAFe considère que c’est maîtrisé et vient rajouter un nombre conséquent de rôles et outils qui va complexifier la mise en place, sans nous dire comment choisir si on ne veut implémenter qu’un extrait de la méthode</li>
+<li>au cadencement des sprints : SAFe s’aligne sur le moins véloce</li>
+<li>au respect du time to market pour délivrer le produit : en plus du point précédent, SAFe met les fonctionnalités dans des trains, en supposant que l’assemblage, via la méthode Kanban, sera satisfaisant</li>
+<li>à la recherche de réduction de la complexité : dans un grand nombre de situations que j’ai pu rencontrer, la mise à l’échelle ne devait être qu’un remède, pas une fin en soi. La méthode devrait commencer par cette indication “si vous avez tout tenté pour éviter la mise à l’échelle, nous vous proposons ces quelques pratiques à considérer comme un mal nécessaire”.</li>
+</ul>
+<p>Pour finir, comme l&rsquo;indique le <a href=https://www.infoq.com/fr/articles/rapport-chaos-2015>Chaos Report</a> de Standish Group et par mon expérience, les projets les plus vastes sont
+ceux qui aboutissent le moins, mais au vu des mots clés qui composent la méthode (Scrum, Lean, Kanban, Scale, Epic, &mldr;), vous aurez la garantie d’avoir mis toutes les chances de votre côté grâce à SAFe. Votre management (2.0) ne vous reprochera rien, tout était prévu. Mais est-ce que tout s’est passé comme prévu ?</p>
+<p><em>NDA : Lorsque je me suis plongé dans la gargantuesque documentation de SAFe pour écrire cet article, j&rsquo;avais déjà un a priori négatif sur ce Framework. J&rsquo;ai cependant essayé de
+retranscrire ici ma compréhension du modèle en tentant de rester impartial.</em></p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2018-07-31T12:42:35Z>
+31 juillet 2018
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/matthieu-riboulet/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Matthieu RIBOULET" src=https://blog.talanlabs.com/authors/matthieu_riboulet.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/matthieu-riboulet/>Matthieu RIBOULET</a></h1>
+<p class="mt-0 mb-2">COO Talan Labs</p>
+</div>
+<div class=mb-6>
+<a href=https://twitter.com/Matthieu__r target=_blank class="icon is-medium"><i class="fab fa-lg fa-twitter text-[#1DA1F2]"></i></a>
+<a href=https://www.linkedin.com/in/mriboulet target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+<a href=https://www.matthieuriboulet.fr/ target=_blank class="icon is-medium"><i class="fas fa-lg fa-link"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/agile>agile</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>

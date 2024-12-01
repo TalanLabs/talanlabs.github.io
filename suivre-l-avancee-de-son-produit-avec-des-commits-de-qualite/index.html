@@ -1,0 +1,381 @@
+<!doctype html><html lang=fr-fr>
+<head><title> Suivre l'avancée de son produit avec des commits de qualité | Talan Labs | Blog
+</title>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<meta content="width=device-width,initial-scale=1,maximum-scale=5" name=viewport>
+<meta name=description content="Générez un historique des modifications de qualité et simplement grâce à une convention de commit !">
+<meta property="og:title" content="Suivre l'avancée de son produit avec des commits de qualité">
+<meta property="og:description" content="Générez un historique des modifications de qualité et simplement grâce à une convention de commit !">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://blog.talanlabs.com/suivre-l-avancee-de-son-produit-avec-des-commits-de-qualite/"><meta property="og:image" content="https://blog.talanlabs.com/suivre-l-avancee-de-son-produit-avec-des-commits-de-qualite/cover.jpg"><meta property="article:section" content="post">
+<meta property="article:published_time" content="2021-01-06T09:00:00+01:00">
+<meta property="article:modified_time" content="2021-01-06T09:00:00+01:00"><meta property="og:site_name" content="Talan Labs | Blog">
+<meta name=twitter:card content="summary_large_image">
+<meta name=twitter:image content="https://blog.talanlabs.com/suivre-l-avancee-de-son-produit-avec-des-commits-de-qualite/cover.jpg">
+<meta name=twitter:title content="Suivre l'avancée de son produit avec des commits de qualité">
+<meta name=twitter:description content="Générez un historique des modifications de qualité et simplement grâce à une convention de commit !">
+<script type=text/javascript src=/js/mermaid.min.js></script>
+<script type=text/javascript src=/js/tarteaucitron.js-1.9.3/tarteaucitron.js></script>
+<link rel=icon type=image/png sizes=96x96 href=/img/favicon.png>
+<link rel=canonical href=https://www.julienrollin.com/posts/suivre-l-avancee-de-son-produit-avec-des-commits-de-qualite>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/highlight.js@11.3.1/styles/monokai.css type=text/css>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/asciidoc.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/languages/http.min.js></script>
+<script>hljs.highlightAll()</script>
+<link href=/css/main.css rel=stylesheet>
+<link rel=stylesheet href=https://rsms.me/inter/inter.css>
+</head>
+<link rel=preconnect href=https://fonts.gstatic.com>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel=stylesheet>
+<script defer src=https://use.fontawesome.com/releases/v5.14.0/js/all.js></script>
+</head>
+<body><div class="sticky top-0 w-full bg-white dark:bg-black">
+<div class="max-w-8xl mx-auto">
+<div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
+<div class="relative flex items-center justify-between">
+<a class="level-item has-text-centered" href=/>
+<img class="dark:hidden h-14 inline" height=30 src=/img/logo_talanlabs_hd_h55.png alt="Logo Talan Labs">
+<img class="h-14 inline" height=30 src=/img/logo_talanlabs_white_small.png alt="Logo Talan Labs">
+</a>
+<div class="relative hidden md:flex items-center ml-auto">
+<ul class="flex space-x-8">
+<ul class="flex space-x-8">
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="hover:text-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</ul>
+<div class="flex items-center border-l border-slate-200 ml-6 pl-6">
+<label class=sr-only id=headlessui-listbox-label-3>Theme</label>
+<button type=button id=theme-toggle aria-haspopup=true aria-expanded=false aria-labelledby=theme-toggle>
+<span class=hidden id=theme-toggle-light-icon>
+<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" class="stroke-slate-400 dark:stroke-slate-500"/><path d="M12 4v1m5.66 1.344-.828.828m3.173 4.832h-1m-1.345 5.66-.828-.828M12 20.01V19M6.34 17.664l.835-.836m-3.18-4.824h1.01M6 6l.835.836" class="stroke-slate-400 dark:stroke-slate-500"/></svg></span>
+<span id=theme-toggle-dark-icon><svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path fill-rule="evenodd" clip-rule="evenodd" d="M17.715 15.15A6.5 6.5.0 019 6.035c-2.894.887-5 3.61-5 6.832.0 3.94 3.153 7.136 7.042 7.136 3.101.0 5.734-2.032 6.673-4.853z" class="fill-transparent"/><path d="m17.715 15.15.95.316a1 1 0 00-1.445-1.185l.495.869zM9 6.035l.846.534a1 1 0 00-1.14-1.49L9 6.035zm8.221 8.246a5.47 5.47.0 01-2.72.718v2a7.47 7.47.0 003.71-.98l-.99-1.738zm-2.72.718A5.5 5.5.0 019 9.5H7a7.5 7.5.0 007.5 7.5v-2zM9 9.5c0-1.079.31-2.082.845-2.93L8.153 5.5A7.47 7.47.0 007 9.5h2zm-4 3.368C5 10.089 6.815 7.75 9.292 6.99L8.706 5.08C5.397 6.094 3 9.201 3 12.867h2zm6.042 6.136C7.718 19.003 5 16.268 5 12.867H3c0 4.48 3.588 8.136 8.042 8.136v-2zm5.725-4.17c-.81 2.433-3.074 4.17-5.725 4.17v2c3.552.0 6.553-2.327 7.622-5.537l-1.897-.632z" class="fill-slate-400 dark:fill-slate-500"/><path fill-rule="evenodd" clip-rule="evenodd" d="M17 3a1 1 0 011 1 2 2 0 002 2 1 1 0 110 2 2 2 0 00-2 2 1 1 0 11-2 0 2 2 0 00-2-2 1 1 0 110-2 2 2 0 002-2 1 1 0 011-1z" class="fill-slate-400 dark:fill-slate-500"/></svg>
+</span>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button class="outline-none mobile-menu-button"><svg class="w-6 h-6 text-gray-500 hover:text-blue-500" x-show="!showMenu" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentcolor"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="hidden mobile-menu md:hidden">
+<ul>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/post target=_parent>Publications</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/events/ target=_parent>Evènements </a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/startup-network target=_parent>Sun</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/authors/ target=_parent>Auteurs</a>
+</li>
+<li>
+<a class="block text-sm px-2 py-4 hover:bg-blue-500 dark:text-white" href=/contact-us target=_parent>Contact</a>
+</li>
+</ul>
+</div>
+<script>const btn=document.querySelector("button.mobile-menu-button"),menu=document.querySelector(".mobile-menu");btn.addEventListener("click",()=>{menu.classList.toggle("hidden")})</script>
+</div>
+<div class="container mx-auto px-6 mt-14">
+<div class=md:flex>
+<div class="content post w-full md:mr-8">
+<h1 class=title>Suivre l'avancée de son produit avec des commits de qualité</h1>
+<figure class="cover image">
+<img src=/suivre-l-avancee-de-son-produit-avec-des-commits-de-qualite/cover.jpg width=5000 height=3313 alt="illustration de l'article">
+</figure>
+<p>Quel que soit le produit développé ou le langage utilisé, il y a toujours des développeurs et des commits quelque part&mldr;</p>
+<p>Au travers de l’historique, les commits permettent de retracer toutes les modifications effectuées sur un projet.</p>
+<p>Néanmoins, la qualité des messages peut beaucoup varier d’un développeur à l’autre, voire d’un jour à l’autre pour la même personne…</p>
+<h2 id=quest-ce-quun-commit-de-qualité->Qu’est-ce qu’un commit de qualité ?</h2>
+<p>Quand nous regardons l’historique d’un projet versionné sous git, nous constatons parfois une suite de commits peu expressifs&mldr;</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>e60930a9 <span style=color:#f92672>(</span>HEAD -&gt; my_branch, origin/mybranch<span style=color:#f92672>)</span> Modif de la nav
+49ff1d07 Fix describe bis
+49ff1d07 Fix describe
+3672f204 Update conf
+03d00e2e Types
+a5fdbc4b <span style=color:#75715e>#261 suppress unecessary lines</span>
+886fd7af add logo and modify message <span style=color:#66d9ef>for</span> loading connections
+a06a1272 support logo and redirection
+1dd84e9c fix reconnect insert <span style=color:#75715e>#291</span>
+a62f7880 No comment
+26f99ee0 ...
+d2be491c fix test
+bfb2f370 commit final with all fix
+</code></pre></div><p>Les développeurs arrivant sur le projet, ou pire ceux qui sont déjà sur le projet, peuvent difficilement exploiter un tel historique.</p>
+<p>Pour citer quelques problématiques liées à un tel historique :</p>
+<ul>
+<li>difficile de distinguer les fonctionnalités des correctifs</li>
+<li>messages trog génériques dont on ne comprend pas les impacts éventuels</li>
+<li>structure des messages non homogène</li>
+</ul>
+<h2 id=définir-un-format-de-message-commun>Définir un format de message commun</h2>
+<p>Les développeurs ont tendance à écrire des messages qui ne sont pas assez expressifs. Ils ne décrivent pas toujours les changements opérés ni l’objectif du code ajouté.</p>
+<p>Chaque message de commit devrait pouvoir répondre aux questions suivantes :</p>
+<blockquote>
+<p>Quels types de changement suis-je en train de faire ?</p>
+</blockquote>
+<blockquote>
+<p>Quel périmètre est affecté par mes changements ?</p>
+</blockquote>
+<blockquote>
+<p>Quelles sont les modifications opérées ?</p>
+</blockquote>
+<h3 id=la-spécification-conventional-commit>La spécification “Conventional commit”</h3>
+<p>Git ne définit pas de format de message. Cela reste du texte simple où chacun est libre de structurer son message comme il le souhaite.</p>
+<p>La spécification “<a href=https://www.conventionalcommits.org/en/v1.0.0/>conventional Commit</a>” propose d’ajouter une couche de vérification des messages avant de les écrire dans Git.</p>
+<p>L’objectif est de créer une convention commune au sein du projet et faciliter ainsi le partage du code ainsi que les résolutions de bugs.</p>
+<p>Cette spécification est largement inspirée des <a href=https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#commits>bonnes pratiques de contribution du projet Angular</a></p>
+<h4 id=structure-des-messages>Structure des messages</h4>
+<p>Les messages sont composés comme suit :</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>&lt;type&gt;<span style=color:#f92672>[</span>optional scope<span style=color:#f92672>]</span>: &lt;subject&gt;
+&lt;BLANK LINE&gt;
+<span style=color:#f92672>[</span>optional body<span style=color:#f92672>]</span>
+&lt;BLANK LINE&gt;
+<span style=color:#f92672>[</span>optional footer<span style=color:#f92672>]</span>
+</code></pre></div><p><strong>Type</strong></p>
+<p>décrit ce que fait votre commit.</p>
+<p>Voici les valeurs couramment utilisées :</p>
+<ul>
+<li><strong>feat</strong>: une nouvelle fonctionnalité</li>
+<li><strong>fix</strong>: une correction de bug</li>
+<li><strong>docs</strong>: un changement uniquement dans la documentation</li>
+<li><strong>style</strong>: un changement qui n’affecte pas le sens du code (espace, reformattage, alignements dans le code…)</li>
+<li><strong>refactor</strong>: un changement qui n’est ni une correction de bug ni une évolution</li>
+<li><strong>perf</strong>: un changement qui améliore la performance</li>
+<li><strong>test</strong>: un ajout de tests manquants</li>
+<li><strong>chore</strong>: un changement sur le process de build ou des outils complémentaires</li>
+</ul>
+<p><strong>Scope</strong></p>
+<p>Décrit le périmètre de la modification (ex: nom du composant, module, packages, etc)</p>
+<p><strong>Subject</strong></p>
+<p>Description succincte des modifications</p>
+<ul>
+<li>impératif et temps présent</li>
+<li>pas de majuscule</li>
+<li>pas de point</li>
+</ul>
+<p><strong>Body</strong> (optionnel)</p>
+<p>Décrit plus en détail les objectifs et intentions qui ont motivé les changements apportés</p>
+<p><strong>Footer</strong> (optionnel)</p>
+<p>Liens éventuels vers des outils de suivi de bugs</p>
+<p>A noter :</p>
+<p>En cas de &ldquo;Breaking change&rdquo;, il est possible de l&rsquo;indiquer via un &lsquo;!&rsquo; dans le <strong>type</strong> et dans le <strong>body</strong> en ajoutant &ldquo;BREAKING CHANGE:&rdquo; suivi de l&rsquo;explication.</p>
+<h3 id=exemples-de-messages-attendus>Exemples de messages attendus</h3>
+<p>Fonctionnalité implémentée : Possiblité de passer commande via un bouton</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>feat<span style=color:#f92672>(</span>order<span style=color:#f92672>)</span>: add purchase order button
+</code></pre></div><p>Mise à jour de la documentation pour expliquer les scripts d&rsquo;initialisation du projet</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>docs<span style=color:#f92672>(</span>readme<span style=color:#f92672>)</span>: document how to start project
+</code></pre></div><p>Arrêt du support Node 6</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>refactor!: drop support <span style=color:#66d9ef>for</span> Node <span style=color:#ae81ff>6</span>
+
+BREAKING CHANGE: refactor to use JavaScript features not available in Node 6.
+</code></pre></div><h2 id=vérifier-la-conformité-des-messages-de-commit>Vérifier la conformité des messages de commit</h2>
+<p>Pour vérifier que tout le monde respecte bien le format défini par le projet, il convient de faire valider les messages.</p>
+<p>La librairie “<a href=https://commitlint.js.org/>Commit Lint</a>” est justement là pour nous aider !</p>
+<h3 id=installation-de-la-librairie>Installation de la librairie</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm install -g @commitlint/cli @commitlint/config-conventional
+</code></pre></div><p><em>Rq: il est également possible d’installer localement ou via npx la librairie.</em></p>
+<h3 id=configuration-des-règles>Configuration des règles</h3>
+<p>Création du fichier de config <code>commitlint.config.js</code> lue par la librairie</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#a6e22e>echo</span> <span style=color:#e6db74>&#34;module.exports = {extends: [&#39;@commitlint/config-conventional&#39;]}&#34;</span> <span style=color:#f92672>&gt;</span> <span style=color:#a6e22e>commitlint</span>.<span style=color:#a6e22e>config</span>.<span style=color:#a6e22e>js</span>
+</code></pre></div><p>Les types autorisés par cette configuration sont : &lsquo;build&rsquo;, &lsquo;ci&rsquo;, &lsquo;chore&rsquo;, &lsquo;docs&rsquo;, &lsquo;feat&rsquo;, &lsquo;fix&rsquo;, &lsquo;perf&rsquo;, &lsquo;refactor&rsquo;, &lsquo;revert&rsquo;, &lsquo;style&rsquo;, &lsquo;test&rsquo;</p>
+<p>Consultez la documentation pour les <a href=https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional#type-enum>autres règles prédéfinies</a></p>
+<h3 id=exemple-derreur-lors-de-la-validation-dun-message>Exemple d’erreur lors de la validation d’un message</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e># Lint from stdin</span>
+echo <span style=color:#e6db74>&#39;foo: bar&#39;</span> | commitlint
+⧗   input: foo: bar
+✖   type must be one of <span style=color:#f92672>[</span>build, chore, ci, docs, feat, fix, perf, refactor, revert, 
+style,test<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>type-enum<span style=color:#f92672>]</span>
+
+✖   found <span style=color:#ae81ff>1</span> problems, <span style=color:#ae81ff>0</span> warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+
+</code></pre></div><h3 id=la-personnalisation-des-règles-de-validation>La personnalisation des règles de validation</h3>
+<p>Il est par exemple possible de forcer l’usage des scopes et d’en restreindre le choix à une liste prédéfinie</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>//commitlint.config.js
+</span><span style=color:#75715e></span><span style=color:#a6e22e>module</span>.<span style=color:#a6e22e>exports</span> <span style=color:#f92672>=</span> {
+    <span style=color:#66d9ef>extends</span><span style=color:#f92672>:</span> [<span style=color:#e6db74>&#39;@commitlint/config-conventional&#39;</span>],
+    <span style=color:#a6e22e>rules</span><span style=color:#f92672>:</span> {
+        <span style=color:#e6db74>&#39;scope-empty&#39;</span><span style=color:#f92672>:</span> [<span style=color:#ae81ff>2</span>, <span style=color:#e6db74>&#39;never&#39;</span>],
+        <span style=color:#e6db74>&#39;scope-enum&#39;</span><span style=color:#f92672>:</span> [<span style=color:#ae81ff>2</span>, <span style=color:#e6db74>&#39;always&#39;</span>, [
+            <span style=color:#e6db74>&#39;logging&#39;</span>,
+            <span style=color:#e6db74>&#39;services&#39;</span>,
+            <span style=color:#e6db74>&#39;docs&#39;</span>,
+            <span style=color:#e6db74>&#39;dependencies&#39;</span>,
+            <span style=color:#e6db74>&#39;profiles&#39;</span>,
+            <span style=color:#e6db74>&#39;users&#39;</span>,
+            <span style=color:#e6db74>&#39;api&#39;</span>,
+            <span style=color:#e6db74>&#39;segments&#39;</span>,
+            <span style=color:#e6db74>&#39;configuration&#39;</span>
+        ]]
+    }
+};
+</code></pre></div><p>Pour aller plus loin, <a href=https://commitlint.js.org/#/reference-rules>consultez la liste des règles de commitlint</a></p>
+<h3 id=exemple-dhistorique-git-avec-des-commits-structurés-et-expressifs>Exemple d’historique git avec des commits structurés et expressifs</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>86f80528 <span style=color:#f92672>(</span>HEAD -&gt; master, origin/master, origin/HEAD<span style=color:#f92672>)</span> fix<span style=color:#f92672>(</span>changelog<span style=color:#f92672>)</span>: display scope in breaking change messages
+6b578392 fix<span style=color:#f92672>(</span>CLI<span style=color:#f92672>)</span>: show symlinked themes in <span style=color:#e6db74>`</span>omz theme list<span style=color:#e6db74>`</span>
+64cb1530 chore: add Konfekt as universalarchive maintainer
+492f712d feat<span style=color:#f92672>(</span>plugins<span style=color:#f92672>)</span>: add <span style=color:#e6db74>`</span>universalarchive<span style=color:#e6db74>`</span> plugin to conveniently compress files <span style=color:#f92672>(</span><span style=color:#75715e>#6846)</span>
+2118d35e fix<span style=color:#f92672>(</span>vi-mode<span style=color:#f92672>)</span>!: add back edit-command-line key binding as <span style=color:#e6db74>&#39;vv&#39;</span> <span style=color:#f92672>(</span><span style=color:#75715e>#9573)</span>
+79980b00 fix<span style=color:#f92672>(</span>vi-mode<span style=color:#f92672>)</span>: hide cursor-change logic behind <span style=color:#e6db74>`</span>VI_MODE_SET_CURSOR<span style=color:#e6db74>`</span> setting
+94ce46d4 docs<span style=color:#f92672>(</span>vi-mode<span style=color:#f92672>)</span>: revamp README and document settings
+66e0438d fix<span style=color:#f92672>(</span>archlinux<span style=color:#f92672>)</span>: update URL and key server in <span style=color:#e6db74>`</span>pacmanallkeys<span style=color:#e6db74>`</span> <span style=color:#f92672>(</span><span style=color:#75715e>#9569)</span>
+9e5f280f feat<span style=color:#f92672>(</span>CLI<span style=color:#f92672>)</span>: add <span style=color:#e6db74>`</span>plugin info<span style=color:#e6db74>`</span> subcommand <span style=color:#f92672>(</span><span style=color:#75715e>#9452)</span>
+</code></pre></div><p><em>Logs extraits du projet <a href=https://github.com/ohmyzsh/ohmyzsh>OhMyzsh</a></em></p>
+<h2 id=automatiser-la-vérification-des-messages>Automatiser la vérification des messages</h2>
+<p>Pour garantir la structure des messages de commit et ne pas ralentir le développeur, l’idéal est de vérifier automatiquement le format à la création du commit.</p>
+<p>Git permet justement d&rsquo;exécuter des scripts personnalisés au déclenchement de certaines actions (<a href=https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks>documentation sur les Git Hooks</a>)</p>
+<p>Le hook qui nous intéresse est “commit-msg”</p>
+<h3 id=installation-manuelle-du-hook>Installation manuelle du hook</h3>
+<p>Créer un fichier <code>.git/hooks/commit-msg</code></p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=color:#75715e>#!/bin/sh
+</span><span style=color:#75715e></span>commitlint &gt; $1
+status<span style=color:#f92672>=</span>$?
+<span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> $status -gt <span style=color:#ae81ff>0</span> <span style=color:#f92672>]</span>
+<span style=color:#66d9ef>then</span>
+  echo <span style=color:#e6db74>&#34;✖ Commit message does not follow conventional commit message spec&#34;</span>
+  echo <span style=color:#e6db74>&#39;ⓘ  Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint&#39;</span>
+<span style=color:#66d9ef>fi</span>
+
+exit $status
+</code></pre></div><h3 id=installation-automatique-avec-husky-node-project>Installation automatique avec Husky (node project)</h3>
+<p><a href=https://typicode.github.io/husky/#/>Husky</a> est une dépendance <code>npm</code> qui nous aide à facilement configurer les &ldquo;Git Hooks&rdquo;</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>npm install --save-dev husky
+</code></pre></div><p>Configuration du hook &lsquo;commit-msg&rsquo; pour exécuter le linter</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-js data-lang=js><span style=color:#75715e>// package.json
+</span><span style=color:#75715e></span>{
+  <span style=color:#e6db74>&#34;husky&#34;</span><span style=color:#f92672>:</span> {
+    <span style=color:#e6db74>&#34;hooks&#34;</span><span style=color:#f92672>:</span> {
+      <span style=color:#e6db74>&#34;commit-msg&#34;</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;commitlint -E HUSKY_GIT_PARAMS&#34;</span>
+    }
+  }
+}
+</code></pre></div><h3 id=exemple-de-vérification-automatique-des-messages-lors-du-commit>Exemple de vérification automatique des messages lors du commit</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ git commit -m “foo”
+
+husky &gt; commit-msg <span style=color:#f92672>(</span>node v12.19.0<span style=color:#f92672>)</span>
+⧗   input: foo
+✖   subject may not be empty <span style=color:#f92672>[</span>subject-empty<span style=color:#f92672>]</span>
+✖   type may not be empty <span style=color:#f92672>[</span>type-empty<span style=color:#f92672>]</span>
+
+✖   found <span style=color:#ae81ff>2</span> problems, <span style=color:#ae81ff>0</span> warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+
+husky &gt; commit-msg hook failed <span style=color:#f92672>(</span>add --no-verify to bypass<span style=color:#f92672>)</span>
+</code></pre></div><h2 id=conclusion>Conclusion</h2>
+<p>Appliquer cette rigueur peut être perturbant au début mais cela devient très vite un réel atout.</p>
+<p>L’historique des commits n’est plus une liste inexploitable que personne ne consulte.
+Il devient une véritable aide à la compréhension des modifications opérées dans le projet.</p>
+<p>En soignant ses messages de commit, le développeur se pose également plus de questions sur ce qu’il est en train de faire et si les changements apportés dans le commit sont bien adaptés (<a href=https://en.wikipedia.org/wiki/Atomic_commit>voir les bonnes pratiques des commits atomiques</a>)</p>
+<p>En cas de problème d’historique, ne pas oublier le “<a href=https://git-scm.com/book/en/v2/Git-Branching-Rebasing>rebase interactif</a>” :-)</p>
+<h2 id=pour-aller-plus-loin>Pour aller plus loin</h2>
+<p>Avoir des messages expressifs et structurés permet également d’automatiser certaines tâches.</p>
+<p>Dans un prochain article nous verrons comment automatiser la création d’un changelog lors de la livraison d’une nouvelle version.</p>
+<h2 id=liens-utiles>Liens utiles</h2>
+<ul>
+<li><a href=https://www.conventionalcommits.org/en/v1.0.0/>Spécification Conventional Commits</a></li>
+<li><a href=https://github.com/conventional-changelog/commitlint>Commitlint</a></li>
+<li><a href=https://typicode.github.io/husky/#/>Husky</a></li>
+<li><a href=https://git-scm.com/docs/githooks/2.30.0>Git Hooks</a></li>
+<li><a href=https://git-scm.com/book/en/v2/Git-Branching-Rebasing>Git rebase</a></li>
+<li><a href=https://en.wikipedia.org/wiki/Atomic_commit>Commits atomiques</a></li>
+</ul>
+<h4 id=crédits>Crédits</h4>
+<p>Photo de couverture par <a href=https://unsplash.com/photos/842ofHC6MaI>Yancy Min sur Unsplash</a></p>
+</div>
+<div class="content md:flex-col md:w-72 text-center">
+<div class="bg-stone-100 px-4 pb-4 rounded">
+<div>
+<h4 class=subtitle><i class="fas fa-calendar-alt"></i> Date</h4>
+<time datetime=2021-01-06T09:00:00+01:00>
+6 janvier 2021
+</time>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-pen"></i> Auteur</h4>
+<div class=text-center>
+<div class=mb-4>
+<figure>
+<a href=https://blog.talanlabs.com/authors/julien-rollin/><img class="h-36 w-36 m-0 inline-block object-cover rounded-full border border-gray-100" alt="Avatar Julien ROLLIN" src=https://blog.talanlabs.com/authors/julien_rollin.jpg></a>
+</figure>
+</div>
+<div>
+<h1 class="text-3xl pb-0 text-center font-medium"><a href=https://blog.talanlabs.com/authors/julien-rollin/>Julien ROLLIN</a></h1>
+<p class="mt-0 mb-2">CTO Talan Labs</p>
+</div>
+<div class=mb-6>
+<a href=https://www.linkedin.com/in/julien-rollin-a1708822 target=_blank class="icon is-medium"><i class="fab fa-lg fa-linkedin text-[#0077B5]"></i></a>
+<a href=https://github.com/jrollin target=_blank class="icon is-medium"><i class="fab fa-lg fa-github"></i></a>
+<a href=https://www.julienrollin.com target=_blank class="icon is-medium"><i class="fas fa-lg fa-link"></i></a>
+</div>
+</div>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Catégories</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-cyan-500 text-white whitespace-nowrap" href=/categories/craft>craft</a>
+</div>
+<div>
+<h4 class=subtitle><i class="fas fa-hashtag"></i> Tags</h4>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/craft>#craft</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/tools>#tools</a>
+<a class="py-0.5 px-4 my-2 rounded bg-indigo-500 text-white whitespace-nowrap hover:bg-indigo-200 hover:text-slate-900" href=/tags/git>#git</a>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<footer class="w-full bg-gray-100 p-8 dark:bg-black">
+<div class="container flex flex-row flex-wrap mx-auto gap-8">
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Talan Labs</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/metiers/labs/ target=_blank rel=noopener><i class="fas fa-link"></i> Site web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/TalanLabs target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talanlabs/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://github.com/TalanLabs target=_blank rel=noopener><i class="fab fa-github"></i> GitHub</a></li>
+</ul>
+</nav>
+</div>
+<div class=w-48>
+<h3 class="subtitle mt-6 mb-4 ml-0 dark:text-white">Le groupe Talan</h3>
+<nav role=navigation aria-label="footer navigation">
+<ul>
+<li><a class=dark:text-white href=https://talan.com/ target=_blank rel=noopener><i class="fas fa-link"></i> Site
+web</a></li>
+<li><a class=dark:text-white href=https://twitter.com/talan_fr target=_blank rel=noopener><i class="fab fa-twitter"></i> Twitter</a></li>
+<li><a class=dark:text-white href=https://www.linkedin.com/company/talan/ target=_blank rel=noopener><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+<li><a class=dark:text-white href=https://www.facebook.com/talan/ target=_blank rel=noopener><i class="fab fa-facebook"></i> Facebook</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="text-center mt-3 dark:text-white">© 2022 - Le Blog des Labs de Talan - Construit avec <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> et <a href=hhttps://tailwindcss.com target=_blank rel=noopener>Tailwindcss</a></div>
+</footer>
+<script>var themeToggleDarkIcon=document.getElementById('theme-toggle-dark-icon'),themeToggleLightIcon=document.getElementById('theme-toggle-light-icon'),themeToggleBtn;localStorage.getItem('color-theme')==='dark'||!('color-theme'in localStorage)&&window.matchMedia('(prefers-color-scheme: dark)').matches?(themeToggleLightIcon.classList.remove('hidden'),themeToggleDarkIcon.classList.add('hidden'),document.documentElement.classList.add('dark')):(themeToggleLightIcon.classList.add('hidden'),themeToggleDarkIcon.classList.remove('hidden'),document.documentElement.classList.remove('dark')),themeToggleBtn=document.getElementById('theme-toggle'),themeToggleBtn.addEventListener('click',function(){themeToggleDarkIcon.classList.toggle('hidden'),themeToggleLightIcon.classList.toggle('hidden'),localStorage.getItem('color-theme')?localStorage.getItem('color-theme')==='light'?(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark')):(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):document.documentElement.classList.contains('dark')?(document.documentElement.classList.remove('dark'),localStorage.setItem('color-theme','light')):(document.documentElement.classList.add('dark'),localStorage.setItem('color-theme','dark'))})</script><script type=text/javascript>tarteaucitron.init({privacyUrl:"",hashtag:"#tarteaucitron",cookieName:"tarteaucitron",orientation:"bottom",groupServices:!0,showAlertSmall:!1,cookieslist:!1,closePopup:!1,showIcon:!0,iconSrc:"https://blog.talanlabs.com/cookie.png",iconPosition:"BottomRight",adblocker:!1,DenyAllCta:!0,AcceptAllCta:!0,highPrivacy:!0,handleBrowserDNTRequest:!1,removeCredit:!0,moreInfoLink:!0,useExternalCss:!1,useExternalJs:!1,readmoreLink:"",mandatory:!1})</script>
+<script type=text/javascript>var tarteaucitronForceLanguage='fr'</script>
+<script type=text/javascript>tarteaucitron.user.multiplegtagUa=['UA-40718882-5','G-MED3GXXYSF'],(tarteaucitron.job=tarteaucitron.job||[]).push('multiplegtag')</script>
+<script type=text/javascript></script>
+</body>
+</html>
